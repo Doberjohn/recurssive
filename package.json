@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:budget": "node scripts/check-budget.mjs",
+    "verify": "next build && node scripts/check-budget.mjs"
   },
   "dependencies": {
     "next": "16.2.12",
@@ -22,5 +24,9 @@
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "^8.5.25",
+    "sharp": "^0.35.3"
   }
 }
