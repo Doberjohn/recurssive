@@ -1,0 +1,23 @@
+# Normalise line endings. Without this, Windows checkouts commit CRLF and every
+# file shows as fully changed when cloned on Linux/macOS or built in CI.
+* text=auto eol=lf
+
+# Binary — never diff, never touch line endings.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.avif  binary
+*.webp  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
+*.fig   binary
+*.pdf   binary
+
+# SVG is text and diffs usefully, but should not have line endings rewritten
+# in a way that changes rendering.
+*.svg   text eol=lf
+
+# Generated — collapse in PR diffs.
+package-lock.json   linguist-generated=true -diff
+public/img/**       linguist-generated=true -diff
