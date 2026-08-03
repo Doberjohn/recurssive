@@ -10,7 +10,8 @@
     "check:budget": "node scripts/check-budget.mjs",
     "verify": "next build && node scripts/check-budget.mjs",
     "build:mesh": "node scripts/build-mesh.mjs",
-    "probe:mesh": "node scripts/probe-mesh.mjs"
+    "probe:mesh": "node scripts/probe-mesh.mjs",
+    "build:images": "node scripts/build-images.mjs"
   },
   "dependencies": {
     "next": "16.2.12",
