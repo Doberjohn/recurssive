@@ -131,6 +131,12 @@ ${decls.join('\n')}
   }
 }
 
+/* Wrapped in @layer components so Tailwind utilities beat these rules.
+ * Unlayered CSS outranks anything in @layer utilities, which meant .grained's
+ * position:relative silently overrode an absolute utility on the same element
+ * and collapsed full-bleed images to zero height. */
+@layer components {
+
 /* Full-bleed mesh surface. Apply .mesh with a --mesh var:
  *   <div class="mesh" style={{ ['--mesh']: 'var(--mesh-6)' }} />
  */
@@ -191,6 +197,8 @@ ${decls.join('\n')}
 @media (prefers-reduced-transparency: reduce) {
   .mesh::after,
   .grained::after { display: none; }
+}
+
 }
 `
 

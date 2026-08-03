@@ -27,12 +27,18 @@
      ! Storm Grey is only 2.73:1 on cloud — never use it for text.        */
   --color-muted:      #6B6B6B;
 
+  /* #6B6B6B is 5.11:1 on Cloud White but only 4.43:1 on Silver Grey, which
+   * fails AA for normal text. Use this for muted copy sitting on a #EAEAEA
+   * panel (FAQ answers, chips) — measured 5.17:1. */
+  --color-muted-on-surface: #5F5F5F;
+
   /* Semantic aliases — prefer these in components. */
   --color-bg:           var(--color-cloud);
   --color-surface:      var(--color-silver);
   --color-border:       var(--color-silver);
   --color-ink:          var(--color-phantom);
   --color-ink-muted:    var(--color-muted);
+  --color-ink-muted-on-surface: var(--color-muted-on-surface);
   --color-ink-inverse:  var(--color-cloud);
   --color-primary:      var(--color-inception);
   --color-primary-deep: var(--color-gravity);

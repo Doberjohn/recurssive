@@ -12,14 +12,18 @@
  */
 export function Faq({
   items,
+  defaultOpen,
 }: {
   items: { question: string; answer: string }[]
+  /** Index to ship expanded. The designs draw the first row open. */
+  defaultOpen?: number
 }) {
   return (
     <div className="space-y-4">
-      {items.map((item) => (
+      {items.map((item, i) => (
         <details
           key={item.question}
+          open={i === defaultOpen}
           className="group rounded-3xl bg-surface px-6 open:pb-5"
         >
           <summary
@@ -37,7 +41,7 @@ export function Faq({
               <span className="absolute left-1/2 top-0 h-4 w-[2px] -translate-x-1/2 bg-current transition-transform duration-200 group-open:scale-y-0" />
             </span>
           </summary>
-          <p className="pr-10 text-base text-ink-muted">{item.answer}</p>
+          <p className="pr-10 text-base text-ink-muted-on-surface">{item.answer}</p>
         </details>
       ))}
     </div>
