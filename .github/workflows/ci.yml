@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Build, typecheck, budget
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      # Fails the PR if any route exceeds the JS ceiling. This is the guard that
+      # stops the Next.js choice degrading into a 380 KB bundle over time.
+      - name: JS budget
+        run: npm run check:budget
+
+      # Every route in this site must be statically prerendered. If one goes
+      # dynamic — usually by someone adding cookies()/headers() to a layout —
+      # metadata silently moves out of <head> and TTFB regresses. Catch it here.
+      - name: Assert fully static
+        run: |
+          if grep -qE '^\s*[├└┌]\s+(ƒ|λ)' <(npm run build 2>&1); then
+            echo "::error::A route is no longer statically prerendered."
+            exit 1
+          fi
+          echo "All routes static."
+
+  lighthouse:
+    name: Lighthouse (preview)
+    runs-on: ubuntu-latest
+    needs: verify
+    # Runs against the real Vercel preview URL so the CDN, compression and
+    # edge caching are exercised. Localhost would measure none of that.
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Await Vercel preview
+        id: preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 600
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.15.x
+          lhci autorun \
+            --collect.url="${{ steps.preview.outputs.url }}" \
+            --collect.numberOfRuns=3 \
+            --assert.budgetsFile=lighthouse-budget.json \
+            --upload.target=temporary-public-storage

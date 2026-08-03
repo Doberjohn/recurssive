@@ -1,0 +1,170 @@
+/* ============================================================================
+   Recurssive — Tailwind v4 design tokens
+   ----------------------------------------------------------------------------
+   Derived from verified source data, not guesswork:
+     · colours  = deck pp164–172 (corrected palette board, p172)
+     · sizes    = the 1,643 text nodes in Recurssive Web Design.fig
+     · radii    = the 375 corner-radius values in the same file
+     · grid     = measured 163/1594 at 1920 and 79/610 at 768
+   See RECURSSIVE-KNOWLEDGE-BASE.md §3 for provenance.
+
+   Usage:  @import "tailwindcss";  @import "./theme.css";
+   ============================================================================ */
+
+@theme {
+  /* ---------------------------------------------------------------- colour */
+  /* The seven documented brand tokens (deck pp165–171). */
+  --color-cloud:      #FAFAFA;   /* Cloud White  — page ground            */
+  --color-silver:     #EAEAEA;   /* Silver Grey  — chips, dividers, fills */
+  --color-storm:      #999999;   /* Storm Grey   — decorative only, see ! */
+  --color-phantom:    #0F0F0F;   /* Phantom Black— primary ink, dark bands*/
+  --color-flow:       #A59BFF;   /* Flow         — accent                 */
+  --color-inception:  #4813D0;   /* Inception    — primary action         */
+  --color-gravity:    #360D9D;   /* Gravity      — deep accent            */
+
+  /* The eighth, undocumented token. 369 uses in the file, 0 in the deck.
+     This is the real secondary-text colour: 5.11:1 on cloud = AA pass.
+     ! Storm Grey is only 2.73:1 on cloud — never use it for text.        */
+  --color-muted:      #6B6B6B;
+
+  /* Semantic aliases — prefer these in components. */
+  --color-bg:           var(--color-cloud);
+  --color-surface:      var(--color-silver);
+  --color-border:       var(--color-silver);
+  --color-ink:          var(--color-phantom);
+  --color-ink-muted:    var(--color-muted);
+  --color-ink-inverse:  var(--color-cloud);
+  --color-primary:      var(--color-inception);
+  --color-primary-deep: var(--color-gravity);
+  --color-accent:       var(--color-flow);
+
+  /* Signature gradient stops (from the Figma active-row + text gradients). */
+  --color-grad-1: #966FFF;
+  --color-grad-2: #2805C3;
+  --color-grad-3: #4616E3;
+  --color-grad-4: #7856EC;
+  --color-grad-mid: #4212BF;
+
+  /* Code-editor card chrome. */
+  --color-code-bg:     #0F0F0F;
+  --color-code-gutter: #232323;
+  --color-dot-red:     #D75459;
+  --color-dot-amber:   #EDC943;
+  --color-dot-green:   #81E1B7;
+
+  /* Feedback. */
+  --color-error: #CC0000;
+
+  /* ------------------------------------------------------------ typography */
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* 15 steps consolidated from the 30 sizes actually in the file.
+     Body sizes get 1.5 leading (the file ships 100%, which is too tight);
+     display sizes keep 1.0 and the -5% tracking the designs use.          */
+  --text-xs:   0.75rem;   /* 12px — 79 nodes                              */
+  --text-sm:   0.875rem;  /* 14px — 65 (absorbs 15px ×38)                 */
+  --text-base: 1rem;      /* 16px — 435, the dominant body size           */
+  --text-md:   1.125rem;  /* 18px — 59 (absorbs 17, 18.1)                 */
+  --text-lg:   1.25rem;   /* 20px — 144 (absorbs 19.9)                    */
+  --text-xl:   1.375rem;  /* 22px — 184                                   */
+  --text-2xl:  1.5rem;    /* 24px — 170 (absorbs 26)                      */
+  --text-3xl:  1.75rem;   /* 28px — 35 (absorbs 30)                       */
+  --text-4xl:  2rem;      /* 32px — 102                                   */
+  --text-5xl:  2.25rem;   /* 36px — 63 (absorbs 38.5, 40)                 */
+  --text-6xl:  2.625rem;  /* 42px — 44                                    */
+  --text-7xl:  3rem;      /* 48px — 84 (absorbs 52)                       */
+  --text-8xl:  4.5rem;    /* 72px — 5  (absorbs 57.3, 59.9)               */
+  --text-display: 9.25rem;/* 148px — About hero (absorbs 130, 140)        */
+  --text-hero: 16rem;     /* 256px — RECURSSIVE wordmark                  */
+
+  --text-xs--line-height:   1.5;
+  --text-sm--line-height:   1.5;
+  --text-base--line-height: 1.5;
+  --text-md--line-height:   1.5;
+  --text-lg--line-height:   1.4;
+  --text-xl--line-height:   1.4;
+  --text-2xl--line-height:  1.3;
+  --text-3xl--line-height:  1.25;
+  --text-4xl--line-height:  1.2;
+  --text-5xl--line-height:  1.15;
+  --text-6xl--line-height:  1.1;
+  --text-7xl--line-height:  1.05;
+  --text-8xl--line-height:  1;
+  --text-display--line-height: 1;
+  --text-hero--line-height: 1;
+
+  /* Every Inter heading in the designs is set at -5%. */
+  --text-4xl--letter-spacing:     -0.05em;
+  --text-5xl--letter-spacing:     -0.05em;
+  --text-6xl--letter-spacing:     -0.05em;
+  --text-7xl--letter-spacing:     -0.05em;
+  --text-8xl--letter-spacing:     -0.05em;
+  --text-display--letter-spacing: -0.05em;
+  --text-hero--letter-spacing:    -0.05em;
+
+  /* ---------------------------------------------------------------- radius */
+  --radius-sm:  4px;   /* 62 uses */
+  --radius-md:  6px;   /* 59      */
+  --radius-lg:  8px;   /* 34      */
+  --radius-xl:  10px;  /* 44      */
+  --radius-2xl: 12px;  /* 38      */
+  --radius-3xl: 14px;  /* 27 (absorbs 13) */
+  --radius-4xl: 20px;  /* 47      */
+  --radius-5xl: 25px;  /* 8, code cards */
+
+  /* ----------------------------------------------------------- breakpoints */
+  /* md matches the 768 tablet frames; 3xl matches the 1920 desktop frames.  */
+  --breakpoint-3xl: 1920px;
+
+  /* --------------------------------------------------------------- layout */
+  --spacing-gutter-sm: 79px;    /* 768 frame left margin */
+  --container-content: 1594px;  /* measured content column at 1920 */
+}
+
+/* Content column. Matches the nav (1595×39 @163), footer inner group (1594×615)
+   and footer wordmark (1594×196) exactly.
+
+   No 1920 gutter token is needed: (1920 − 1594) / 2 = 163px, so the design's
+   163px margin falls out of `max-width` + `margin-inline: auto` automatically. */
+.container-content {
+  width: 100%;
+  max-width: var(--container-content);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px)  { .container-content { padding-inline: var(--spacing-gutter-sm); } }
+@media (min-width: 1920px) { .container-content { padding-inline: 0; } }
+
+/* Signature gradients. */
+.bg-brand-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-grad-1) 0%,
+    var(--color-grad-2) 34%,
+    var(--color-grad-3) 69%,
+    var(--color-grad-4) 100%
+  );
+}
+.text-brand-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-inception) 0%,
+    var(--color-grad-mid) 50%,
+    var(--color-flow) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* PLACEHOLDER — the deck ships no numeric mesh-gradient recipe (KB §7.6).
+   This is the agreed interim stand-in; swap when real specs arrive. */
+.bg-mesh-placeholder {
+  background-color: var(--color-gravity);
+  background-image:
+    radial-gradient(at 20% 25%, var(--color-grad-1) 0px, transparent 55%),
+    radial-gradient(at 80% 15%, var(--color-grad-3) 0px, transparent 50%),
+    radial-gradient(at 65% 85%, var(--color-grad-2) 0px, transparent 55%),
+    radial-gradient(at 10% 90%, var(--color-flow) 0px, transparent 45%);
+}
