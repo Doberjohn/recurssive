@@ -8,6 +8,7 @@ reasoning behind it.
 | `KNOWLEDGE-BASE.md` | **Read this first.** Every settled decision: brand strategy, the exact colour and type tokens, website scope, tech-stack rationale, the tiered open list, and a "do not re-raise" section for findings that were investigated and disproved. |
 | `design-delivery-verdict.md` | Item-by-item verdict on the designer's revision 2, with evidence. |
 | `images-in-use.txt` | The 37 source images actually referenced by the Figma file. Drives the Phase 2 build — the pipeline runs off this list, not the folder. |
+| [`writing-content.md`](writing-content.md) | **How to publish a blog post, case study or service page.** Start here if you are writing rather than coding. |
 | `tools/` | Scripts used to derive all of the above. |
 
 ## Source material
