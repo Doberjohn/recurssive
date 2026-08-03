@@ -1,0 +1,159 @@
+FRAME "Contact" 1920x2634 @23972,0 fill:#FAFAFA
+  FRAME "Mask group" 648x683 @165,254
+    ROUNDED_RECTANGLE "Rectangle 1843" 648x683 @0,0 fill:#0F0F0F r46
+    ROUNDED_RECTANGLE "meshnoise-gradient-6 2" 1225x766 @-296,-3 fill:IMAGE:33da3bdc18e728eb1c92af0eb985cc080dc8da0e
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  LINE "Line 8" 753x0 @1005,317 stroke:#6B6B6B 1.5px
+  LINE "Line 9" 753x0 @1005,382 stroke:#6B6B6B 1.5px
+  LINE "Line 10" 753x0 @1005,447 stroke:#6B6B6B 1.5px
+  LINE "Line 11" 753x0 @1005,592 stroke:#6B6B6B 1.5px
+  TEXT "Let’s Talk"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | #0F0F0F | 195x58]
+  TEXT "*Name"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 54x22]
+  TEXT "*E-mail"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 55x22]
+  TEXT "*Telephone"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 88x22]
+  TEXT "*Description"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 95x22]
+  TEXT "*Interested in"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 104x22]
+  TEXT "*Project budget"
+       [Open Sans Regular 16.0px/100.0% | #999999 | 118x22]
+  FRAME "Frame 2" 202x42 @1005,657 stroke:#6B6B6B 1.5px r10
+    TEXT "Website developement"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 172x22]
+  FRAME "Frame 7" 68x42 @1005,764 stroke:#6B6B6B 1.5px r10
+    TEXT "<10K"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 38x22]
+  FRAME "Frame 8" 82x42 @1088,764 stroke:#6B6B6B 1.5px r10
+    TEXT "10-20K"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 52x22]
+  FRAME "Frame 4" 128x42 @1352,657 stroke:#6B6B6B 1.5px r10
+    TEXT "UI/UX Design"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 98x22]
+  FRAME "Frame 12" 77x42 @1291,764 stroke:#6B6B6B 1.5px r10
+    TEXT ">100K"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 47x22]
+  FRAME "Frame 5" 86x42 @1495,657 stroke:#6B6B6B 1.5px r10
+    TEXT "Startup"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 56x22]
+  FRAME "Frame 10" 95x42 @1383,764 stroke:#6B6B6B 1.5px r10
+    TEXT "Not sure"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 65x22]
+  FRAME "Frame 6" 74x42 @1596,657 stroke:#6B6B6B 1.5px r10
+    TEXT "Other"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 44x22]
+  TEXT "I’ve read and accepted the terms and conditions"
+       [Open Sans Regular 14.0px/100.0% | #0F0F0F | 314x19]
+  TEXT "We want to hear from you"
+       [Inter Bold 32.0px/100.0% | #FAFAFA | 400x39]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px/100.0% | #FAFAFA | 477x42]
+  ROUNDED_RECTANGLE "Rectangle 1844" 14x14 @1005,838 fill:#EAEAEA r2
+  FRAME "Group" 8x6 @1008,842
+    <1 vector path(s)>
+  TEXT "info@recurssive.com"
+       [Inter Bold 32.0px/100.0% | #FAFAFA | 336x39]
+  TEXT "(general)"
+       [Open Sans Regular 14.0px/100.0% | #6B6B6B | 58x19]
+  TEXT "john@recurssive.com"
+       [Inter Bold 32.0px/100.0% | #FAFAFA | 344x39]
+  TEXT "(inquiry)"
+       [Open Sans Regular 14.0px/100.0% | #6B6B6B | 54x19]
+  TEXT "@recurssive"
+       [Inter Bold 32.0px/100.0% | #FAFAFA | 199x39]
+  TEXT "(social)"
+       [Open Sans Regular 14.0px/100.0% | #6B6B6B | 45x19]
+  TEXT "(+30) 698 950 2436"
+       [Inter Bold 32.0px/100.0% | #FAFAFA | 324x39]
+  TEXT "(phone)"
+       [Open Sans Regular 14.0px/100.0% | #6B6B6B | 51x19]
+  ROUNDED_RECTANGLE "camden-hailey-george-OwLxDAEJ3g4-unsplash 2" 1920x883 @0,1066 fill:IMAGE:af0c16890b43d0fd72925480e66ad1e3a549596a
+  ROUNDED_RECTANGLE "Rectangle 1902" 1920x883 @0,1066 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F) op0.75
+  FRAME "Layer 1" 962x626 @479,1197
+    FRAME "Group" 962x626 @0,0
+      FRAME "Group" 364x626 @299,0
+        <1446 vector path(s)>
+      FRAME "Group" 117x438 @153,93
+        <621 vector path(s)>
+      FRAME "Group" 116x264 @0,186
+        <300 vector path(s)>
+      FRAME "Group" 115x438 @692,93
+        <621 vector path(s)>
+      FRAME "Group" 116x277 @846,172
+        <305 vector path(s)>
+  TEXT "Feel."
+       [Inter Semi Bold 57.3px/100.0% ls-5.0 | #FAFAFA | 120x69]
+  TEXT "Form."
+       [Inter Semi Bold 57.3px/100.0% ls-5.0 | #FAFAFA | 146x69]
+  TEXT "Function"
+       [Inter Semi Bold 57.3px/100.0% ls-5.0 | #FAFAFA | 221x69]
+  FRAME "Group 2253" 1920x685 @0,1949
+    ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 1920x685 @0,0 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+    FRAME "Group 2252" 1594x615 @163,70
+      FRAME "Group" 160x106 @717,0
+        <5 vector path(s)>
+      <1 vector path(s)>
+      TEXT "Home
+Services
+About
+Contact"
+           [Open Sans Regular 16.0px | #FAFAFA | 61x96]
+      TEXT "Contents"
+           [Inter Medium 16.0px | #FAFAFA | 71x24]
+      TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+           [Open Sans Regular 16.0px | #FAFAFA | 92x96]
+      TEXT "Where"
+           [Inter Medium 16.0px | #FAFAFA | 50x24]
+      TEXT "Socials"
+           [Inter Medium 16.0px | #FAFAFA | 55x24]
+      TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+           [Open Sans Regular 16.0px | #FAFAFA | 76x96]
+      TEXT "©2026 Recurssive"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 134x20 | RIGHT]
+      TEXT "Privacy"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 53x20 | RIGHT]
+      TEXT "Terms"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 47x20 | RIGHT]
+      TEXT "Cookies"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 59x20 | RIGHT]
+      TEXT "Designed by Omnics"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 153x20 | RIGHT]
+  FRAME "Frame 126" 143x39 @1005,876 fill:#4813D0 r6
+    TEXT "Send Message"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 113x19]
+  FRAME "Frame 127" 91x42 @1185,764 fill:#4813D0 r6
+    TEXT "50-100K"
+         [Open Sans Regular 16.0px/100.0% | #FAFAFA | 61x22]
+  FRAME "Frame 128" 115x42 @1222,657 fill:#4813D0 r6
+    TEXT "Mobile App"
+         [Open Sans Regular 16.0px/100.0% | #FAFAFA | 85x22]
+  FRAME "Group 2304" 1595x39 @163,39
+    TEXT "Cases"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 48x19 | RIGHT]
+    TEXT "Home"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 46x19 | RIGHT]
+    TEXT "Capabilities"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 90x19 | RIGHT]
+    TEXT "About"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 47x19 | RIGHT]
+    TEXT "Blog"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 34x19 | RIGHT]
+    TEXT "Contact"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 62x19 | RIGHT]
+    <1 vector path(s)>
+    FRAME "Group 2224" 61x37 @0,1
+      <5 vector path(s)>
+    FRAME "Frame 58" 165x39 @1430,0 fill:#0F0F0F r8
+      TEXT "Start a project"
+           [Inter Medium 16.0px/100.0% | #FAFAFA | 110x19 | RIGHT]
+      <1 vector path(s)>

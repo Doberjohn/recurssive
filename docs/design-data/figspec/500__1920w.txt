@@ -1,0 +1,77 @@
+FRAME "500" 1920x1533 @35524,0 fill:#FAFAFA
+  FRAME "Group" 764x497 @578,209
+    FRAME "Group" 289x497 @238,0
+      <1446 vector path(s)>
+    FRAME "Group" 93x348 @122,74
+      <621 vector path(s)>
+    FRAME "Group" 92x209 @0,147
+      <300 vector path(s)>
+    FRAME "Group" 92x348 @550,74
+      <621 vector path(s)>
+    FRAME "Group" 92x220 @672,137
+      <305 vector path(s)>
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  FRAME "Group 2253" 1920x685 @0,848
+    ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 1920x685 @0,0 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+    FRAME "Group 2252" 1594x615 @163,70
+      FRAME "Group" 160x106 @717,0
+        <5 vector path(s)>
+      <1 vector path(s)>
+      TEXT "Home
+Services
+About
+Contact"
+           [Open Sans Regular 16.0px | #FAFAFA | 61x96]
+      TEXT "Contents"
+           [Inter Medium 16.0px | #FAFAFA | 71x24]
+      TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+           [Open Sans Regular 16.0px | #FAFAFA | 92x96]
+      TEXT "Where"
+           [Inter Medium 16.0px | #FAFAFA | 50x24]
+      TEXT "Socials"
+           [Inter Medium 16.0px | #FAFAFA | 55x24]
+      TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+           [Open Sans Regular 16.0px | #FAFAFA | 76x96]
+      TEXT "©2026 Recurssive"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 134x20 | RIGHT]
+      TEXT "Privacy"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 53x20 | RIGHT]
+      TEXT "Terms"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 47x20 | RIGHT]
+      TEXT "Cookies"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 59x20 | RIGHT]
+      TEXT "Designed by Omnics"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 153x20 | RIGHT]
+  FRAME "Group 2304" 1595x39 @163,39
+    TEXT "Cases"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 48x19 | RIGHT]
+    TEXT "Home"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 46x19 | RIGHT]
+    TEXT "Capabilities"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 90x19 | RIGHT]
+    TEXT "About"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 47x19 | RIGHT]
+    TEXT "Blog"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 34x19 | RIGHT]
+    TEXT "Contact"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 62x19 | RIGHT]
+    <1 vector path(s)>
+    FRAME "Group 2224" 61x37 @0,1
+      <5 vector path(s)>
+    FRAME "Frame 58" 165x39 @1430,0 fill:#0F0F0F r8
+      TEXT "Start a project"
+           [Inter Medium 16.0px/100.0% | #FAFAFA | 110x19 | RIGHT]
+      <1 vector path(s)>
+  TEXT "500 Server error"
+       [Inter Semi Bold 72.0px/100.0% ls-5.0 | #0F0F0F | 525x87]
+  TEXT "Try to refresh the page. If it doesn’t work, circle back later."
+       [Open Sans Regular 20.0px/100.0% | #6B6B6B | 539x27 | CENTER]
+  TEXT "Refresh page"
+       [Open Sans Regular 18.0px/100.0% | #0F0F0F | 110x25 | CENTER]

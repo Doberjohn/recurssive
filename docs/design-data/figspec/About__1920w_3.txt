@@ -1,0 +1,56 @@
+FRAME "About" 1920x1200 @3756,7846 fill:#FAFAFA
+  ROUNDED_RECTANGLE "evgeni-tcherkasski-nKuxm4Tk-j0-unsplash copy 1" 1920x1201 @0,0 fill:IMAGE:b4ce78cfd483c63ada408a460531f642f0f2203f
+  ROUNDED_RECTANGLE "evgeni-tcherkasski-nKuxm4Tk-j0-unsplash 1" 1920x1201 @0,0 fill:IMAGE:cfe0e5aa20ac24a16d756bbc3fd09937f0be0f15
+  ROUNDED_RECTANGLE "meshnoise-gradient-2 1" 2069x1293 @1995,1201 fill:IMAGE:ebbed3b6f444c324492b4e4d9c757672d33b2e84
+  ROUNDED_RECTANGLE "Rectangle 1881" 1956x1293 @-18,-92 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  TEXT "(Our Story)"
+       [Inter Semi Bold 14.0px | #6B6B6B | 77x14]
+  FRAME "Rule of Thirds Diagonal" 1957x1382 @-384,-152
+    FRAME "Group" 1957x1382 @0,0
+      <2 vector path(s)>
+    <2 vector path(s)>
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+       [Open Sans Regular 16.0px | #FAFAFA | 846x66]
+  FRAME "Group 2265" 374x179 @619,751
+    TEXT "Form"
+         [Inter Semi Bold 147.7px/100.0% ls-5.0 | #FAFAFA | 340x179]
+    FRAME "Mask group" 44x179 @330,0
+      TEXT "."
+           [Inter Bold 147.7px/100.0% | #FAFAFA | 44x179]
+      ROUNDED_RECTANGLE "gradient-2 2" 611x382 @223,-161 fill:IMAGE:4b81ee855924d172f81773255459ce9c976ecdfb
+  FRAME "Group 2267" 604x179 @1154,751
+    TEXT "Function"
+         [Inter Semi Bold 147.7px/100.0% ls-5.0 | #FAFAFA | 570x179]
+    FRAME "Mask group" 44x179 @560,0
+      TEXT "."
+           [Inter Bold 147.7px/100.0% | #FAFAFA | 44x179]
+      ROUNDED_RECTANGLE "gradient-2 2" 611x382 @223,-161 fill:IMAGE:4b81ee855924d172f81773255459ce9c976ecdfb
+  FRAME "Group 2266" 307x179 @151,751
+    TEXT "Feel"
+         [Inter Semi Bold 147.7px/100.0% ls-5.0 | #FAFAFA | 273x179]
+    FRAME "Mask group" 44x179 @263,0
+      TEXT "."
+           [Inter Bold 147.7px/100.0% | #FAFAFA | 44x179]
+      ROUNDED_RECTANGLE "gradient-2 2" 611x382 @223,-161 fill:IMAGE:4b81ee855924d172f81773255459ce9c976ecdfb
+  FRAME "Group 2305" 1595x39 @163,39
+    TEXT "Cases"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 48x19 | RIGHT]
+    TEXT "Home"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 46x19 | RIGHT]
+    TEXT "Capabilities"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 90x19 | RIGHT]
+    TEXT "About"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 47x19 | RIGHT]
+    TEXT "Blog"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 34x19 | RIGHT]
+    TEXT "Contact"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 62x19 | RIGHT]
+    <1 vector path(s)>
+    FRAME "Group 2224" 61x37 @0,1
+      <5 vector path(s)>
+    FRAME "Frame 58" 165x39 @1430,0 fill:#FAFAFA r8
+      TEXT "Start a project"
+           [Inter Medium 16.0px/100.0% | #0F0F0F | 110x19 | RIGHT]
+      <1 vector path(s)>

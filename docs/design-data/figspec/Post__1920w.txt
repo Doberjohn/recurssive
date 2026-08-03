@@ -1,0 +1,189 @@
+FRAME "Post" 1920x5514 @21084,0 fill:#FAFAFA
+  ROUNDED_RECTANGLE "max-kolganov-MvKy-zhHD2Q-unsplash 2" 1922x255 @-2,4574 fill:IMAGE:d332bd5ee9ba7fc8e5d9342aad9269b229e3c611
+  TEXT "Stay in the loop"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 323x96]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+       [Open Sans Regular 16.0px | #6B6B6B | 374x48]
+  FRAME "Frame 3" 200x42 @540,4670 fill:#FAFAFA r6
+    TEXT "Name"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 45x22]
+  FRAME "Frame 125" 200x42 @755,4670 fill:#FAFAFA r6
+    TEXT "E-mail"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 46x22]
+  FRAME "Group 2100" 333x19 @540,4730
+    TEXT "I’ve read and accepted the terms and conditions"
+         [Open Sans Regular 14.0px/100.0% | #FAFAFA | 314x19]
+    ROUNDED_RECTANGLE "Rectangle 1844" 14x14 @0,3 fill:#EAEAEA r2
+    FRAME "Group" 8x6 @3,7
+      <1 vector path(s)>
+  FRAME "Rabatment Grid (fixed ratio)" 513x513 @1176,4574
+    FRAME "Group" 513x513 @0,0
+      <7 vector path(s)>
+  FRAME "Rabatment Grid (fixed ratio)" 513x513 @1689,4574
+    FRAME "Group" 513x513 @0,0
+      <7 vector path(s)>
+  FRAME "Frame 124" 96x41 @971,4670 fill:#4813D0 r6
+    TEXT "Join"
+         [Inter Medium 16.8px/100.0% | #FAFAFA | 34x20]
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  ROUNDED_RECTANGLE "Rectangle 1846" 426x493 @163,183 fill:#0F0F0F r20
+  ROUNDED_RECTANGLE "govardhan-k-P6EeymU1I-unsplash 2" 1675x493 @83,183 fill:IMAGE:0857592e661dd3c2095a4331cab346092aa9394f r20
+  TEXT "AI is accelerating biology"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 349x39]
+  TEXT "AI is accelerating progress across biology and the life sciences, creating new opportunities to advance scientific discovery, strengthen public health, and build resilience against biological threats. As these capabilities become more powerful, the institutions working to prevent, detect, and respond to biological threats need equally powerful tools. We believe frontier AI should meaningfully advantage those defenders—and that doing so requires responsible deployment structures and trusted access models that put advanced capabilities in the hands of vetted partners who are building new biodefense applications, tools and initiatives to bolster societal resilience.
+
+That’s why today we’re announcing two new steps to advance defensive acceleration in biology:
+
+Launching Rosalind Biodefense to help trusted developers to build new biodefense and pandemic preparedness capabilities. Apply here.
+Expanding trusted access to GPT‑Rosalind for select U.S. government and allied partners supporting public health and biodefense missions. Request access here.
+
+The steps we're taking today are part of a broader strategy to ensure advanced AI meaningfully advantages those working to prevent, detect, and respond to biological threats. That strategy includes equipping defenders through trusted access to advanced AI tools, accelerating the development of medical countermeasures, building earlier warning systems, strengthening diagnostics, preparedness, and response capabilities, and supporting a robust evaluations ecosystem. We will continue to share more about our work across these areas in the coming weeks."
+       [Open Sans Regular 18.0px | #0F0F0F | 861x567]
+  TEXT "AI in biology"
+       [Inter Medium 16.0px ls-3.0 | #4212BF | 55x32]
+  TEXT "2 new steps"
+       [Inter Medium 16.0px ls-3.0 | #6B6B6B | 53x32]
+  TEXT "Building on our safety and resilience work"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 896x39]
+  TEXT "As AI models become more capable in biology, we have been working to ensure those capabilities are deployed in ways that advance science while strengthening safeguards. Our approach has focused on building layered resilience: investing in preparedness evaluations, bio-specific capability assessments, safer model behavior for dual-use biological requests, monitoring and enforcement, expert red teaming, and security controls for higher-risk capabilities.
+
+In July 2025, we released ChatGPT agent, the first model we treated as High Capability in biology under our Preparedness Framework and activated robust safeguards to minimize the risk of harm. Since then, we have continued refining those safeguards and sharing detailed assessments⁠(opens in a new window) as capabilities have continued to advance. We have also continued working closely with external testing groups on pre-deployment evaluations, whose findings help validate and inform our approach.
+
+We have also worked closely with external experts and public-sector partners to strengthen the broader biosecurity ecosystem, including expert biologists, government organizations like the U.S. Center for AI Standards and Innovation (CAISI) and the UK AI Security Institute (UK AISI), Los Alamos National Laboratory, and the Frontier Model Forum. Today’s announcement builds on that work by expanding how trusted partners can use GPT‑Rosalind for high-impact defensive applications—both by supporting defenders building new countermeasures and by extending trusted access to government partners with public-health and biodefense missions."
+       [Open Sans Regular 18.0px | #0F0F0F | 861x540]
+  TEXT "AI is more capable"
+       [Inter Medium 16.0px ls-3.0 | #6B6B6B | 64x48]
+  TEXT "Working with experts"
+       [Inter Medium 16.0px ls-3.0 | #6B6B6B | 64x48]
+  TEXT "Supporting defensive acceleration with Rosalind"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 675x39]
+  TEXT "Defensive acceleration focuses on making sure frontier AI capabilities meaningfully advantage the people building society’s defenses. To help trusted developers turn frontier capabilities into practical defenses, we are launching Rosalind Biodefense, a new initiative to enable the development of high-impact defensive applications of AI in the life sciences leveraging GPT‑Rosalind, our frontier reasoning model built for life sciences research.
+
+This program helps trusted developers apply frontier AI capabilities to operationalized biodefense tools that can strengthen preparedness before the next biological threat emerges. OpenAI will sponsor access to GPT‑Rosalind and provide launch support to trusted developers building frontier biosecurity applications that can bolster societal defenses and build pandemic preparedness. This includes work across areas such as epidemiological modeling, early detection, screening, preparedness, non-pharmaceutical interventions (NPIs) and other public-health-relevant capabilities.
+
+At launch, we are supporting a first set of organizations building frontier applications across the biological defense stack with GPT‑Rosalind. Their work spans the lifecycle of biological threats—from prevention and early detection to societal resilience and medical countermeasure development—and helps demonstrate how frontier AI can support public-health teams, researchers, infrastructure operators, and communities in preparing for future biological risks, whether naturally occurring or synthetic. Today’s announcement builds on that work by expanding how trusted partners can use GPT‑Rosalind for high-impact defensive applications—both by supporting defenders building new countermeasures and by extending trusted access to government partners with public-health."
+       [Open Sans Regular 18.0px | #0F0F0F | 861x567]
+  TEXT "Frontier for solid defense"
+       [Inter Medium 16.0px ls-3.0 | #6B6B6B | 64x48]
+  TEXT "Soon we launch"
+       [Inter Medium 16.0px ls-3.0 | #6B6B6B | 64x32]
+  FRAME "Frame 37" 56x27 @257,267 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 10.1px/100.0% | #0F0F0F | 37x14]
+  FRAME "Frame 38" 73x27 @322,267 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 10.1px/100.0% | #0F0F0F | 54x14]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #FAFAFA | 76x16]
+  TEXT "Strengthening societal resilience with Rosalind Biodefense"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 421x212]
+  TEXT "Advancing biological preparedness with trusted developers and government partners."
+       [Open Sans Regular 16.0px | #6B6B6B | 343x43]
+  ROUNDED_RECTANGLE "odya-kun-_ae6DzlFIrA-unsplash 1" 855x300 @550,1451 fill:IMAGE:1578363cef753fbe81c17b98fa35be10bc13256e r20
+  ROUNDED_RECTANGLE "brooke-cagle-NoRsyXmHGpI-unsplash 1" 855x300 @550,2388 fill:IMAGE:359c79b9f34a869f9443678f50868aa23323d775 r20
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  FRAME "Frame 51" 63x29 @176,4209 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 53" 63x29 @716,4209 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 55" 63x29 @1255,4209 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 52" 83x29 @249,4209 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  FRAME "Frame 54" 83x29 @789,4209 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  FRAME "Frame 56" 83x29 @1328,4209 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  ROUNDED_RECTANGLE "zac-ong-lknu_oR_V3Q-unsplash 1" 514x342 @165,3849 fill:IMAGE:838f058a522e3ac485d2e619d84295d090011c1b r20
+  ROUNDED_RECTANGLE "james-harrison-vpOeXr5wmR4-unsplash 1" 514x343 @705,3849 fill:IMAGE:38a4c7f9aa3077e04f0af33deec470f845fa09b1 r20
+  ROUNDED_RECTANGLE "daria-nepriakhina-gGoi4QTXXBA-unsplash 1" 514x342 @1244,3849 fill:IMAGE:2b09a91837a330f08735446187e33bb047f7eaa7 r20
+  ROUNDED_RECTANGLE "cynthia-magana-mFPJXEQfb9M-unsplash 4" 855x300 @550,3355 fill:IMAGE:37528ec318603b735c84a8aade47e02e492789bb r20
+  TEXT "Suggested reads"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | #0F0F0F | 361x58 | CENTER]
+  LINE "Line 62" 168x0 @494,906 stroke:#EAEAEA 1.0px
+  LINE "Line 67" 102x0 @494,906 stroke:#A59BFF 1.0px
+  LINE "Line 63" 691x0 @494,1133 stroke:#EAEAEA 1.0px
+  LINE "Line 64" 271x0 @494,1897 stroke:#EAEAEA 1.0px
+  LINE "Line 65" 503x0 @494,2253 stroke:#EAEAEA 1.0px
+  LINE "Line 66" 275x0 @494,2835 stroke:#EAEAEA 1.0px
+  FRAME "Group 2253" 1920x685 @0,4829
+    ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 1920x685 @0,0 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+    FRAME "Group 2252" 1594x615 @163,70
+      FRAME "Group" 160x106 @717,0
+        <5 vector path(s)>
+      <1 vector path(s)>
+      TEXT "Home
+Services
+About
+Contact"
+           [Open Sans Regular 16.0px | #FAFAFA | 61x96]
+      TEXT "Contents"
+           [Inter Medium 16.0px | #FAFAFA | 71x24]
+      TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+           [Open Sans Regular 16.0px | #FAFAFA | 92x96]
+      TEXT "Where"
+           [Inter Medium 16.0px | #FAFAFA | 50x24]
+      TEXT "Socials"
+           [Inter Medium 16.0px | #FAFAFA | 55x24]
+      TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+           [Open Sans Regular 16.0px | #FAFAFA | 76x96]
+      TEXT "©2026 Recurssive"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 134x20 | RIGHT]
+      TEXT "Privacy"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 53x20 | RIGHT]
+      TEXT "Terms"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 47x20 | RIGHT]
+      TEXT "Cookies"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 59x20 | RIGHT]
+      TEXT "Designed by Omnics"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 153x20 | RIGHT]
+  FRAME "Group 2304" 1595x39 @163,39
+    TEXT "Cases"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 48x19 | RIGHT]
+    TEXT "Home"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 46x19 | RIGHT]
+    TEXT "Capabilities"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 90x19 | RIGHT]
+    TEXT "About"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 47x19 | RIGHT]
+    TEXT "Blog"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 34x19 | RIGHT]
+    TEXT "Contact"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 62x19 | RIGHT]
+    <1 vector path(s)>
+    FRAME "Group 2224" 61x37 @0,1
+      <5 vector path(s)>
+    FRAME "Frame 58" 165x39 @1430,0 fill:#0F0F0F r8
+      TEXT "Start a project"
+           [Inter Medium 16.0px/100.0% | #FAFAFA | 110x19 | RIGHT]
+      <1 vector path(s)>

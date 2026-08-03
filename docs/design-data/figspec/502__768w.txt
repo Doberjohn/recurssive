@@ -1,0 +1,64 @@
+FRAME "502" 768x1376 @37544,0 fill:#FAFAFA
+  FRAME "Group" 534x348 @117,276
+    FRAME "Group" 202x348 @166,0
+      <1446 vector path(s)>
+    FRAME "Group" 65x243 @85,52
+      <621 vector path(s)>
+    FRAME "Group" 64x146 @0,103
+      <300 vector path(s)>
+    FRAME "Group" 64x243 @384,52
+      <621 vector path(s)>
+    FRAME "Group" 64x154 @470,96
+      <305 vector path(s)>
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  <1 vector path(s)>
+  FRAME "Group" 71x43 @79,54
+    <5 vector path(s)>
+  FRAME "Frame 40" 198x47 @491,52 fill:#0F0F0F r8
+    TEXT "Start a project"
+         [Inter Semi Bold 22.0px/100.0% ls-3.0 | #FAFAFA | 143x27]
+    <1 vector path(s)>
+  ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 768x560 @0,816 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+  <1 vector path(s)>
+  FRAME "Group 2268" 104x168 @585,1006
+    TEXT "Socials"
+         [Inter Medium 22.0px | #FAFAFA | 76x33]
+    TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+         [Open Sans Regular 22.0px | #FAFAFA | 104x132]
+  FRAME "Group 2269" 127x168 @321,1006
+    TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+         [Open Sans Regular 22.0px | #FAFAFA | 127x132]
+    TEXT "Where"
+         [Inter Medium 22.0px | #FAFAFA | 69x33]
+  FRAME "Group 2270" 97x168 @79,1006
+    TEXT "Home
+Services
+About
+Contact"
+         [Open Sans Regular 22.0px | #FAFAFA | 84x132]
+    TEXT "Contents"
+         [Inter Medium 22.0px | #FAFAFA | 97x33]
+  TEXT "©2026 Recurssive"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  TEXT "Privacy"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 67x20 | RIGHT]
+  TEXT "Terms"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 60x20 | RIGHT]
+  TEXT "Design by Omnics"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  FRAME "Group" 120x79 @324,862
+    <5 vector path(s)>
+  TEXT "500 Server error"
+       [Inter Semi Bold 52.0px/100.0% ls-5.0 | #0F0F0F | 379x63]
+  TEXT "Try to refresh the page. 
+If it doesn’t work, circle back later."
+       [Open Sans Regular 24.0px ls-5.0 | #6B6B6B | 603x72 | CENTER]
+  TEXT "Refresh page"
+       [Open Sans Regular 24.0px/100.0% | #0F0F0F | 147x33 | CENTER]

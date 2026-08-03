@@ -1,0 +1,124 @@
+FRAME "Case" 768x3651 @11552,0 fill:#FAFAFA
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  <1 vector path(s)>
+  FRAME "Group" 71x43 @79,54
+    <5 vector path(s)>
+  FRAME "Frame 40" 198x47 @491,52 fill:#0F0F0F r8
+    TEXT "Start a project"
+         [Inter Semi Bold 22.0px/100.0% ls-3.0 | #FAFAFA | 143x27]
+    <1 vector path(s)>
+  ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 768x560 @0,3091 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+  <1 vector path(s)>
+  FRAME "Group 2268" 104x168 @585,3281
+    TEXT "Socials"
+         [Inter Medium 22.0px | #FAFAFA | 76x33]
+    TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+         [Open Sans Regular 22.0px | #FAFAFA | 104x132]
+  FRAME "Group 2269" 127x168 @321,3281
+    TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+         [Open Sans Regular 22.0px | #FAFAFA | 127x132]
+    TEXT "Where"
+         [Inter Medium 22.0px | #FAFAFA | 69x33]
+  FRAME "Group 2270" 97x168 @79,3281
+    TEXT "Home
+Services
+About
+Contact"
+         [Open Sans Regular 22.0px | #FAFAFA | 84x132]
+    TEXT "Contents"
+         [Inter Medium 22.0px | #FAFAFA | 97x33]
+  TEXT "©2026 Recurssive"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  TEXT "Privacy"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 67x20 | RIGHT]
+  TEXT "Terms"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 60x20 | RIGHT]
+  TEXT "Design by Omnics"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  FRAME "Group" 120x79 @324,3137
+    <5 vector path(s)>
+  TEXT "Brand Project Case"
+       [Inter Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 370x51]
+  LINE "Line 58" 610x0 @79,478 stroke:#6B6B6B 1.5px
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 606x62]
+  ROUNDED_RECTANGLE "kreit-xRuG2k1sjaw-unsplash 1" 610x221 @79,505 fill:IMAGE:80bf58a73035f8712777330d174862d4c2073d6b r20
+  FRAME "Frame 112" 139x40 @79,189 fill:#EAEAEA r4
+    TEXT "Desktop App"
+         [Open Sans Regular 20.0px/100.0% | #0F0F0F | 120x27]
+  FRAME "Group 2333" 239x54 @265,762
+    ROUNDED_RECTANGLE "Rectangle 1907" 239x54 @0,0 fill:#EAEAEA r4
+    FRAME "Frame 117" 110x37 @12,8 fill:#3B10AB r4
+      TEXT "Challenges"
+           [Open Sans Regular 18.0px/100.0% | #FAFAFA | 92x25]
+    TEXT "Solutions"
+         [Open Sans Regular 18.0px/100.0% | #0F0F0F | 78x25]
+  FRAME "Frame 116" 142x40 @233,189 fill:#EAEAEA r4
+    TEXT "UI/UX Design"
+         [Open Sans Regular 20.0px/100.0% | #0F0F0F | 123x27]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 20.0px/100.0% ls-5.0 | #0F0F0F | 124x26]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 20.0px/100.0% ls-5.0 | #0F0F0F | 124x26]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 20.0px/100.0% ls-5.0 | #0F0F0F | 124x26]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 20.0px/100.0% ls-5.0 | #0F0F0F | 124x26]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 20.0px/100.0% ls-5.0 | #0F0F0F | 124x26]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 20.0px/100.0% ls-5.0 | #0F0F0F | 124x26]
+  TEXT "30x"
+       [Inter Semi Bold 36.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 65x44]
+  TEXT "30x"
+       [Inter Semi Bold 36.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 65x44]
+  TEXT "+54%"
+       [Inter Semi Bold 36.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 96x44]
+  TEXT "+54%"
+       [Inter Semi Bold 36.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 96x44]
+  TEXT "10K$"
+       [Inter Semi Bold 36.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 84x44]
+  TEXT "10K$"
+       [Inter Semi Bold 36.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 84x44]
+  TEXT "Main Challenge Name"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 405x51]
+  TEXT "(01)"
+       [Inter Semi Bold 20.0px | #6B6B6B | 39x20]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip  commodo consequat. Duis aute irure in reprehenderit."
+       [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x152]
+  TEXT "Main Challenge Name"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 405x51]
+  TEXT "(02)"
+       [Inter Semi Bold 20.0px | #6B6B6B | 42x20]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip  commodo consequat. Duis aute irure in reprehenderit."
+       [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x152]
+  TEXT "Main Challenge Name"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 405x51]
+  TEXT "(03)"
+       [Inter Semi Bold 20.0px | #6B6B6B | 43x20]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip  commodo consequat. Duis aute irure in reprehenderit."
+       [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x152]
+  ROUNDED_RECTANGLE "kreit-xRuG2k1sjaw-unsplash 2" 610x449 @79,1704 fill:IMAGE:80bf58a73035f8712777330d174862d4c2073d6b r20
+  TEXT "Impact we made"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 306x51]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat"
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x212 | CENTER]
+  ROUNDED_RECTANGLE "kreit-xRuG2k1sjaw-unsplash 4" 613x329 @73,448 r20
+  ROUNDED_RECTANGLE "sergey-zolkin-_UeY8aTI6d0-unsplash 2" 1920x388 @-592,2703 fill:IMAGE:ee2d7fb5ce483d3f730caedddfaf2d63fad6f3e5
+  ROUNDED_RECTANGLE "Rectangle 1897" 1920x388 @-592,2703 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  FRAME "Group 2248" 2052x388 @-703,2703
+    <6 vector path(s)>
+  TEXT "Let’s build your vision"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 448x64 | CENTER]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 489x84 | CENTER]
+  FRAME "Frame 130" 200x49 @284,2974 fill:#4813D0 r6
+    TEXT "Send Message"
+         [Inter Medium 24.0px/100.0% | #FAFAFA | 170x29]

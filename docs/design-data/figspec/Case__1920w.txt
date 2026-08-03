@@ -1,0 +1,149 @@
+FRAME "Case" 1920x3742 @9532,0 fill:#FAFAFA
+  ROUNDED_RECTANGLE "sergey-zolkin-_UeY8aTI6d0-unsplash 2" 1920x327 @0,2731 fill:IMAGE:ee2d7fb5ce483d3f730caedddfaf2d63fad6f3e5
+  ROUNDED_RECTANGLE "Rectangle 1897" 1920x326 @0,2732 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  FRAME "Group 2248" 2052x329 @-132,2729
+    <6 vector path(s)>
+  TEXT "Let’s build your vision"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 448x96 | CENTER]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #FAFAFA | 477x72 | CENTER]
+  FRAME "Frame 124" 143x39 @889,2959 fill:#4813D0 r6
+    TEXT "Send Message"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 113x19]
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  TEXT "Impact we made"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 350x58]
+  ROUNDED_RECTANGLE "kreit-xRuG2k1sjaw-unsplash 1" 1591x575 @163,443 fill:IMAGE:80bf58a73035f8712777330d174862d4c2073d6b r20
+  ROUNDED_RECTANGLE "kreit-xRuG2k1sjaw-unsplash 2" 782x575 @163,1683 fill:IMAGE:80bf58a73035f8712777330d174862d4c2073d6b r20
+  ROUNDED_RECTANGLE "kreit-xRuG2k1sjaw-unsplash 3" 782x575 @971,1683 fill:IMAGE:80bf58a73035f8712777330d174862d4c2073d6b r20
+  TEXT "Brand Project Case"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | #0F0F0F | 404x58]
+  FRAME "Frame 45" 195x32 @164,182 fill:#EAEAEA r4
+    TEXT "Desktop App Development"
+         [Open Sans Regular 14.0px/100.0% | #0F0F0F | 176x19]
+  FRAME "Frame 46" 105x32 @374,182 fill:#EAEAEA r4
+    TEXT "UI/UX Design"
+         [Open Sans Regular 14.0px/100.0% | #0F0F0F | 86x19]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
+       [Open Sans Regular 16.0px | #6B6B6B | 740x89]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
+       [Open Sans Regular 16.0px | #6B6B6B | 740x89 | CENTER]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 18.0px/100.0% | #0F0F0F | 132x28]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 18.0px/100.0% | #0F0F0F | 132x28]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 18.0px/100.0% | #0F0F0F | 132x28]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 18.0px/100.0% | #0F0F0F | 132x28]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 18.0px/100.0% | #0F0F0F | 132x28]
+  TEXT "Lorem ipsum"
+       [Open Sans Regular 18.0px/100.0% | #0F0F0F | 132x28]
+  TEXT "10x"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 78x58]
+  TEXT "10x"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 78x58]
+  TEXT "+34%"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 129x58]
+  TEXT "+34%"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 129x58]
+  TEXT "50K$"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 119x58]
+  TEXT "50K$"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 119x58]
+  LINE "Line 58" 1155x0 @599,257 stroke:#6B6B6B 1.5px
+  TEXT "Main Challenge Name"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 462x58]
+  TEXT "Main Challenge Name"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 462x58]
+  TEXT "Main Challenge Name"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 462x58]
+  TEXT "Main Solution Name"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 422x58]
+  TEXT "(01)"
+       [Inter Semi Bold 14.0px | #6B6B6B | 28x14]
+  TEXT "(01)"
+       [Inter Semi Bold 14.0px | #6B6B6B | 28x14]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in"
+       [Open Sans Regular 16.0px | #0F0F0F | 746x64]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in"
+       [Open Sans Regular 16.0px | #0F0F0F | 746x64]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in"
+       [Open Sans Regular 16.0px | #0F0F0F | 746x64]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in"
+       [Open Sans Regular 16.0px | #0F0F0F | 746x64]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in"
+       [Open Sans Regular 16.0px | #0F0F0F | 747x64]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in"
+       [Open Sans Regular 16.0px | #0F0F0F | 746x64]
+  TEXT "Main Solution Name"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 422x58]
+  TEXT "(02)"
+       [Inter Semi Bold 14.0px | #6B6B6B | 30x14]
+  TEXT "(02)"
+       [Inter Semi Bold 14.0px | #6B6B6B | 30x14]
+  TEXT "Main Solution Name"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 422x58]
+  TEXT "(03)"
+       [Inter Semi Bold 14.0px | #6B6B6B | 30x14]
+  TEXT "(03)"
+       [Inter Semi Bold 14.0px | #6B6B6B | 30x14]
+  FRAME "Group 2253" 1920x685 @0,3057
+    ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 1920x685 @0,0 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+    FRAME "Group 2252" 1594x615 @163,70
+      FRAME "Group" 160x106 @717,0
+        <5 vector path(s)>
+      <1 vector path(s)>
+      TEXT "Home
+Services
+About
+Contact"
+           [Open Sans Regular 16.0px | #FAFAFA | 61x96]
+      TEXT "Contents"
+           [Inter Medium 16.0px | #FAFAFA | 71x24]
+      TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+           [Open Sans Regular 16.0px | #FAFAFA | 92x96]
+      TEXT "Where"
+           [Inter Medium 16.0px | #FAFAFA | 50x24]
+      TEXT "Socials"
+           [Inter Medium 16.0px | #FAFAFA | 55x24]
+      TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+           [Open Sans Regular 16.0px | #FAFAFA | 76x96]
+      TEXT "©2026 Recurssive"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 134x20 | RIGHT]
+      TEXT "Privacy"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 53x20 | RIGHT]
+      TEXT "Terms"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 47x20 | RIGHT]
+      TEXT "Cookies"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 59x20 | RIGHT]
+      TEXT "Designed by Omnics"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 153x20 | RIGHT]
+  FRAME "Group 2304" 1595x39 @163,39
+    TEXT "Cases"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 48x19 | RIGHT]
+    TEXT "Home"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 46x19 | RIGHT]
+    TEXT "Capabilities"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 90x19 | RIGHT]
+    TEXT "About"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 47x19 | RIGHT]
+    TEXT "Blog"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 34x19 | RIGHT]
+    TEXT "Contact"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 62x19 | RIGHT]
+    <1 vector path(s)>
+    FRAME "Group 2224" 61x37 @0,1
+      <5 vector path(s)>
+    FRAME "Frame 58" 165x39 @1430,0 fill:#0F0F0F r8
+      TEXT "Start a project"
+           [Inter Medium 16.0px/100.0% | #FAFAFA | 110x19 | RIGHT]
+      <1 vector path(s)>

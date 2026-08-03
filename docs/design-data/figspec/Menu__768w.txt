@@ -1,0 +1,37 @@
+FRAME "Menu" 768x1203 @2020,0 fill:#FAFAFA
+  ROUNDED_RECTANGLE "Rectangle 1905" 768x100 @0,393 fill:GRADIENT_LINEAR(#966FFF->#2805C3->#4616E3->#7856EC) fx:NOISE
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FAFAFA | 1624x309]
+  <1 vector path(s)>
+  FRAME "Group" 71x43 @79,54
+    <5 vector path(s)>
+  LINE "Line 130" 45x0 @654,92 stroke:#0F0F0F 3.0px
+  LINE "Line 131" 45x0 @654,60 stroke:#0F0F0F 3.0px
+  TEXT "Home"
+       [Inter Medium 42.0px ls-5.0 | #0F0F0F | 112x44]
+  TEXT "Cases"
+       [Inter Medium 42.0px ls-5.0 | #FAFAFA | 117x44]
+  TEXT "Capabilities"
+       [Inter Medium 42.0px ls-5.0 | #0F0F0F | 213x44]
+  TEXT "About"
+       [Inter Medium 42.0px ls-5.0 | #0F0F0F | 114x44]
+  TEXT "Blog"
+       [Inter Medium 42.0px ls-5.0 | #0F0F0F | 83x44]
+  TEXT "Contact"
+       [Inter Medium 42.0px ls-5.0 | #0F0F0F | 148x44]
+  TEXT "info@recurssive.com"
+       [Open Sans Regular 26.0px | #0F0F0F | 253x39]
+  TEXT "(+30) 698 950 2436"
+       [Open Sans Regular 26.0px | #0F0F0F | 230x39]
+  LINE "Line 1" 768x0 @0,394 stroke:#A59BFF 1.5px
+  LINE "Line 137" 768x0 @0,294 stroke:#EAEAEA 1.5px
+  LINE "Line 132" 768x0 @0,494 stroke:#A59BFF 1.5px
+  LINE "Line 133" 768x0 @0,594 stroke:#EAEAEA 1.5px
+  LINE "Line 134" 768x0 @0,694 stroke:#EAEAEA 1.5px
+  LINE "Line 135" 768x0 @0,793 stroke:#EAEAEA 1.5px
+  LINE "Line 136" 768x0 @0,893 stroke:#EAEAEA 1.5px
+  <6 vector path(s)>
+  FRAME "Frame 58" 249x59 @439,1034 fill:#0F0F0F r8
+    TEXT "Start a project"
+         [Inter Medium 26.0px/100.0% | #FAFAFA | 178x31 | RIGHT]
+    <1 vector path(s)>

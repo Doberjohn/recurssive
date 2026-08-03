@@ -1,0 +1,401 @@
+FRAME "Home" 1920x6949 @0,0 fill:#FAFAFA
+  FRAME "Golden Ratio / Rule of Thirds" 1950x1379 @-15,2914 op0.1
+    FRAME "Group" 1195x844 @755,534
+      <3 vector path(s)>
+    <42 vector path(s)>
+  ROUNDED_RECTANGLE "Rectangle 1845" 1920x100 @0,1597 fill:GRADIENT_LINEAR(#966FFF->#2805C3->#4616E3->#7856EC) fx:NOISE
+  ROUNDED_RECTANGLE "david-werbrouck-5GwLlb-_UYk-unsplash 1" 1920x1280 @0,-77 fill:IMAGE:c1be723be8f75c53875e95bd6630115d6a59a4bd
+  ROUNDED_RECTANGLE "charlesdeluvio-Lks7vei-eAg-unsplash 1" 1922x935 @0,2116 fill:IMAGE:ab8fb7dd643d80c27063ce2c2f84c5888d7c9773
+  ROUNDED_RECTANGLE "product-school-XZkk5xT8Xrk-unsplash 2" 1920x936 @0,2207 fill:IMAGE:f4ac9601806f62453f6c04827245dad7afbf1607 HIDDEN
+  ROUNDED_RECTANGLE "claude-gabriel-PRQ4vfZHspk-unsplash 1" 1922x936 @0,2207 fill:IMAGE:c33d56c2334d3c39c55488838e8bcced7be02018 HIDDEN
+  ROUNDED_RECTANGLE "Rectangle 1897" 1920x935 @0,2116 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F @0.5->#0F0F0F)
+  ROUNDED_RECTANGLE "annie-spratt-J67BWDuNq0U-unsplash 2" 1920x1200 @0,4146 fill:IMAGE:64602806b3c730ba5844dfa802902cdf6957434b
+  ROUNDED_RECTANGLE "meshnoise-gradient-2 2" 1920x1200 @1920,5346 fill:IMAGE:ebbed3b6f444c324492b4e4d9c757672d33b2e84
+  ROUNDED_RECTANGLE "Rectangle 1882" 1921x1200 @0,4146 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  TEXT "Crafting custom web & app experiences that help people."
+       [Inter Semi Bold 72.0px ls-5.0 | #FFFFFF | 966x130]
+  LINE "Line 1" 1920x0 @0,1398 stroke:#6B6B6B 1.5px
+  LINE "Line 2" 1920x0 @0,1498 stroke:#6B6B6B 1.5px
+  LINE "Line 3" 1920x0 @0,1598 stroke:#A59BFF 1.5px
+  LINE "Line 5" 1920x0 @0,1798 stroke:#6B6B6B 1.5px
+  LINE "Line 7" 1920x0 @0,1998 stroke:#6B6B6B 1.5px
+  LINE "Line 4" 1920x0 @0,1698 stroke:#A59BFF 1.5px
+  LINE "Line 6" 1920x0 @0,1898 stroke:#6B6B6B 1.5px
+  TEXT "Desktop Apps"
+       [Inter Bold 32.0px/100.0% | #0F0F0F | 221x39]
+  TEXT "Mobile Apps"
+       [Inter Bold 32.0px/100.0% | #0F0F0F | 196x39]
+  TEXT "UI/UX Design"
+       [Inter Bold 32.0px/100.0% | #0F0F0F | 208x39]
+  TEXT "Product Strategy"
+       [Inter Bold 32.0px/100.0% | #0F0F0F | 267x39]
+  TEXT "Web Design"
+       [Inter Bold 32.0px/100.0% | #FAFAFA | 188x39]
+  TEXT "AI Workflows"
+       [Inter Bold 32.0px/100.0% | #0F0F0F | 209x39]
+  TEXT "What we do best"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | #0F0F0F | 536x58]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 878x19]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 16.0px | #0F0F0F | 878x43]
+  TEXT "(02)"
+       [Open Sans Regular 14.0px/100.0% | #6B6B6B | 25x19]
+  TEXT "(04)"
+       [Open Sans Regular 14.0px/100.0% | #6B6B6B | 25x19]
+  TEXT "(06)"
+       [Open Sans Regular 14.0px/100.0% | #6B6B6B | 25x19]
+  TEXT "(01)"
+       [Open Sans Regular 14.0px/100.0% | #6B6B6B | 25x19]
+  TEXT "(03)"
+       [Open Sans Regular 14.0px/100.0% | #A59BFF | 25x19]
+  TEXT "(05)"
+       [Open Sans Regular 14.0px/100.0% | #6B6B6B | 25x19]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 16.0px | #0F0F0F | 878x43]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 16.0px | #0F0F0F | 878x43]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 16.0px | #FAFAFA | 878x43]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 16.0px | #0F0F0F | 878x43]
+  <6 vector path(s)>
+  TEXT "Industries we serve"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 255x96]
+  TEXT "Startups"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #FAFAFA | 123x39]
+  TEXT "SMBs"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #FAFAFA | 84x39]
+  TEXT "Enterprise"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #FAFAFA | 146x39]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 18.0px | #FAFAFA | 434x135]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans SemiBold 32.0px ls-5.0 | #FAFAFA | 651x114]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 18.0px | #FAFAFA | 441x135]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 18.0px | #FAFAFA | 441x135]
+  LINE "Line 8" 783x0 @975,5551 stroke:#6B6B6B 1.5px
+  LINE "Line 9" 783x0 @975,5616 stroke:#4813D0 1.5px
+  LINE "Line 10" 783x0 @975,5681 stroke:#CC0000 1.5px
+  LINE "Line 11" 783x0 @975,5826 stroke:#6B6B6B 1.5px
+  TEXT "*Name"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 54x22]
+  TEXT "(active)"
+       [Open Sans Regular 16.0px/100.0% | #4813D0 | 53x22]
+  TEXT "(error)"
+       [Open Sans Regular 16.0px/100.0% | #CC0000 | 48x22]
+  TEXT "*E-mail"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 55x22]
+  TEXT "*Telephone"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 88x22]
+  TEXT "*Description"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 95x22]
+  TEXT "*Interested in"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 104x22]
+  TEXT "*Project budget"
+       [Open Sans Regular 16.0px/100.0% | #999999 | 118x22]
+  FRAME "Frame 2" 169x42 @975,5891 stroke:#6B6B6B 1.5px r10
+    TEXT "Web Development"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 139x22]
+  FRAME "Frame 7" 68x42 @975,5998 stroke:#6B6B6B 1.5px r10
+    TEXT "<10K"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 38x22]
+  FRAME "Frame 8" 82x42 @1058,5998 stroke:#6B6B6B 1.5px r10
+    TEXT "10-20K"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 52x22]
+  FRAME "Frame 50" 128x42 @1289,5891 stroke:#6B6B6B 1.5px r10
+    TEXT "UI/UX Design"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 98x22]
+  FRAME "Frame 12" 77x42 @1261,5998 stroke:#6B6B6B 1.5px r10
+    TEXT ">100K"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 47x22]
+  FRAME "Frame 5" 86x42 @1432,5891 stroke:#6B6B6B 1.5px r10
+    TEXT "Startup"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 56x22]
+  FRAME "Frame 10" 95x42 @1353,5998 stroke:#6B6B6B 1.5px r10
+    TEXT "Not sure"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 65x22]
+  FRAME "Frame 6" 74x42 @1533,5891 stroke:#6B6B6B 1.5px r10
+    TEXT "Other"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 44x22]
+  TEXT "Frequently Asked Questions"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | #0F0F0F | 597x58 | CENTER]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+       [Open Sans Regular 18.0px | #6B6B6B | 374x54 | CENTER]
+  FRAME "Frame 4" 686x48 @617,3346 fill:#EAEAEA r14
+    TEXT "What is app development?"
+         [Open Sans SemiBold 18.1px/100.0% | #0F0F0F | 231x25]
+    TEXT "+"
+         [Open Sans Bold 18.1px/100.0% | #360D9D | 11x25]
+  FRAME "Frame 49" 686x48 @617,3410 fill:#EAEAEA r14
+    TEXT "What is enterprise app development?"
+         [Open Sans SemiBold 18.1px/100.0% | #0F0F0F | 506x25]
+    <1 vector path(s)>
+  FRAME "Frame 42" 686x48 @617,3585 fill:#EAEAEA r14
+    TEXT "What types of apps does Recurssive build?"
+         [Open Sans SemiBold 18.1px/100.0% | #0F0F0F | 506x25]
+    TEXT "+"
+         [Open Sans Bold 18.1px/100.0% | #360D9D | 11x25]
+  FRAME "Frame 43" 686x48 @617,3649 fill:#EAEAEA r14
+    TEXT "Should I build a web app or mobile app?"
+         [Open Sans SemiBold 18.1px/100.0% | #0F0F0F | 506x25]
+    TEXT "+"
+         [Open Sans Bold 18.1px/100.0% | #360D9D | 11x25]
+  FRAME "Frame 44" 686x48 @617,3714 fill:#EAEAEA r14
+    TEXT "How long does it take to build an app?"
+         [Open Sans SemiBold 18.1px/100.0% | #0F0F0F | 506x25]
+    TEXT "+"
+         [Open Sans Bold 18.1px/100.0% | #360D9D | 11x25]
+  FRAME "Frame 45" 686x48 @617,3778 fill:#EAEAEA r14
+    TEXT "How much does app development cost?"
+         [Open Sans SemiBold 18.1px/100.0% | #0F0F0F | 506x25]
+    TEXT "+"
+         [Open Sans Bold 18.1px/100.0% | #360D9D | 11x25]
+  FRAME "Frame 46" 686x48 @617,3842 fill:#EAEAEA r14
+    TEXT "Do you build iOS and Android apps?"
+         [Open Sans SemiBold 18.1px/100.0% | #0F0F0F | 506x25]
+    TEXT "+"
+         [Open Sans Bold 18.1px/100.0% | #360D9D | 11x25]
+  FRAME "Frame 47" 686x48 @617,3907 fill:#EAEAEA r14
+    TEXT "What is MVP app development?"
+         [Open Sans SemiBold 18.1px/100.0% | #0F0F0F | 506x25]
+    TEXT "+"
+         [Open Sans Bold 18.1px/100.0% | #360D9D | 11x25]
+  FRAME "Frame 48" 686x48 @617,3971 fill:#EAEAEA r14
+    TEXT "Do you offer app redesign and rescue services?"
+         [Open Sans SemiBold 18.1px/100.0% | #0F0F0F | 506x25]
+    TEXT "+"
+         [Open Sans Bold 18.1px/100.0% | #360D9D | 11x25]
+  TEXT "I’ve read and accepted the terms and conditions"
+       [Open Sans Regular 14.0px/100.0% | #0F0F0F | 314x19]
+  ROUNDED_RECTANGLE "Rectangle 1844" 14x14 @975,6071 fill:#EAEAEA r2
+  FRAME "Group" 8x6 @978,6075
+    <1 vector path(s)>
+  TEXT "Ask"
+       [Inter Semi Bold 48.0px ls-5.0 | #EAEAEA | 84x96]
+  TEXT "Listen"
+       [Inter Semi Bold 48.0px ls-5.0 | #EAEAEA | 130x96]
+  TEXT "Think"
+       [Inter Semi Bold 48.0px ls-5.0 | #EAEAEA | 121x96]
+  TEXT "Create"
+       [Inter Semi Bold 48.0px ls-5.0 | #EAEAEA | 145x96]
+  TEXT "(01)"
+       [Inter Regular 20.0px | #A59BFF | 37x24]
+  TEXT "(02)"
+       [Inter Regular 20.0px | #A59BFF | 40x24]
+  TEXT "(03)"
+       [Inter Regular 20.0px | #A59BFF | 40x24]
+  TEXT "(04)"
+       [Inter Regular 20.0px | #A59BFF | 40x24]
+  TEXT "Our Process"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | #EAEAEA | 261x58]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+       [Open Sans Regular 16.0px | #EAEAEA | 421x37]
+  FRAME "Mask group" 101x75 @163,2501
+    FRAME "Group 2241" 101x75 @0,0
+      ELLIPSE "Ellipse 154" 45x101 @0,75 stroke:#FAFAFA 2.0px
+      ELLIPSE "Ellipse 157" 45x101 @0,60 stroke:#FAFAFA 2.0px
+      ELLIPSE "Ellipse 158" 45x101 @0,45 stroke:#FAFAFA 2.0px
+    ROUNDED_RECTANGLE "meshnoise-gradient-4 3" 441x275 @329,192 fill:IMAGE:67ec03eb370421b284c420f90c6ca40e2c0206d9
+  FRAME "Mask group" 131x75 @751,2501
+    FRAME "Group 2242" 131x75 @0,0
+      <3 vector path(s)>
+    ROUNDED_RECTANGLE "meshnoise-gradient-4 3" 441x275 @352,193 fill:IMAGE:67ec03eb370421b284c420f90c6ca40e2c0206d9
+  FRAME "Mask group" 146x100 @1317,2501
+    FRAME "Group 2243" 146x100 @0,0
+      REGULAR_POLYGON "Polygon 12" 116x100 @30,0 stroke:#FAFAFA 2.0px
+      REGULAR_POLYGON "Polygon 13" 116x100 @15,0 stroke:#FAFAFA 2.0px
+      REGULAR_POLYGON "Polygon 14" 116x100 @0,0 stroke:#FAFAFA 2.0px
+    ROUNDED_RECTANGLE "meshnoise-gradient-4 4" 441x275 @337,193 fill:IMAGE:67ec03eb370421b284c420f90c6ca40e2c0206d9
+  LINE "Line 115" 130x0 @205,4740 stroke:#A59BFF 3.0px
+  LINE "Line 116" 83x0 @205,4512 stroke:#A59BFF 3.0px
+  LINE "Line 117" 121x0 @205,4949 stroke:#A59BFF 3.0px
+  LINE "Line 118" 144x0 @205,5158 stroke:#A59BFF 3.0px
+  ROUNDED_RECTANGLE "kreit-xRuG2k1sjaw-unsplash 1" 257x344 @1433,1475 fill:IMAGE:80bf58a73035f8712777330d174862d4c2073d6b r10
+  FRAME "Mask group" 411x707 @169,5447 op0.1
+    FRAME "Group" 411x707 @0,0
+      <1446 vector path(s)>
+    ROUNDED_RECTANGLE "meshnoise-gradient-5 1" 1165x728 @-377,-11 fill:IMAGE:6762549ea1b99bd148726301f44f5ff0116b75ba
+  TEXT "Ready for success?"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | #0F0F0F | 653x58]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et."
+       [Open Sans Regular 16.0px | #6B6B6B | 407x72]
+  LINE "Line 120" 1920x0 @0,2850 stroke:#A59BFF 1.0px
+  LINE "Line 121" 1920x0 @0,2419 stroke:#A59BFF 1.0px
+  FRAME "Group 2253" 1920x685 @0,6264
+    ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 1920x685 @0,0 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+    FRAME "Group 2252" 1594x615 @163,70
+      FRAME "Group" 160x106 @717,0
+        <5 vector path(s)>
+      <1 vector path(s)>
+      TEXT "Home
+Services
+About
+Contact"
+           [Open Sans Regular 16.0px | #FAFAFA | 61x96]
+      TEXT "Contents"
+           [Inter Medium 16.0px | #FAFAFA | 71x24]
+      TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+           [Open Sans Regular 16.0px | #FAFAFA | 92x96]
+      TEXT "Where"
+           [Inter Medium 16.0px | #FAFAFA | 50x24]
+      TEXT "Socials"
+           [Inter Medium 16.0px | #FAFAFA | 55x24]
+      TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+           [Open Sans Regular 16.0px | #FAFAFA | 76x96]
+      TEXT "©2026 Recurssive"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 134x20 | RIGHT]
+      TEXT "Privacy"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 53x20 | RIGHT]
+      TEXT "Terms"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 47x20 | RIGHT]
+      TEXT "Cookies"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 59x20 | RIGHT]
+      TEXT "Designed by Omnics"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 153x20 | RIGHT]
+  FRAME "Fibonacci Spiral (fixed ratio)" 1200x742 @1920,4146
+    FRAME "Group" 1200x742 @0,0
+      <2 vector path(s)>
+    FRAME "Group" 458x742 @742,0
+      <2 vector path(s)>
+    FRAME "Group" 458x283 @742,458
+      <2 vector path(s)>
+    FRAME "Group" 175x283 @742,458
+      <2 vector path(s)>
+    FRAME "Group" 175x108 @742,458
+      <2 vector path(s)>
+    FRAME "Group" 67x108 @850,458
+      <2 vector path(s)>
+    FRAME "Group" 67x41 @850,525
+      <2 vector path(s)>
+    FRAME "Group" 26x41 @850,525
+      <2 vector path(s)>
+    <8 vector path(s)>
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 18.0px | #FAFAFA | 696x75]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 18.0px | #FAFAFA | 696x75]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 18.0px | #FAFAFA | 696x75]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 18.0px | #FAFAFA | 696x75]
+  FRAME "Frame 125" 140x39 @890,2914 fill:#4813D0 r6
+    TEXT "Start a project"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 110x19]
+  FRAME "Frame 126" 143x39 @975,6115 fill:#4813D0 r6
+    TEXT "Send Message"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 113x19]
+  FRAME "Frame 127" 91x42 @1155,5998 fill:#4813D0 r6
+    TEXT "50-100K"
+         [Open Sans Regular 16.0px/100.0% | #FAFAFA | 61x22]
+  FRAME "Frame 128" 115x42 @1159,5891 fill:#4813D0 r6
+    TEXT "Mobile App"
+         [Open Sans Regular 16.0px/100.0% | #FAFAFA | 85x22]
+  FRAME "Group 2271" 266x756 @560,4444
+    LINE "Line 22" 666x0 @132,34 stroke:#FAFAFA 2.0px
+    FRAME "Mask group" 262x106 @2,0
+      ELLIPSE "Ellipse 3" 262x106 @0,0 fill:#FAFAFA
+      ROUNDED_RECTANGLE "meshnoise-gradient-2 4" 411x257 @-13,-129 fill:IMAGE:ebbed3b6f444c324492b4e4d9c757672d33b2e84
+    FRAME "Mask group" 266x96 @0,229
+      <1 vector path(s)>
+      ROUNDED_RECTANGLE "meshnoise-gradient-7 3" 560x350 @431,10 fill:IMAGE:bc9d58e2e57994f4d088619082c52dab7a98fa66
+    FRAME "Mask group" 259x160 @4,410
+      <1 vector path(s)>
+      ROUNDED_RECTANGLE "meshnoise-gradient-3 2" 468x293 @-4,-128 fill:IMAGE:753c544d8c17d20f305b6e21d30c3a847f468893
+    FRAME "Mask group" 256x111 @5,645
+      ROUNDED_RECTANGLE "Rectangle 1879" 256x111 @0,0 fill:#FAFAFA r10
+      ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 441x275 @-130,-70 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+    <3 vector path(s)>
+    TEXT "Start the process"
+         [Open Sans SemiBold 18.0px/100.0% | #FAFAFA | 148x25]
+    TEXT "Decide what to do"
+         [Open Sans SemiBold 18.0px/100.0% | #FAFAFA | 158x25]
+    TEXT "Work on it"
+         [Open Sans SemiBold 18.0px/100.0% | #FAFAFA | 91x25]
+    TEXT "Collect the data"
+         [Open Sans SemiBold 18.0px/100.0% | #FAFAFA | 137x25]
+    ELLIPSE "Ellipse 159" 6x6 @130,102 fill:#A59BFF
+    ELLIPSE "Ellipse 155" 6x6 @130,321 fill:#A59BFF
+    ELLIPSE "Ellipse 156" 6x6 @130,567 fill:#A59BFF
+  FRAME "Group 2305" 1595x39 @163,39
+    TEXT "Cases"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 48x19 | RIGHT]
+    TEXT "Home"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 46x19 | RIGHT]
+    TEXT "Capabilities"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 90x19 | RIGHT]
+    TEXT "About"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 47x19 | RIGHT]
+    TEXT "Blog"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 34x19 | RIGHT]
+    TEXT "Contact"
+         [Inter Medium 16.0px/100.0% | #FAFAFA | 62x19 | RIGHT]
+    <1 vector path(s)>
+    FRAME "Group 2224" 61x37 @0,1
+      <5 vector path(s)>
+    FRAME "Frame 58" 165x39 @1430,0 fill:#FAFAFA r8
+      TEXT "Start a project"
+           [Inter Medium 16.0px/100.0% | #0F0F0F | 110x19 | RIGHT]
+      <1 vector path(s)>
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+       [Open Sans Regular 16.0px | #6B6B6B | 640x91]
+  ROUNDED_RECTANGLE "Rectangle 1905" 607x72 @1151,1018 fill:#FAFAFA r10
+  TEXT "We use cookies"
+       [Inter Semi Bold 18.0px/100.0% ls-5.0 | #0F0F0F | 125x22]
+  TEXT "To track and improve your experience."
+       [Open Sans Regular 14.0px ls-5.0 | #0F0F0F | 227x15]
+  FRAME "Frame 121" 86x31 @1647,1038 fill:#FFFFFF stroke:#6B6B6B 1.5px r6
+    TEXT "Customize"
+         [Inter Medium 12.0px/100.0% | #6B6B6B | 62x15]
+  FRAME "Frame 122" 81x31 @1556,1038 fill:#4813D0 r6
+    TEXT "Accept all"
+         [Inter Medium 12.0px/100.0% | #FAFAFA | 57x15]
+  ROUNDED_RECTANGLE "Rectangle 1897" 477x539 @1281,421 fill:#FAFAFA r10
+  TEXT "Cookie Preferences"
+       [Inter Semi Bold 20.0px/100.0% ls-5.0 | #0F0F0F | 172x24]
+  TEXT "Necessary cookies (always on)"
+       [Inter Semi Bold 16.0px/100.0% ls-5.0 | #0F0F0F | 216x19]
+  TEXT "Functional cookies"
+       [Inter Medium 16.0px/100.0% ls-5.0 | #0F0F0F | 130x19]
+  TEXT "Analytical cookies"
+       [Inter Medium 16.0px/100.0% ls-5.0 | #0F0F0F | 125x19]
+  TEXT "Advertising cookies"
+       [Inter Medium 16.0px/100.0% ls-5.0 | #0F0F0F | 137x19]
+  TEXT "+"
+       [Open Sans Regular 18.1px/100.0% | #0F0F0F | 11x25]
+  TEXT "+"
+       [Open Sans Regular 18.1px/100.0% | #0F0F0F | 11x25]
+  TEXT "+"
+       [Open Sans Regular 18.1px/100.0% | #0F0F0F | 11x25]
+  TEXT "_"
+       [Open Sans Regular 18.1px/100.0% | #0F0F0F | 8x25]
+  TEXT "We use cookies to improve and analyze your online experience on your website. Visit the Privacy Policy for more details. You can withdraw consent anytime via “Cookies” located in the bottom of any page."
+       [Open Sans Regular 14.0px/100.0% | #0F0F0F | 362x76]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et"
+       [Open Sans Regular 14.0px/100.0% | #0F0F0F | 338x38]
+  LINE "Line 58" 356x0 @1339,644 stroke:#6B6B6B 1.0px
+  LINE "Line 65" 356x0 @1339,596 stroke:#6B6B6B 1.0px
+  LINE "Line 62" 356x0 @1339,696 stroke:#6B6B6B 1.0px
+  LINE "Line 63" 356x0 @1339,748 stroke:#6B6B6B 1.0px
+  LINE "Line 64" 356x0 @1339,854 stroke:#6B6B6B 1.0px
+  ROUNDED_RECTANGLE "Rectangle 1898" 34x18 @1661,612 fill:#4813D0 r3
+  ROUNDED_RECTANGLE "Rectangle 1899" 12x12 @1680,615 fill:#EAEAEA r2
+  ROUNDED_RECTANGLE "Rectangle 1898" 34x18 @1661,664 fill:#4813D0 r3
+  ROUNDED_RECTANGLE "Rectangle 1899" 12x12 @1680,667 fill:#EAEAEA r2
+  ROUNDED_RECTANGLE "Rectangle 1898" 34x18 @1661,716 fill:#EAEAEA r3
+  ROUNDED_RECTANGLE "Rectangle 1899" 12x12 @1664,719 fill:#0F0F0F r2
+  ROUNDED_RECTANGLE "Rectangle 1898" 34x18 @1661,768 fill:#EAEAEA r3
+  ROUNDED_RECTANGLE "Rectangle 1899" 12x12 @1664,771 fill:#0F0F0F r2
+  FRAME "Frame 120" 131x35 @1454,887 fill:#4813D0 r6
+    TEXT "Save Preferences"
+         [Inter Medium 12.0px/100.0% | #FAFAFA | 101x15]

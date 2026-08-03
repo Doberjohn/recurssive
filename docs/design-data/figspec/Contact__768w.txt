@@ -1,0 +1,145 @@
+FRAME "Contact" 768x3022 @25992,0 fill:#FAFAFA
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  <1 vector path(s)>
+  FRAME "Group" 71x43 @79,54
+    <5 vector path(s)>
+  FRAME "Frame 40" 198x47 @491,52 fill:#0F0F0F r8
+    TEXT "Start a project"
+         [Inter Semi Bold 22.0px/100.0% ls-3.0 | #FAFAFA | 143x27]
+    <1 vector path(s)>
+  ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 768x560 @0,2462 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+  <1 vector path(s)>
+  FRAME "Group 2268" 104x168 @585,2652
+    TEXT "Socials"
+         [Inter Medium 22.0px | #FAFAFA | 76x33]
+    TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+         [Open Sans Regular 22.0px | #FAFAFA | 104x132]
+  FRAME "Group 2269" 127x168 @321,2652
+    TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+         [Open Sans Regular 22.0px | #FAFAFA | 127x132]
+    TEXT "Where"
+         [Inter Medium 22.0px | #FAFAFA | 69x33]
+  FRAME "Group 2270" 97x168 @79,2652
+    TEXT "Home
+Services
+About
+Contact"
+         [Open Sans Regular 22.0px | #FAFAFA | 84x132]
+    TEXT "Contents"
+         [Inter Medium 22.0px | #FAFAFA | 97x33]
+  TEXT "©2026 Recurssive"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  TEXT "Privacy"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 67x20 | RIGHT]
+  TEXT "Terms"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 60x20 | RIGHT]
+  TEXT "Design by Omnics"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  FRAME "Group" 120x79 @324,2508
+    <5 vector path(s)>
+  TEXT "Let’s Talk"
+       [Inter Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 370x51]
+  FRAME "Mask group" 610x683 @79,253
+    ROUNDED_RECTANGLE "Rectangle 1843" 610x683 @0,0 fill:#0F0F0F r46
+    ROUNDED_RECTANGLE "meshnoise-gradient-6 2" 1214x758 @-309,-7 fill:IMAGE:33da3bdc18e728eb1c92af0eb985cc080dc8da0e
+  TEXT "We want to hear from you"
+       [Inter Bold 36.0px/100.0% | #FAFAFA | 450x44]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+       [Open Sans Regular 24.0px ls-3.0 | #A59BFF | 477x92]
+  TEXT "info@recurssive.com"
+       [Inter Bold 32.0px/100.0% | #FAFAFA | 336x39]
+  TEXT "(general)"
+       [Open Sans Regular 20.0px/100.0% | #A59BFF | 82x27]
+  TEXT "john@recurssive.com"
+       [Inter Bold 32.0px/100.0% | #FAFAFA | 344x39]
+  TEXT "(inquiry)"
+       [Open Sans Regular 20.0px/100.0% | #A59BFF | 77x27]
+  TEXT "@recurssive"
+       [Inter Bold 32.0px/100.0% | #FAFAFA | 199x39]
+  TEXT "(social)"
+       [Open Sans Regular 20.0px/100.0% | #A59BFF | 65x27]
+  TEXT "(+30) 698 950 2436"
+       [Inter Bold 32.0px/100.0% | #FAFAFA | 324x39]
+  TEXT "(phone)"
+       [Open Sans Regular 20.0px/100.0% | #A59BFF | 72x27]
+  LINE "Line 8" 610x0 @79,1057 stroke:#6B6B6B 1.5px
+  LINE "Line 9" 610x0 @79,1128 stroke:#6B6B6B 1.5px
+  LINE "Line 10" 610x0 @79,1202 stroke:#6B6B6B 1.5px
+  LINE "Line 11" 610x0 @79,1370 stroke:#6B6B6B 1.5px
+  TEXT "*Name"
+       [Open Sans Regular 24.0px/100.0% | #0F0F0F | 81x33]
+  TEXT "*E-mail"
+       [Open Sans Regular 24.0px/100.0% | #0F0F0F | 82x33]
+  TEXT "*Telephone"
+       [Open Sans Regular 24.0px/100.0% | #0F0F0F | 132x33]
+  TEXT "*Description"
+       [Open Sans Regular 24.0px/100.0% | #0F0F0F | 142x33]
+  TEXT "*Interested in"
+       [Open Sans Regular 24.0px/100.0% | #0F0F0F | 156x33]
+  TEXT "*Project budget"
+       [Open Sans Regular 24.0px/100.0% | #999999 | 177x33]
+  FRAME "Frame 2" 122x50 @79,1452 stroke:#6B6B6B 1.5px r10
+    TEXT "Web Dev"
+         [Open Sans Regular 22.0px/100.0% | #0F0F0F | 92x30]
+  FRAME "Frame 7" 82x50 @79,1576 stroke:#6B6B6B 1.5px r10
+    TEXT "<10K"
+         [Open Sans Regular 22.0px/100.0% | #0F0F0F | 52x30]
+  FRAME "Frame 8" 101x50 @174,1576 stroke:#6B6B6B 1.5px r10
+    TEXT "10-20K"
+         [Open Sans Regular 22.0px/100.0% | #0F0F0F | 71x30]
+  FRAME "Frame 50" 90x50 @374,1452 stroke:#6B6B6B 1.5px r10
+    TEXT "UI/UX"
+         [Open Sans Regular 22.0px/100.0% | #0F0F0F | 60x30]
+  FRAME "Frame 12" 94x50 @415,1576 stroke:#6B6B6B 1.5px r10
+    TEXT ">100K"
+         [Open Sans Regular 22.0px/100.0% | #0F0F0F | 64x30]
+  FRAME "Frame 5" 106x50 @477,1452 stroke:#6B6B6B 1.5px r10
+    TEXT "Startup"
+         [Open Sans Regular 22.0px/100.0% | #0F0F0F | 76x30]
+  FRAME "Frame 10" 119x50 @522,1576 stroke:#6B6B6B 1.5px r10
+    TEXT "Not sure"
+         [Open Sans Regular 22.0px/100.0% | #0F0F0F | 89x30]
+  FRAME "Frame 6" 90x50 @596,1452 stroke:#6B6B6B 1.5px r10
+    TEXT "Other"
+         [Open Sans Regular 22.0px/100.0% | #0F0F0F | 60x30]
+  TEXT "I’ve read and accepted the terms and conditions"
+       [Open Sans Regular 22.0px/100.0% | #0F0F0F | 493x30]
+  ROUNDED_RECTANGLE "Rectangle 1844" 28x28 @79,1658 fill:#EAEAEA r4
+  FRAME "Group" 15x12 @85,1666
+    <1 vector path(s)>
+  FRAME "Frame 126" 202x53 @79,1721 fill:#4813D0 r6
+    TEXT "Send Message"
+         [Inter Medium 24.0px/100.0% | #FAFAFA | 170x29]
+  FRAME "Frame 127" 114x50 @288,1576 fill:#4813D0 r6
+    TEXT "50-100K"
+         [Open Sans Regular 22.0px/100.0% | #FAFAFA | 84x30]
+  FRAME "Frame 128" 147x50 @214,1452 fill:#4813D0 r6
+    TEXT "Mobile App"
+         [Open Sans Regular 22.0px/100.0% | #FAFAFA | 117x30]
+  ROUNDED_RECTANGLE "camden-hailey-george-OwLxDAEJ3g4-unsplash 3" 1292x594 @-256,1868 fill:IMAGE:af0c16890b43d0fd72925480e66ad1e3a549596a
+  ROUNDED_RECTANGLE "Rectangle 1902" 1292x594 @-256,1868 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F) op0.75
+  FRAME "Layer 1" 647x421 @66,1956
+    FRAME "Group" 647x421 @0,0
+      FRAME "Group" 245x421 @201,0
+        <1446 vector path(s)>
+      FRAME "Group" 79x295 @103,63
+        <621 vector path(s)>
+      FRAME "Group" 78x177 @0,125
+        <300 vector path(s)>
+      FRAME "Group" 78x295 @466,63
+        <621 vector path(s)>
+      FRAME "Group" 78x186 @569,116
+        <305 vector path(s)>
+  TEXT "Feel."
+       [Inter Semi Bold 38.5px/100.0% ls-5.0 | #FAFAFA | 81x47]
+  TEXT "Form."
+       [Inter Semi Bold 38.5px/100.0% ls-5.0 | #FAFAFA | 98x47]
+  TEXT "Function"
+       [Inter Semi Bold 38.5px/100.0% ls-5.0 | #FAFAFA | 149x47]

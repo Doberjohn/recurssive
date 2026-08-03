@@ -1,0 +1,352 @@
+FRAME "Capabilities" 768x6174 @14440,0 fill:#FAFAFA
+  ROUNDED_RECTANGLE "Rectangle 1902" 610x70 @79,750 fill:GRADIENT_LINEAR(#966FFF->#2805C3->#4616E3->#7856EC) fx:NOISE
+  ROUNDED_RECTANGLE "Rectangle 1903" 610x70 @79,2120 fill:GRADIENT_LINEAR(#966FFF->#2805C3->#4616E3->#7856EC) fx:NOISE
+  ROUNDED_RECTANGLE "Rectangle 1904" 610x70 @79,3335 fill:GRADIENT_LINEAR(#966FFF->#2805C3->#4616E3->#7856EC) fx:NOISE
+  ROUNDED_RECTANGLE "Rectangle 1905" 610x70 @79,4474 fill:GRADIENT_LINEAR(#966FFF->#2805C3->#4616E3->#7856EC) fx:NOISE
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  <1 vector path(s)>
+  FRAME "Group" 71x43 @79,54
+    <5 vector path(s)>
+  FRAME "Frame 40" 198x47 @491,52 fill:#0F0F0F r8
+    TEXT "Start a project"
+         [Inter Semi Bold 22.0px/100.0% ls-3.0 | #FAFAFA | 143x27]
+    <1 vector path(s)>
+  ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 768x560 @0,5614 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+  <1 vector path(s)>
+  FRAME "Group 2268" 104x168 @585,5804
+    TEXT "Socials"
+         [Inter Medium 22.0px | #FAFAFA | 76x33]
+    TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+         [Open Sans Regular 22.0px | #FAFAFA | 104x132]
+  FRAME "Group 2269" 127x168 @321,5804
+    TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+         [Open Sans Regular 22.0px | #FAFAFA | 127x132]
+    TEXT "Where"
+         [Inter Medium 22.0px | #FAFAFA | 69x33]
+  FRAME "Group 2270" 97x168 @79,5804
+    TEXT "Home
+Services
+About
+Contact"
+         [Open Sans Regular 22.0px | #FAFAFA | 84x132]
+    TEXT "Contents"
+         [Inter Medium 22.0px | #FAFAFA | 97x33]
+  TEXT "©2026 Recurssive"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  TEXT "Privacy"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 67x20 | RIGHT]
+  TEXT "Terms"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 60x20 | RIGHT]
+  TEXT "Design by Omnics"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  FRAME "Group" 120x79 @324,5660
+    <5 vector path(s)>
+  LINE "Line 58" 610x0 @79,331 stroke:#6B6B6B 1.5px
+  TEXT "Consulting"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 202x51 | RIGHT]
+  TEXT "Product Dev"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 229x51]
+  TEXT "AI Engineering"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 269x51]
+  TEXT "Enterprise Solutions"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 372x51]
+  LINE "Line 7" 610x0 @79,680 stroke:#6B6B6B 1.5px
+  LINE "Line 65" 610x0 @79,2050 stroke:#6B6B6B 1.5px
+  LINE "Line 73" 610x0 @79,3265 stroke:#6B6B6B 1.5px
+  LINE "Line 79" 610x0 @79,4404 stroke:#6B6B6B 1.5px
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x138]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x70]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x70]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x70]
+  <4 vector path(s)>
+  TEXT "React Native Performance Optimization"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 478x34]
+  TEXT "Desktop App Development"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 326x34]
+  TEXT "On-device AI"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 160x34]
+  TEXT "Migration to React Native"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 306x34]
+  TEXT "(01)"
+       [Inter Regular 20.0px | #6B6B6B | 37x24 | RIGHT]
+  TEXT "(01)"
+       [Inter Regular 20.0px | #6B6B6B | 37x24 | RIGHT]
+  TEXT "(01)"
+       [Inter Regular 20.0px | #6B6B6B | 37x24 | RIGHT]
+  TEXT "(01)"
+       [Inter Regular 20.0px | #6B6B6B | 37x24 | RIGHT]
+  LINE "Line 59" 610x0 @79,750 stroke:#A59BFF 1.5px
+  LINE "Line 66" 610x0 @79,2120 stroke:#6B6B6B 1.5px
+  LINE "Line 74" 610x0 @79,3335 stroke:#6B6B6B 1.5px
+  LINE "Line 80" 610x0 @79,4474 stroke:#6B6B6B 1.5px
+  LINE "Line 62" 610x0 @79,960 stroke:#6B6B6B 1.5px
+  LINE "Line 67" 610x0 @79,2330 stroke:#6B6B6B 1.5px
+  LINE "Line 60" 610x0 @79,820 stroke:#A59BFF 1.5px
+  LINE "Line 68" 610x0 @79,2190 stroke:#6B6B6B 1.5px
+  LINE "Line 76" 610x0 @79,3405 stroke:#6B6B6B 1.5px
+  LINE "Line 82" 610x0 @79,4544 stroke:#6B6B6B 1.5px
+  LINE "Line 63" 610x0 @79,1030 stroke:#6B6B6B 1.5px
+  LINE "Line 61" 610x0 @79,890 stroke:#6B6B6B 1.5px
+  LINE "Line 70" 610x0 @79,2260 stroke:#6B6B6B 1.5px
+  LINE "Line 77" 610x0 @79,3475 stroke:#6B6B6B 1.5px
+  LINE "Line 64" 610x0 @79,1100 stroke:#6B6B6B 1.5px
+  LINE "Line 21" 610x0 @79,610 stroke:#6B6B6B 1.5px
+  LINE "Line 72" 610x0 @79,1980 stroke:#6B6B6B 1.5px
+  LINE "Line 78" 610x0 @79,3195 stroke:#6B6B6B 1.5px
+  LINE "Line 84" 610x0 @79,4334 stroke:#6B6B6B 1.5px
+  <15 vector path(s)>
+  TEXT "New Architecture Migration"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 333x34]
+  TEXT "Web App Development"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 282x34]
+  TEXT "Generative AI App Development"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 389x34]
+  TEXT "Monitoring & Observability"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 321x34]
+  TEXT "Expo Development"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 231x34]
+  TEXT "Product Strategy"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 207x34]
+  TEXT "React Development"
+       [Inter Medium 28.0px ls-5.0 | #FAFAFA | 239x34]
+  TEXT "Mobile App Development"
+       [Inter Medium 28.0px ls-5.0 | #FAFAFA | 306x34]
+  TEXT "AI Knowledge Integration"
+       [Inter Medium 28.0px ls-5.0 | #FAFAFA | 306x34]
+  TEXT "Release Process Optimization"
+       [Inter Medium 28.0px ls-5.0 | #FAFAFA | 360x34]
+  TEXT "Next.js Development"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 253x34]
+  TEXT "React Native Trainings"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 271x34]
+  TEXT "UI/UX Design"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 163x34]
+  TEXT "AI Vibe Coding Cleanup"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 286x34]
+  TEXT "React Native Upgrades"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 281x34]
+  TEXT "(02)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(02)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(02)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(02)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(05)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(05)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(03)"
+       [Inter Regular 20.0px | #A59BFF | 40x24 | RIGHT]
+  TEXT "(03)"
+       [Inter Regular 20.0px | #A59BFF | 40x24 | RIGHT]
+  TEXT "(03)"
+       [Inter Regular 20.0px | #A59BFF | 40x24 | RIGHT]
+  TEXT "(03)"
+       [Inter Regular 20.0px | #A59BFF | 40x24 | RIGHT]
+  TEXT "(06)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(04)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(04)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(04)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(07)"
+       [Inter Regular 20.0px | #6B6B6B | 39x24 | RIGHT]
+  FRAME "Group 2089" 502x520 @133,1154
+    ROUNDED_RECTANGLE "Rectangle 1851" 502x520 @0,0 fill:#0F0F0F r25
+    LINE "Line 7" 502x0 @0,49 stroke:#6B6B6B 1.5px
+    TEXT "Consulting Project"
+         [Inter Regular 16.0px/100.0% | #6B6B6B | 139x19 | CENTER]
+    ROUNDED_RECTANGLE "Rectangle 1852" 55x471 @0,49 fill:#232323 r0/0/0/25
+    TEXT "1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16"
+         [Open Sans Regular 14.0px | #6B6B6B | 17x384]
+    TEXT "import { optimizeApp } from "@company/performance";
+const config = {
+  framework: "React Native",
+  architecture: "New Architecture",
+  platform: "Expo + Next.js",
+};
+async function consulting() {
+  const metrics = await optimizeApp(config);
+
+  return {
+    fps: metrics.fps,
+    startupTime: metrics.startupTime,
+    status: "Optimized",
+  };
+
+}"
+         [Open Sans Regular 14.0px | #6B6B6B | 392x384]
+    ROUNDED_RECTANGLE "Rectangle 1853" 11x11 @20,19 fill:#D75459 r13
+    ROUNDED_RECTANGLE "Rectangle 1854" 11x11 @36,19 fill:#EDC943 r13
+    ROUNDED_RECTANGLE "Rectangle 1855" 11x11 @51,19 fill:#81E1B7 r13
+  FRAME "Group 2088" 502x484 @133,2397
+    ROUNDED_RECTANGLE "Rectangle 1856" 502x484 @0,0 fill:#0F0F0F r25
+    LINE "Line 21" 502x0 @0,49 stroke:#6B6B6B 1.5px
+    TEXT "Product Development Project"
+         [Inter Regular 16.0px/100.0% | #6B6B6B | 222x19 | CENTER]
+    ROUNDED_RECTANGLE "Rectangle 1857" 53x435 @2,49 fill:#232323 r0/0/0/25
+    TEXT "1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16"
+         [Open Sans Regular 14.0px | #6B6B6B | 17x384]
+    TEXT "const products = [
+  { type: "Web", color: "#3B82F6" },
+  { type: "Mobile", color: "#10B981" },
+  { type: "Desktop", color: "#F97316" },
+];
+
+export const buildProduct = () =>
+  products.map(product => ({
+    ...product,
+    scalable: true,
+    tested: true,
+    deployed: true,
+  }));
+
+console.log("Shipping products worldwide");"
+         [Open Sans Regular 14.0px | #FDFDFD | 392x360]
+    ROUNDED_RECTANGLE "Rectangle 1858" 11x11 @20,19 fill:#D75459 r13
+    ROUNDED_RECTANGLE "Rectangle 1859" 11x11 @36,19 fill:#EDC943 r13
+    ROUNDED_RECTANGLE "Rectangle 1860" 11x11 @51,19 fill:#81E1B7 r13
+  FRAME "Group 2298" 502x484 @133,3537
+    ROUNDED_RECTANGLE "Rectangle 1856" 502x484 @0,0 fill:#0F0F0F r25
+    LINE "Line 21" 502x0 @0,49 stroke:#6B6B6B 1.5px
+    TEXT "Product Development Project"
+         [Inter Regular 16.0px/100.0% | #6B6B6B | 222x19 | CENTER]
+    ROUNDED_RECTANGLE "Rectangle 1857" 53x435 @2,49 fill:#232323 r0/0/0/25
+    TEXT "1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16"
+         [Open Sans Regular 14.0px | #6B6B6B | 17x384]
+    TEXT "const products = [
+  { type: "Web", color: "#3B82F6" },
+  { type: "Mobile", color: "#10B981" },
+  { type: "Desktop", color: "#F97316" },
+];
+
+export const buildProduct = () =>
+  products.map(product => ({
+    ...product,
+    scalable: true,
+    tested: true,
+    deployed: true,
+  }));
+
+console.log("Shipping products worldwide");"
+         [Open Sans Regular 14.0px | #FDFDFD | 392x360]
+    ROUNDED_RECTANGLE "Rectangle 1858" 11x11 @20,19 fill:#D75459 r13
+    ROUNDED_RECTANGLE "Rectangle 1859" 11x11 @36,19 fill:#EDC943 r13
+    ROUNDED_RECTANGLE "Rectangle 1860" 11x11 @51,19 fill:#81E1B7 r13
+  FRAME "Group 2299" 502x484 @133,4615
+    ROUNDED_RECTANGLE "Rectangle 1856" 502x484 @0,0 fill:#0F0F0F r25
+    LINE "Line 21" 502x0 @0,49 stroke:#6B6B6B 1.5px
+    TEXT "Product Development Project"
+         [Inter Regular 16.0px/100.0% | #6B6B6B | 222x19 | CENTER]
+    ROUNDED_RECTANGLE "Rectangle 1857" 53x435 @2,49 fill:#232323 r0/0/0/25
+    TEXT "1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16"
+         [Open Sans Regular 14.0px | #6B6B6B | 17x384]
+    TEXT "const products = [
+  { type: "Web", color: "#3B82F6" },
+  { type: "Mobile", color: "#10B981" },
+  { type: "Desktop", color: "#F97316" },
+];
+
+export const buildProduct = () =>
+  products.map(product => ({
+    ...product,
+    scalable: true,
+    tested: true,
+    deployed: true,
+  }));
+
+console.log("Shipping products worldwide");"
+         [Open Sans Regular 14.0px | #FDFDFD | 392x360]
+    ROUNDED_RECTANGLE "Rectangle 1858" 11x11 @20,19 fill:#D75459 r13
+    ROUNDED_RECTANGLE "Rectangle 1859" 11x11 @36,19 fill:#EDC943 r13
+    ROUNDED_RECTANGLE "Rectangle 1860" 11x11 @51,19 fill:#81E1B7 r13
+  ROUNDED_RECTANGLE "sergey-zolkin-_UeY8aTI6d0-unsplash 2" 1920x388 @-592,5226 fill:IMAGE:ee2d7fb5ce483d3f730caedddfaf2d63fad6f3e5
+  ROUNDED_RECTANGLE "Rectangle 1897" 1920x388 @-592,5226 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  FRAME "Group 2248" 2052x388 @-703,5226
+    <6 vector path(s)>
+  TEXT "Let’s build your vision"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 448x64 | CENTER]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 489x84 | CENTER]
+  FRAME "Frame 130" 200x49 @284,5497 fill:#4813D0 r6
+    TEXT "Send Message"
+         [Inter Medium 24.0px/100.0% | #FAFAFA | 170x29]
+  TEXT "Capabilities"
+       [Inter Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 222x51]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 606x63]

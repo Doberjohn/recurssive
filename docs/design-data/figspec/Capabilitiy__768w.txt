@@ -1,0 +1,366 @@
+FRAME "Capabilitiy" 768x10833 @17328,0 fill:#FAFAFA
+  ROUNDED_RECTANGLE "meshnoise-gradient-6 2" 1920x1070 @-351,-32 fill:IMAGE:33da3bdc18e728eb1c92af0eb985cc080dc8da0e
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  <1 vector path(s)>
+  FRAME "Group" 71x43 @79,54
+    <5 vector path(s)>
+  FRAME "Frame 40" 198x47 @491,52 fill:#FAFAFA r8
+    TEXT "Start a project"
+         [Inter Semi Bold 22.0px/100.0% ls-3.0 | #0F0F0F | 143x27]
+    <1 vector path(s)>
+  ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 768x560 @0,10273 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+  <1 vector path(s)>
+  FRAME "Group 2268" 104x168 @585,10463
+    TEXT "Socials"
+         [Inter Medium 22.0px | #FAFAFA | 76x33]
+    TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+         [Open Sans Regular 22.0px | #FAFAFA | 104x132]
+  FRAME "Group 2269" 127x168 @321,10463
+    TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+         [Open Sans Regular 22.0px | #FAFAFA | 127x132]
+    TEXT "Where"
+         [Inter Medium 22.0px | #FAFAFA | 69x33]
+  FRAME "Group 2270" 97x168 @79,10463
+    TEXT "Home
+Services
+About
+Contact"
+         [Open Sans Regular 22.0px | #FAFAFA | 84x132]
+    TEXT "Contents"
+         [Inter Medium 22.0px | #FAFAFA | 97x33]
+  TEXT "©2026 Recurssive"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  TEXT "Privacy"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 67x20 | RIGHT]
+  TEXT "Terms"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 60x20 | RIGHT]
+  TEXT "Design by Omnics"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  FRAME "Group" 120x79 @324,10319
+    <5 vector path(s)>
+  FRAME "Group" 614x434 @179,603
+    FRAME "Gutenberg Grid Horizontal" 614x434 @0,0
+      <1 vector path(s)>
+    <4 vector path(s)>
+  ROUNDED_RECTANGLE "kohei-ikeda-emsrI7ZFcGU-unsplash 3" 610x407 @79,551 fill:IMAGE:9ae6e30d9eb2feed0941248f2490d57f32cdcef5 r11
+  TEXT "Mobile App Developement"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 314x96]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 610x144]
+  FRAME "Frame 123" 154x49 @79,459 fill:#FAFAFA r6
+    TEXT "Book a call"
+         [Inter Medium 24.0px/100.0% | #0F0F0F | 124x29]
+  TEXT "Why build a Mobile App?"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 452x51]
+  TEXT "Why us"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 140x51]
+  TEXT "Benefit One"
+       [Inter Semi Bold 32.0px ls-5.0 | #0F0F0F | 167x32]
+  TEXT "Benefit Two"
+       [Inter Semi Bold 32.0px ls-5.0 | #0F0F0F | 168x32]
+  TEXT "Benefit Four"
+       [Inter Semi Bold 32.0px ls-5.0 | #0F0F0F | 171x32]
+  TEXT "Benefit Three"
+       [Inter Semi Bold 32.0px ls-5.0 | #0F0F0F | 191x32]
+  TEXT "Benefit Five"
+       [Inter Semi Bold 32.0px ls-5.0 | #0F0F0F | 166x32]
+  TEXT "Benefit Six"
+       [Inter Semi Bold 32.0px ls-5.0 | #0F0F0F | 151x32]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x113]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x113]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 453x175]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 453x175]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 453x144]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 453x175]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 453x175]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 453x175]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x113]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x113]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x113]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x113]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x113]
+  LINE "Line 41" 410x0 @589,1443 stroke:#EAEAEA 1.5px
+  LINE "Line 121" 410x0 @589,1987 stroke:#EAEAEA 1.5px
+  LINE "Line 120" 410x0 @589,1715 stroke:#EAEAEA 1.5px
+  LINE "Line 122" 410x0 @589,2259 stroke:#EAEAEA 1.5px
+  LINE "Line 123" 410x0 @589,2531 stroke:#EAEAEA 1.5px
+  FRAME "Frame 124" 109x49 @330,2803 fill:#4813D0 r6
+    TEXT "Inquire"
+         [Inter Medium 24.0px/100.0% | #FAFAFA | 79x29]
+  TEXT "Human touch"
+       [Inter Semi Bold 30.0px ls-5.0 | #0F0F0F | 104x56]
+  TEXT "Latest
+tech"
+       [Inter Semi Bold 30.0px ls-5.0 | #0F0F0F | 104x56]
+  TEXT "Solution oriented"
+       [Inter Semi Bold 30.0px ls-5.0 | #0F0F0F | 119x56]
+  TEXT "Efficient
+systems"
+       [Inter Semi Bold 30.0px ls-5.0 | #0F0F0F | 119x56]
+  TEXT "Future
+ready"
+       [Inter Semi Bold 30.0px ls-5.0 | #0F0F0F | 104x56]
+  TEXT "Reliable
+partner"
+       [Inter Semi Bold 30.0px ls-5.0 | #0F0F0F | 104x56]
+  FRAME "Mask group" 73x69 @79,4602
+    FRAME "Group 2255" 73x69 @0,0
+      <2 vector path(s)>
+    ROUNDED_RECTANGLE "meshnoise-gradient-5 3" 124x77 @-37,-4 fill:IMAGE:6762549ea1b99bd148726301f44f5ff0116b75ba
+  FRAME "Mask group" 72x69 @79,4827
+    FRAME "Group 2256" 72x69 @0,0
+      <2 vector path(s)>
+    ROUNDED_RECTANGLE "meshnoise-gradient-5 3" 119x74 @-3,-4 fill:IMAGE:6762549ea1b99bd148726301f44f5ff0116b75ba
+  FRAME "Mask group" 92x69 @75,5052
+    FRAME "Group 2257" 92x69 @0,0
+      REGULAR_POLYGON "Polygon 15" 69x69 @0,0 stroke:#999999 2.0px
+      REGULAR_POLYGON "Polygon 16" 69x69 @23,0 stroke:#999999 2.0px
+    ROUNDED_RECTANGLE "meshnoise-gradient-5 4" 129x81 @-6,-4 fill:IMAGE:6762549ea1b99bd148726301f44f5ff0116b75ba
+  FRAME "Mask group" 62x69 @79,5277
+    FRAME "Group 2258" 62x69 @0,0
+      <2 vector path(s)>
+    ROUNDED_RECTANGLE "meshnoise-gradient-5 5" 124x77 @-28,-3 fill:IMAGE:6762549ea1b99bd148726301f44f5ff0116b75ba
+  FRAME "Mask group" 81x58 @79,5508
+    FRAME "Group 2259" 81x58 @0,0
+      <2 vector path(s)>
+    ROUNDED_RECTANGLE "meshnoise-gradient-5 5" 134x84 @-2,-15 fill:IMAGE:6762549ea1b99bd148726301f44f5ff0116b75ba
+  FRAME "Mask group" 69x69 @79,5727
+    FRAME "Group 2260" 69x69 @0,0
+      ELLIPSE "Ellipse 177" 69x69 @0,0 stroke:#999999 2.0px
+      ELLIPSE "Ellipse 178" 45x45 @13,13 stroke:#999999 2.0px
+    ROUNDED_RECTANGLE "meshnoise-gradient-5 6" 124x77 @-13,-6 fill:IMAGE:6762549ea1b99bd148726301f44f5ff0116b75ba
+  ROUNDED_RECTANGLE "kohei-ikeda-emsrI7ZFcGU-unsplash 4" 610x673 @79,5916 fill:IMAGE:9ae6e30d9eb2feed0941248f2490d57f32cdcef5 r15
+  ROUNDED_RECTANGLE "Rectangle 1894" 609x673 @80,5916 fill:GRADIENT_LINEAR(#000000 @0.0->#000000 @0.75) r15
+  TEXT "Got an idea that keeps coming back?"
+       [Inter Semi Bold 42.0px ls-5.0 | #FAFAFA | 387x84]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 485x44]
+  FRAME "Frame 125" 109x49 @145,6345 fill:#FAFAFA r6
+    TEXT "Inquire"
+         [Inter Medium 24.0px/100.0% | #0F0F0F | 79x29]
+  TEXT "Discover More Services"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 437x51]
+  TEXT "We develop for"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 278x51]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x139]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x70]
+  ROUNDED_RECTANGLE "Rectangle 1902" 610x70 @79,7021 fill:GRADIENT_LINEAR(#966FFF->#2805C3->#4616E3->#7856EC) fx:NOISE
+  LINE "Line 7" 610x0 @79,6951 stroke:#6B6B6B 1.5px
+  <1 vector path(s)>
+  TEXT "On-device AI"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 160x34]
+  TEXT "(01)"
+       [Inter Regular 20.0px | #6B6B6B | 37x24 | RIGHT]
+  LINE "Line 59" 610x0 @79,7021 stroke:#A59BFF 1.5px
+  LINE "Line 62" 610x0 @79,7231 stroke:#6B6B6B 1.5px
+  LINE "Line 60" 610x0 @79,7091 stroke:#A59BFF 1.5px
+  LINE "Line 63" 610x0 @79,7301 stroke:#6B6B6B 1.5px
+  LINE "Line 61" 610x0 @79,7161 stroke:#6B6B6B 1.5px
+  LINE "Line 64" 610x0 @79,7371 stroke:#6B6B6B 1.5px
+  LINE "Line 124" 610x0 @79,7441 stroke:#6B6B6B 1.5px
+  LINE "Line 21" 610x0 @79,6881 stroke:#6B6B6B 1.5px
+  <7 vector path(s)>
+  TEXT "Generative AI App Development"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 389x34]
+  TEXT "New Architecture Migration"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 333x34]
+  TEXT "AI Knowledge Integration"
+       [Inter Medium 28.0px ls-5.0 | #FAFAFA | 306x34]
+  TEXT "React Development"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 239x34]
+  TEXT "AI Vibe Coding Cleanup"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 286x34]
+  TEXT "Monitoring & Observability"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 321x34]
+  TEXT "React Native Upgrades"
+       [Inter Medium 28.0px ls-5.0 | #0F0F0F | 281x34]
+  TEXT "(02)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(05)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(03)"
+       [Inter Regular 20.0px | #A59BFF | 40x24 | RIGHT]
+  TEXT "(06)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(04)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  TEXT "(07)"
+       [Inter Regular 20.0px | #6B6B6B | 39x24 | RIGHT]
+  TEXT "(08)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24 | RIGHT]
+  ROUNDED_RECTANGLE "james-qualtrough-h8qbn0-fOC0-unsplash 3" 1460x610 @-491,7510 fill:IMAGE:3715ca936fa68588475a11cd36aeecd85e7b6836
+  ROUNDED_RECTANGLE "Rectangle 1903" 768x610 @0,7510 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  TEXT "Tech we use on repeat"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | #FAFAFA | 415x51]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 610x70]
+  TEXT "Front End"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #FAFAFA | 136x39]
+  FRAME "Frame 3" 130x41 @160,7848 fill:#EAEAEA r14
+    FRAME "Group 2143" 24x21 @18,10
+      <2 vector path(s)>
+    TEXT "React.js"
+         [Open Sans SemiBold 17.0px/100.0% | #0F0F0F | 64x23]
+  FRAME "Frame 44" 120x41 @160,7903 fill:#EAEAEA r14
+    FRAME "Group" 20x20 @18,10
+      <1 vector path(s)>
+    TEXT "Next.js"
+         [Open Sans SemiBold 17.0px/100.0% | #0F0F0F | 58x23]
+  FRAME "Frame 47" 128x41 @160,7957 fill:#EAEAEA r14
+    FRAME "Group" 20x20 @18,10
+      <6 vector path(s)>
+    TEXT "Three.js"
+         [Open Sans SemiBold 17.0px/100.0% | #0F0F0F | 66x23]
+  FRAME "Frame 42" 148x41 @297,7903 fill:#EAEAEA r14
+    FRAME "Group 2145" 19x18 @18,12
+      <2 vector path(s)>
+    TEXT "TypeScript"
+         [Open Sans SemiBold 17.0px/100.0% | #0F0F0F | 87x23]
+  FRAME "Frame 45" 126x41 @307,7848 fill:#EAEAEA r14
+    FRAME "Group" 19x20 @18,10
+      <3 vector path(s)>
+    TEXT "Angular"
+         [Open Sans SemiBold 17.0px/100.0% | #0F0F0F | 65x23]
+  FRAME "Frame 48" 105x41 @305,7957 fill:#EAEAEA r14
+    <1 vector path(s)>
+    TEXT "GSAP"
+         [Open Sans SemiBold 17.0px/100.0% | #0F0F0F | 44x23]
+  FRAME "Frame 43" 142x41 @450,7848 fill:#EAEAEA r14
+    FRAME "Group 2144" 18x18 @18,12
+      <2 vector path(s)>
+    TEXT "JavaScript"
+         [Open Sans SemiBold 17.0px/100.0% | #0F0F0F | 82x23]
+  FRAME "Frame 46" 98x41 @463,7903 fill:#EAEAEA r14
+    FRAME "Group" 24x20 @18,31
+      FRAME "Group" 24x20 @0,0
+        <1 vector path(s)>
+      FRAME "Group" 14x12 @5,8
+        <1 vector path(s)>
+    TEXT "Vue"
+         [Open Sans SemiBold 17.0px/100.0% | #0F0F0F | 32x23]
+  FRAME "Frame 49" 94x41 @428,7957 fill:#EAEAEA r14
+    FRAME "Group 2147" 20x20 @18,10 op0.99
+      <2 vector path(s)>
+    TEXT "Vite"
+         [Open Sans SemiBold 17.0px/100.0% | #0F0F0F | 32x23]
+  <2 vector path(s)>
+  FRAME "Mask group" 606x405 @81,8457
+    ROUNDED_RECTANGLE "Rectangle 1888" 606x405 @0,0 fill:#EAEAEA r35
+    ROUNDED_RECTANGLE "meshnoise-gradient-11 3" 822x514 @-108,-54 fill:IMAGE:93c9580a28c9f2b2826615fba8d47483fce06ef4
+  FRAME "Mask group" 606x405 @81,8912
+    ROUNDED_RECTANGLE "Rectangle 1888" 606x405 @0,0 fill:#EAEAEA r35
+    ROUNDED_RECTANGLE "meshnoise-gradient-11 3" 822x514 @-108,-54 fill:IMAGE:93c9580a28c9f2b2826615fba8d47483fce06ef4
+  FRAME "Mask group" 606x405 @81,9368
+    ROUNDED_RECTANGLE "Rectangle 1888" 606x405 @0,0 fill:#EAEAEA r35
+    ROUNDED_RECTANGLE "meshnoise-gradient-11 3" 822x514 @-108,-54 fill:IMAGE:93c9580a28c9f2b2826615fba8d47483fce06ef4
+  TEXT "Web"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #FAFAFA | 67x39]
+  TEXT "Android"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #FAFAFA | 114x39]
+  TEXT "iOS"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #FAFAFA | 51x39]
+  BOOLEAN_OPERATION "Subtract" 37x37 @138,8501 fill:#FAFAFA
+    ROUNDED_RECTANGLE "Rectangle 1885" 37x37 @0,0 fill:#0F0F0F r9
+    FRAME "Group 2249" 37x10 @0,0
+      ROUNDED_RECTANGLE "Rectangle 1886" 37x2 @0,8 fill:#FDFDFD
+      ROUNDED_RECTANGLE "Rectangle 1887" 10x2 @10,0 fill:#FDFDFD
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 482x216]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 482x216]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 482x216]
+  <2 vector path(s)>
+  ROUNDED_RECTANGLE "annie-spratt-J67BWDuNq0U-unsplash 2" 2059x1320 @-632,2931 fill:IMAGE:64602806b3c730ba5844dfa802902cdf6957434b
+  ROUNDED_RECTANGLE "meshnoise-gradient-2 2" 2170x1320 @1462,4251 fill:IMAGE:ebbed3b6f444c324492b4e4d9c757672d33b2e84
+  ROUNDED_RECTANGLE "Rectangle 1882" 842x1319 @-37,2932 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  TEXT "Our Process"
+       [Inter Bold 42.0px/100.0% ls-5.0 | #F5F5F5 | 231x51]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 610x62]
+  TEXT "Ask"
+       [Inter Semi Bold 40.0px ls-5.0 | #EAEAEA | 70x80]
+  TEXT "(01)"
+       [Inter Regular 20.0px | #A59BFF | 37x24]
+  LINE "Line 125" 70x0 @123,3255 stroke:#A59BFF 3.0px
+  TEXT "Listen"
+       [Inter Semi Bold 40.0px ls-5.0 | #EAEAEA | 109x80]
+  TEXT "(02)"
+       [Inter Regular 20.0px | #A59BFF | 40x24]
+  LINE "Line 126" 109x0 @123,3494 stroke:#A59BFF 3.0px
+  TEXT "Think"
+       [Inter Semi Bold 40.0px ls-5.0 | #EAEAEA | 101x80]
+  TEXT "(03)"
+       [Inter Regular 20.0px | #A59BFF | 40x24]
+  LINE "Line 127" 101x0 @123,3749 stroke:#A59BFF 3.0px
+  TEXT "Create"
+       [Inter Semi Bold 40.0px ls-5.0 | #EAEAEA | 121x80]
+  TEXT "(04)"
+       [Inter Regular 20.0px | #A59BFF | 40x24]
+  LINE "Line 116" 121x0 @123,4000 stroke:#A59BFF 3.0px
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+       [Open Sans Regular 24.0px ls-4.0 | #FAFAFA | 321x119]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+       [Open Sans Regular 24.0px ls-4.0 | #FAFAFA | 321x126]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+       [Open Sans Regular 24.0px ls-4.0 | #FAFAFA | 316x119]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+       [Open Sans Regular 24.0px ls-4.0 | #FAFAFA | 318x108]
+  LINE "Line 22" 682x0 @558,3354 stroke:#FAFAFA 2.0px
+  FRAME "Mask group" 260x105 @429,3267
+    ELLIPSE "Ellipse 3" 260x105 @0,0 fill:#FAFAFA
+    ROUNDED_RECTANGLE "meshnoise-gradient-2 4" 408x255 @-13,-128 fill:IMAGE:ebbed3b6f444c324492b4e4d9c757672d33b2e84
+  FRAME "Mask group" 264x95 @427,3500
+    <1 vector path(s)>
+    ROUNDED_RECTANGLE "meshnoise-gradient-7 3" 556x348 @428,10 fill:IMAGE:bc9d58e2e57994f4d088619082c52dab7a98fa66
+  FRAME "Mask group" 257x159 @431,3723
+    <1 vector path(s)>
+    ROUNDED_RECTANGLE "meshnoise-gradient-3 2" 465x291 @-4,-127 fill:IMAGE:753c544d8c17d20f305b6e21d30c3a847f468893
+  FRAME "Mask group" 254x110 @432,4010
+    ROUNDED_RECTANGLE "Rectangle 1879" 254x110 @0,0 fill:#FAFAFA r10
+    ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 438x274 @-129,-70 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+  <3 vector path(s)>
+  TEXT "Start the process"
+       [Open Sans SemiBold 19.9px/100.0% ls-5.0 | #FAFAFA | 147x27 | CENTER]
+  TEXT "Decide what to do"
+       [Open Sans SemiBold 19.9px/100.0% ls-5.0 | #FAFAFA | 158x27 | CENTER]
+  TEXT "Work on it"
+       [Open Sans SemiBold 19.9px/100.0% ls-5.0 | #FAFAFA | 91x27 | CENTER]
+  TEXT "Collect the data"
+       [Open Sans SemiBold 19.9px/100.0% ls-5.0 | #FAFAFA | 136x27 | CENTER]
+  ELLIPSE "Ellipse 159" 6x6 @556,3368 fill:#A59BFF
+  ELLIPSE "Ellipse 155" 6x6 @556,3593 fill:#A59BFF
+  ELLIPSE "Ellipse 156" 6x6 @556,3879 fill:#A59BFF
+  ROUNDED_RECTANGLE "sergey-zolkin-_UeY8aTI6d0-unsplash 2" 1920x388 @-592,9885 fill:IMAGE:ee2d7fb5ce483d3f730caedddfaf2d63fad6f3e5
+  ROUNDED_RECTANGLE "Rectangle 1897" 1920x388 @-592,9885 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  FRAME "Group 2248" 2052x388 @-703,9885
+    <6 vector path(s)>
+  TEXT "Let’s build your vision"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 448x64 | CENTER]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 489x84 | CENTER]
+  FRAME "Frame 130" 200x49 @284,10156 fill:#4813D0 r6
+    TEXT "Send Message"
+         [Inter Medium 24.0px/100.0% | #FAFAFA | 170x29]

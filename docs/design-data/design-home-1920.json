@@ -1,0 +1,2931 @@
+[
+ {
+  "y": -77,
+  "x": 0,
+  "w": 1920,
+  "h": 1280,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "david-werbrouck-5GwLlb-_UYk-unsplash 1",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 39,
+  "x": 163,
+  "w": 1595,
+  "h": 39,
+  "type": "FRAME",
+  "name": "Group 2305",
+  "fill": null
+ },
+ {
+  "y": 39,
+  "x": 1593,
+  "w": 165,
+  "h": 39,
+  "type": "FRAME",
+  "name": "Frame 58",
+  "fill": [
+   "#FAFAFA"
+  ],
+  "radius": 8
+ },
+ {
+  "y": 40,
+  "x": 163,
+  "w": 61,
+  "h": 37,
+  "type": "FRAME",
+  "name": "Group 2224",
+  "fill": null
+ },
+ {
+  "y": 49,
+  "x": 966,
+  "w": 46,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Home",
+  "text": "Home",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": "RIGHT"
+ },
+ {
+  "y": 49,
+  "x": 1062,
+  "w": 48,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Cases",
+  "text": "Cases",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": "RIGHT"
+ },
+ {
+  "y": 49,
+  "x": 1160,
+  "w": 90,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Capabilities",
+  "text": "Capabilities",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": "RIGHT"
+ },
+ {
+  "y": 49,
+  "x": 1300,
+  "w": 47,
+  "h": 19,
+  "type": "TEXT",
+  "name": "About",
+  "text": "About",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": "RIGHT"
+ },
+ {
+  "y": 49,
+  "x": 1397,
+  "w": 34,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Blog",
+  "text": "Blog",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": "RIGHT"
+ },
+ {
+  "y": 49,
+  "x": 1481,
+  "w": 62,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Contact",
+  "text": "Contact",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": "RIGHT"
+ },
+ {
+  "y": 49,
+  "x": 1608,
+  "w": 110,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Start a project",
+  "text": "Start a project",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": "RIGHT"
+ },
+ {
+  "y": 421,
+  "x": 1281,
+  "w": 477,
+  "h": 539,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1897",
+  "fill": [
+   "#FAFAFA"
+  ],
+  "radius": 10
+ },
+ {
+  "y": 460,
+  "x": 1339,
+  "w": 172,
+  "h": 24,
+  "type": "TEXT",
+  "name": "Cookie Preferences",
+  "text": "Cookie Preferences",
+  "size": 20.0,
+  "font": "Inter Semi Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 489,
+  "x": 1339,
+  "w": 362,
+  "h": 76,
+  "type": "TEXT",
+  "name": "We use cookies to improve and analyze yo",
+  "text": "We use cookies to improve and analyze your online experience on your website. Visit the Privacy Policy for mor",
+  "size": 14.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 596,
+  "x": 1339,
+  "w": 356,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 65",
+  "fill": null
+ },
+ {
+  "y": 606,
+  "x": 1339,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 610,
+  "x": 1357,
+  "w": 216,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Necessary cookies (always on)",
+  "text": "Necessary cookies (always on)",
+  "size": 16.0,
+  "font": "Inter Semi Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 612,
+  "x": 1661,
+  "w": 34,
+  "h": 18,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1898",
+  "fill": [
+   "#4813D0"
+  ],
+  "radius": 3
+ },
+ {
+  "y": 615,
+  "x": 1680,
+  "w": 12,
+  "h": 12,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1899",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 2
+ },
+ {
+  "y": 644,
+  "x": 1339,
+  "w": 356,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 58",
+  "fill": null
+ },
+ {
+  "y": 658,
+  "x": 1339,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 662,
+  "x": 1357,
+  "w": 130,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Functional cookies",
+  "text": "Functional cookies",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 664,
+  "x": 1661,
+  "w": 34,
+  "h": 18,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1898",
+  "fill": [
+   "#4813D0"
+  ],
+  "radius": 3
+ },
+ {
+  "y": 667,
+  "x": 1680,
+  "w": 12,
+  "h": 12,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1899",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 2
+ },
+ {
+  "y": 696,
+  "x": 1339,
+  "w": 356,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 62",
+  "fill": null
+ },
+ {
+  "y": 710,
+  "x": 1339,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 714,
+  "x": 1357,
+  "w": 125,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Analytical cookies",
+  "text": "Analytical cookies",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 716,
+  "x": 1661,
+  "w": 34,
+  "h": 18,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1898",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 3
+ },
+ {
+  "y": 719,
+  "x": 1664,
+  "w": 12,
+  "h": 12,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1899",
+  "fill": [
+   "#0F0F0F"
+  ],
+  "radius": 2
+ },
+ {
+  "y": 748,
+  "x": 1339,
+  "w": 356,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 63",
+  "fill": null
+ },
+ {
+  "y": 753,
+  "x": 1339,
+  "w": 8,
+  "h": 25,
+  "type": "TEXT",
+  "name": "_",
+  "text": "_",
+  "size": 18.1,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 766,
+  "x": 1357,
+  "w": 137,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Advertising cookies",
+  "text": "Advertising cookies",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 768,
+  "x": 1661,
+  "w": 34,
+  "h": 18,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1898",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 3
+ },
+ {
+  "y": 771,
+  "x": 1664,
+  "w": 12,
+  "h": 12,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1899",
+  "fill": [
+   "#0F0F0F"
+  ],
+  "radius": 2
+ },
+ {
+  "y": 798,
+  "x": 1357,
+  "w": 338,
+  "h": 38,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et",
+  "size": 14.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 854,
+  "x": 1339,
+  "w": 356,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 64",
+  "fill": null
+ },
+ {
+  "y": 887,
+  "x": 1454,
+  "w": 131,
+  "h": 35,
+  "type": "FRAME",
+  "name": "Frame 120",
+  "fill": [
+   "#4813D0"
+  ],
+  "radius": 6
+ },
+ {
+  "y": 897,
+  "x": 1469,
+  "w": 101,
+  "h": 15,
+  "type": "TEXT",
+  "name": "Save Preferences",
+  "text": "Save Preferences",
+  "size": 12.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 966,
+  "x": 163,
+  "w": 966,
+  "h": 130,
+  "type": "TEXT",
+  "name": "Crafting custom web & app experiences th",
+  "text": "Crafting custom web & app experiences that help people.",
+  "size": 72.0,
+  "font": "Inter Semi Bold",
+  "color": "#FFFFFF",
+  "lh": "0.8999999761581421",
+  "align": null
+ },
+ {
+  "y": 1018,
+  "x": 1151,
+  "w": 607,
+  "h": 72,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1905",
+  "fill": [
+   "#FAFAFA"
+  ],
+  "radius": 10
+ },
+ {
+  "y": 1038,
+  "x": 1556,
+  "w": 81,
+  "h": 31,
+  "type": "FRAME",
+  "name": "Frame 122",
+  "fill": [
+   "#4813D0"
+  ],
+  "radius": 6
+ },
+ {
+  "y": 1038,
+  "x": 1647,
+  "w": 86,
+  "h": 31,
+  "type": "FRAME",
+  "name": "Frame 121",
+  "fill": [
+   "#FFFFFF"
+  ],
+  "radius": 6
+ },
+ {
+  "y": 1043,
+  "x": 1174,
+  "w": 125,
+  "h": 22,
+  "type": "TEXT",
+  "name": "We use cookies",
+  "text": "We use cookies",
+  "size": 18.0,
+  "font": "Inter Semi Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1046,
+  "x": 1568,
+  "w": 57,
+  "h": 15,
+  "type": "TEXT",
+  "name": "Accept all",
+  "text": "Accept all",
+  "size": 12.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1046,
+  "x": 1659,
+  "w": 62,
+  "h": 15,
+  "type": "TEXT",
+  "name": "Customize",
+  "text": "Customize",
+  "size": 12.0,
+  "font": "Inter Medium",
+  "color": "#6B6B6B",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1047,
+  "x": 1314,
+  "w": 227,
+  "h": 15,
+  "type": "TEXT",
+  "name": "To track and improve your experience.",
+  "text": "To track and improve your experience.",
+  "size": 14.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "1.100000023841858",
+  "align": null
+ },
+ {
+  "y": 1279,
+  "x": 163,
+  "w": 536,
+  "h": 58,
+  "type": "TEXT",
+  "name": "What we do best",
+  "text": "What we do best",
+  "size": 48.0,
+  "font": "Inter Semi Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1398,
+  "x": 0,
+  "w": 1920,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 1",
+  "fill": null
+ },
+ {
+  "y": 1426,
+  "x": 163,
+  "w": 25,
+  "h": 19,
+  "type": "TEXT",
+  "name": "(01)",
+  "text": "(01)",
+  "size": 14.0,
+  "font": "Open Sans Regular",
+  "color": "#6B6B6B",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1428,
+  "x": 191,
+  "w": 221,
+  "h": 39,
+  "type": "TEXT",
+  "name": "Desktop Apps",
+  "text": "Desktop Apps",
+  "size": 32.0,
+  "font": "Inter Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1428,
+  "x": 522,
+  "w": 878,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1475,
+  "x": 1433,
+  "w": 257,
+  "h": 344,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "kreit-xRuG2k1sjaw-unsplash 1",
+  "fill": [
+   "IMAGE"
+  ],
+  "radius": 10
+ },
+ {
+  "y": 1498,
+  "x": 0,
+  "w": 1920,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 2",
+  "fill": null
+ },
+ {
+  "y": 1526,
+  "x": 163,
+  "w": 25,
+  "h": 19,
+  "type": "TEXT",
+  "name": "(02)",
+  "text": "(02)",
+  "size": 14.0,
+  "font": "Open Sans Regular",
+  "color": "#6B6B6B",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1526,
+  "x": 522,
+  "w": 878,
+  "h": 43,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 1528,
+  "x": 191,
+  "w": 196,
+  "h": 39,
+  "type": "TEXT",
+  "name": "Mobile Apps",
+  "text": "Mobile Apps",
+  "size": 32.0,
+  "font": "Inter Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1597,
+  "x": 0,
+  "w": 1920,
+  "h": 100,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1845",
+  "fill": [
+   "GRADIENT"
+  ]
+ },
+ {
+  "y": 1598,
+  "x": 0,
+  "w": 1920,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 3",
+  "fill": null
+ },
+ {
+  "y": 1626,
+  "x": 163,
+  "w": 25,
+  "h": 19,
+  "type": "TEXT",
+  "name": "(03)",
+  "text": "(03)",
+  "size": 14.0,
+  "font": "Open Sans Regular",
+  "color": "#A59BFF",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1626,
+  "x": 522,
+  "w": 878,
+  "h": 43,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 1628,
+  "x": 191,
+  "w": 188,
+  "h": 39,
+  "type": "TEXT",
+  "name": "Web Design",
+  "text": "Web Design",
+  "size": 32.0,
+  "font": "Inter Bold",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1698,
+  "x": 0,
+  "w": 1920,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 4",
+  "fill": null
+ },
+ {
+  "y": 1726,
+  "x": 163,
+  "w": 25,
+  "h": 19,
+  "type": "TEXT",
+  "name": "(04)",
+  "text": "(04)",
+  "size": 14.0,
+  "font": "Open Sans Regular",
+  "color": "#6B6B6B",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1726,
+  "x": 522,
+  "w": 878,
+  "h": 43,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 1728,
+  "x": 191,
+  "w": 208,
+  "h": 39,
+  "type": "TEXT",
+  "name": "UI/UX Design",
+  "text": "UI/UX Design",
+  "size": 32.0,
+  "font": "Inter Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1798,
+  "x": 0,
+  "w": 1920,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 5",
+  "fill": null
+ },
+ {
+  "y": 1826,
+  "x": 163,
+  "w": 25,
+  "h": 19,
+  "type": "TEXT",
+  "name": "(05)",
+  "text": "(05)",
+  "size": 14.0,
+  "font": "Open Sans Regular",
+  "color": "#6B6B6B",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1826,
+  "x": 522,
+  "w": 878,
+  "h": 43,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 1828,
+  "x": 191,
+  "w": 209,
+  "h": 39,
+  "type": "TEXT",
+  "name": "AI Workflows",
+  "text": "AI Workflows",
+  "size": 32.0,
+  "font": "Inter Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1898,
+  "x": 0,
+  "w": 1920,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 6",
+  "fill": null
+ },
+ {
+  "y": 1926,
+  "x": 163,
+  "w": 25,
+  "h": 19,
+  "type": "TEXT",
+  "name": "(06)",
+  "text": "(06)",
+  "size": 14.0,
+  "font": "Open Sans Regular",
+  "color": "#6B6B6B",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1926,
+  "x": 522,
+  "w": 878,
+  "h": 43,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 1928,
+  "x": 191,
+  "w": 267,
+  "h": 39,
+  "type": "TEXT",
+  "name": "Product Strategy",
+  "text": "Product Strategy",
+  "size": 32.0,
+  "font": "Inter Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 1998,
+  "x": 0,
+  "w": 1920,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 7",
+  "fill": null
+ },
+ {
+  "y": 2116,
+  "x": 0,
+  "w": 1922,
+  "h": 935,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "charlesdeluvio-Lks7vei-eAg-unsplash 1",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 2116,
+  "x": 0,
+  "w": 1920,
+  "h": 935,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1897",
+  "fill": [
+   "GRADIENT"
+  ]
+ },
+ {
+  "y": 2225,
+  "x": 1147,
+  "w": 651,
+  "h": 114,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 32.0,
+  "font": "Open Sans SemiBold",
+  "color": "#FAFAFA",
+  "lh": "1.2000000476837158",
+  "align": null
+ },
+ {
+  "y": 2234,
+  "x": 163,
+  "w": 255,
+  "h": 96,
+  "type": "TEXT",
+  "name": "Industries we serve",
+  "text": "Industries we serve",
+  "size": 48.0,
+  "font": "Inter Semi Bold",
+  "color": "#FAFAFA",
+  "lh": "1.0",
+  "align": null
+ },
+ {
+  "y": 2419,
+  "x": 0,
+  "w": 1920,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 121",
+  "fill": null
+ },
+ {
+  "y": 2501,
+  "x": 163,
+  "w": 101,
+  "h": 75,
+  "type": "FRAME",
+  "name": "Mask group",
+  "fill": null
+ },
+ {
+  "y": 2501,
+  "x": 163,
+  "w": 101,
+  "h": 75,
+  "type": "FRAME",
+  "name": "Group 2241",
+  "fill": null
+ },
+ {
+  "y": 2501,
+  "x": 751,
+  "w": 131,
+  "h": 75,
+  "type": "FRAME",
+  "name": "Mask group",
+  "fill": null
+ },
+ {
+  "y": 2501,
+  "x": 751,
+  "w": 131,
+  "h": 75,
+  "type": "FRAME",
+  "name": "Group 2242",
+  "fill": null
+ },
+ {
+  "y": 2501,
+  "x": 1317,
+  "w": 146,
+  "h": 100,
+  "type": "FRAME",
+  "name": "Mask group",
+  "fill": null
+ },
+ {
+  "y": 2501,
+  "x": 1317,
+  "w": 146,
+  "h": 100,
+  "type": "FRAME",
+  "name": "Group 2243",
+  "fill": null
+ },
+ {
+  "y": 2501,
+  "x": 1317,
+  "w": 116,
+  "h": 100,
+  "type": "REGULAR_POLYGON",
+  "name": "Polygon 14",
+  "fill": null
+ },
+ {
+  "y": 2501,
+  "x": 1332,
+  "w": 116,
+  "h": 100,
+  "type": "REGULAR_POLYGON",
+  "name": "Polygon 13",
+  "fill": null
+ },
+ {
+  "y": 2501,
+  "x": 1347,
+  "w": 116,
+  "h": 100,
+  "type": "REGULAR_POLYGON",
+  "name": "Polygon 12",
+  "fill": null
+ },
+ {
+  "y": 2546,
+  "x": 163,
+  "w": 45,
+  "h": 101,
+  "type": "ELLIPSE",
+  "name": "Ellipse 158",
+  "fill": null
+ },
+ {
+  "y": 2561,
+  "x": 163,
+  "w": 45,
+  "h": 101,
+  "type": "ELLIPSE",
+  "name": "Ellipse 157",
+  "fill": null
+ },
+ {
+  "y": 2576,
+  "x": 163,
+  "w": 45,
+  "h": 101,
+  "type": "ELLIPSE",
+  "name": "Ellipse 154",
+  "fill": null
+ },
+ {
+  "y": 2591,
+  "x": 163,
+  "w": 123,
+  "h": 39,
+  "type": "TEXT",
+  "name": "Startups",
+  "text": "Startups",
+  "size": 32.0,
+  "font": "Inter Semi Bold",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 2591,
+  "x": 751,
+  "w": 84,
+  "h": 39,
+  "type": "TEXT",
+  "name": "SMBs",
+  "text": "SMBs",
+  "size": 32.0,
+  "font": "Inter Semi Bold",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 2591,
+  "x": 1326,
+  "w": 146,
+  "h": 39,
+  "type": "TEXT",
+  "name": "Enterprise",
+  "text": "Enterprise",
+  "size": 32.0,
+  "font": "Inter Semi Bold",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 2649,
+  "x": 163,
+  "w": 434,
+  "h": 135,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 18.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 2649,
+  "x": 751,
+  "w": 441,
+  "h": 135,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 18.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 2649,
+  "x": 1326,
+  "w": 441,
+  "h": 135,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 18.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 2693,
+  "x": 492,
+  "w": 441,
+  "h": 275,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "meshnoise-gradient-4 3",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 2694,
+  "x": 1103,
+  "w": 441,
+  "h": 275,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "meshnoise-gradient-4 3",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 2694,
+  "x": 1654,
+  "w": 441,
+  "h": 275,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "meshnoise-gradient-4 4",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 2850,
+  "x": 0,
+  "w": 1920,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 120",
+  "fill": null
+ },
+ {
+  "y": 2914,
+  "x": -15,
+  "w": 1950,
+  "h": 1379,
+  "type": "FRAME",
+  "name": "Golden Ratio / Rule of Thirds",
+  "fill": null,
+  "opacity": 0.1
+ },
+ {
+  "y": 2914,
+  "x": 890,
+  "w": 140,
+  "h": 39,
+  "type": "FRAME",
+  "name": "Frame 125",
+  "fill": [
+   "#4813D0"
+  ],
+  "radius": 6
+ },
+ {
+  "y": 2924,
+  "x": 906,
+  "w": 110,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Start a project",
+  "text": "Start a project",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3192,
+  "x": 662,
+  "w": 597,
+  "h": 58,
+  "type": "TEXT",
+  "name": "Frequently Asked Questions",
+  "text": "Frequently Asked Questions",
+  "size": 48.0,
+  "font": "Inter Semi Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": "CENTER"
+ },
+ {
+  "y": 3269,
+  "x": 773,
+  "w": 374,
+  "h": 54,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+  "size": 18.0,
+  "font": "Open Sans Regular",
+  "color": "#6B6B6B",
+  "lh": "1.5",
+  "align": "CENTER"
+ },
+ {
+  "y": 3346,
+  "x": 617,
+  "w": 686,
+  "h": 48,
+  "type": "FRAME",
+  "name": "Frame 4",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 14
+ },
+ {
+  "y": 3357,
+  "x": 634,
+  "w": 231,
+  "h": 25,
+  "type": "TEXT",
+  "name": "What is app development?",
+  "text": "What is app development?",
+  "size": 18.1,
+  "font": "Open Sans SemiBold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3357,
+  "x": 1265,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Bold",
+  "color": "#360D9D",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3410,
+  "x": 617,
+  "w": 686,
+  "h": 48,
+  "type": "FRAME",
+  "name": "Frame 49",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 14
+ },
+ {
+  "y": 3422,
+  "x": 634,
+  "w": 506,
+  "h": 25,
+  "type": "TEXT",
+  "name": "What is enterprise app development?",
+  "text": "What is enterprise app development?",
+  "size": 18.1,
+  "font": "Open Sans SemiBold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3448,
+  "x": 740,
+  "w": 1195,
+  "h": 844,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 3475,
+  "x": 634,
+  "w": 640,
+  "h": 91,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#6B6B6B",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 3585,
+  "x": 617,
+  "w": 686,
+  "h": 48,
+  "type": "FRAME",
+  "name": "Frame 42",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 14
+ },
+ {
+  "y": 3596,
+  "x": 634,
+  "w": 506,
+  "h": 25,
+  "type": "TEXT",
+  "name": "What types of apps does Recurssive build",
+  "text": "What types of apps does Recurssive build?",
+  "size": 18.1,
+  "font": "Open Sans SemiBold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3596,
+  "x": 1265,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Bold",
+  "color": "#360D9D",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3649,
+  "x": 617,
+  "w": 686,
+  "h": 48,
+  "type": "FRAME",
+  "name": "Frame 43",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 14
+ },
+ {
+  "y": 3661,
+  "x": 634,
+  "w": 506,
+  "h": 25,
+  "type": "TEXT",
+  "name": "Should I build a web app or mobile app?",
+  "text": "Should I build a web app or mobile app?",
+  "size": 18.1,
+  "font": "Open Sans SemiBold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3661,
+  "x": 1265,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Bold",
+  "color": "#360D9D",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3714,
+  "x": 617,
+  "w": 686,
+  "h": 48,
+  "type": "FRAME",
+  "name": "Frame 44",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 14
+ },
+ {
+  "y": 3725,
+  "x": 634,
+  "w": 506,
+  "h": 25,
+  "type": "TEXT",
+  "name": "How long does it take to build an app?",
+  "text": "How long does it take to build an app?",
+  "size": 18.1,
+  "font": "Open Sans SemiBold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3725,
+  "x": 1265,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Bold",
+  "color": "#360D9D",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3778,
+  "x": 617,
+  "w": 686,
+  "h": 48,
+  "type": "FRAME",
+  "name": "Frame 45",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 14
+ },
+ {
+  "y": 3789,
+  "x": 634,
+  "w": 506,
+  "h": 25,
+  "type": "TEXT",
+  "name": "How much does app development cost?",
+  "text": "How much does app development cost?",
+  "size": 18.1,
+  "font": "Open Sans SemiBold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3789,
+  "x": 1265,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Bold",
+  "color": "#360D9D",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3842,
+  "x": 617,
+  "w": 686,
+  "h": 48,
+  "type": "FRAME",
+  "name": "Frame 46",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 14
+ },
+ {
+  "y": 3854,
+  "x": 634,
+  "w": 506,
+  "h": 25,
+  "type": "TEXT",
+  "name": "Do you build iOS and Android apps?",
+  "text": "Do you build iOS and Android apps?",
+  "size": 18.1,
+  "font": "Open Sans SemiBold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3854,
+  "x": 1265,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Bold",
+  "color": "#360D9D",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3907,
+  "x": 617,
+  "w": 686,
+  "h": 48,
+  "type": "FRAME",
+  "name": "Frame 47",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 14
+ },
+ {
+  "y": 3918,
+  "x": 634,
+  "w": 506,
+  "h": 25,
+  "type": "TEXT",
+  "name": "What is MVP app development?",
+  "text": "What is MVP app development?",
+  "size": 18.1,
+  "font": "Open Sans SemiBold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3918,
+  "x": 1265,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Bold",
+  "color": "#360D9D",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3971,
+  "x": 617,
+  "w": 686,
+  "h": 48,
+  "type": "FRAME",
+  "name": "Frame 48",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 14
+ },
+ {
+  "y": 3982,
+  "x": 634,
+  "w": 506,
+  "h": 25,
+  "type": "TEXT",
+  "name": "Do you offer app redesign and rescue ser",
+  "text": "Do you offer app redesign and rescue services?",
+  "size": 18.1,
+  "font": "Open Sans SemiBold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 3982,
+  "x": 1265,
+  "w": 11,
+  "h": 25,
+  "type": "TEXT",
+  "name": "+",
+  "text": "+",
+  "size": 18.1,
+  "font": "Open Sans Bold",
+  "color": "#360D9D",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 4146,
+  "x": 0,
+  "w": 1920,
+  "h": 1200,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "annie-spratt-J67BWDuNq0U-unsplash 2",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 4146,
+  "x": 0,
+  "w": 1921,
+  "h": 1200,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1882",
+  "fill": [
+   "GRADIENT"
+  ]
+ },
+ {
+  "y": 4146,
+  "x": 1920,
+  "w": 1200,
+  "h": 742,
+  "type": "FRAME",
+  "name": "Fibonacci Spiral (fixed ratio)",
+  "fill": null
+ },
+ {
+  "y": 4146,
+  "x": 1920,
+  "w": 1200,
+  "h": 742,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 4146,
+  "x": 2661,
+  "w": 458,
+  "h": 742,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 4233,
+  "x": 169,
+  "w": 261,
+  "h": 58,
+  "type": "TEXT",
+  "name": "Our Process",
+  "text": "Our Process",
+  "size": 48.0,
+  "font": "Inter Semi Bold",
+  "color": "#EAEAEA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 4298,
+  "x": 169,
+  "w": 421,
+  "h": 37,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#EAEAEA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 4315,
+  "x": 549,
+  "w": 411,
+  "h": 257,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "meshnoise-gradient-2 4",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 4434,
+  "x": 205,
+  "w": 84,
+  "h": 96,
+  "type": "TEXT",
+  "name": "Ask",
+  "text": "Ask",
+  "size": 48.0,
+  "font": "Inter Semi Bold",
+  "color": "#EAEAEA",
+  "lh": "2.0",
+  "align": null
+ },
+ {
+  "y": 4441,
+  "x": 163,
+  "w": 37,
+  "h": 24,
+  "type": "TEXT",
+  "name": "(01)",
+  "text": "(01)",
+  "size": 20.0,
+  "font": "Inter Regular",
+  "color": "#A59BFF",
+  "lh": "1.2000000476837158",
+  "align": null
+ },
+ {
+  "y": 4444,
+  "x": 560,
+  "w": 266,
+  "h": 756,
+  "type": "FRAME",
+  "name": "Group 2271",
+  "fill": null
+ },
+ {
+  "y": 4444,
+  "x": 562,
+  "w": 262,
+  "h": 106,
+  "type": "FRAME",
+  "name": "Mask group",
+  "fill": null
+ },
+ {
+  "y": 4444,
+  "x": 562,
+  "w": 262,
+  "h": 106,
+  "type": "ELLIPSE",
+  "name": "Ellipse 3",
+  "fill": [
+   "#FAFAFA"
+  ]
+ },
+ {
+  "y": 4458,
+  "x": 1036,
+  "w": 696,
+  "h": 75,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 18.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 4478,
+  "x": 692,
+  "w": 666,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 22",
+  "fill": null
+ },
+ {
+  "y": 4486,
+  "x": 618,
+  "w": 148,
+  "h": 25,
+  "type": "TEXT",
+  "name": "Start the process",
+  "text": "Start the process",
+  "size": 18.0,
+  "font": "Open Sans SemiBold",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 4512,
+  "x": 205,
+  "w": 83,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 116",
+  "fill": null
+ },
+ {
+  "y": 4546,
+  "x": 690,
+  "w": 6,
+  "h": 6,
+  "type": "ELLIPSE",
+  "name": "Ellipse 159",
+  "fill": [
+   "#A59BFF"
+  ]
+ },
+ {
+  "y": 4604,
+  "x": 2661,
+  "w": 458,
+  "h": 283,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 4604,
+  "x": 2661,
+  "w": 175,
+  "h": 283,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 4604,
+  "x": 2661,
+  "w": 175,
+  "h": 108,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 4604,
+  "x": 2770,
+  "w": 67,
+  "h": 108,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 4662,
+  "x": 205,
+  "w": 130,
+  "h": 96,
+  "type": "TEXT",
+  "name": "Listen",
+  "text": "Listen",
+  "size": 48.0,
+  "font": "Inter Semi Bold",
+  "color": "#EAEAEA",
+  "lh": "2.0",
+  "align": null
+ },
+ {
+  "y": 4668,
+  "x": 163,
+  "w": 40,
+  "h": 24,
+  "type": "TEXT",
+  "name": "(02)",
+  "text": "(02)",
+  "size": 20.0,
+  "font": "Inter Regular",
+  "color": "#A59BFF",
+  "lh": "1.2000000476837158",
+  "align": null
+ },
+ {
+  "y": 4671,
+  "x": 2769,
+  "w": 67,
+  "h": 41,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 4671,
+  "x": 2770,
+  "w": 26,
+  "h": 41,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 4673,
+  "x": 560,
+  "w": 266,
+  "h": 96,
+  "type": "FRAME",
+  "name": "Mask group",
+  "fill": null
+ },
+ {
+  "y": 4683,
+  "x": 991,
+  "w": 560,
+  "h": 350,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "meshnoise-gradient-7 3",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 4683,
+  "x": 1036,
+  "w": 696,
+  "h": 75,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 18.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 4710,
+  "x": 623,
+  "w": 137,
+  "h": 25,
+  "type": "TEXT",
+  "name": "Collect the data",
+  "text": "Collect the data",
+  "size": 18.0,
+  "font": "Open Sans SemiBold",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 4726,
+  "x": 560,
+  "w": 468,
+  "h": 293,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "meshnoise-gradient-3 2",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 4740,
+  "x": 205,
+  "w": 130,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 115",
+  "fill": null
+ },
+ {
+  "y": 4765,
+  "x": 690,
+  "w": 6,
+  "h": 6,
+  "type": "ELLIPSE",
+  "name": "Ellipse 155",
+  "fill": [
+   "#A59BFF"
+  ]
+ },
+ {
+  "y": 4854,
+  "x": 564,
+  "w": 259,
+  "h": 160,
+  "type": "FRAME",
+  "name": "Mask group",
+  "fill": null
+ },
+ {
+  "y": 4871,
+  "x": 205,
+  "w": 121,
+  "h": 96,
+  "type": "TEXT",
+  "name": "Think",
+  "text": "Think",
+  "size": 48.0,
+  "font": "Inter Semi Bold",
+  "color": "#EAEAEA",
+  "lh": "2.0",
+  "align": null
+ },
+ {
+  "y": 4877,
+  "x": 163,
+  "w": 40,
+  "h": 24,
+  "type": "TEXT",
+  "name": "(03)",
+  "text": "(03)",
+  "size": 20.0,
+  "font": "Inter Regular",
+  "color": "#A59BFF",
+  "lh": "1.2000000476837158",
+  "align": null
+ },
+ {
+  "y": 4896,
+  "x": 1036,
+  "w": 696,
+  "h": 75,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 18.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 4923,
+  "x": 614,
+  "w": 158,
+  "h": 25,
+  "type": "TEXT",
+  "name": "Decide what to do",
+  "text": "Decide what to do",
+  "size": 18.0,
+  "font": "Open Sans SemiBold",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 4949,
+  "x": 205,
+  "w": 121,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 117",
+  "fill": null
+ },
+ {
+  "y": 5011,
+  "x": 690,
+  "w": 6,
+  "h": 6,
+  "type": "ELLIPSE",
+  "name": "Ellipse 156",
+  "fill": [
+   "#A59BFF"
+  ]
+ },
+ {
+  "y": 5019,
+  "x": 435,
+  "w": 441,
+  "h": 275,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "meshnoise-gradient-12 3",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 5080,
+  "x": 205,
+  "w": 145,
+  "h": 96,
+  "type": "TEXT",
+  "name": "Create",
+  "text": "Create",
+  "size": 48.0,
+  "font": "Inter Semi Bold",
+  "color": "#EAEAEA",
+  "lh": "2.0",
+  "align": null
+ },
+ {
+  "y": 5085,
+  "x": 163,
+  "w": 40,
+  "h": 24,
+  "type": "TEXT",
+  "name": "(04)",
+  "text": "(04)",
+  "size": 20.0,
+  "font": "Inter Regular",
+  "color": "#A59BFF",
+  "lh": "1.2000000476837158",
+  "align": null
+ },
+ {
+  "y": 5089,
+  "x": 565,
+  "w": 256,
+  "h": 111,
+  "type": "FRAME",
+  "name": "Mask group",
+  "fill": null
+ },
+ {
+  "y": 5089,
+  "x": 565,
+  "w": 256,
+  "h": 111,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1879",
+  "fill": [
+   "#FAFAFA"
+  ],
+  "radius": 10
+ },
+ {
+  "y": 5101,
+  "x": 1036,
+  "w": 696,
+  "h": 75,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ",
+  "size": 18.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 5134,
+  "x": 644,
+  "w": 91,
+  "h": 25,
+  "type": "TEXT",
+  "name": "Work on it",
+  "text": "Work on it",
+  "size": 18.0,
+  "font": "Open Sans SemiBold",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5158,
+  "x": 205,
+  "w": 144,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 118",
+  "fill": null
+ },
+ {
+  "y": 5346,
+  "x": 1920,
+  "w": 1920,
+  "h": 1200,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "meshnoise-gradient-2 2",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 5436,
+  "x": -208,
+  "w": 1165,
+  "h": 728,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "meshnoise-gradient-5 1",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 5447,
+  "x": 169,
+  "w": 411,
+  "h": 707,
+  "type": "FRAME",
+  "name": "Mask group",
+  "fill": null,
+  "opacity": 0.1
+ },
+ {
+  "y": 5447,
+  "x": 169,
+  "w": 411,
+  "h": 707,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 5495,
+  "x": 8887,
+  "w": 1624,
+  "h": 309,
+  "type": "TEXT",
+  "name": "RECURSSIVE",
+  "text": "RECURSSIVE",
+  "size": 255.4,
+  "font": "Inter Bold",
+  "color": "#FFFFFF",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5515,
+  "x": 975,
+  "w": 54,
+  "h": 22,
+  "type": "TEXT",
+  "name": "*Name",
+  "text": "*Name",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5522,
+  "x": 165,
+  "w": 653,
+  "h": 58,
+  "type": "TEXT",
+  "name": "Ready for success?",
+  "text": "Ready for success?",
+  "size": 48.0,
+  "font": "Inter Semi Bold",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5551,
+  "x": 975,
+  "w": 783,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 8",
+  "fill": null
+ },
+ {
+  "y": 5580,
+  "x": 975,
+  "w": 55,
+  "h": 22,
+  "type": "TEXT",
+  "name": "*E-mail",
+  "text": "*E-mail",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5583,
+  "x": 169,
+  "w": 407,
+  "h": 72,
+  "type": "TEXT",
+  "name": "Lorem ipsum dolor sit amet, consectetur ",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#6B6B6B",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 5602,
+  "x": 1766,
+  "w": 53,
+  "h": 22,
+  "type": "TEXT",
+  "name": "(active)",
+  "text": "(active)",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#4813D0",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5616,
+  "x": 975,
+  "w": 783,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 9",
+  "fill": null
+ },
+ {
+  "y": 5645,
+  "x": 975,
+  "w": 88,
+  "h": 22,
+  "type": "TEXT",
+  "name": "*Telephone",
+  "text": "*Telephone",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5668,
+  "x": 1766,
+  "w": 48,
+  "h": 22,
+  "type": "TEXT",
+  "name": "(error)",
+  "text": "(error)",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#CC0000",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5681,
+  "x": 975,
+  "w": 783,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 10",
+  "fill": null
+ },
+ {
+  "y": 5710,
+  "x": 975,
+  "w": 95,
+  "h": 22,
+  "type": "TEXT",
+  "name": "*Description",
+  "text": "*Description",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5826,
+  "x": 975,
+  "w": 783,
+  "h": 0,
+  "type": "LINE",
+  "name": "Line 11",
+  "fill": null
+ },
+ {
+  "y": 5855,
+  "x": 975,
+  "w": 104,
+  "h": 22,
+  "type": "TEXT",
+  "name": "*Interested in",
+  "text": "*Interested in",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5891,
+  "x": 975,
+  "w": 169,
+  "h": 42,
+  "type": "FRAME",
+  "name": "Frame 2",
+  "fill": null,
+  "radius": 10
+ },
+ {
+  "y": 5891,
+  "x": 1159,
+  "w": 115,
+  "h": 42,
+  "type": "FRAME",
+  "name": "Frame 128",
+  "fill": [
+   "#4813D0"
+  ],
+  "radius": 6
+ },
+ {
+  "y": 5891,
+  "x": 1289,
+  "w": 128,
+  "h": 42,
+  "type": "FRAME",
+  "name": "Frame 50",
+  "fill": null,
+  "radius": 10
+ },
+ {
+  "y": 5891,
+  "x": 1432,
+  "w": 86,
+  "h": 42,
+  "type": "FRAME",
+  "name": "Frame 5",
+  "fill": null,
+  "radius": 10
+ },
+ {
+  "y": 5891,
+  "x": 1533,
+  "w": 74,
+  "h": 42,
+  "type": "FRAME",
+  "name": "Frame 6",
+  "fill": null,
+  "radius": 10
+ },
+ {
+  "y": 5901,
+  "x": 990,
+  "w": 139,
+  "h": 22,
+  "type": "TEXT",
+  "name": "Web Development",
+  "text": "Web Development",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5901,
+  "x": 1174,
+  "w": 85,
+  "h": 22,
+  "type": "TEXT",
+  "name": "Mobile App",
+  "text": "Mobile App",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5901,
+  "x": 1304,
+  "w": 98,
+  "h": 22,
+  "type": "TEXT",
+  "name": "UI/UX Design",
+  "text": "UI/UX Design",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5901,
+  "x": 1447,
+  "w": 56,
+  "h": 22,
+  "type": "TEXT",
+  "name": "Startup",
+  "text": "Startup",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5901,
+  "x": 1548,
+  "w": 44,
+  "h": 22,
+  "type": "TEXT",
+  "name": "Other",
+  "text": "Other",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5962,
+  "x": 975,
+  "w": 118,
+  "h": 22,
+  "type": "TEXT",
+  "name": "*Project budget",
+  "text": "*Project budget",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#999999",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 5998,
+  "x": 975,
+  "w": 68,
+  "h": 42,
+  "type": "FRAME",
+  "name": "Frame 7",
+  "fill": null,
+  "radius": 10
+ },
+ {
+  "y": 5998,
+  "x": 1058,
+  "w": 82,
+  "h": 42,
+  "type": "FRAME",
+  "name": "Frame 8",
+  "fill": null,
+  "radius": 10
+ },
+ {
+  "y": 5998,
+  "x": 1155,
+  "w": 91,
+  "h": 42,
+  "type": "FRAME",
+  "name": "Frame 127",
+  "fill": [
+   "#4813D0"
+  ],
+  "radius": 6
+ },
+ {
+  "y": 5998,
+  "x": 1261,
+  "w": 77,
+  "h": 42,
+  "type": "FRAME",
+  "name": "Frame 12",
+  "fill": null,
+  "radius": 10
+ },
+ {
+  "y": 5998,
+  "x": 1353,
+  "w": 95,
+  "h": 42,
+  "type": "FRAME",
+  "name": "Frame 10",
+  "fill": null,
+  "radius": 10
+ },
+ {
+  "y": 6008,
+  "x": 990,
+  "w": 38,
+  "h": 22,
+  "type": "TEXT",
+  "name": "<10K",
+  "text": "<10K",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 6008,
+  "x": 1073,
+  "w": 52,
+  "h": 22,
+  "type": "TEXT",
+  "name": "10-20K",
+  "text": "10-20K",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 6008,
+  "x": 1170,
+  "w": 61,
+  "h": 22,
+  "type": "TEXT",
+  "name": "50-100K",
+  "text": "50-100K",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 6008,
+  "x": 1276,
+  "w": 47,
+  "h": 22,
+  "type": "TEXT",
+  "name": ">100K",
+  "text": ">100K",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 6008,
+  "x": 1368,
+  "w": 65,
+  "h": 22,
+  "type": "TEXT",
+  "name": "Not sure",
+  "text": "Not sure",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 6068,
+  "x": 994,
+  "w": 314,
+  "h": 19,
+  "type": "TEXT",
+  "name": "I’ve read and accepted the terms and con",
+  "text": "I’ve read and accepted the terms and conditions",
+  "size": 14.0,
+  "font": "Open Sans Regular",
+  "color": "#0F0F0F",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 6071,
+  "x": 975,
+  "w": 14,
+  "h": 14,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "Rectangle 1844",
+  "fill": [
+   "#EAEAEA"
+  ],
+  "radius": 2
+ },
+ {
+  "y": 6075,
+  "x": 978,
+  "w": 8,
+  "h": 6,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 6115,
+  "x": 975,
+  "w": 143,
+  "h": 39,
+  "type": "FRAME",
+  "name": "Frame 126",
+  "fill": [
+   "#4813D0"
+  ],
+  "radius": 6
+ },
+ {
+  "y": 6125,
+  "x": 990,
+  "w": 113,
+  "h": 19,
+  "type": "TEXT",
+  "name": "Send Message",
+  "text": "Send Message",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "100.0%",
+  "align": null
+ },
+ {
+  "y": 6264,
+  "x": 0,
+  "w": 1920,
+  "h": 685,
+  "type": "FRAME",
+  "name": "Group 2253",
+  "fill": null
+ },
+ {
+  "y": 6264,
+  "x": 0,
+  "w": 1920,
+  "h": 685,
+  "type": "ROUNDED_RECTANGLE",
+  "name": "meshnoise-gradient-12 3",
+  "fill": [
+   "IMAGE"
+  ]
+ },
+ {
+  "y": 6334,
+  "x": 163,
+  "w": 1594,
+  "h": 615,
+  "type": "FRAME",
+  "name": "Group 2252",
+  "fill": null
+ },
+ {
+  "y": 6334,
+  "x": 880,
+  "w": 160,
+  "h": 106,
+  "type": "FRAME",
+  "name": "Group",
+  "fill": null
+ },
+ {
+  "y": 6512,
+  "x": 163,
+  "w": 71,
+  "h": 24,
+  "type": "TEXT",
+  "name": "Contents",
+  "text": "Contents",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 6512,
+  "x": 930,
+  "w": 50,
+  "h": 24,
+  "type": "TEXT",
+  "name": "Where",
+  "text": "Where",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 6512,
+  "x": 1681,
+  "w": 55,
+  "h": 24,
+  "type": "TEXT",
+  "name": "Socials",
+  "text": "Socials",
+  "size": 16.0,
+  "font": "Inter Medium",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 6542,
+  "x": 163,
+  "w": 61,
+  "h": 96,
+  "type": "TEXT",
+  "name": "Home Services About Contact",
+  "text": "Home\nServices\nAbout\nContact",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 6542,
+  "x": 930,
+  "w": 92,
+  "h": 96,
+  "type": "TEXT",
+  "name": "Thessaloniki Greece 22:52:19 (Utc+3)",
+  "text": "Thessaloniki\nGreece\n22:52:19 \n(Utc+3)",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 6542,
+  "x": 1681,
+  "w": 76,
+  "h": 96,
+  "type": "TEXT",
+  "name": "Facebook Instagram LinkedIn E-mail",
+  "text": "Facebook\nInstagram\nLinkedIn\nE-mail",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "1.5",
+  "align": null
+ },
+ {
+  "y": 6711,
+  "x": 163,
+  "w": 134,
+  "h": 20,
+  "type": "TEXT",
+  "name": "© 2020 Acme. All rig",
+  "text": "©2026 Recurssive",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "20.0",
+  "align": "RIGHT"
+ },
+ {
+  "y": 6711,
+  "x": 584,
+  "w": 53,
+  "h": 20,
+  "type": "TEXT",
+  "name": "© 2020 Acme. All rig",
+  "text": "Privacy",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "20.0",
+  "align": "RIGHT"
+ },
+ {
+  "y": 6711,
+  "x": 924,
+  "w": 47,
+  "h": 20,
+  "type": "TEXT",
+  "name": "© 2020 Acme. All rig",
+  "text": "Terms",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "20.0",
+  "align": "RIGHT"
+ },
+ {
+  "y": 6711,
+  "x": 1258,
+  "w": 59,
+  "h": 20,
+  "type": "TEXT",
+  "name": "© 2020 Acme. All rig",
+  "text": "Cookies",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "20.0",
+  "align": "RIGHT"
+ },
+ {
+  "y": 6711,
+  "x": 1604,
+  "w": 153,
+  "h": 20,
+  "type": "TEXT",
+  "name": "© 2020 Acme. All rig",
+  "text": "Designed by Omnics",
+  "size": 16.0,
+  "font": "Open Sans Regular",
+  "color": "#FAFAFA",
+  "lh": "20.0",
+  "align": "RIGHT"
+ }
+]

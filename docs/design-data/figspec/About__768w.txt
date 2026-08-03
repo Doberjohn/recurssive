@@ -1,0 +1,163 @@
+FRAME "About" 768x5858 @5776,0 fill:#FAFAFA
+  ROUNDED_RECTANGLE "sergey-zolkin-_UeY8aTI6d0-unsplash 2" 1920x388 @-592,4911 fill:IMAGE:ee2d7fb5ce483d3f730caedddfaf2d63fad6f3e5
+  ROUNDED_RECTANGLE "Rectangle 1897" 1920x388 @-592,4911 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  FRAME "Group 2248" 2052x388 @-703,4911
+    <6 vector path(s)>
+  ROUNDED_RECTANGLE "image 649" 1969x1298 @-463,-97 fill:IMAGE:29a11ddb439db7af2ce5154492f5ffdc854987c0
+  ROUNDED_RECTANGLE "meshnoise-gradient-2 1" 2069x1293 @1553,1201 fill:IMAGE:ebbed3b6f444c324492b4e4d9c757672d33b2e84
+  ROUNDED_RECTANGLE "Rectangle 1881" 1956x1293 @-473,-92 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  FRAME "Rule of Thirds Diagonal" 1957x1382 @-460,-152
+    FRAME "Group" 1957x1382 @0,0
+      <2 vector path(s)>
+    <2 vector path(s)>
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  <1 vector path(s)>
+  FRAME "Group" 71x43 @79,54
+    <5 vector path(s)>
+  FRAME "Frame 40" 198x47 @491,52 fill:#FAFAFA r8
+    TEXT "Start a project"
+         [Inter Semi Bold 22.0px/100.0% ls-3.0 | #0F0F0F | 143x27]
+    <1 vector path(s)>
+  ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 768x560 @0,5298 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+  <1 vector path(s)>
+  FRAME "Group 2268" 104x168 @585,5488
+    TEXT "Socials"
+         [Inter Medium 22.0px | #FAFAFA | 76x33]
+    TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+         [Open Sans Regular 22.0px | #FAFAFA | 104x132]
+  FRAME "Group 2269" 127x168 @321,5488
+    TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+         [Open Sans Regular 22.0px | #FAFAFA | 127x132]
+    TEXT "Where"
+         [Inter Medium 22.0px | #FAFAFA | 69x33]
+  FRAME "Group 2270" 97x168 @79,5488
+    TEXT "Home
+Services
+About
+Contact"
+         [Open Sans Regular 22.0px | #FAFAFA | 84x132]
+    TEXT "Contents"
+         [Inter Medium 22.0px | #FAFAFA | 97x33]
+  TEXT "©2026 Recurssive"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  TEXT "Privacy"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 67x20 | RIGHT]
+  TEXT "Terms"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 60x20 | RIGHT]
+  TEXT "Design by Omnics"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  FRAME "Group" 120x79 @324,5344
+    <5 vector path(s)>
+  FRAME "Group 2332" 111x73 @79,706
+    TEXT "Feel"
+         [Inter Semi Bold 52.0px/100.0% ls-5.0 | #FAFAFA | 96x63]
+    FRAME "Mask group" 18x73 @93,0
+      TEXT "."
+           [Inter Bold 59.9px/100.0% | #FAFAFA | 18x73]
+      ROUNDED_RECTANGLE "gradient-2 2" 248x155 @90,-66 fill:IMAGE:4b81ee855924d172f81773255459ce9c976ecdfb
+  FRAME "Group 2331" 134x73 @267,706
+    TEXT "Form"
+         [Inter Semi Bold 52.0px/100.0% ls-5.0 | #FAFAFA | 120x63]
+    FRAME "Mask group" 18x73 @116,0
+      TEXT "."
+           [Inter Bold 59.9px/100.0% | #FAFAFA | 18x73]
+      ROUNDED_RECTANGLE "gradient-2 2" 248x155 @90,-66 fill:IMAGE:4b81ee855924d172f81773255459ce9c976ecdfb
+  FRAME "Group 2330" 216x73 @478,706
+    TEXT "Function"
+         [Inter Semi Bold 52.0px/100.0% ls-5.0 | #FAFAFA | 201x63]
+    FRAME "Mask group" 18x73 @198,0
+      TEXT "."
+           [Inter Bold 59.9px/100.0% | #FAFAFA | 18x73]
+      ROUNDED_RECTANGLE "gradient-2 2" 248x155 @90,-66 fill:IMAGE:4b81ee855924d172f81773255459ce9c976ecdfb
+  TEXT "(Our Story)"
+       [Inter Semi Bold 22.0px | #A59BFF | 120x22]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 485x237]
+  TEXT "We create to inspire others to create."
+       [Inter Semi Bold 40.0px ls-5.0 | #0F0F0F | 433x88]
+  TEXT "Creativity driven by people efficiency driven by tech."
+       [Inter Semi Bold 40.0px ls-5.0 | #0F0F0F | 494x88]
+  TEXT "Crafting custom web & app experiences that help people."
+       [Inter Semi Bold 40.0px ls-6.0 | #0F0F0F | 524x88]
+  TEXT "(Purpose)"
+       [Inter Semi Bold 22.0px ls-5.0 | #6B6B6B | 98x22]
+  TEXT "(Vision)"
+       [Inter Semi Bold 22.0px | #6B6B6B | 84x22]
+  TEXT "(Mission)"
+       [Inter Semi Bold 22.0px ls-3.0 | #6B6B6B | 95x22]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consequat."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x122]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consequat."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x122]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consequat."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 610x122]
+  FRAME "Group 2290" 610x671 @79,2230
+    ROUNDED_RECTANGLE "guillaume-issaly-ZCv2Wn5KO6w-unsplash 1" 610x608 @0,22 fill:IMAGE:8ea2b266c4170e39121e74dc8c0dcf14c13ac23c r20
+    ROUNDED_RECTANGLE "Rectangle 1898" 610x608 @0,22 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F @0.5->#0F0F0F) r20
+    FRAME "Group" 179x671 @95,0
+      <621 vector path(s)>
+  FRAME "Group 2296" 610x347 @79,4242
+    ROUNDED_RECTANGLE "gradient-2 2" 610x347 @610,347 fill:IMAGE:4b81ee855924d172f81773255459ce9c976ecdfb r20
+    FRAME "Group 2268" 164x106 @223,120
+      FRAME "Group 2046" 164x106 @0,0
+        <5 vector path(s)>
+  TEXT "Our Values"
+       [Inter Semi Bold 32.0px | #6B6B6B | 169x32]
+  TEXT "(01)"
+       [Inter Regular 22.0px | #6B6B6B | 40x26]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et."
+       [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 575x55]
+  TEXT "Reliability"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 200x58]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et."
+       [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 575x55]
+  TEXT "(02)"
+       [Inter Regular 22.0px | #6B6B6B | 44x26]
+  TEXT "Empathy"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 188x58]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et."
+       [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 575x55]
+  TEXT "(03)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24]
+  TEXT "Performance"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 275x58]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et."
+       [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 575x55]
+  TEXT "(04)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24]
+  TEXT "Foresight"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 197x58]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et."
+       [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 575x55]
+  TEXT "(05)"
+       [Inter Regular 20.0px | #6B6B6B | 40x24]
+  TEXT "Creativity"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | GRADIENT_LINEAR(#4813D0->#4212BF->#A59BFF) | 205x58]
+  TEXT "We live & breathe recursion"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | #0F0F0F | 572x58]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit"
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 609x279]
+  TEXT "Let’s build your vision"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 448x64 | CENTER]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 489x84 | CENTER]
+  FRAME "Frame 124" 200x49 @284,5182 fill:#4813D0 r6
+    TEXT "Send Message"
+         [Inter Medium 24.0px/100.0% | #FAFAFA | 170x29]
+  LINE "Line 51" 1920x0 @-80,4693 stroke:#EAEAEA 1.5px
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 337x122]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 337x122]
+  TEXT "Start"
+       [Inter Semi Bold 32.0px/24.2 ls-5.0 | #0F0F0F | 71x25]
+  TEXT "Process"
+       [Inter Semi Bold 32.0px/24.2 ls-5.0 | #0F0F0F | 115x25]
+  <2 vector path(s)>

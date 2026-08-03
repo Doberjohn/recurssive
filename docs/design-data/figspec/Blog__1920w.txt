@@ -1,0 +1,223 @@
+FRAME "Blog" 1920x3248 @18196,0 fill:#FAFAFA
+  ROUNDED_RECTANGLE "max-kolganov-MvKy-zhHD2Q-unsplash 2" 1922x255 @-2,2310 fill:IMAGE:d332bd5ee9ba7fc8e5d9342aad9269b229e3c611
+  TEXT "Stay in the loop"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 323x96]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+       [Open Sans Regular 16.0px | #6B6B6B | 374x48]
+  FRAME "Frame 3" 200x42 @540,2406 fill:#FAFAFA r6
+    TEXT "Name"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 45x22]
+  FRAME "Frame 125" 200x42 @755,2406 fill:#FAFAFA r6
+    TEXT "E-mail"
+         [Open Sans Regular 16.0px/100.0% | #0F0F0F | 46x22]
+  FRAME "Group 2100" 333x19 @540,2466
+    TEXT "I’ve read and accepted the terms and conditions"
+         [Open Sans Regular 14.0px/100.0% | #FAFAFA | 314x19]
+    ROUNDED_RECTANGLE "Rectangle 1844" 14x14 @0,3 fill:#EAEAEA r2
+    FRAME "Group" 8x6 @3,7
+      <1 vector path(s)>
+  FRAME "Rabatment Grid (fixed ratio)" 513x513 @1176,2310
+    FRAME "Group" 513x513 @0,0
+      <7 vector path(s)>
+  FRAME "Rabatment Grid (fixed ratio)" 513x513 @1689,2310
+    FRAME "Group" 513x513 @0,0
+      <7 vector path(s)>
+  FRAME "Frame 124" 96x41 @971,2406 fill:#4813D0 r6
+    TEXT "Join"
+         [Inter Medium 16.8px/100.0% | #FAFAFA | 34x20]
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Lorem ipsum dolor sit amet"
+       [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 380x39]
+  TEXT "Insights"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 58x22]
+  TEXT "Technology"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 86x22]
+  TEXT "Tools"
+       [Open Sans Regular 16.0px/100.0% | #0F0F0F | 40x22]
+  FRAME "Frame 18" 63x29 @176,750 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 41" 63x29 @716,750 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 43" 63x29 @1255,750 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 45" 63x29 @176,1327 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 51" 63x29 @176,1905 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 53" 63x29 @716,1905 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 55" 63x29 @1255,1905 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 47" 63x29 @716,1327 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 49" 63x29 @1255,1327 fill:#EAEAEA r4
+    TEXT "Insights"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 44x16]
+  FRAME "Frame 24" 49x42 @167,266 fill:#4813D0 r8
+    TEXT "All"
+         [Open Sans Regular 16.0px/100.0% | #FAFAFA | 19x22]
+  FRAME "Frame 19" 83x29 @249,750 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  FRAME "Frame 42" 83x29 @789,750 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  FRAME "Frame 44" 83x29 @1328,750 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  FRAME "Frame 46" 83x29 @249,1327 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  FRAME "Frame 52" 83x29 @249,1905 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  FRAME "Frame 54" 83x29 @789,1905 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  FRAME "Frame 56" 83x29 @1328,1905 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  FRAME "Frame 48" 83x29 @789,1327 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  FRAME "Frame 50" 83x29 @1328,1327 fill:#EAEAEA r4
+    TEXT "Technology"
+         [Open Sans Regular 12.0px/100.0% | #0F0F0F | 64x16]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x44]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 477x72]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  TEXT "June 25, 2026"
+       [Open Sans Regular 12.0px/100.0% | #0F0F0F | 76x16]
+  ROUNDED_RECTANGLE "govardhan-k-P6EeymU1I-unsplash 1" 514x342 @165,389 fill:IMAGE:0857592e661dd3c2095a4331cab346092aa9394f r20
+  ROUNDED_RECTANGLE "annie-spratt-MChSQHxGZrQ-unsplash 1" 514x342 @165,967 fill:IMAGE:76d22a21d14cc9bc57695d46574185b8c86c8e48 r20
+  ROUNDED_RECTANGLE "boitumelo-_8gR561QtEA-unsplash 1" 514x343 @705,389 fill:IMAGE:12525c2bd01d42b8c6a24abf40b48b3609432076 r20
+  ROUNDED_RECTANGLE "microsoft-copilot-qUJ8fgoaLTg-unsplash 1" 514x342 @1244,967 fill:IMAGE:b9b8a42b06e1f3a40cd8d82d4a9ff8175ec3f162 r20
+  ROUNDED_RECTANGLE "shiwa-id-Bajw65b3mXo-unsplash 1" 514x342 @705,967 fill:IMAGE:f4843aaa135b29459fdfab131e4c63dcf07a4c9f r20
+  ROUNDED_RECTANGLE "james-qualtrough-h8qbn0-fOC0-unsplash 1" 514x343 @1244,389 fill:IMAGE:3715ca936fa68588475a11cd36aeecd85e7b6836 r20
+  ROUNDED_RECTANGLE "zac-ong-lknu_oR_V3Q-unsplash 1" 514x342 @165,1545 fill:IMAGE:838f058a522e3ac485d2e619d84295d090011c1b r20
+  ROUNDED_RECTANGLE "james-harrison-vpOeXr5wmR4-unsplash 1" 514x343 @705,1545 fill:IMAGE:38a4c7f9aa3077e04f0af33deec470f845fa09b1 r20
+  ROUNDED_RECTANGLE "daria-nepriakhina-gGoi4QTXXBA-unsplash 1" 514x342 @1244,1545 fill:IMAGE:2b09a91837a330f08735446187e33bb047f7eaa7 r20
+  FRAME "Group 2080" 226x44 @847,2132
+    TEXT "Show more"
+         [Inter Semi Bold 32.0px/100.0% ls-5.0 | #0F0F0F | 161x39]
+    FRAME "Group 2079" 44x44 @182,0
+      ELLIPSE "Ellipse 1" 44x44 @0,0 fill:#0F0F0F
+      <1 vector path(s)>
+  TEXT "Blog"
+       [Inter Semi Bold 48.0px/100.0% ls-5.0 | #0F0F0F | 97x58]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+       [Open Sans Regular 16.0px | #6B6B6B | 467x44]
+  LINE "Line 58" 1199x0 @559,287 stroke:#6B6B6B 1.5px
+  FRAME "Group 2253" 1920x685 @0,2563
+    ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 1920x685 @0,0 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+    FRAME "Group 2252" 1594x615 @163,70
+      FRAME "Group" 160x106 @717,0
+        <5 vector path(s)>
+      <1 vector path(s)>
+      TEXT "Home
+Services
+About
+Contact"
+           [Open Sans Regular 16.0px | #FAFAFA | 61x96]
+      TEXT "Contents"
+           [Inter Medium 16.0px | #FAFAFA | 71x24]
+      TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+           [Open Sans Regular 16.0px | #FAFAFA | 92x96]
+      TEXT "Where"
+           [Inter Medium 16.0px | #FAFAFA | 50x24]
+      TEXT "Socials"
+           [Inter Medium 16.0px | #FAFAFA | 55x24]
+      TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+           [Open Sans Regular 16.0px | #FAFAFA | 76x96]
+      TEXT "©2026 Recurssive"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 134x20 | RIGHT]
+      TEXT "Privacy"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 53x20 | RIGHT]
+      TEXT "Terms"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 47x20 | RIGHT]
+      TEXT "Cookies"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 59x20 | RIGHT]
+      TEXT "Designed by Omnics"
+           [Open Sans Regular 16.0px/20.0 | #FAFAFA | 153x20 | RIGHT]
+  FRAME "Group 2304" 1595x39 @163,39
+    TEXT "Cases"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 48x19 | RIGHT]
+    TEXT "Home"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 46x19 | RIGHT]
+    TEXT "Capabilities"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 90x19 | RIGHT]
+    TEXT "About"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 47x19 | RIGHT]
+    TEXT "Blog"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 34x19 | RIGHT]
+    TEXT "Contact"
+         [Inter Medium 16.0px/100.0% | #0F0F0F | 62x19 | RIGHT]
+    <1 vector path(s)>
+    FRAME "Group 2224" 61x37 @0,1
+      <5 vector path(s)>
+    FRAME "Frame 58" 165x39 @1430,0 fill:#0F0F0F r8
+      TEXT "Start a project"
+           [Inter Medium 16.0px/100.0% | #FAFAFA | 110x19 | RIGHT]
+      <1 vector path(s)>

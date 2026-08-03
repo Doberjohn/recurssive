@@ -1,0 +1,127 @@
+FRAME "Terms of Service" 768x4309 @31768,0 fill:#FAFAFA
+  TEXT "RECURSSIVE"
+       [Inter Bold 255.4px/100.0% | #FFFFFF | 1624x309]
+  <1 vector path(s)>
+  FRAME "Group" 71x43 @79,54
+    <5 vector path(s)>
+  FRAME "Frame 40" 198x47 @491,52 fill:#0F0F0F r8
+    TEXT "Start a project"
+         [Inter Semi Bold 22.0px/100.0% ls-3.0 | #FAFAFA | 143x27]
+    <1 vector path(s)>
+  ROUNDED_RECTANGLE "meshnoise-gradient-12 3" 768x560 @0,3749 fill:IMAGE:dd7d1a8d9784f0fb188bc29a4d388c89ed836072
+  <1 vector path(s)>
+  FRAME "Group 2268" 104x168 @585,3939
+    TEXT "Socials"
+         [Inter Medium 22.0px | #FAFAFA | 76x33]
+    TEXT "Facebook
+Instagram
+LinkedIn
+E-mail"
+         [Open Sans Regular 22.0px | #FAFAFA | 104x132]
+  FRAME "Group 2269" 127x168 @321,3939
+    TEXT "Thessaloniki
+Greece
+22:52:19 
+(Utc+3)"
+         [Open Sans Regular 22.0px | #FAFAFA | 127x132]
+    TEXT "Where"
+         [Inter Medium 22.0px | #FAFAFA | 69x33]
+  FRAME "Group 2270" 97x168 @79,3939
+    TEXT "Home
+Services
+About
+Contact"
+         [Open Sans Regular 22.0px | #FAFAFA | 84x132]
+    TEXT "Contents"
+         [Inter Medium 22.0px | #FAFAFA | 97x33]
+  TEXT "©2026 Recurssive"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  TEXT "Privacy"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 67x20 | RIGHT]
+  TEXT "Terms"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 60x20 | RIGHT]
+  TEXT "Design by Omnics"
+       [Open Sans Regular 22.0px/20.0 ls-4.0 | #FAFAFA | 170x20 | RIGHT]
+  FRAME "Group" 120x79 @324,3795
+    <5 vector path(s)>
+  FRAME "Group 2347" 610x194 @79,399
+    TEXT "Website"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 132x44]
+    TEXT "Welcome to recurssive.com, operated by Recurssive. These Terms of Service govern your access to and use of our Site and the services we provide. By accessing or using our Site, you agree to be bound by these Terms. If you do not agree, please do not use our Site or Services."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x150]
+  FRAME "Group 2348" 610x164 @79,613
+    TEXT "Acceptance of Terms"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 339x44]
+    TEXT "By visiting our Site, submitting a form, engaging our Services, or otherwise interacting with us, you confirm that you have read, understood, and agree to these Terms, as well as our Privacy Policy."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x120]
+  FRAME "Group 2349" 610x284 @79,797
+    TEXT "Description of Services"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 367x44]
+    TEXT "Recurssive provides creative, design, development, consulting and production services. The specific scope, deliverables, timeline, and cost of any engagement will be outlined separately in a proposal, quote, contract, or statement of work agreed upon between you and Recurssive. We reserve the right to modify, suspend, or discontinue any part of our Services at any time, with or without notice."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x240]
+  FRAME "Group 2350" 610x344 @79,1101
+    TEXT "Intellectual Property Rights"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 426x44]
+    TEXT "Unless otherwise stated, all content on this Site including text, graphics, logos, images, and design is the property of Recurssive or its licensors and is protected by applicable intellectual property laws. Ownership and usage rights for work produced as part of a client engagement will be governed by the terms of the applicable project agreement or contract, not by this general Terms page. You may not reproduce, distribute, modify, or create derivative works from any content on this Site without our prior written consent."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x300]
+  FRAME "Group 2351" 610x344 @79,1465
+    TEXT "User Obligations"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 263x44]
+    TEXT "When using our Site or Services, you agree not to:
+- Use the Site for any unlawful purpose or in violation of these Terms;
+- Submit false, misleading, or fraudulent information through any contact or inquiry form;
+- Attempt to gain unauthorized access to our systems, servers, or data;
+- Interfere with or disrupt the operation of the Site;
+- Use automated tools to access or extract content from the Site without permission."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x300]
+  FRAME "Group 2352" 610x224 @79,1829
+    TEXT "Client Engagements and Payment"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 535x44]
+    TEXT "Any specific engagement for Services will be subject to a separate agreement, quote, or contract, which will outline scope, fees, payment terms, timelines, and deliverables. In the event of a conflict between these Terms and a signed project agreement, the project agreement will govern."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x180]
+  FRAME "Group 2353" 610x224 @79,2073
+    TEXT "Third-Party Links and Services"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 485x44]
+    TEXT "Our Site may contain links to third-party websites or make use of third-party tools and services (such as analytics or advertising platforms). We are not responsible for the content, accuracy, or practices of third-party sites or services. Use of any third-party service is subject to that party's own terms and privacy policies."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x180]
+  FRAME "Group 2354" 610x224 @79,2317
+    TEXT "Disclaimers"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 186x44]
+    TEXT "The Site and Services are provided on an "as is" and "as available" basis, without warranties of any kind, whether express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. We do not guarantee that the website will be uninterrupted, secure, or error-free."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x180]
+  FRAME "Group 2355" 610x194 @79,2561
+    TEXT "Termination"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 190x44]
+    TEXT "We reserve the right to suspend or terminate your access to the website or services at our discretion, without notice, for conduct that we believe violates these Terms or is otherwise harmful to our business, other users, or third parties."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x150]
+  FRAME "Group 2356" 610x194 @79,2775
+    TEXT "Governing Law"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 239x44]
+    TEXT "These Terms shall be governed by and construed in accordance with the laws of Greece, without regard to its conflict of law principles. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts located in Greece."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x150]
+  FRAME "Group 2357" 610x164 @79,2989
+    TEXT "Changes to These Terms"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 397x44]
+    TEXT "We may update these Terms from time to time. Any changes will be posted on this page. Your continued use of the Site after changes are posted constitutes acceptance of the revised Terms."
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x120]
+  FRAME "Group 2358" 610x104 @79,3173
+    TEXT "Contact information"
+         [Inter Semi Bold 36.0px/100.0% ls-5.0 | #0F0F0F | 317x44]
+    TEXT "If you have any questions about these Terms, please contact us at: info@recurssive.com"
+         [Open Sans Regular 24.0px ls-3.0 | #0F0F0F | 610x60]
+  ROUNDED_RECTANGLE "sergey-zolkin-_UeY8aTI6d0-unsplash 2" 1920x388 @-592,3361 fill:IMAGE:ee2d7fb5ce483d3f730caedddfaf2d63fad6f3e5
+  ROUNDED_RECTANGLE "Rectangle 1897" 1920x388 @-592,3361 fill:GRADIENT_LINEAR(#0F0F0F @0.0->#0F0F0F)
+  FRAME "Group 2248" 2052x388 @-703,3361
+    <6 vector path(s)>
+  TEXT "Let’s build your vision"
+       [Inter Semi Bold 48.0px ls-5.0 | #FAFAFA | 448x64 | CENTER]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+       [Open Sans Regular 24.0px ls-3.0 | #FAFAFA | 489x84 | CENTER]
+  FRAME "Frame 130" 200x49 @284,3632 fill:#4813D0 r6
+    TEXT "Send Message"
+         [Inter Medium 24.0px/100.0% | #FAFAFA | 170x29]
+  LINE "Line 58" 610x0 @79,331 stroke:#6B6B6B 1.5px
+  TEXT "Terms of Service"
+       [Inter Semi Bold 42.0px/100.0% ls-5.0 | #0F0F0F | 312x51]
+  TEXT "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+       [Open Sans Regular 24.0px ls-3.0 | #6B6B6B | 606x63]
