@@ -77,7 +77,7 @@ export default function Home() {
           />
           <div className="container-content">
             <p
-              className="max-w-[970px] font-heading font-semibold leading-[1.15] tracking-[-0.05em] text-white"
+              className="max-w-[970px] font-heading font-semibold leading-[0.9] tracking-[-0.05em] text-white"
               style={{ fontSize: 'clamp(2rem, 3.75vw, 4.5rem)' }}
             >
               Crafting custom web &amp; app experiences that help people.
@@ -119,7 +119,7 @@ export default function Home() {
               <p className="text-4xl font-semibold leading-snug text-cloud">{LOREM}</p>
             </div>
 
-            <div className="mt-32 grid gap-12 md:grid-cols-3">
+            <div className="mt-32 grid gap-12 lg:grid-cols-3">
               {industries.map((name) => (
                 <div key={name}>
                   <h3 className="text-4xl text-cloud">{name}</h3>
@@ -129,7 +129,7 @@ export default function Home() {
             </div>
 
             <div className="mt-24 flex justify-center">
-              <Button href="/contact" variant="light" arrow>
+              <Button href="/contact" arrow>
                 Start a project
               </Button>
             </div>
@@ -179,7 +179,7 @@ export default function Home() {
               {process.map((step) => (
                 <li
                   key={step.name}
-                  className="grid items-baseline gap-x-8 gap-y-3 lg:grid-cols-[42px_413px_418px_1fr]"
+                  className="grid items-baseline gap-x-8 gap-y-3 lg:grid-cols-[42px_minmax(0,26fr)_minmax(0,26fr)_minmax(0,44fr)]"
                 >
                   <span className="text-lg text-accent">({step.index})</span>
                   <h3 className="text-7xl text-silver">{step.name}</h3>

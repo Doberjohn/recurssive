@@ -20,6 +20,9 @@ body {
 /* Inter for headings, Open Sans for body — deck pp178-181. */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  /* Tailwind Preflight resets heading weight to inherit, so without this every
+     heading renders Regular 400 where the design draws Inter Semi Bold. */
+  font-weight: 600;
   letter-spacing: -0.05em;
 }
 

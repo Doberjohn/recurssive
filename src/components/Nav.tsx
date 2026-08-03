@@ -36,7 +36,7 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
   return (
     <header className="absolute inset-x-0 top-0 z-50">
       <nav
-        className="container-content flex items-center justify-between pt-8 md:pt-10"
+        className="container-content flex items-center gap-8 pt-8 md:pt-10"
         aria-label="Main"
       >
         <Link href="/" className={`${text} shrink-0`} aria-label="Recurssive — home">
@@ -44,12 +44,12 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
         </Link>
 
         {/* Desktop links */}
-        <ul className={`hidden items-center gap-10 md:flex ${text}`}>
+        <ul className={`ml-auto hidden items-center gap-[50px] lg:flex ${text}`}>
           {navLinks.map((l) => (
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="text-base opacity-90 transition-opacity hover:opacity-100"
+                className="font-heading font-medium text-base opacity-90 transition-opacity hover:opacity-100"
               >
                 {l.label}
               </Link>
@@ -62,7 +62,7 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
             href="/contact"
             variant={tone === 'light' ? 'light' : 'dark'}
             arrow
-            className="hidden md:inline-flex"
+            className="hidden lg:inline-flex"
           >
             Start a project
           </Button>
@@ -71,7 +71,7 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
           <input type="checkbox" id="nav-toggle" className="peer sr-only" />
           <label
             htmlFor="nav-toggle"
-            className={`flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[7px] md:hidden ${text}`}
+            className={`flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[7px] lg:hidden ${text}`}
             aria-label="Open menu"
           >
             <span className="block h-[3px] w-[26px] bg-current" />
@@ -92,7 +92,7 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
 function MobileMenu() {
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-50 opacity-0 transition-opacity duration-200 peer-checked:pointer-events-auto peer-checked:opacity-100 md:hidden"
+      className="pointer-events-none fixed inset-0 z-50 opacity-0 transition-opacity duration-200 peer-checked:pointer-events-auto peer-checked:opacity-100 lg:hidden"
       id="mobile-menu"
     >
       {/* Scrim doubles as the close affordance. */}
