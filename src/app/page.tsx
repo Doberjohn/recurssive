@@ -46,6 +46,20 @@ export default function Home() {
       </div>
 
       <div className="bg-brand-gradient mt-6 h-12 rounded-xl" aria-hidden="true" />
+
+      {/* Mesh surfaces — 128x80 AVIF upscaled, grain re-added via ::after.
+          Each is ~800 bytes inline. See scripts/build-mesh.mjs. */}
+      <div className="mt-10 grid grid-cols-2 gap-4" aria-hidden="true">
+        {[1, 6, 10, 12].map((n) => (
+          <div
+            key={n}
+            className="mesh flex h-48 items-end rounded-2xl p-5"
+            style={{ ['--mesh' as string]: `var(--mesh-${n})` }}
+          >
+            <span className="relative z-10 text-xs text-cloud">mesh-{n}</span>
+          </div>
+        ))}
+      </div>
     </main>
   )
 }
