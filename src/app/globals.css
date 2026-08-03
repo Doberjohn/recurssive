@@ -23,6 +23,30 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.05em;
 }
 
+/* Shiki code blocks.
+ *
+ * rehype-shiki replaces the <pre> node entirely and emits its own class and
+ * inline background, so the MDX component map never sees it and Tailwind
+ * utilities on `pre` do not apply. Style it here instead, and override the
+ * theme background with our own token so code cards match the designs
+ * (#0F0F0F, r25) rather than GitHub's #0d1117. */
+pre.shiki {
+  background-color: var(--color-code-bg) !important;
+  border-radius: var(--radius-5xl);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  tab-size: 2;
+}
+
+pre.shiki code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
 /* The design leans on transitions; honour reduced-motion requests. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

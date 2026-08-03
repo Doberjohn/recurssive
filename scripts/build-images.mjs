@@ -29,8 +29,8 @@
  */
 import sharp from 'sharp'
 import { createHash } from 'node:crypto'
-import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, statSync } from 'node:fs'
-import { join, basename, extname } from 'node:path'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs'
+import { join } from 'node:path'
 
 const SRC_DIR =
   process.env.IMAGES_DIR ??

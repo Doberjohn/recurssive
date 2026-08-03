@@ -1,0 +1,33 @@
+---
+title: Why we named the studio after a loop
+description: Recursion is not a programming trick we like. It is the shape of how good products actually get made, and it is why the studio is named the way it is.
+publishedAt: 2026-07-28
+tags:
+  - brand
+  - engineering
+image: editorial
+---
+
+> **Temporary post.** Structure and styling only — real writing to follow.
+
+## A process that feeds itself
+
+Recursion is when a process becomes the input to itself. That is a precise
+definition in computing, and a surprisingly good description of how anything
+worth building gets built: you ship, you watch, what you learn becomes the next
+input.
+
+## The base case matters most
+
+Every recursive function needs a stopping condition. Without one it runs
+forever and takes the machine with it.
+
+```ts
+function refine(product: Product, feedback: Signal[]): Product {
+  if (feedback.length === 0) return product   // the base case
+  return refine(apply(product, feedback[0]), feedback.slice(1))
+}
+```
+
+Products fail the same way. Iteration without a defined stopping condition is
+not diligence, it is a team that cannot decide when something is finished.

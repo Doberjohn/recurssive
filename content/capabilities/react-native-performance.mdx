@@ -1,0 +1,40 @@
+---
+title: React Native Performance Optimization
+description: Profiling and fixing the render, bridge and startup bottlenecks that make a React Native app feel slower than its native equivalent.
+publishedAt: 2026-08-01
+pillar: consulting
+order: 10
+services:
+  - New Architecture migration
+  - Startup time reduction
+  - List and render profiling
+  - Hermes and bundle tuning
+---
+
+## The problem
+
+Most React Native apps do not feel slow because React Native is slow. They feel
+slow because of a handful of specific, findable bottlenecks: an oversized JS
+bundle blocking startup, list re-renders that were never memoised, or bridge
+traffic that should have been a native module.
+
+## How we work
+
+We profile first and change code second. That means Hermes sampling profiles,
+Systrace on Android, Instruments on iOS, and a written baseline before any
+edit — so the improvement is a number, not an impression.
+
+```ts
+// The single most common finding: a list whose rows re-render on every parent
+// state change because the renderItem closure is recreated each pass.
+const renderItem = useCallback(
+  ({ item }: { item: Row }) => <RowView row={item} />,
+  []
+)
+```
+
+## What you get
+
+A written report with before and after measurements, the changes as reviewable
+pull requests, and a short session walking your team through what was wrong so
+the same class of problem does not come back.

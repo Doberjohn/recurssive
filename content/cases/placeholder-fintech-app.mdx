@@ -1,0 +1,46 @@
+---
+title: Cutting cold start by 63% for a fintech app
+description: A React Native banking app took 4.1s to first interaction on mid-range Android. We profiled it, cut it to 1.5s, and left the team able to hold it.
+publishedAt: 2026-07-15
+client: Placeholder Client
+segment: enterprise
+image: case-hero
+capabilities:
+  - react-native-performance
+  - enterprise-migration
+metrics:
+  - label: Cold start
+    value: -63%
+  - label: Crash-free sessions
+    value: 99.4%
+  - label: Bundle size
+    value: -41%
+stack:
+  - React Native
+  - Hermes
+  - New Architecture
+  - Sentry
+---
+
+> **This is placeholder content.** It demonstrates the case-study schema and
+> layout. Replace it with real work before launch.
+
+## Challenge
+
+The app opened to a spinner for four seconds on the devices most of its
+customers actually owned. Internal testing happened on flagship phones, so the
+problem was invisible to the team that built it.
+
+## Solution
+
+We measured on the real device distribution first, which reframed the problem
+from "the app is slow" to "startup is slow on 2 GB Android". From there the work
+was specific: defer non-critical modules out of the startup path, move to Hermes
+with a precompiled bytecode bundle, and split the bundle so the first screen no
+longer waited on the whole app.
+
+## Impact
+
+Time to interactive fell from 4.1s to 1.5s at the 75th percentile. Crash-free
+sessions rose as a side effect, because a large share of crashes were happening
+during the long startup window.
