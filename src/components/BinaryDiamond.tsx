@@ -26,8 +26,14 @@
  * 707/411 = 172% tall. It fills exactly.
  */
 
-const ROWS = 47
-const COLS = 61
+/**
+ * Half the taper, measured row by row off the export, centre row last. Mirrored
+ * for the lower half, giving 47 rows. Embedded rather than computed: it is
+ * almost 2.5 characters per row, but a formula is off by one at index 12 (32 vs
+ * 33), and 2 x sum - 60 = 1446 reproduces the export's glyph count exactly.
+ */
+const HALF = [1, 5, 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 32, 35, 38, 40, 43, 45, 48, 50, 53, 55, 58, 60]
+const ROWS = HALF.length * 2 - 1 // 47; centre row is HALF's last entry, 60 wide
 
 /** Deterministic PRNG — no Math.random, so builds stay reproducible. */
 function mulberry32(seed: number) {
@@ -44,14 +50,17 @@ function build() {
   const rand = mulberry32(0x0110_0110)
   const lines: string[] = []
   for (let r = 0; r < ROWS; r++) {
-    // Diamond: width peaks at the middle row and tapers to both ends.
-    const t = 1 - Math.abs(r - (ROWS - 1) / 2) / ((ROWS - 1) / 2)
-    // Never zero: an empty div generates no line box and collapses to 0px, which
-    // silently dropped the first and last rows and left the field 31px short of
-    // the 707px it is drawn at. A diamond tapers to a point, not to nothing.
-    const width = Math.max(1, Math.round(t * COLS))
+    // Mirror the measured half. Row 0 is a single glyph, never an empty string:
+    // an empty div generates no line box and collapses to 0px, which silently
+    // dropped the end rows and left the field short of its drawn 707.
+    const width = HALF[r < HALF.length ? r : ROWS - 1 - r]
+    // Strictly alternating, never random. The export has ZERO adjacent equal
+    // characters across 1399 pairs. Only the digit each row STARTS on varies,
+    // and that follows no rule that survives checking — column parity predicts
+    // it on 23 of 47 rows, which is chance — so one deterministic bit per row.
+    const start = rand() > 0.5 ? 1 : 0
     let row = ''
-    for (let c = 0; c < width; c++) row += rand() > 0.5 ? '1' : '0'
+    for (let c = 0; c < width; c++) row += (c + start) % 2 === 0 ? '0' : '1'
     lines.push(row)
   }
   return lines
