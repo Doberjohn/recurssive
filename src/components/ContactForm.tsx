@@ -34,6 +34,9 @@ function Field({
   textarea = false,
   autoComplete,
   minLength,
+  maxLength,
+  pattern,
+  title,
 }: {
   label: string
   name: string
@@ -44,6 +47,15 @@ function Field({
   autoComplete?: string
   /** Matches the server schema so the browser catches it first. */
   minLength?: number
+  /**
+   * Also the server schema. The schema `.max()`es REJECT rather than truncate,
+   * and a rejection redirects to /contact/problem, where everything typed is
+   * gone — POST-redirect-GET keeps no state. Capping the input means a long
+   * description cannot be lost, which is the enquiry you least want to lose.
+   */
+  maxLength?: number
+  pattern?: string
+  title?: string
 }) {
   const shared =
     'peer w-full border-0 border-b border-border bg-transparent pb-2 pt-1 text-base text-ink ' +
@@ -66,6 +78,7 @@ function Field({
           rows={3}
           required={required}
           minLength={minLength}
+          maxLength={maxLength}
           autoComplete={autoComplete}
           className={`${shared} resize-none`}
         />
@@ -76,6 +89,9 @@ function Field({
           type={type}
           required={required}
           minLength={minLength}
+          maxLength={maxLength}
+          pattern={pattern}
+          title={title}
           autoComplete={autoComplete}
           className={shared}
         />
@@ -142,10 +158,36 @@ function ChipGroup({
 export function ContactForm() {
   return (
     <form className="relative space-y-8" action="/api/contact" method="post">
-      <Field label="Name" name="name" autoComplete="name" minLength={2} />
-      <Field label="E-mail" name="email" type="email" autoComplete="email" />
-      <Field label="Telephone" name="tel" type="tel" autoComplete="tel" minLength={6} />
-      <Field label="Description" name="description" textarea minLength={10} />
+      <Field label="Name" name="name" autoComplete="name" minLength={2} maxLength={100} />
+      {/* type="email" alone accepts "maria@gmail" — a missing TLD is an ordinary
+          typo, and the server rejects it, so without this the enquirer loses
+          everything they wrote. The pattern is the weaker of the two checks by
+          design: the server stays the real gate, this just stops a real person
+          reaching it. */}
+      <Field
+        label="E-mail"
+        name="email"
+        type="email"
+        autoComplete="email"
+        maxLength={254}
+        pattern="[^@\s]+@[^@\s]+\.[^@\s]{2,}"
+        title="Include the full domain, for example name@example.com"
+      />
+      <Field
+        label="Telephone"
+        name="tel"
+        type="tel"
+        autoComplete="tel"
+        minLength={6}
+        maxLength={40}
+      />
+      <Field
+        label="Description"
+        name="description"
+        textarea
+        minLength={10}
+        maxLength={4000}
+      />
 
       {/* Honeypot. Never shown, never announced, never focusable — anything in
           it came from a bot, and the server thanks it without sending. Hidden

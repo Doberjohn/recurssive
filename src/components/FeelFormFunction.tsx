@@ -1,5 +1,5 @@
 import { Picture } from './ui/Picture'
-import { LOGO_PATHS, LOGO_VIEWBOX } from './ui/Logo'
+import { BinaryMark } from './ui/BinaryMark'
 
 /**
  * "Feel. Form. Function." — the band between the form and the footer on Contact.
@@ -25,38 +25,11 @@ import { LOGO_PATHS, LOGO_VIEWBOX } from './ui/Logo'
  * `object-position: 50% 82%` comes from the pattern transform: ty -325.1px
  * against 397.2px of spare height is 81.85%, not centre.
  *
- * The artwork is the Reflow mark drawn in binary. The five clusters in the
- * export are the five Logo shapes, so this clips one field with `LOGO_PATHS`
- * rather than carrying a second copy of the geometry — STATE.md records that
- * copy going silently wrong for months.
+ * The artwork is the Reflow mark drawn in binary — see ui/BinaryMark, which the
+ * error states share. The five clusters in the export are the five Logo shapes,
+ * so it clips one field with `LOGO_PATHS` rather than carrying a second copy of
+ * the geometry; STATE.md records that copy going silently wrong for months.
  */
-
-const ROWS = 47
-const COLS = 158
-
-/** Deterministic — no Math.random, so the field is identical on every build. */
-function mulberry32(seed: number) {
-  return () => {
-    seed |= 0
-    seed = (seed + 0x6d2b79f5) | 0
-    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed)
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
-  }
-}
-
-/** Strictly alternating, as the exports are — one phase bit per row. */
-const FIELD = (() => {
-  const rand = mulberry32(0x0f0f_0f0f)
-  const out: string[] = []
-  for (let r = 0; r < ROWS; r++) {
-    const start = rand() > 0.5 ? 1 : 0
-    let row = ''
-    for (let c = 0; c < COLS; c++) row += (c + start) % 2 === 0 ? '0' : '1'
-    out.push(row)
-  }
-  return out
-})()
 
 // The frames draw "Feel." and "Form." with full stops and "Function" without,
 // at both 1920 and 768. That is a slip in the file, not a rhythm — corrected on
@@ -102,7 +75,7 @@ export function FeelFormFunction() {
           className="relative mx-auto [container-type:inline-size]"
           style={{ width: 'clamp(320px, 437px + 27.34vw, 962px)' }}
         >
-          <BinaryMark />
+          <BinaryMark className="reflow-binary" />
 
           {/* The words sit ON the artwork, not under it: drawn at y1471 against
               an artwork spanning 1197..1823, i.e. 43.8% down it. Reads the same
@@ -146,39 +119,5 @@ export function FeelFormFunction() {
         </div>
       </div>
     </section>
-  )
-}
-
-/** The mark's silhouette cut out of a field of ones and zeroes. */
-function BinaryMark() {
-  const { w, h } = LOGO_VIEWBOX
-  return (
-    <div className="relative" style={{ aspectRatio: `${w} / ${h}` }}>
-      <svg width="0" height="0" aria-hidden="true" className="absolute">
-        <defs>
-          {/* objectBoundingBox so the clip tracks the box at any ramped width.
-              The scale goes on each path, NOT on a wrapping <g>: a clipPath may
-              only contain shapes, <text> and <use>, so a <g> is ignored and the
-              clip silently resolves to empty — which renders nothing at all,
-              not "unclipped". */}
-          <clipPath id="reflow-binary-clip" clipPathUnits="objectBoundingBox">
-            {LOGO_PATHS.map((d) => (
-              <path key={d} d={d} transform={`scale(${1 / w} ${1 / h})`} />
-            ))}
-          </clipPath>
-        </defs>
-      </svg>
-
-      <div
-        aria-hidden="true"
-        className="reflow-binary absolute inset-0 select-none [clip-path:url(#reflow-binary-clip)]"
-      >
-        {FIELD.map((line, i) => (
-          <div key={i} className="whitespace-pre text-center">
-            {line}
-          </div>
-        ))}
-      </div>
-    </div>
   )
 }
