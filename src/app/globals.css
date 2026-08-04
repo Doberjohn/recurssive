@@ -58,6 +58,21 @@
   .t-index    { font-size: 1.25rem; line-height: 1.2; }
   .t-label    { font-size: 1.25rem; line-height: 1.4; }
 
+  /* The one place a fixed pair does not work. The 768 frame's footer is three
+   * columns side by side, and that layout has to survive down to a phone — but
+   * three columns of 22px do not fit: "Capabilities" and "Thessaloniki" are
+   * ~145px each at that size, against ~392px of content column at 440.
+   *
+   * So this one ramps instead of stepping: exactly the drawn 22px at 768,
+   * easing to 14px by 360, which keeps all three columns intact down to 320.
+   * Above 768 it holds 22px until lg takes over with the 1920 frame's 16px.
+   * Solved with type rather than by stacking, because the frame does not stack. */
+  .footer-col { font-size: clamp(0.875rem, 0.434rem + 1.961vw, 1.375rem); line-height: 1.5; }
+
+  @media (min-width: 1024px) {
+    .footer-col { font-size: 1rem; }
+  }
+
   @media (min-width: 1024px) {
     .t-hero     { font-size: 4.5rem;   }
     .t-section  { font-size: 3rem;     }

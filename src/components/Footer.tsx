@@ -65,9 +65,11 @@ export function Footer() {
           <Logo className="h-auto w-[120px] text-cloud lg:w-[160px]" />
         </Link>
 
-        {/* Three across from 768 up — the 768 frame puts them side by side at
-            x79 / x321 / x585, not stacked. Left edges across each frame's own
-            content column:
+        {/* Three across at every width. The 768 frame is the mobile design and
+            it is three columns, so phones scale it down rather than stacking —
+            an earlier build stacked below 768 and that was wrong.
+
+            Left edges across each frame's own content column:
 
               768   0 / 242 / 506  of 610
               1920  0 / 767 / 1519 of 1594
@@ -80,9 +82,8 @@ export function Footer() {
             width it lands on the right edge either way, but 75fr is 75px at
             1920 against "Instagram" at 72.6, so it would overflow the moment
             the column narrowed. Sizing it to content and splitting the
-            remainder holds the drawn positions and degrades sanely between
-            breakpoints. Stacked below 768, where three columns cannot fit. */}
-        <div className="mt-[65px] flex flex-col gap-12 md:grid md:grid-cols-[minmax(0,242fr)_minmax(0,264fr)_max-content] md:gap-0 lg:mt-[72px] lg:grid-cols-[minmax(0,767fr)_minmax(0,752fr)_max-content]">
+            remainder holds the drawn positions and keeps the narrow end safe. */}
+        <div className="mt-[65px] grid grid-cols-[minmax(0,242fr)_minmax(0,264fr)_max-content] lg:mt-[72px] lg:grid-cols-[minmax(0,767fr)_minmax(0,752fr)_max-content]">
           <FooterColumn title="Contents">
             {contents.map((l) => (
               <li key={l.href}>
@@ -129,7 +130,7 @@ export function Footer() {
             justify-between only once it fits on one line. Below 768 five items
             wrap, and justify-between then stretches whatever landed on the last
             row across the full width — two items with a chasm between them. */}
-        <div className="t-body mt-[86px] flex flex-wrap items-center gap-x-5 gap-y-1 leading-5 tracking-[-0.04em] text-cloud md:justify-between md:gap-x-2 lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
+        <div className="footer-col mt-[86px] flex flex-wrap items-center gap-x-4 gap-y-1 leading-5 tracking-[-0.04em] text-cloud md:justify-between md:gap-x-2 lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
           {/* Build-year on the server, corrected on mount — see Year.tsx. */}
           <span>
             ©<Year fallback={new Date().getFullYear()} /> {site.name}
@@ -184,13 +185,19 @@ function FooterColumn({
   children: React.ReactNode
 }) {
   return (
+    // Type is fluid below 768 rather than the flat 22px the frame specifies,
+    // because three columns of 22px do not fit a phone: "Capabilities" and
+    // "Thessaloniki" alone are ~145px each at that size, against ~392px of
+    // content column at 440. The ramp hits the drawn 22px exactly at 768 and
+    // eases to 14px by 360, which keeps all three columns intact down to 320.
+    // lg returns to the flat 16px the 1920 frame draws.
+    //
     // No space-y: both frames draw each column's items as ONE text node, so the
     // rhythm is pure line-height — 4 lines in 132px at 768 (22/33), in 96px at
     // 1920 (16/24). Adding 4px per row compounded to 20px on a six-item column.
-    // Line-height alone still clears the 24px WCAG 2.5.8 target minimum.
     <div>
-      <h2 className="t-body font-heading font-medium text-cloud">{title}</h2>
-      <ul className="t-body mt-[3px] text-cloud/90 lg:mt-[6px]">{children}</ul>
+      <h2 className="footer-col font-heading font-medium text-cloud">{title}</h2>
+      <ul className="footer-col mt-[3px] text-cloud/90 lg:mt-[6px]">{children}</ul>
     </div>
   )
 }
