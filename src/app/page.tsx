@@ -6,6 +6,7 @@ import { ServiceIndex, type Service } from '@/components/ServiceIndex'
 import { ContactForm } from '@/components/ContactForm'
 import { Picture } from '@/components/ui/Picture'
 import { Button } from '@/components/ui/Button'
+import { Logo } from '@/components/ui/Logo'
 import { buildMetadata } from '@/lib/metadata'
 import { site } from '@/lib/site'
 
@@ -19,12 +20,12 @@ const LOREM =
 
 /** Six rows on a 100px pitch, in the order drawn (y1428 to 1928). */
 const services: Service[] = [
-  { index: '01', name: 'Desktop Apps', description: LOREM, href: '/capabilities/product-development' },
-  { index: '02', name: 'Mobile Apps', description: LOREM, href: '/capabilities/react-native-performance' },
-  { index: '03', name: 'Web Design', description: LOREM, href: '/capabilities/product-development' },
-  { index: '04', name: 'UI/UX Design', description: LOREM, href: '/capabilities/product-development' },
-  { index: '05', name: 'AI Workflows', description: LOREM, href: '/capabilities/on-device-ai' },
-  { index: '06', name: 'Product Strategy', description: LOREM, href: '/capabilities/product-development' },
+  { index: '01', name: 'Desktop Apps', image: 'home-desk', description: LOREM, href: '/capabilities/product-development' },
+  { index: '02', name: 'Mobile Apps', image: 'home-collab', description: LOREM, href: '/capabilities/react-native-performance' },
+  { index: '03', name: 'Web Design', image: 'home-texture', description: LOREM, href: '/capabilities/product-development' },
+  { index: '04', name: 'UI/UX Design', image: 'home-portrait', description: LOREM, href: '/capabilities/product-development' },
+  { index: '05', name: 'AI Workflows', image: 'team-meeting', description: LOREM, href: '/capabilities/on-device-ai' },
+  { index: '06', name: 'Product Strategy', image: 'ai', description: LOREM, href: '/capabilities/product-development' },
 ]
 
 const industries = ['Startups', 'SMBs', 'Enterprise']
@@ -120,8 +121,16 @@ export default function Home() {
             </div>
 
             <div className="mt-32 grid gap-12 lg:grid-cols-3">
-              {industries.map((name) => (
+              {industries.map((name, n) => (
                 <div key={name}>
+                  {/* Drawn as gradient-filled marks above each heading; the
+                      brand mark at increasing nesting depth encodes org scale
+                      (deck p195: startups -> SMBs -> enterprise). */}
+                  <div aria-hidden="true" className="mb-8 flex items-end gap-1.5 text-accent">
+                    {Array.from({ length: n + 1 }).map((_, k) => (
+                      <Logo key={k} className="h-10 w-auto" />
+                    ))}
+                  </div>
                   <h3 className="text-4xl text-cloud">{name}</h3>
                   <p className="mt-6 text-md text-cloud/85">{LOREM}</p>
                 </div>
@@ -179,11 +188,21 @@ export default function Home() {
               {process.map((step) => (
                 <li
                   key={step.name}
-                  className="grid items-baseline gap-x-8 gap-y-3 lg:grid-cols-[42px_minmax(0,26fr)_minmax(0,26fr)_minmax(0,44fr)]"
+                  className="grid items-start gap-x-8 gap-y-4 lg:grid-cols-[42px_minmax(0,26fr)_minmax(0,26fr)_minmax(0,44fr)]"
                 >
+                  {/* Raised above the name's cap line, as drawn. */}
                   <span className="text-lg text-accent">({step.index})</span>
-                  <h3 className="text-7xl text-silver">{step.name}</h3>
-                  <p className="text-md font-semibold text-cloud">{step.label}</p>
+
+                  {/* Rule sized to the word, not the column. */}
+                  <h3 className="w-fit border-b border-silver/60 pb-3 text-7xl text-silver">
+                    {step.name}
+                  </h3>
+
+                  {/* Label sits on a mesh shape in the design. */}
+                  <p className="bg-mesh-placeholder w-fit rounded-xl px-5 py-3 text-center text-md font-semibold text-cloud">
+                    {step.label}
+                  </p>
+
                   <p className="text-md text-cloud/85">{LOREM}</p>
                 </li>
               ))}
@@ -207,9 +226,9 @@ export default function Home() {
                   <Picture
                     name="home-portrait"
                     alt=""
-                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 26vw, 100vw"
                     grain
-                    className="aspect-[1165/728] w-full overflow-hidden rounded-xl"
+                    className="aspect-[411/707] w-[411px] max-w-full overflow-hidden rounded-xl"
                     imgClassName="h-full w-full object-cover"
                   />
                 </div>

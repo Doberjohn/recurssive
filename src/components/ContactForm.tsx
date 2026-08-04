@@ -101,7 +101,7 @@ function ChipGroup({
         {options.map((o) => (
           <label
             key={o}
-            className="cursor-pointer rounded-sm bg-surface px-3 py-1.5 text-base text-ink transition-colors has-[:checked]:bg-primary has-[:checked]:text-cloud has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
+            className="cursor-pointer rounded-xl border border-border px-4 py-1.5 text-base text-ink transition-colors has-[:checked]:rounded-md has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-cloud has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
           >
             <input type="radio" name={name} value={o} className="sr-only" />
             {o}

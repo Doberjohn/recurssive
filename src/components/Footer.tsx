@@ -27,6 +27,7 @@ const contents = [
 ]
 
 const socials = [
+  { href: 'https://www.facebook.com/recurssive', label: 'Facebook' },
   { href: 'https://www.instagram.com/recurssive', label: 'Instagram' },
   { href: 'https://www.linkedin.com/company/recurssive', label: 'LinkedIn' },
   { href: `mailto:${site.email}`, label: 'E-mail' },
@@ -40,7 +41,7 @@ export function Footer() {
           <Logo className="h-[106px] w-auto text-cloud" />
         </Link>
 
-        <div className="mt-20 grid gap-12 sm:grid-cols-3">
+        <div className="mt-20 flex flex-col gap-12 sm:flex-row sm:justify-between">
           <FooterColumn title="Contents">
             {contents.map((l) => (
               <li key={l.href}>
@@ -74,7 +75,7 @@ export function Footer() {
           </FooterColumn>
         </div>
 
-        <div className="mt-20 flex flex-wrap items-center gap-x-8 gap-y-2 text-base text-cloud">
+        <div className="mt-20 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 text-base text-cloud">
           <span>©{new Date().getFullYear()} {site.name}</span>
           <Link href="/privacy-policy" className="hover:underline">
             Privacy
@@ -82,26 +83,13 @@ export function Footer() {
           <Link href="/terms-of-service" className="hover:underline">
             Terms
           </Link>
-          <span className="ml-auto opacity-70">Designed by Omnics</span>
+          <Link href="/cookies" className="hover:underline">
+            Cookies
+          </Link>
+          <span className="opacity-70">Designed by Omnics</span>
         </div>
       </div>
 
-      {/* The full-bleed outlined wordmark, bleeding flush to the bottom edge.
-          Type, not artwork — it is an Inter Bold text node in the designs. */}
-      <div
-        aria-hidden="true"
-        className="container-content relative z-10 select-none overflow-hidden"
-      >
-        <span
-          className="block translate-y-[0.22em] text-center font-heading font-bold leading-none text-transparent"
-          style={{
-            fontSize: 'clamp(4rem, 16.5vw, 16rem)',
-            WebkitTextStroke: '1px rgb(250 250 250 / 0.35)',
-          }}
-        >
-          RECURSSIVE
-        </span>
-      </div>
     </footer>
   )
 }

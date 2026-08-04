@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { Picture } from './ui/Picture'
+import type { ImageName } from '@/lib/images.generated'
 
 /**
  * The service index — six rows on an exact 100px pitch (y1426 to 1926).
@@ -23,6 +25,8 @@ export type Service = {
   name: string
   description: string
   href: string
+  /** Preview card that slides in on hover — drawn 257x344, radius 10. */
+  image: ImageName
 }
 
 export function ServiceIndex({ services }: { services: Service[] }) {
@@ -53,6 +57,16 @@ export function ServiceIndex({ services }: { services: Service[] }) {
 
             <span className="hidden max-w-[878px] text-base text-ink transition-colors duration-200 group-focus-within:text-cloud group-hover:text-cloud md:block">
               {s.description}
+            </span>
+
+            {/* Preview card, drawn 257x344 r10 vertically centred on the active
+                row. Slides on transform + opacity only — both compositor
+                properties, so the hover costs no layout or paint. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute right-0 top-1/2 hidden h-[344px] w-[257px] -translate-y-1/2 translate-x-8 overflow-hidden rounded-xl opacity-0 transition-[opacity,transform] duration-300 group-focus-within:translate-x-0 group-focus-within:opacity-100 group-hover:translate-x-0 group-hover:opacity-100 xl:block"
+            >
+              <Picture name={s.image} alt="" sizes="257px" className="h-full w-full" imgClassName="h-full w-full object-cover" />
             </span>
           </Link>
         </li>
