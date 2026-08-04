@@ -119,7 +119,18 @@ export function Footer() {
           <Link href="/cookies" className="hover:underline">
             Cookies
           </Link>
-          <span className="opacity-70">Designed by Omnics</span>
+          {/* Only the studio name is the link, not the whole credit. */}
+          <span className="opacity-70">
+            Designed by{' '}
+            <a
+              href="https://omnics.co/el/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              Omnics
+            </a>
+          </span>
         </div>
 
         {/* The wordmark: a 1594x196 vector on the content column, flush to the
