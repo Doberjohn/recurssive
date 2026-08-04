@@ -57,25 +57,32 @@ const socials = [
 export function Footer() {
   return (
     <footer
-      className="mesh relative mt-auto lg:[--mesh-pos:center_bottom_-20.95vw]"
+      className="mesh relative mt-auto [--mesh-pos:center_-2.0725vw] [--mesh-size:198.125%] lg:[--mesh-pos:center_bottom_-20.95vw] lg:[--mesh-size:cover]"
       style={{ ['--mesh' as string]: 'var(--mesh-12)' }}
     >
-      <div className="container-content relative z-10 pt-[70px]">
+      <div className="container-content relative z-10 pt-[46px] lg:pt-[70px]">
         <Link href="/" aria-label="Recurssive — home" className="mx-auto block w-fit">
-          <Logo className="h-auto w-[160px] text-cloud" />
+          <Logo className="h-auto w-[120px] text-cloud lg:w-[160px]" />
         </Link>
 
-        {/* Column left edges are drawn at x163 / x930 / x1682, i.e. 0 / 767 /
-            1519 across the 1594 column. That is not a distribution rule —
-            justify-between computes 749.5 for the middle one even with the
-            drawn content — so the ratio is encoded directly.
+        {/* Three across from 768 up — the 768 frame puts them side by side at
+            x79 / x321 / x585, not stacked. Left edges across each frame's own
+            content column:
 
-            The third track is max-content rather than 75fr: at the drawn width
-            it lands on 1519 either way, but a fixed fraction would be 75px and
-            "Instagram" is 72.6, so it would overflow the moment the column
-            narrowed. Sizing it to content and splitting the remainder 767:752
-            holds the drawn positions at 1920 and degrades sanely below it. */}
-        <div className="mt-20 flex flex-col gap-12 lg:grid lg:grid-cols-[minmax(0,767fr)_minmax(0,752fr)_max-content] lg:gap-0">
+              768   0 / 242 / 506  of 610
+              1920  0 / 767 / 1519 of 1594
+
+            Neither is a distribution rule — justify-between computes 749.5 for
+            the middle one at 1920 even with the drawn content — so both ratios
+            are encoded directly.
+
+            The third track is max-content rather than a fraction: at the drawn
+            width it lands on the right edge either way, but 75fr is 75px at
+            1920 against "Instagram" at 72.6, so it would overflow the moment
+            the column narrowed. Sizing it to content and splitting the
+            remainder holds the drawn positions and degrades sanely between
+            breakpoints. Stacked below 768, where three columns cannot fit. */}
+        <div className="mt-[65px] flex flex-col gap-12 md:grid md:grid-cols-[minmax(0,242fr)_minmax(0,264fr)_max-content] md:gap-0 lg:mt-[72px] lg:grid-cols-[minmax(0,767fr)_minmax(0,752fr)_max-content]">
           <FooterColumn title="Contents">
             {contents.map((l) => (
               <li key={l.href}>
@@ -109,7 +116,16 @@ export function Footer() {
           </FooterColumn>
         </div>
 
-        <div className="t-body mt-20 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 text-cloud">
+        {/* Drawn as one justify-between row on both frames: at 768 the four
+            items land on x78/296/411/519 across 79..689, which is exactly what
+            justify-between computes. The minimum gap has to be small enough
+            that five items (the frames omit Cookies; it is a real page, so it
+            stays) still fit on one line at 610. */}
+        {/* The legal row does not use body metrics: both frames set it on a
+            20px line-height (22/20 at 768, 16/20 at 1920), and 768 adds -0.04em
+            tracking. Without those it runs ~8% wide, which is the difference
+            between one line and two at 610. */}
+        <div className="t-body mt-[86px] flex flex-wrap items-center justify-between gap-x-2 gap-y-2 leading-5 tracking-[-0.04em] text-cloud lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
           {/* Build-year on the server, corrected on mount — see Year.tsx. */}
           <span>
             ©<Year fallback={new Date().getFullYear()} /> {site.name}
@@ -148,7 +164,7 @@ export function Footer() {
             column's widest line ending at x1755 against the final E at x1757).
             Set as text it could never align: the glyphs carry side bearings, so
             the ink stopped 56.3px short while the box measured 1594. */}
-        <div aria-hidden="true" className="mt-[22px] select-none">
+        <div aria-hidden="true" className="mt-[21px] select-none lg:mt-[22px]">
           <Wordmark className="block h-auto w-full text-cloud" />
         </div>
       </div>
@@ -164,9 +180,13 @@ function FooterColumn({
   children: React.ReactNode
 }) {
   return (
+    // No space-y: both frames draw each column's items as ONE text node, so the
+    // rhythm is pure line-height — 4 lines in 132px at 768 (22/33), in 96px at
+    // 1920 (16/24). Adding 4px per row compounded to 20px on a six-item column.
+    // Line-height alone still clears the 24px WCAG 2.5.8 target minimum.
     <div>
       <h2 className="t-body font-heading font-medium text-cloud">{title}</h2>
-      <ul className="t-body mt-2 space-y-1 text-cloud/90">{children}</ul>
+      <ul className="t-body mt-[3px] text-cloud/90 lg:mt-[6px]">{children}</ul>
     </div>
   )
 }

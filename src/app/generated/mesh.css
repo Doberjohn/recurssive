@@ -64,11 +64,16 @@
  *
  * Anchor to the edge the crop is defined from, not to the centre — the band
  * height is content-driven and will drift, while the anchored edge will not.
+ *
+ * --mesh-size exists for the same reason: `cover` is not universal either. The
+ * 768 footer zooms roughly 1.7x past cover (the file draws the image 1521.6x951
+ * on a 768x560 band), which keeps it reading as a gradient instead of a smooth
+ * patch at that size. Check the pattern transform, do not assume cover.
  */
 .mesh {
   position: relative;
   background-image: var(--mesh, var(--mesh-1));
-  background-size: cover;
+  background-size: var(--mesh-size, cover);
   background-position: var(--mesh-pos, center);
   isolation: isolate;
 }

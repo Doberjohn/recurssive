@@ -187,6 +187,30 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   Regenerate it, never hand-edit. Used in the footer and the nav lockup
   (146.2x17.9 there). No webfont: At Hauss is commercial, this is the only place
   it appears, and outlines cost no request, no licence and no FOUT.
+- **`Logo.tsx` had a wrong viewBox for months.** It carried `1269.18 1517.68
+  95.49 57.76`, a crop rectangle from the 100-tile lockup sheet, aspect 1.653.
+  The mark is **1.497** — two independent designer exports agree (`footer.svg`
+  at 160x106.9, `footer-mobile/Group.svg` at 120x80). So every instance rendered
+  ~9% short. It only surfaced because the mobile footer's logo came out 72.6px
+  where the frame says 79, which pushed the three columns 6.4px up. Regenerated
+  from the official export; do not re-crop the viewBox.
+  **Lesson: a viewBox lifted from a sheet is a crop, not the artwork's box.**
+- **`figtree_v2.py` now emits `@x,y` for TEXT nodes and a bbox for collapsed
+  vector runs.** It printed neither before, which is why the mobile footer's
+  legal row and wordmark positions looked unobtainable. Re-run it rather than
+  guessing; output goes to `scratchpad/v2/figspec/`, and note the frames are
+  suffixed (`Home__768w_3.txt` is the current one, not `Home__768w.txt`).
+- **The 768 footer is three columns side by side, not stacked**, at x79/321/585
+  across a 610 content column (0 / 242 / 506). Only below 768 do they stack.
+- **The legal row does not use body metrics.** Both frames set it on a 20px
+  line-height (22/20 at 768, 16/20 at 1920) with -0.04em tracking at 768.
+  Missing those made it ~8% wide, which is one line versus two at 610.
+- **Column lists carry no `space-y`.** Both frames draw each column's items as
+  ONE text node, so the rhythm is pure line-height — 4 lines in 132px at 768,
+  96px at 1920. A 4px row gap compounded to 20px on a six-item column. With the
+  gaps also corrected to the drawn 72/73 (they were 80), the desktop band came
+  down from 764px to 733.7 — exactly the drawn 685 plus the 48px the two extra
+  nav links cost.
 - **The footer's three columns are placed, not distributed.** Their left edges
   are drawn at 0 / 767 / 1519 across the 1594 column; `justify-between` computes
   749.5 for the middle one even with the drawn content, so no distribution rule
