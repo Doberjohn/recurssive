@@ -3,27 +3,37 @@
 @import "./generated/mesh.css";
 
 /* Base document styling. All tokens come from theme.css. */
-html {
-  -webkit-text-size-adjust: 100%;
-  /* Keeps the mobile-menu overlay from shifting layout when it locks scroll. */
-  scrollbar-gutter: stable;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Keeps the mobile-menu overlay from shifting layout when it locks scroll. */
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-body {
-  background-color: var(--color-bg);
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Inter for headings, Open Sans for body — deck pp178-181. */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  /* Tailwind Preflight resets heading weight to inherit, so without this every
-     heading renders Regular 400 where the design draws Inter Semi Bold. */
-  font-weight: 600;
-  letter-spacing: -0.05em;
+/* Inter for headings, Open Sans for body — deck pp178-181.
+ *
+ * Must live in @layer base. Unlayered CSS outranks everything in @layer
+ * utilities, so an unlayered h1-h6 rule cannot be overridden by font-medium or
+ * text-* at the call site — the footer column headings silently stayed 600
+ * where the design draws Inter Medium. Layering restores the normal precedence
+ * where a utility on the element wins. */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    /* Preflight resets heading weight to inherit; without this every heading
+       renders Regular 400 where the design draws Inter Semi Bold. */
+    font-weight: 600;
+    letter-spacing: -0.05em;
+  }
 }
 
 /* ── Responsive type scale ────────────────────────────────────────────────

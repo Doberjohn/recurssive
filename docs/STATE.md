@@ -100,6 +100,10 @@ read it before re-raising anything.
 - **`max-width` is a border-box value.** With padding-inline, gutters eat the
   column: the 1594px content width was only reachable at exactly 1920px.
   `.container-content` now sizes by `width: min(...)`.
+- **Put base element styles in `@layer base`.** This cascade rule has bitten
+  three times now: unlayered CSS outranks everything in `@layer utilities`, so
+  an unlayered `h1-h6 { font-weight: 600 }` cannot be overridden by
+  `font-medium` at the call site. Anything global belongs in a layer.
 
 ---
 

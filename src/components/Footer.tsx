@@ -36,9 +36,9 @@ const socials = [
 export function Footer() {
   return (
     <footer className="mesh relative mt-auto" style={{ ['--mesh' as string]: 'var(--mesh-12)' }}>
-      <div className="container-content relative z-10 pb-10 pt-[70px]">
+      <div className="container-content relative z-10 pb-[218px] pt-[70px]">
         <Link href="/" aria-label="Recurssive — home" className="mx-auto block w-fit">
-          <Logo className="h-[106px] w-auto text-cloud" />
+          <Logo className="h-auto w-[160px] text-cloud" />
         </Link>
 
         <div className="mt-20 flex flex-col gap-12 lg:flex-row lg:justify-between">
@@ -103,8 +103,8 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h2 className="t-form font-heading text-cloud">{title}</h2>
-      <ul className="t-body mt-4 space-y-1 text-cloud/90">{children}</ul>
+      <h2 className="t-body font-heading font-medium text-cloud">{title}</h2>
+      <ul className="t-body mt-2 space-y-1 text-cloud/90">{children}</ul>
     </div>
   )
 }
