@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Logo } from './ui/Logo'
 import { Wordmark } from './ui/Wordmark'
 import { Clock } from './Clock'
+import { Year } from './Year'
 import { site } from '@/lib/site'
 
 /**
@@ -109,7 +110,10 @@ export function Footer() {
         </div>
 
         <div className="t-body mt-20 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 text-cloud">
-          <span>©{new Date().getFullYear()} {site.name}</span>
+          {/* Build-year on the server, corrected on mount — see Year.tsx. */}
+          <span>
+            ©<Year fallback={new Date().getFullYear()} /> {site.name}
+          </span>
           <Link href="/privacy-policy" className="hover:underline">
             Privacy
           </Link>
@@ -119,11 +123,13 @@ export function Footer() {
           <Link href="/cookies" className="hover:underline">
             Cookies
           </Link>
-          {/* Only the studio name is the link, not the whole credit. */}
-          <span className="opacity-70">
+          {/* Only the studio name is the link, not the whole credit. No dimming:
+              all five items in this row are solid #FAFAFA in the file, with no
+              opacity, group opacity or fill-opacity on any of them. */}
+          <span>
             Designed by{' '}
             <a
-              href="https://omnics.co/el/"
+              href="https://omnics.co/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline"

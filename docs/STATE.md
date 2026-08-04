@@ -201,6 +201,23 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   clock was dropped rather than built; the cost turned out to be 0.3 KB.
   Anything "live" on a static page belongs in a small client leaf, not in a
   rendering-mode change.
+- **Any `new Date()` in a server component freezes at build.** It is baked into
+  the prerendered HTML and stays there until the next deploy — the copyright
+  year read the build year, so a quiet December would have shipped the wrong one
+  all January. Assume every date on this site is a build artefact until checked.
+  Fix: `useSyncExternalStore(subscribe, clientSnapshot, () => buildValue)` in a
+  client leaf. It is the API for exactly this — a separate server snapshot means
+  the prerender and the hydration render agree, so there is no mismatch to
+  suppress and no setState in an effect (which the React compiler flags as a
+  cascading render). Pass the build value in as a prop: calling `new Date()` at
+  module scope inside a client component runs at build *and* in the browser,
+  which is the mismatch you were avoiding, and it only surfaces in January.
+  Proved by building with `fallback={2019}` — HTML said 2019, DOM said 2026,
+  console clean. See `Year.tsx`.
+- **Do not invent de-emphasis.** "Designed by Omnics" carried an `opacity-70`
+  that exists nowhere in the file: all five items in that row are solid #FAFAFA
+  with no opacity, group opacity or fill-opacity. Check the export before
+  styling anything as secondary.
 - **`--grain-opacity` was the photograph number copied onto meshes.** Photos
   carry their own grain and need almost none added; a 128x80 AVIF upscaled 15x
   measures sigma 0.06, i.e. nothing, so on a mesh the overlay supplies *all* the
