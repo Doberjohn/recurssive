@@ -26,6 +26,41 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.05em;
 }
 
+/* ── Responsive type scale ────────────────────────────────────────────────
+ * The two design frames disagree deliberately, and in opposite directions:
+ * headings are SMALLER at 768, everything else is BIGGER. Measured pairs
+ * (1920 -> 768): hero 72->48, section heads 48->42, step names 48->40,
+ * item names 32->36, FAQ questions 18->26, body 16->22, form 16->24,
+ * row indices 14->20.
+ *
+ * Tailwind is mobile-first and its tokens are fixed, so the pairs live here as
+ * semantic classes. Base = the 768 value; lg (1024px) switches to the 1920
+ * value, matching the breakpoint the navigation already uses.
+ * -------------------------------------------------------------------------- */
+@layer components {
+  .t-hero     { font-size: 3rem;    line-height: 0.9;  letter-spacing: -0.05em; }
+  .t-section  { font-size: 2.625rem; line-height: 1.05; letter-spacing: -0.05em; }
+  .t-step     { font-size: 2.5rem;  line-height: 1.05; letter-spacing: -0.05em; }
+  .t-item     { font-size: 2.25rem; line-height: 1.1;  letter-spacing: -0.05em; }
+  .t-question { font-size: 1.625rem; line-height: 1.3; }
+  .t-body     { font-size: 1.375rem; line-height: 1.5; }
+  .t-form     { font-size: 1.5rem;  line-height: 1.4; }
+  .t-index    { font-size: 1.25rem; line-height: 1.2; }
+  .t-label    { font-size: 1.25rem; line-height: 1.4; }
+
+  @media (min-width: 1024px) {
+    .t-hero     { font-size: 4.5rem;   }
+    .t-section  { font-size: 3rem;     }
+    .t-step     { font-size: 3rem;     }
+    .t-item     { font-size: 2rem;     }
+    .t-question { font-size: 1.125rem; }
+    .t-body     { font-size: 1rem;     }
+    .t-form     { font-size: 1rem;     }
+    .t-index    { font-size: 0.875rem; }
+    .t-label    { font-size: 1.125rem; }
+  }
+}
+
 /* Shiki code blocks.
  *
  * rehype-shiki replaces the <pre> node entirely and emits its own class and

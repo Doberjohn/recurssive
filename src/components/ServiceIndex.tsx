@@ -45,17 +45,17 @@ export function ServiceIndex({ services }: { services: Service[] }) {
 
           <Link
             href={s.href}
-            className="container-content relative flex min-h-[100px] items-center gap-6 py-5 outline-none md:gap-0"
+            className="container-content relative flex min-h-[100px] flex-col justify-center gap-2 py-6 outline-none lg:flex-row lg:items-center lg:gap-0 lg:py-0"
           >
-            <span className="w-8 shrink-0 text-sm text-ink-muted transition-colors duration-200 group-focus-within:text-accent group-hover:text-accent">
+            <span className="t-index w-10 shrink-0 text-ink-muted lg:w-8 transition-colors duration-200 group-focus-within:text-accent group-hover:text-accent">
               ({s.index})
             </span>
 
-            <span className="font-heading text-4xl font-bold text-ink transition-colors duration-200 group-focus-within:text-cloud group-hover:text-cloud md:w-[331px] md:shrink-0">
+            <span className="t-item font-heading font-bold text-ink transition-colors duration-200 group-focus-within:text-cloud group-hover:text-cloud lg:w-[331px] lg:shrink-0">
               {s.name}
             </span>
 
-            <span className="hidden max-w-[878px] text-base text-ink transition-colors duration-200 group-focus-within:text-cloud group-hover:text-cloud md:block">
+            <span className="t-body max-w-[878px] text-ink transition-colors duration-200 group-focus-within:text-cloud group-hover:text-cloud lg:max-w-[878px]">
               {s.description}
             </span>
 

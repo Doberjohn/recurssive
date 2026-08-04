@@ -53,7 +53,7 @@ function Field({
 
   return (
     <div className="relative">
-      <label htmlFor={name} className="block text-base text-ink">
+      <label htmlFor={name} className="t-form block text-ink">
         {required && <span aria-hidden="true">*</span>}
         {label}
       </label>
@@ -93,7 +93,7 @@ function ChipGroup({
 }) {
   return (
     <fieldset>
-      <legend className={`text-base ${muted ? 'text-storm' : 'text-ink'}`}>
+      <legend className={`t-form ${muted ? 'text-storm' : 'text-ink'}`}>
         <span aria-hidden="true">*</span>
         {legend}
       </legend>
@@ -101,7 +101,7 @@ function ChipGroup({
         {options.map((o) => (
           <label
             key={o}
-            className="cursor-pointer rounded-xl border border-border px-4 py-1.5 text-base text-ink transition-colors has-[:checked]:rounded-md has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-cloud has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
+            className="cursor-pointer rounded-xl border border-border t-body px-4 py-1.5 text-ink transition-colors has-[:checked]:rounded-md has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-cloud has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
           >
             <input type="radio" name={name} value={o} className="sr-only" />
             {o}

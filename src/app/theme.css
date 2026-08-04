@@ -134,13 +134,14 @@
    No 1920 gutter token is needed: (1920 − 1594) / 2 = 163px, so the design's
    163px margin falls out of `max-width` + `margin-inline: auto` automatically. */
 .container-content {
-  width: 100%;
-  max-width: var(--container-content);
+  width: min(100% - 3rem, var(--container-content));
   margin-inline: auto;
-  padding-inline: 1.5rem;
 }
-@media (min-width: 768px)  { .container-content { padding-inline: var(--spacing-gutter-sm); } }
-@media (min-width: 1920px) { .container-content { padding-inline: 0; } }
+@media (min-width: 768px) {
+  .container-content {
+    width: min(100% - 2 * var(--spacing-gutter-sm), var(--container-content));
+  }
+}
 
 /* Signature gradients. */
 .bg-brand-gradient {

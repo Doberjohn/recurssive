@@ -77,10 +77,7 @@ export default function Home() {
             className="absolute inset-0 -z-10 bg-gradient-to-t from-phantom via-phantom/60 to-phantom/25"
           />
           <div className="container-content">
-            <p
-              className="max-w-[970px] font-heading font-semibold leading-[0.9] tracking-[-0.05em] text-white"
-              style={{ fontSize: 'clamp(2rem, 3.75vw, 4.5rem)' }}
-            >
+            <p className="t-hero max-w-[970px] font-heading font-semibold text-white">
               Crafting custom web &amp; app experiences that help people.
             </p>
           </div>
@@ -89,7 +86,7 @@ export default function Home() {
         {/* ── What we do best ─────────────────────────────────────────── */}
         <section className="pb-8 pt-20" aria-labelledby="what-we-do">
           <div className="container-content">
-            <h2 id="what-we-do" className="text-7xl text-ink">
+            <h2 id="what-we-do" className="t-section text-ink">
               What we do best
             </h2>
           </div>
@@ -114,10 +111,10 @@ export default function Home() {
 
           <div className="container-content">
             <div className="grid gap-10 lg:grid-cols-2">
-              <h2 id="industries" className="text-7xl text-cloud">
+              <h2 id="industries" className="t-section text-cloud">
                 Industries we serve
               </h2>
-              <p className="text-4xl font-semibold leading-snug text-cloud">{LOREM}</p>
+              <p className="t-item font-semibold text-cloud">{LOREM}</p>
             </div>
 
             <div className="mt-32 grid gap-12 lg:grid-cols-3">
@@ -131,8 +128,8 @@ export default function Home() {
                       <Logo key={k} className="h-10 w-auto" />
                     ))}
                   </div>
-                  <h3 className="text-4xl text-cloud">{name}</h3>
-                  <p className="mt-6 text-md text-cloud/85">{LOREM}</p>
+                  <h3 className="t-item text-cloud">{name}</h3>
+                  <p className="t-body mt-6 text-cloud/85">{LOREM}</p>
                 </div>
               ))}
             </div>
@@ -150,10 +147,10 @@ export default function Home() {
         <section className="py-32" aria-labelledby="faq">
           <div className="container-content">
             <div className="mx-auto max-w-[650px]">
-              <h2 id="faq" className="text-center text-7xl text-ink">
+              <h2 id="faq" className="t-section text-center text-ink">
                 Frequently Asked Questions
               </h2>
-              <p className="mt-6 text-center text-md text-ink-muted">{LOREM}</p>
+              <p className="t-body mt-6 text-center text-ink-muted">{LOREM}</p>
               <div className="mt-12">
                 <Faq items={faqs} defaultOpen={0} />
               </div>
@@ -179,10 +176,10 @@ export default function Home() {
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-phantom/75 via-phantom/60 to-phantom/75" />
 
           <div className="container-content">
-            <h2 id="process" className="text-7xl text-silver">
+            <h2 id="process" className="t-section text-silver">
               Our Process
             </h2>
-            <p className="mt-4 max-w-xl text-base text-silver">{LOREM}</p>
+            <p className="t-body mt-4 max-w-xl text-silver">{LOREM}</p>
 
             <ol className="mt-24 space-y-20">
               {process.map((step) => (
@@ -191,19 +188,19 @@ export default function Home() {
                   className="grid items-start gap-x-8 gap-y-4 lg:grid-cols-[42px_minmax(0,26fr)_minmax(0,26fr)_minmax(0,44fr)]"
                 >
                   {/* Raised above the name's cap line, as drawn. */}
-                  <span className="text-lg text-accent">({step.index})</span>
+                  <span className="t-index text-accent">({step.index})</span>
 
                   {/* Rule sized to the word, not the column. */}
-                  <h3 className="w-fit border-b border-silver/60 pb-3 text-7xl text-silver">
+                  <h3 className="t-step w-fit border-b border-silver/60 pb-3 text-silver">
                     {step.name}
                   </h3>
 
                   {/* Label sits on a mesh shape in the design. */}
-                  <p className="bg-mesh-placeholder w-fit rounded-xl px-5 py-3 text-center text-md font-semibold text-cloud">
+                  <p className="bg-mesh-placeholder t-label w-fit rounded-xl px-5 py-3 text-center font-semibold text-cloud">
                     {step.label}
                   </p>
 
-                  <p className="text-md text-cloud/85">{LOREM}</p>
+                  <p className="t-body text-cloud/85">{LOREM}</p>
                 </li>
               ))}
             </ol>
@@ -217,10 +214,10 @@ export default function Home() {
           <div className="container-content">
             <div className="grid gap-16 lg:grid-cols-2">
               <div>
-                <h2 id="contact" className="text-7xl text-ink">
+                <h2 id="contact" className="t-section text-ink">
                   Ready for success?
                 </h2>
-                <p className="mt-6 max-w-md text-base text-ink-muted">{LOREM}</p>
+                <p className="t-body mt-6 max-w-md text-ink-muted">{LOREM}</p>
 
                 <div className="mt-16 hidden lg:block">
                   <Picture

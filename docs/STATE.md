@@ -18,7 +18,7 @@ design's structure; a fidelity audit is running to find remaining differences.
 | 1 — Skeleton, tokens, CI budget gate | ✅ done |
 | 2 — Image pipeline | ✅ done |
 | 3 — MDX content layer | ✅ done |
-| 4 — Pages | 🔄 Home built; audit in flight. Then: Capability template → Capabilities → Cases/Case → About → Blog/Post → Contact → Legal → error states |
+| 4 — Pages | 🔄 Home built and audited (187 findings, systemic + high fixed, responsive scale in). Remaining: mid/low-tier polish. Then: Capability template → Capabilities → Cases/Case → About → Blog/Post → Contact → Legal → error states |
 | 5 — SEO polish, OG images | not started |
 
 **Measured state:** JS 125.3 KB against a 152 KB ceiling (26.7 KB headroom).
@@ -68,6 +68,10 @@ Anything outside `app/` exists on one disk only. The decoders in
 - **Not `next/image`** — build-time `sharp` pipeline, custom `<Picture>`.
 - **Every interaction is CSS.** INP excludes hover and scroll, so hover states
   cost nothing. Do not route them through React state.
+- **The two design frames disagree on purpose.** At 768 headings are SMALLER
+  and everything else is BIGGER (hero 72->48, section 48->42, but body 16->22,
+  FAQ 18->26). The `.t-*` classes in globals.css encode the measured pairs;
+  base is the 768 value and `lg` switches to 1920.
 
 `KNOWLEDGE-BASE.md` §13 lists findings that were investigated and **disproved** —
 read it before re-raising anything.
@@ -90,6 +94,12 @@ read it before re-raising anything.
   x8887 is not content — it is not a missing hero element.
 - **Measuring that a component is built correctly is not the same as checking it
   is the right component.** Look at the rendered page.
+- **Passing `hidden` via a component's className prop does not beat a `display`
+  utility in its own base string** — same layer, source order decides. Wrap the
+  component instead.
+- **`max-width` is a border-box value.** With padding-inline, gutters eat the
+  column: the 1594px content width was only reachable at exactly 1920px.
+  `.container-content` now sizes by `width: min(...)`.
 
 ---
 

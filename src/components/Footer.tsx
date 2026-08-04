@@ -41,7 +41,7 @@ export function Footer() {
           <Logo className="h-[106px] w-auto text-cloud" />
         </Link>
 
-        <div className="mt-20 flex flex-col gap-12 sm:flex-row sm:justify-between">
+        <div className="mt-20 flex flex-col gap-12 lg:flex-row lg:justify-between">
           <FooterColumn title="Contents">
             {contents.map((l) => (
               <li key={l.href}>
@@ -75,7 +75,7 @@ export function Footer() {
           </FooterColumn>
         </div>
 
-        <div className="mt-20 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 text-base text-cloud">
+        <div className="t-body mt-20 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 text-cloud">
           <span>©{new Date().getFullYear()} {site.name}</span>
           <Link href="/privacy-policy" className="hover:underline">
             Privacy
@@ -103,8 +103,8 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h2 className="font-heading text-base text-cloud">{title}</h2>
-      <ul className="mt-4 space-y-1 text-base text-cloud/90">{children}</ul>
+      <h2 className="t-form font-heading text-cloud">{title}</h2>
+      <ul className="t-body mt-4 space-y-1 text-cloud/90">{children}</ul>
     </div>
   )
 }

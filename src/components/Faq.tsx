@@ -27,7 +27,7 @@ export function Faq({
           className="group rounded-3xl bg-surface px-6 open:pb-5"
         >
           <summary
-            className="flex cursor-pointer list-none items-center justify-between gap-6 py-3 text-md text-ink [&::-webkit-details-marker]:hidden"
+            className="t-question flex cursor-pointer list-none items-center justify-between gap-6 py-3 text-ink [&::-webkit-details-marker]:hidden"
             // 48px drawn height; py-3 on an 18px line gives ~44px, and the
             // whole row is the target rather than just the glyph.
           >
@@ -41,7 +41,7 @@ export function Faq({
               <span className="absolute left-1/2 top-0 h-4 w-[2px] -translate-x-1/2 bg-current transition-transform duration-200 group-open:scale-y-0" />
             </span>
           </summary>
-          <p className="pr-10 text-base text-ink-muted-on-surface">{item.answer}</p>
+          <p className="t-body pr-10 text-ink-muted-on-surface">{item.answer}</p>
         </details>
       ))}
     </div>

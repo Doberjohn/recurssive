@@ -58,14 +58,15 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
         </ul>
 
         <div className="flex items-center gap-4">
-          <Button
-            href="/contact"
-            variant={tone === 'light' ? 'light' : 'dark'}
-            arrow
-            className="hidden lg:inline-flex"
-          >
-            Start a project
-          </Button>
+          <span className="hidden lg:block">
+            <Button
+              href="/contact"
+              variant={tone === 'light' ? 'light' : 'dark'}
+              arrow
+            >
+              Start a project
+            </Button>
+          </span>
 
           {/* Mobile trigger. A real checkbox so the drawer needs no JS. */}
           <input type="checkbox" id="nav-toggle" className="peer sr-only" />
