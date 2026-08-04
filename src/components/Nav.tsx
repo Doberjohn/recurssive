@@ -39,8 +39,16 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
         className="container-content flex items-center gap-8 pt-8 md:pt-10"
         aria-label="Main"
       >
-        <Link href="/" className={`${text} shrink-0`} aria-label="Recurssive — home">
+        <Link
+          href="/"
+          className={`${text} flex shrink-0 items-center gap-3`}
+          aria-label="Recurssive — home"
+        >
           <Logo className="h-9 w-auto md:h-[37px]" />
+          {/* The drawn nav is a horizontal lockup, not the mark alone. */}
+          <span className="font-heading text-lg font-bold tracking-[-0.02em] lg:text-xl">
+            RECURSSIVE
+          </span>
         </Link>
 
         {/* Desktop links */}

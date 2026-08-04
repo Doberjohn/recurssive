@@ -6,7 +6,8 @@ import { ServiceIndex, type Service } from '@/components/ServiceIndex'
 import { ContactForm } from '@/components/ContactForm'
 import { Picture } from '@/components/ui/Picture'
 import { Button } from '@/components/ui/Button'
-import { Logo } from '@/components/ui/Logo'
+import { ProcessFlow, IndustryMark, type Step } from '@/components/ProcessFlow'
+import { BinaryDiamond } from '@/components/BinaryDiamond'
 import { buildMetadata } from '@/lib/metadata'
 import { site } from '@/lib/site'
 
@@ -28,8 +29,6 @@ const services: Service[] = [
   { index: '06', name: 'Product Strategy', image: 'ai', description: LOREM, href: '/capabilities/product-development' },
 ]
 
-const industries = ['Startups', 'SMBs', 'Enterprise']
-
 /** Nine questions, as drawn. The first ships expanded in the file. */
 const faqs = [
   { question: 'What is app development?', answer: LOREM },
@@ -43,12 +42,20 @@ const faqs = [
   { question: 'Do you offer app redesign and rescue services?', answer: LOREM },
 ]
 
-/** Four steps, ~209px apart (y4434 / 4662 / 4871 / 5080). */
-const process = [
-  { index: '01', name: 'Ask', label: 'Start the process' },
-  { index: '02', name: 'Listen', label: 'Collect the data' },
-  { index: '03', name: 'Think', label: 'Decide what to do' },
-  { index: '04', name: 'Create', label: 'Work on it' },
+/** Four steps, each on its flowchart shape — the logo's own construction. */
+const process: Step[] = [
+  { index: '01', name: 'Ask', label: 'Start the process', body: LOREM, shape: 'terminator' },
+  { index: '02', name: 'Listen', label: 'Collect the data', body: LOREM, shape: 'io' },
+  { index: '03', name: 'Think', label: 'Decide what to do', body: LOREM, shape: 'decision' },
+  { index: '04', name: 'Create', label: 'Work on it', body: LOREM, shape: 'process' },
+]
+
+/** Marks are three overlapping copies of one shape — nesting depth encodes
+ *  organisational scale (deck p195). */
+const industries = [
+  { name: 'Startups', shape: 'ellipse' as const },
+  { name: 'SMBs', shape: 'rect' as const },
+  { name: 'Enterprise', shape: 'triangle' as const },
 ]
 
 export default function Home() {
@@ -118,16 +125,9 @@ export default function Home() {
             </div>
 
             <div className="mt-32 grid gap-12 lg:grid-cols-3">
-              {industries.map((name, n) => (
+              {industries.map(({ name, shape }) => (
                 <div key={name}>
-                  {/* Drawn as gradient-filled marks above each heading; the
-                      brand mark at increasing nesting depth encodes org scale
-                      (deck p195: startups -> SMBs -> enterprise). */}
-                  <div aria-hidden="true" className="mb-8 flex items-end gap-1.5 text-accent">
-                    {Array.from({ length: n + 1 }).map((_, k) => (
-                      <Logo key={k} className="h-10 w-auto" />
-                    ))}
-                  </div>
+                  <IndustryMark shape={shape} />
                   <h3 className="t-item text-cloud">{name}</h3>
                   <p className="t-body mt-6 text-cloud/85">{LOREM}</p>
                 </div>
@@ -152,7 +152,7 @@ export default function Home() {
               </h2>
               <p className="t-body mt-6 text-center text-ink-muted">{LOREM}</p>
               <div className="mt-12">
-                <Faq items={faqs} defaultOpen={0} />
+                <Faq items={faqs} defaultOpen={1} />
               </div>
             </div>
           </div>
@@ -181,29 +181,7 @@ export default function Home() {
             </h2>
             <p className="t-body mt-4 max-w-xl text-silver">{LOREM}</p>
 
-            <ol className="mt-24 space-y-20">
-              {process.map((step) => (
-                <li
-                  key={step.name}
-                  className="grid items-start gap-x-8 gap-y-4 lg:grid-cols-[42px_minmax(0,26fr)_minmax(0,26fr)_minmax(0,44fr)]"
-                >
-                  {/* Raised above the name's cap line, as drawn. */}
-                  <span className="t-index text-accent">({step.index})</span>
-
-                  {/* Rule sized to the word, not the column. */}
-                  <h3 className="t-step w-fit border-b border-silver/60 pb-3 text-silver">
-                    {step.name}
-                  </h3>
-
-                  {/* Label sits on a mesh shape in the design. */}
-                  <p className="bg-mesh-placeholder t-label w-fit rounded-xl px-5 py-3 text-center font-semibold text-cloud">
-                    {step.label}
-                  </p>
-
-                  <p className="t-body text-cloud/85">{LOREM}</p>
-                </li>
-              ))}
-            </ol>
+            <ProcessFlow steps={process} />
           </div>
         </section>
 
@@ -219,15 +197,10 @@ export default function Home() {
                 </h2>
                 <p className="t-body mt-6 max-w-md text-ink-muted">{LOREM}</p>
 
-                <div className="mt-16 hidden lg:block">
-                  <Picture
-                    name="home-portrait"
-                    alt=""
-                    sizes="(min-width: 1024px) 26vw, 100vw"
-                    grain
-                    className="aspect-[411/707] w-[411px] max-w-full overflow-hidden rounded-xl"
-                    imgClassName="h-full w-full object-cover"
-                  />
+                {/* Drawn as a 411x707 masked field of ones and zeroes — the
+                    "0's & 1's" principle, not a photograph. */}
+                <div className="mt-16 hidden h-[707px] w-[411px] max-w-full [container-type:inline-size] lg:block">
+                  <BinaryDiamond className="h-full w-full" />
                 </div>
               </div>
 
