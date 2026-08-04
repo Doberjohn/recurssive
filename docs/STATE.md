@@ -26,6 +26,32 @@ Every route statically prerendered. CI green.
 
 ---
 
+## The contact form
+
+Posts to `/api/contact`, a Route Handler — **the only server function in the
+deployment**. Every page is still prerendered; CI asserts that and now exempts
+`/api` specifically, so a page going dynamic still fails the build.
+
+A plain form POST with a 303 redirect, not `fetch()`. That is why the form costs
+0 KB of client JS, works with scripting off, and cannot be resubmitted by a
+refresh. Outcomes are two prerendered pages: `/contact/thanks` and
+`/contact/problem`. A banner on `/contact` was rejected — reading a query string
+would make the page dynamic.
+
+**It fails closed.** No API key, provider error, or invalid payload all land on
+`/contact/problem`, which tells the visitor plainly that the message did not
+arrive and gives them the address directly. Never redirect a failed send to
+thanks.
+
+Validation lives in `src/lib/contact.ts` (zod), shared by the route and the
+form's option lists so client and server cannot drift — `interest` and `budget`
+are an allow-list, since a radio group is trivially forged. A honeypot field
+(`company`) is thanked and dropped rather than rejected, so a bot learns nothing.
+
+`renderEnquiry` builds the email: subject carries name/interest/budget so a full
+inbox is readable unopened, and **Reply-To is the enquirer** so a reply reaches
+them. Plain text on purpose.
+
 ## Blockers — only the owner can clear these
 
 1. **Tony Noel photograph licence.** It is the About page hero — full-bleed,
@@ -187,6 +213,12 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   Regenerate it, never hand-edit. Used in the footer and the nav lockup
   (146.2x17.9 there). No webfont: At Hauss is commercial, this is the only place
   it appears, and outlines cost no request, no licence and no FOUT.
+- **`Intl.DateTimeFormat` rejects `dateStyle`/`timeStyle` alongside
+  `timeZoneName`.** It throws `Invalid option : option` at runtime, not at build
+  — the contact route 500'd on its first real submission while every invalid one
+  redirected correctly, because only the valid path reached the formatter. Use
+  explicit components (`day`/`month`/`year`/`hour`/`minute`) when you need the
+  zone name.
 - **A `<clipPath>` may only contain shapes, `<text>` and `<use>` — a `<g>` is
   ignored.** Wrapping the Contact artwork's paths in a `<g>` to carry a scale
   transform produced an EMPTY clip, and an empty clip renders nothing at all

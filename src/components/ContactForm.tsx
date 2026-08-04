@@ -1,4 +1,5 @@
 import { Button } from './ui/Button'
+import { INTERESTS, BUDGETS } from '@/lib/contact'
 
 /**
  * Contact form — the block at x975 on Home, repeated on /contact.
@@ -20,15 +21,10 @@ import { Button } from './ui/Button'
  *     a 30K project has nothing to select. 20-50K added.
  */
 
-const interests = [
-  'Web Development',
-  'Mobile App',
-  'UI/UX Design',
-  'Startup',
-  'Other',
-]
-
-const budgets = ['<10K', '10-20K', '20-50K', '50-100K', '>100K', 'Not sure']
+// Sourced from the schema, not re-typed: these doubles as the server-side
+// allow-list, and a radio group is trivially forged.
+const interests = INTERESTS
+const budgets = BUDGETS
 
 function Field({
   label,
@@ -36,12 +32,18 @@ function Field({
   type = 'text',
   required = true,
   textarea = false,
+  autoComplete,
+  minLength,
 }: {
   label: string
   name: string
   type?: string
   required?: boolean
   textarea?: boolean
+  /** WCAG 1.3.5. Absent everywhere before this. */
+  autoComplete?: string
+  /** Matches the server schema so the browser catches it first. */
+  minLength?: number
 }) {
   const shared =
     'peer w-full border-0 border-b border-border bg-transparent pb-2 pt-1 text-base text-ink ' +
@@ -58,9 +60,25 @@ function Field({
         {label}
       </label>
       {textarea ? (
-        <textarea id={name} name={name} rows={3} required={required} className={`${shared} resize-none`} />
+        <textarea
+          id={name}
+          name={name}
+          rows={3}
+          required={required}
+          minLength={minLength}
+          autoComplete={autoComplete}
+          className={`${shared} resize-none`}
+        />
       ) : (
-        <input id={name} name={name} type={type} required={required} className={shared} />
+        <input
+          id={name}
+          name={name}
+          type={type}
+          required={required}
+          minLength={minLength}
+          autoComplete={autoComplete}
+          className={shared}
+        />
       )}
       {/* The "(active)" / "(error)" annotations from the designs, wired to real
           state rather than drawn in place. */}
@@ -88,7 +106,7 @@ function ChipGroup({
 }: {
   legend: string
   name: string
-  options: string[]
+  options: readonly string[]
   muted?: boolean
 }) {
   return (
@@ -101,9 +119,18 @@ function ChipGroup({
         {options.map((o) => (
           <label
             key={o}
-            className="cursor-pointer rounded-xl border border-border t-body px-4 py-1.5 text-ink transition-colors has-[:checked]:rounded-md has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-cloud has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
+            className="relative cursor-pointer rounded-xl border border-border t-body px-4 py-1.5 text-ink transition-colors has-[:checked]:rounded-md has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-cloud has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
           >
-            <input type="radio" name={name} value={o} className="sr-only" />
+            {/* Not sr-only: a 1x1 clipped input makes the browser anchor its
+                validation bubble to the corner of the form instead of the chip.
+                Covering the label keeps it invisible but correctly placed. */}
+            <input
+              type="radio"
+              name={name}
+              value={o}
+              required
+              className="absolute inset-0 h-full w-full cursor-pointer appearance-none opacity-0"
+            />
             {o}
           </label>
         ))}
@@ -114,11 +141,19 @@ function ChipGroup({
 
 export function ContactForm() {
   return (
-    <form className="space-y-8" action="/api/contact" method="post">
-      <Field label="Name" name="name" />
-      <Field label="E-mail" name="email" type="email" />
-      <Field label="Telephone" name="tel" type="tel" />
-      <Field label="Description" name="description" textarea />
+    <form className="relative space-y-8" action="/api/contact" method="post">
+      <Field label="Name" name="name" autoComplete="name" minLength={2} />
+      <Field label="E-mail" name="email" type="email" autoComplete="email" />
+      <Field label="Telephone" name="tel" type="tel" autoComplete="tel" minLength={6} />
+      <Field label="Description" name="description" textarea minLength={10} />
+
+      {/* Honeypot. Never shown, never announced, never focusable — anything in
+          it came from a bot, and the server thanks it without sending. Hidden
+          with a wrapper rather than display:none, which some bots skip. */}
+      <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
+        <label htmlFor="company">Company (leave this empty)</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
 
       <ChipGroup legend="Interested in" name="interest" options={interests} />
       <ChipGroup legend="Project budget" name="budget" options={budgets} muted />

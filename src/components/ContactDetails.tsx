@@ -25,15 +25,16 @@ import { site } from '@/lib/site'
  * card's actual backdrop — it fails AA everywhere on it. 768 draws them #A59BFF.
  * The body keeps #FAFAFA (1920) as the primary reading colour.
  *
- * The values are the one string long enough to overflow: `john@recurssive.com`
- * is 344px of ink in a 478 column, so it fits as drawn but not once the card
- * narrows between breakpoints. Sized in cqi against the content box and capped
- * at the drawn 32px, so it shrinks rather than escaping.
+ * The values are the one string long enough to overflow: the drawn
+ * `john@recurssive.com` measured 344px of ink in a 478 column, and the addresses
+ * actually shipped are longer still. They fit at the drawn widths but not once
+ * the card narrows between breakpoints, so they are sized in cqi against the
+ * content box and capped at the drawn 32px — they shrink rather than escape.
  */
 
 const rows = [
   { label: '(general)', value: site.email, href: `mailto:${site.email}` },
-  { label: '(inquiry)', value: 'inquiry@recurssive.com', href: 'mailto:inquiry@recurssive.com' },
+  { label: '(support)', value: 'support@recurssive.com', href: 'mailto:support@recurssive.com' },
   { label: '(social)', value: '@recurssive', href: null },
   { label: '(phone)', value: site.phone, href: `tel:${site.phone.replace(/\s/g, '')}` },
 ]

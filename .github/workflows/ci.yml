@@ -34,16 +34,23 @@ jobs:
       - name: JS budget
         run: npm run check:budget
 
-      # Every route in this site must be statically prerendered. If one goes
-      # dynamic — usually by someone adding cookies()/headers() to a layout —
-      # metadata silently moves out of <head> and TTFB regresses. Catch it here.
-      - name: Assert fully static
+      # Every PAGE must be statically prerendered. If one goes dynamic — usually
+      # by someone adding cookies()/headers()/searchParams to a layout —
+      # metadata silently moves out of <head> and TTFB regresses.
+      #
+      # /api/* is exempt and only /api/*: the contact form posts to a Route
+      # Handler, which is dynamic by definition. Exempting the path rather than
+      # relaxing the pattern keeps the check meaningful — a page going dynamic
+      # still fails, and the failure now prints which one.
+      - name: Assert pages fully static
         run: |
-          if grep -qE '^\s*[├└┌]\s+(ƒ|λ)' <(npm run build 2>&1); then
-            echo "::error::A route is no longer statically prerendered."
+          DYNAMIC="$(npm run build 2>&1 | grep -E '^\s*[├└┌│]\s+(ƒ|λ)' | grep -v '/api/' || true)"
+          if [ -n "$DYNAMIC" ]; then
+            echo "::error::A page is no longer statically prerendered:"
+            echo "$DYNAMIC"
             exit 1
           fi
-          echo "All routes static."
+          echo "All pages static; only /api is dynamic."
 
       # Horizontal overflow: every route at 13 widths. One element a few pixels
       # too wide gives the whole document a horizontal scrollbar, and once the
