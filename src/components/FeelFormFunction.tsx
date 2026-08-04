@@ -58,7 +58,10 @@ const FIELD = (() => {
   return out
 })()
 
-const WORDS = ['Feel.', 'Form.', 'Function']
+// The frames draw "Feel." and "Form." with full stops and "Function" without,
+// at both 1920 and 768. That is a slip in the file, not a rhythm — corrected on
+// the owner's instruction.
+const WORDS = ['Feel.', 'Form.', 'Function.']
 
 export function FeelFormFunction() {
   return (
