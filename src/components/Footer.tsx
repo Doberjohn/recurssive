@@ -36,7 +36,7 @@ const socials = [
 export function Footer() {
   return (
     <footer className="mesh relative mt-auto" style={{ ['--mesh' as string]: 'var(--mesh-12)' }}>
-      <div className="container-content relative z-10 pb-[218px] pt-[70px]">
+      <div className="container-content relative z-10 pt-[70px]">
         <Link href="/" aria-label="Recurssive — home" className="mx-auto block w-fit">
           <Logo className="h-auto w-[160px] text-cloud" />
         </Link>
@@ -88,8 +88,24 @@ export function Footer() {
           </Link>
           <span className="opacity-70">Designed by Omnics</span>
         </div>
-      </div>
 
+        {/* The wordmark: drawn as a 1594x196 vector on the content column,
+            flush to the band's bottom edge, solid #FAFAFA. It sits 22px under
+            the legal row — the space I previously mistook for padding.
+            Sized in container units so it spans the column at any width:
+            255.4px type measures 1624 wide, so 1594 needs 15.72% of the column. */}
+        <div
+          aria-hidden="true"
+          className="mt-[22px] select-none overflow-hidden [container-type:inline-size]"
+        >
+          <span
+            className="block font-heading font-bold leading-[0.78] tracking-[-0.02em] text-cloud"
+            style={{ fontSize: '15.72cqi' }}
+          >
+            RECURSSIVE
+          </span>
+        </div>
+      </div>
     </footer>
   )
 }

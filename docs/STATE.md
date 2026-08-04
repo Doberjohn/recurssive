@@ -90,8 +90,16 @@ read it before re-raising anything.
 - **Metadata merges shallowly.** Always build it via `src/lib/metadata.ts`.
 - **`notFound()` must be called before any `await`**, or Next injects `noindex`
   instead of returning a 404.
-- **The design canvas contains off-canvas debris.** The 255px RECURSSIVE node at
-  x8887 is not content — it is not a missing hero element.
+- **`Home.svg` in the asset folder is the authoritative render.** 238 MB, a
+  full 1920x6949 export of the Home frame with everything composited. Open it
+  in a browser. It settles questions the node tree cannot — and it revealed
+  three things a node-level audit had got wrong. Look at it before trusting
+  any derived manifest.
+- **Do not exclude VECTOR nodes when building a design manifest.** They were
+  skipped to avoid 30,000 icon paths, which made the footer wordmark — a
+  1594x196 VECTOR at x163 y6753 — invisible to every analysis built on it,
+  including the 187-finding audit. A separate 255px RECURSSIVE *text* node sits
+  parked off-canvas at x8887 in all 31 frames; that one is a decoy.
 - **Measuring that a component is built correctly is not the same as checking it
   is the right component.** Look at the rendered page.
 - **Passing `hidden` via a component's className prop does not beat a `display`
