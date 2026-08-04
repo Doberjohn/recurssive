@@ -178,6 +178,22 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   height changes. The footer is 764px, not the drawn 685. Bottom-anchoring in
   `vw` (scale-invariant, because `cover` is width-driven on a wide band) scored
   MAE 6.34 against the file; a top anchor scored 15.95 and centring 34.10.
+- **The brand face is At Hauss, not Inter — and the wordmark is never text.**
+  It was set as `font-heading` (Inter), which is wrong twice: the wrong face,
+  and a text node carries side bearings, so the ink stopped 56.3px short of the
+  content column while the box measured a correct 1594. Every alignment in the
+  footer is to the *ink*. `ui/Wordmark.tsx` is generated from the designer's
+  `RECURSSIVE.svg` at 1dp — 845 B brotli, extents exactly 0..1594 x 0..196.
+  Regenerate it, never hand-edit. Used in the footer and the nav lockup
+  (146.2x17.9 there). No webfont: At Hauss is commercial, this is the only place
+  it appears, and outlines cost no request, no licence and no FOUT.
+- **The footer's three columns are placed, not distributed.** Their left edges
+  are drawn at 0 / 767 / 1519 across the 1594 column; `justify-between` computes
+  749.5 for the middle one even with the drawn content, so no distribution rule
+  reproduces it. Encoded as `grid-cols-[minmax(0,767fr)_minmax(0,752fr)_max-content]`.
+  The third track is content-sized on purpose — a fixed 75fr equals 75px at the
+  drawn width and "Instagram" is 72.6, so it would overflow as soon as the
+  column narrowed.
 - **A live clock does not force the page dynamic.** Only rendering the time on
   the *server* would. A `'use client'` component that fills in on mount leaves
   the route `○ (Static)` — verified: the prerendered `index.html` ships

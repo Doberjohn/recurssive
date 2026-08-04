@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Logo } from './ui/Logo'
+import { Wordmark } from './ui/Wordmark'
 import { Clock } from './Clock'
 import { site } from '@/lib/site'
 
@@ -63,7 +64,17 @@ export function Footer() {
           <Logo className="h-auto w-[160px] text-cloud" />
         </Link>
 
-        <div className="mt-20 flex flex-col gap-12 lg:flex-row lg:justify-between">
+        {/* Column left edges are drawn at x163 / x930 / x1682, i.e. 0 / 767 /
+            1519 across the 1594 column. That is not a distribution rule —
+            justify-between computes 749.5 for the middle one even with the
+            drawn content — so the ratio is encoded directly.
+
+            The third track is max-content rather than 75fr: at the drawn width
+            it lands on 1519 either way, but a fixed fraction would be 75px and
+            "Instagram" is 72.6, so it would overflow the moment the column
+            narrowed. Sizing it to content and splitting the remainder 767:752
+            holds the drawn positions at 1920 and degrades sanely below it. */}
+        <div className="mt-20 flex flex-col gap-12 lg:grid lg:grid-cols-[minmax(0,767fr)_minmax(0,752fr)_max-content] lg:gap-0">
           <FooterColumn title="Contents">
             {contents.map((l) => (
               <li key={l.href}>
@@ -111,21 +122,17 @@ export function Footer() {
           <span className="opacity-70">Designed by Omnics</span>
         </div>
 
-        {/* The wordmark: drawn as a 1594x196 vector on the content column,
-            flush to the band's bottom edge, solid #FAFAFA. It sits 22px under
-            the legal row — the space I previously mistook for padding.
-            Sized in container units so it spans the column at any width:
-            255.4px type measures 1624 wide, so 1594 needs 15.72% of the column. */}
-        <div
-          aria-hidden="true"
-          className="mt-[22px] select-none overflow-hidden [container-type:inline-size]"
-        >
-          <span
-            className="block font-heading font-bold leading-[0.78] tracking-[-0.02em] text-cloud"
-            style={{ fontSize: '15.72cqi' }}
-          >
-            RECURSSIVE
-          </span>
+        {/* The wordmark: a 1594x196 vector on the content column, flush to the
+            band's bottom edge. It sits 22px under the legal row.
+
+            As an <svg> its ink spans the column exactly, which is the whole
+            point — the three columns above are positioned to line up with the
+            letterforms (first column at x163 = the R's left edge, the right
+            column's widest line ending at x1755 against the final E at x1757).
+            Set as text it could never align: the glyphs carry side bearings, so
+            the ink stopped 56.3px short while the box measured 1594. */}
+        <div aria-hidden="true" className="mt-[22px] select-none">
+          <Wordmark className="block h-auto w-full text-cloud" />
         </div>
       </div>
     </footer>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Logo } from './ui/Logo'
+import { Wordmark } from './ui/Wordmark'
 import { Button } from './ui/Button'
 import { site } from '@/lib/site'
 
@@ -39,16 +40,16 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
         className="container-content flex items-center gap-8 pt-8 md:pt-10"
         aria-label="Main"
       >
+        {/* The drawn lockup: mark 60.6x37.4 at x163, a 7.2px gap, then the
+            wordmark 146.2x17.9. Same outlines as the footer — set as text it
+            was in Inter, and the brand face is At Hauss. */}
         <Link
           href="/"
-          className={`${text} flex shrink-0 items-center gap-3`}
+          className={`${text} flex shrink-0 items-center gap-[7px]`}
           aria-label="Recurssive — home"
         >
           <Logo className="h-9 w-auto md:h-[37px]" />
-          {/* The drawn nav is a horizontal lockup, not the mark alone. */}
-          <span className="font-heading text-lg font-bold tracking-[-0.02em] lg:text-xl">
-            RECURSSIVE
-          </span>
+          <Wordmark className="h-auto w-[118px] md:w-[146px]" />
         </Link>
 
         {/* Desktop links */}
