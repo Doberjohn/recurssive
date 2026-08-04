@@ -178,6 +178,13 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   height changes. The footer is 764px, not the drawn 685. Bottom-anchoring in
   `vw` (scale-invariant, because `cover` is width-driven on a wide band) scored
   MAE 6.34 against the file; a top anchor scored 15.95 and centring 34.10.
+- **A live clock does not force the page dynamic.** Only rendering the time on
+  the *server* would. A `'use client'` component that fills in on mount leaves
+  the route `○ (Static)` — verified: the prerendered `index.html` ships
+  `--:--:--`, and `/` still reports Static. This wrong belief is why the footer
+  clock was dropped rather than built; the cost turned out to be 0.3 KB.
+  Anything "live" on a static page belongs in a small client leaf, not in a
+  rendering-mode change.
 - **`--grain-opacity` was the photograph number copied onto meshes.** Photos
   carry their own grain and need almost none added; a 128x80 AVIF upscaled 15x
   measures sigma 0.06, i.e. nothing, so on a mesh the overlay supplies *all* the

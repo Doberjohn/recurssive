@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Logo } from './ui/Logo'
+import { Clock } from './Clock'
 import { site } from '@/lib/site'
 
 /**
@@ -29,9 +30,10 @@ import { site } from '@/lib/site'
  *    real navigation. This is why the band is 764px rather than the drawn 685:
  *    six links occupy ~60px more than the four drawn. The extra height is
  *    absorbed at the top of the gradient, where it is darkest and least visible.
- *  - The clock reads a hardcoded 22:52:19 (Utc+3) on all 31 frames. Rendering a
- *    frozen timestamp reads as broken, and a live one would force the page
- *    dynamic. Shown as the timezone only.
+ *  - The clock reads a hardcoded 22:52:19 on all 31 frames. Shipping a frozen
+ *    timestamp reads as broken, so it runs live — see Clock.tsx. The offset is
+ *    derived from Europe/Athens rather than pinned to the drawn "+3", which is
+ *    only correct for about seven months of the year.
  */
 
 const contents = [
@@ -75,7 +77,7 @@ export function Footer() {
           <FooterColumn title="Where">
             <li>Thessaloniki</li>
             <li>Greece</li>
-            <li>UTC+3</li>
+            <Clock />
           </FooterColumn>
 
           <FooterColumn title="Socials">
