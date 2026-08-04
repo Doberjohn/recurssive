@@ -89,6 +89,37 @@
    * down to ~360. Below that it wraps, and reads fine. */
   .footer-legal { font-size: clamp(0.75rem, 0.257rem + 2.328vw, 1.375rem); }
 
+  /* The 0/1 diamond beside the contact form. Derivation in BinaryDiamond.tsx.
+   *
+   * The glyphs mask a mesh gradient rather than being painted, which is what the
+   * file does — `background-clip: text` with a transparent colour. It needs the
+   * -webkit- pair, which is why this is here rather than inline.
+   *
+   * 3.18cqi puts 47 rows at 1.15 leading across 171.9% of the container width,
+   * against a drawn box of 707/411 = 172%. opacity 0.1 is the group opacity on
+   * the drawn field.
+   *
+   * The letter-spacing is `0.5165em - 1ch`, not a fixed value, because the
+   * advance has to land on the drawn 6.75px whatever monospace the system
+   * resolves. 1ch IS the advance of a monospace font, so subtracting it cancels
+   * whatever that font does and 0.5165em sets the result — 0.5165 x 13.07px =
+   * 6.75px, and 61 characters then span 412px as drawn. A fixed -0.084em
+   * assumed a 0.6em default and came out 41px narrow on the first font tried. */
+  .binary-diamond {
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+    font-size: 3.18cqi;
+    line-height: 1.15;
+    letter-spacing: calc(0.5165em - 1ch);
+    opacity: 0.1;
+    background-image: var(--mesh-5);
+    background-size: 282.8% auto;   /* the file draws it 1165 wide in a 412 box */
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   /* Footer mesh crop, per breakpoint. Both frames show roughly the top two
    * thirds of the gradient with the bright core just under the bottom edge; the
    * band's aspect changes so much between a phone and a desktop that no single

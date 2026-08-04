@@ -187,6 +187,16 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   Regenerate it, never hand-edit. Used in the footer and the nav lockup
   (146.2x17.9 there). No webfont: At Hauss is commercial, this is the only place
   it appears, and outlines cost no request, no licence and no FOUT.
+- **An empty `<div>` generates no line box and collapses to 0px.** The binary
+  diamond's taper emitted `''` for its first and last rows, which silently
+  dropped them and left the field 31px short of the 707px it is drawn at. If a
+  row must occupy vertical space, it needs content.
+- **To pin a monospace advance to a measured value, use `calc(Xem - 1ch)`.**
+  `1ch` *is* the advance of a monospace font, so subtracting it cancels whatever
+  the system resolved and the `em` term sets the result. A fixed letter-spacing
+  assumes a default advance — `-0.084em` assumed 0.6em, the font was 0.549em,
+  and the field came out 41px narrow. Same trick applies anywhere a design
+  measurement has to survive an unknown font stack.
 - **A pale strip down one edge of the whole page means horizontal overflow, not
   a background bug.** Chased this a long way: it looked like a rogue border, then
   like the scrollbar track, then like `scrollbar-gutter`. It was the **nav**.
