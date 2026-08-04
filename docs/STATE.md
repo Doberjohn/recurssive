@@ -187,6 +187,12 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   Regenerate it, never hand-edit. Used in the footer and the nav lockup
   (146.2x17.9 there). No webfont: At Hauss is commercial, this is the only place
   it appears, and outlines cost no request, no licence and no FOUT.
+- **A `<clipPath>` may only contain shapes, `<text>` and `<use>` — a `<g>` is
+  ignored.** Wrapping the Contact artwork's paths in a `<g>` to carry a scale
+  transform produced an EMPTY clip, and an empty clip renders nothing at all
+  rather than falling back to unclipped. It looked exactly like a colour or
+  z-index problem; forcing the fill to bright red and still seeing nothing is
+  what separated the two. Put the transform on each shape instead.
 - **An empty `<div>` generates no line box and collapses to 0px.** The binary
   diamond's taper emitted `''` for its first and last rows, which silently
   dropped them and left the field 31px short of the 707px it is drawn at. If a

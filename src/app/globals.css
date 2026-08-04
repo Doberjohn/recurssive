@@ -121,6 +121,46 @@
     color: transparent;
   }
 
+  /* The contact details card's backdrop. Derivation in ContactDetails.tsx.
+   *
+   * --mesh-6, matched by pixel comparison at 0.99 mean-abs-diff against a
+   * next-best of 14.09. Sized by height so the crop holds at both drawn widths
+   * (648 and 610) without a per-breakpoint value.
+   *
+   * The grain is dialled down. --grain-opacity is calibrated for the footer,
+   * which draws the 4000px source at 2.08x; this card draws it at 3.27x, so the
+   * same overlay over-grains it by roughly 55%. 0.39 is the starting point that
+   * ratio gives — worth re-measuring against the export once the card is on
+   * screen, since the metric behind it is not the one that produced the footer's
+   * pair. */
+  .contact-card {
+    --mesh: var(--mesh-6);
+    --mesh-size: auto 111.5%;
+    --mesh-pos: 51% 8%;
+    --grain-opacity: 0.39;
+  }
+
+  /* The Feel/Form/Function artwork: the Reflow mark drawn as a binary field.
+   *
+   * The export is 3293 paths in five clusters, and the five clusters ARE the
+   * five Logo shapes — scaling ui/Logo.tsx by 962/119.94 = 8.02 lands each one
+   * on its cluster to within 4.4px on a 962px artwork (0.46%). So this clips one
+   * field with the mark's own geometry rather than shipping a second copy of it.
+   *
+   * Measured: row pitch 13.44px, font ~11.7px, advance 6.07px = 0.519em, flat
+   * #999999 with no mask and no group opacity — deliberately NOT the Home
+   * diamond's treatment, which masks a mesh at 10%.
+   *
+   * 1.216cqi puts the font at 11.7px on a 962px artwork; the same 1ch trick as
+   * the diamond pins the advance whatever monospace resolves. */
+  .reflow-binary {
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+    font-size: 1.216cqi;
+    line-height: 1.1487;
+    letter-spacing: calc(0.519em - 1ch);
+    color: #999999;
+  }
+
   /* Footer mesh crop, per breakpoint. Both frames show roughly the top two
    * thirds of the gradient with the bright core just under the bottom edge; the
    * band's aspect changes so much between a phone and a desktop that no single
