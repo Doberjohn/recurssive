@@ -78,6 +78,35 @@
    * down to ~360. Below that it wraps, and reads fine. */
   .footer-legal { font-size: clamp(0.75rem, 0.257rem + 2.328vw, 1.375rem); }
 
+  /* Footer mesh crop, per breakpoint. Both frames show roughly the top two
+   * thirds of the gradient with the bright core just under the bottom edge; the
+   * band's aspect changes so much between a phone and a desktop that no single
+   * rule gets there. Derivation in Footer.tsx.
+   *
+   * The lg size is not `cover`, and that matters. `cover` only overflows
+   * vertically while the band is wider than 1.6x its height. At 1024x1036 the
+   * band is 1009x642 — aspect 1.57 — so cover went height-driven and resolved to
+   * exactly 642 tall with nothing spare, and bottom-anchoring it then pushed the
+   * image down and left 215px of bare page background at the top of the footer.
+   *
+   * So state the requirement instead of hoping cover satisfies it: tall enough
+   * to bottom-anchor (100% + 20.95vw) OR tall enough to cover the width
+   * (62.5vw = the height whose 1.6 aspect spans the viewport), whichever is
+   * larger. At 1920 the second term wins and the result is what cover gave, so
+   * the locked desktop rendering is unchanged. */
+  .footer-mesh { --mesh-size: auto 152%; --mesh-pos: center top; }
+
+  @media (min-width: 768px) {
+    .footer-mesh { --mesh-size: 198.125%; --mesh-pos: center -2.0725vw; }
+  }
+
+  @media (min-width: 1024px) {
+    .footer-mesh {
+      --mesh-size: auto max(calc(100% + 20.95vw), 62.5vw);
+      --mesh-pos: center bottom -20.95vw;
+    }
+  }
+
   @media (min-width: 1024px) {
     .footer-col   { font-size: 1rem; }
     .footer-legal { font-size: 1rem; }

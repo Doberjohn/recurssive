@@ -187,6 +187,19 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   Regenerate it, never hand-edit. Used in the footer and the nav lockup
   (146.2x17.9 there). No webfont: At Hauss is commercial, this is the only place
   it appears, and outlines cost no request, no licence and no FOUT.
+- **`cover` stops overflowing vertically once the band's aspect drops under the
+  image's.** Anything that offsets a background off one edge is silently relying
+  on cover leaving spare pixels — and cover leaves *none* on the short axis by
+  definition. The footer's desktop crop bottom-anchors by -20.95vw, which was
+  fine at 1920 (band aspect 2.60, cover width-driven, 457px spare) and broke at
+  1024x1036: band 1009x642, aspect **1.57** against the image's 1.6, so cover
+  went height-driven, resolved to exactly 642 tall, and the offset pushed it
+  down leaving **215px of bare page background** at the top of the footer.
+  Tablets sit right on that 1.6 line, so this will not show up on a phone or a
+  desktop. State the requirement instead of hoping cover meets it:
+  `auto max(calc(100% + 20.95vw), 62.5vw)` — tall enough to anchor, or tall
+  enough to cover the width, whichever is larger. **Test every full-bleed
+  background at a ~1.5 aspect ratio, not just narrow and wide.**
 - **`background-repeat` bites the moment you stop using `cover`.** `cover` can
   never leave a gap, so the default `repeat` was invisible — until `--mesh-size`
   let a surface declare its own size. On a 440px phone the footer mesh resolved

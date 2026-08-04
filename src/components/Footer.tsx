@@ -18,12 +18,18 @@ import { site } from '@/lib/site'
  * mid-band and the whole footer read pale. Mean RGB 99,65,207 against 68,32,191.
  *
  * Anchored from the bottom rather than by percentage, because a percentage
- * resolves against (image height - band height) and this band is 764px, not the
- * drawn 685 — see the note on the Contents column below. Bottom-anchoring puts
- * the core in the same place regardless of band height: the file's image sits
+ * resolves against (image height - band height) and this band is not the drawn
+ * 685 — see the note on the Contents column below. Bottom-anchoring puts the
+ * core in the same place regardless of band height: the file's image sits
  * 402.16px below the band bottom at 1920 wide, i.e. 20.95% of the band width,
- * hence -20.95vw. Applied at lg only; the mobile frame is not available and
- * below 1.6 aspect `cover` becomes height-driven, where this value is meaningless.
+ * hence -20.95vw.
+ *
+ * The 768 frame crops differently again (zoomed ~1.7x past cover), and a phone
+ * needs a third treatment because a tall narrow band under `cover` shows the
+ * gradient's full height and puts the white core behind the text. All three
+ * live in `.footer-mesh` in globals.css, with the reasoning for the lg size —
+ * which is deliberately not `cover`, because cover stops overflowing vertically
+ * once the band's aspect drops under 1.6, and tablets sit right on that line.
  *
  * Two corrections to the drawn version, both recorded in the knowledge base:
  *
@@ -57,7 +63,7 @@ const socials = [
 export function Footer() {
   return (
     <footer
-      className="mesh relative mt-auto [--mesh-pos:center_top] [--mesh-size:auto_152%] md:[--mesh-pos:center_-2.0725vw] md:[--mesh-size:198.125%] lg:[--mesh-pos:center_bottom_-20.95vw] lg:[--mesh-size:cover]"
+      className="mesh footer-mesh relative mt-auto"
       style={{ ['--mesh' as string]: 'var(--mesh-12)' }}
     >
       <div className="container-content relative z-10 pt-[46px] lg:pt-[70px]">
@@ -130,7 +136,7 @@ export function Footer() {
             justify-between only once it fits on one line. Below 768 five items
             wrap, and justify-between then stretches whatever landed on the last
             row across the full width — two items with a chasm between them. */}
-        <div className="footer-legal mt-[86px] flex flex-wrap items-center gap-x-2 gap-y-1 leading-5 tracking-[-0.04em] text-cloud md:justify-between lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
+        <div className="footer-legal mt-[86px] flex flex-wrap items-center justify-between gap-x-2 gap-y-1 leading-5 tracking-[-0.04em] text-cloud lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
           {/* Build-year on the server, corrected on mount — see Year.tsx. */}
           <span>
             ©<Year fallback={new Date().getFullYear()} /> {site.name}
