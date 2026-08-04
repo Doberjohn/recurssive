@@ -159,6 +159,10 @@
     line-height: 1.1487;
     letter-spacing: calc(0.519em - 1ch);
     color: #999999;
+    /* Owner's call, and a departure from the export, which paints the field flat
+     * #999999 with no group opacity. Set on the field rather than folded into
+     * the colour so every glyph takes it uniformly. */
+    opacity: 0.5;
   }
 
   /* Footer mesh crop, per breakpoint. Both frames show roughly the top two

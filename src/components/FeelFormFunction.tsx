@@ -105,12 +105,30 @@ export function FeelFormFunction() {
           <BinaryMark />
 
           {/* The words sit ON the artwork, not under it: drawn at y1471 against
-              an artwork spanning 1197..1823, i.e. 43.8% down it. Both are
-              centred on the band. Reads the same at 768 (184 into 421). */}
+              an artwork spanning 1197..1823, i.e. 43.8% down it. Reads the same
+              at 768 (184 into 421).
+
+              justify-between, not centred: the row spans the artwork exactly, so
+              "Feel." starts on the left edge of the leftmost binary column and
+              the full stop after "Function." ends on the right edge of the
+              rightmost one. The negative insets cancel the two outer glyphs'
+              side bearings, which otherwise leave the ink a few px short of the
+              box on each side. */}
           <h2
             id="feel-form-function"
-            className="absolute inset-x-0 top-[43.8%] flex flex-wrap justify-center gap-x-[7.2%] gap-y-1 font-heading font-semibold tracking-[-0.05em] text-cloud"
-            style={{ fontSize: 'clamp(24px, 25.97px + 1.632vw, 57.3px)' }}
+            className="absolute top-[43.8%] flex flex-nowrap items-baseline justify-between whitespace-nowrap font-heading font-semibold tracking-[-0.05em] text-cloud"
+            style={{
+              fontSize: 'clamp(24px, 25.97px + 1.632vw, 57.3px)',
+              left: 'calc(-1 * var(--ffs-bearing-l))',
+              right: 'calc(-1 * var(--ffs-bearing-r))',
+              // Measured off the rendered font with canvas actualBoundingBox at
+              // this weight and tracking: the F of "Feel." begins 0.0526em right
+              // of its box, and the trailing full stop ends 0.0235em left of the
+              // advance. Pulling the row out by exactly those lands the INK on
+              // the artwork's edges rather than the layout boxes.
+              ['--ffs-bearing-l' as string]: '0.0526em',
+              ['--ffs-bearing-r' as string]: '0.0235em',
+            }}
           >
             {WORDS.map((w) => (
               <span key={w}>{w}</span>
