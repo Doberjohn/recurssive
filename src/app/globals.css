@@ -9,15 +9,15 @@
     /* Reserves the scrollbar gutter so content does not jump sideways moving
      * between a page that scrolls and one that does not.
      *
-     * NOT for the mobile menu, which is what the comment here used to claim —
-     * that drawer is a CSS-only position:fixed overlay and never locks scroll,
-     * so there was never a shift to prevent.
+     * NOT for the mobile menu, which is what this comment used to claim — that
+     * drawer is a CSS-only position:fixed overlay and never locks scroll, so
+     * there was never a shift to prevent.
      *
-     * It leaves body 15px narrower than the viewport (1905 of 1920), so every
-     * full-bleed band stops short of the right edge. That is invisible in a
-     * browser, because the gutter is only non-zero when a classic scrollbar
-     * exists and the scrollbar then fills it — but a screenshot that captures
-     * the gutter without the scrollbar renders it as a pale strip of canvas. */
+     * It does not cause the pale strip down the right of dark sections: that is
+     * the scrollbar's own track, which Chrome paints #2C2C2C-ish (measured
+     * 44,44,44) against a hero at 4,4,4. Removing this rule changes nothing —
+     * a classic scrollbar takes the same 15px either way. See scrollbar-color
+     * below if the track ever needs to stop reading as a line. */
     scrollbar-gutter: stable;
   }
 
