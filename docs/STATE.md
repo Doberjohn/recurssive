@@ -218,8 +218,15 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   legal row and wordmark positions looked unobtainable. Re-run it rather than
   guessing; output goes to `scratchpad/v2/figspec/`, and note the frames are
   suffixed (`Home__768w_3.txt` is the current one, not `Home__768w.txt`).
-- **The 768 footer is three columns side by side, not stacked**, at x79/321/585
-  across a 610 content column (0 / 242 / 506). Only below 768 do they stack.
+- **The 768 frame IS the mobile design — it does not stack, so neither should
+  we.** Its footer is three columns side by side at x79/321/585 across a 610
+  content column (0 / 242 / 506), and that layout has to survive down to a
+  phone. An earlier build treated 768 as a breakpoint to degrade *from* and
+  stacked below it, which is a layout the designer never drew. Where the drawn
+  type will not fit at phone widths, **ramp the type, do not change the
+  layout** — `.footer-col` hits the drawn 22px exactly at 768 and eases to a
+  14px floor by 360, which holds all three columns down to 320. Assume the same
+  for every other 768 frame.
 - **The legal row does not use body metrics.** Both frames set it on a 20px
   line-height (22/20 at 768, 16/20 at 1920) with -0.04em tracking at 768.
   Missing those made it ~8% wide, which is one line versus two at 610.

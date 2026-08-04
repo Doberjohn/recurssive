@@ -130,7 +130,7 @@ export function Footer() {
             justify-between only once it fits on one line. Below 768 five items
             wrap, and justify-between then stretches whatever landed on the last
             row across the full width — two items with a chasm between them. */}
-        <div className="footer-col mt-[86px] flex flex-wrap items-center gap-x-4 gap-y-1 leading-5 tracking-[-0.04em] text-cloud md:justify-between md:gap-x-2 lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
+        <div className="footer-col mt-[86px] flex flex-wrap items-center gap-x-3 gap-y-1 leading-5 tracking-[-0.04em] text-cloud md:justify-between md:gap-x-2 lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
           {/* Build-year on the server, corrected on mount — see Year.tsx. */}
           <span>
             ©<Year fallback={new Date().getFullYear()} /> {site.name}
@@ -141,7 +141,11 @@ export function Footer() {
           <Link href="/terms-of-service" className="hover:underline">
             Terms
           </Link>
-          <Link href="/cookies" className="hover:underline">
+          {/* Dropped below lg to match the frames, which draw four items in this
+              row at 768 and five at 1920. Not a style choice: at 440 the five
+              measure 398px of text against a 392px column, so they cannot share
+              a line at any gap. Four fit at 384px. */}
+          <Link href="/cookies" className="hidden hover:underline lg:inline">
             Cookies
           </Link>
           {/* Only the studio name is the link, not the whole credit. No dimming:
