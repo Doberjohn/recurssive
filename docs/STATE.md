@@ -76,6 +76,30 @@ Anything outside `app/` exists on one disk only. The decoders in
 `KNOWLEDGE-BASE.md` §13 lists findings that were investigated and **disproved** —
 read it before re-raising anything.
 
+### Cleared on the footer mesh — do not re-investigate
+
+Measured 2026-08-04 while chasing why the footer looked wrong. All ruled out;
+the causes were the crop and the grain, both now fixed.
+
+- **The mesh identity is right.** image7 -> `--mesh-12`, RMSE 0.8 against a
+  next-best of 55.5 across all ten tokens. Full map: image3→mesh-2,
+  image4→mesh-4, image6→mesh-5, image7→mesh-12, image8→mesh-7, image9→mesh-3.
+- **128x80 is not too small.** PSNR 45.27 dB, mean ΔE 0.76 against the file's
+  gradient at the same crop. 99.97% of the band's variance lives in features
+  wider than the stored resolution — the pipeline's low-frequency premise holds.
+- **No colour-profile problem.** Source PNG is sRGB, the AVIF signals sRGB.
+- **Nothing is painted over the footer mesh** — no gradient, no `fill-opacity`,
+  no blend mode. There is no overlay to reproduce.
+- **`background-size: cover` is correct.** The pattern scale is uniform 0.48 on
+  both axes; the design does not squash the gradient. Horizontal framing already
+  matched exactly.
+
+Known residuals, deliberately not fixed (all small, all on the shared `.mesh`):
+the file's grain is blue-dominant chroma noise where the tile is monochrome; the
+tile is fixed at 128 CSS px so it smooths on 2x displays; `mix-blend-mode:
+overlay` scales with backdrop luminance, so grain thins in the dark top of the
+band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
+
 ---
 
 ## Traps that have already bitten
@@ -137,6 +161,29 @@ read it before re-raising anything.
   exist in the production chunk were absent from the served dev stylesheet.
   Verify CSS against `npm run start`, never `next dev`. There is now a
   `recurssive-web-prod` entry in `.claude/launch.json` (port 3001) for this.
+- **Backticks inside `build-mesh.mjs` broke it a SECOND time.** The whole CSS
+  body is one template literal, so a backtick in a *comment* still ends the
+  string. Escape them: `` \` ``. Check with `grep -n '[^\\]\`' scripts/build-mesh.mjs`
+  — the plain `grep '\`'` spelling silently matches nothing useful.
+- **`background-position: center` is not what the designs do.** Mesh surfaces
+  crop their gradient at a deliberate point. On the footer, centring showed
+  17.9%..82.1% of the source where the file shows 9.4%..66.5% — the bright core
+  landed mid-band instead of below the bottom edge, and the whole footer read
+  pale. Mean RGB 99,65,207 against 68,32,191. `.mesh` now takes `--mesh-pos`.
+  Check every new mesh surface against its `pattern` transform before assuming
+  centre.
+- **Anchor a mesh crop from the edge the design defines it from, not the
+  centre.** A `background-position` percentage resolves against
+  (image height − band height), so it drifts whenever the band's content-driven
+  height changes. The footer is 764px, not the drawn 685. Bottom-anchoring in
+  `vw` (scale-invariant, because `cover` is width-driven on a wide band) scored
+  MAE 6.34 against the file; a top anchor scored 15.95 and centring 34.10.
+- **`--grain-opacity` was the photograph number copied onto meshes.** Photos
+  carry their own grain and need almost none added; a 128x80 AVIF upscaled 15x
+  measures sigma 0.06, i.e. nothing, so on a mesh the overlay supplies *all* the
+  texture. 0.10 delivered 1.16 against a measured target of 7.21 — and the
+  script's own comment already stated that target. Now 0.60. Keep
+  `--grain-photo-opacity` separate; 0.10 is correct there and was measured.
 
 ---
 

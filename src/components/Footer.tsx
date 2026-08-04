@@ -7,11 +7,28 @@ import { site } from '@/lib/site'
  * content column inset at y70, mark centred at the top, three columns, then a
  * legal row.
  *
+ * The band's gradient (mesh-12, confirmed identical to the file's image7 —
+ * RMSE 0.8 against the next-best 55.5) is cropped deliberately. In the file the
+ * image is drawn 1920x1200 at y-112.84, so the band shows 9.4%..66.5% of it:
+ * the dark upper region, with the bright core just below the bottom edge.
+ * `background-position: center` showed 17.9%..82.1% instead — the core landed
+ * mid-band and the whole footer read pale. Mean RGB 99,65,207 against 68,32,191.
+ *
+ * Anchored from the bottom rather than by percentage, because a percentage
+ * resolves against (image height - band height) and this band is 764px, not the
+ * drawn 685 — see the note on the Contents column below. Bottom-anchoring puts
+ * the core in the same place regardless of band height: the file's image sits
+ * 402.16px below the band bottom at 1920 wide, i.e. 20.95% of the band width,
+ * hence -20.95vw. Applied at lg only; the mobile frame is not available and
+ * below 1.6 aspect `cover` becomes height-driven, where this value is meaningless.
+ *
  * Two corrections to the drawn version, both recorded in the knowledge base:
  *
  *  - The "Contents" column lists Home / Services / About / Contact. "Services"
  *    is not a page; Cases, Capabilities and Blog are missing. Corrected to the
- *    real navigation.
+ *    real navigation. This is why the band is 764px rather than the drawn 685:
+ *    six links occupy ~60px more than the four drawn. The extra height is
+ *    absorbed at the top of the gradient, where it is darkest and least visible.
  *  - The clock reads a hardcoded 22:52:19 (Utc+3) on all 31 frames. Rendering a
  *    frozen timestamp reads as broken, and a live one would force the page
  *    dynamic. Shown as the timezone only.
@@ -35,7 +52,10 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="mesh relative mt-auto" style={{ ['--mesh' as string]: 'var(--mesh-12)' }}>
+    <footer
+      className="mesh relative mt-auto lg:[--mesh-pos:center_bottom_-20.95vw]"
+      style={{ ['--mesh' as string]: 'var(--mesh-12)' }}
+    >
       <div className="container-content relative z-10 pt-[70px]">
         <Link href="/" aria-label="Recurssive — home" className="mx-auto block w-fit">
           <Logo className="h-auto w-[160px] text-cloud" />
