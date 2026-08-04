@@ -308,6 +308,7 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
 ## Verification
 
 ```bash
+npm run check:overflow # every route x 13 widths, fails on horizontal overflow
 npm run verify        # build + JS budget gate
 npm run build:images  # regenerate photo renditions (needs the source folder)
 npm run build:mesh    # regenerate mesh gradients + grain tile

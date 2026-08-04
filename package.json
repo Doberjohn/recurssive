@@ -11,7 +11,8 @@
     "verify": "next build && node scripts/check-budget.mjs",
     "build:mesh": "node scripts/build-mesh.mjs",
     "probe:mesh": "node scripts/probe-mesh.mjs",
-    "build:images": "node scripts/build-images.mjs"
+    "build:images": "node scripts/build-images.mjs",
+    "check:overflow": "node scripts/check-overflow.mjs"
   },
   "dependencies": {
     "@shikijs/rehype": "^4.4.1",
