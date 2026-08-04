@@ -130,7 +130,7 @@ export function Footer() {
             justify-between only once it fits on one line. Below 768 five items
             wrap, and justify-between then stretches whatever landed on the last
             row across the full width — two items with a chasm between them. */}
-        <div className="footer-col mt-[86px] flex flex-wrap items-center gap-x-3 gap-y-1 leading-5 tracking-[-0.04em] text-cloud md:justify-between md:gap-x-2 lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
+        <div className="footer-legal mt-[86px] flex flex-wrap items-center gap-x-2 gap-y-1 leading-5 tracking-[-0.04em] text-cloud md:justify-between lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
           {/* Build-year on the server, corrected on mount — see Year.tsx. */}
           <span>
             ©<Year fallback={new Date().getFullYear()} /> {site.name}
