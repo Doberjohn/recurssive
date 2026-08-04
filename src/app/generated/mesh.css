@@ -75,6 +75,11 @@
   background-image: var(--mesh, var(--mesh-1));
   background-size: var(--mesh-size, cover);
   background-position: var(--mesh-pos, center);
+  /* Not optional. `cover` can never leave a gap, so the default `repeat` was
+   * harmless until --mesh-size existed; the moment a surface declares its own
+   * size, a band taller than the image tiles it and draws a hard seam straight
+   * across. Seen on a 440px phone: an 877.9px image in a 1065.3px footer. */
+  background-repeat: no-repeat;
   isolation: isolate;
 }
 

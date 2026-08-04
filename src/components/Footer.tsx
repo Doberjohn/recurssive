@@ -57,7 +57,7 @@ const socials = [
 export function Footer() {
   return (
     <footer
-      className="mesh relative mt-auto [--mesh-pos:center_-2.0725vw] [--mesh-size:198.125%] lg:[--mesh-pos:center_bottom_-20.95vw] lg:[--mesh-size:cover]"
+      className="mesh relative mt-auto [--mesh-pos:center_top] [--mesh-size:auto_152%] md:[--mesh-pos:center_-2.0725vw] md:[--mesh-size:198.125%] lg:[--mesh-pos:center_bottom_-20.95vw] lg:[--mesh-size:cover]"
       style={{ ['--mesh' as string]: 'var(--mesh-12)' }}
     >
       <div className="container-content relative z-10 pt-[46px] lg:pt-[70px]">
@@ -124,8 +124,12 @@ export function Footer() {
         {/* The legal row does not use body metrics: both frames set it on a
             20px line-height (22/20 at 768, 16/20 at 1920), and 768 adds -0.04em
             tracking. Without those it runs ~8% wide, which is the difference
-            between one line and two at 610. */}
-        <div className="t-body mt-[86px] flex flex-wrap items-center justify-between gap-x-2 gap-y-2 leading-5 tracking-[-0.04em] text-cloud lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
+            between one line and two at 610.
+
+            justify-between only once it fits on one line. Below 768 five items
+            wrap, and justify-between then stretches whatever landed on the last
+            row across the full width — two items with a chasm between them. */}
+        <div className="t-body mt-[86px] flex flex-wrap items-center gap-x-5 gap-y-1 leading-5 tracking-[-0.04em] text-cloud md:justify-between md:gap-x-2 lg:mt-[73px] lg:gap-x-8 lg:tracking-normal">
           {/* Build-year on the server, corrected on mount — see Year.tsx. */}
           <span>
             ©<Year fallback={new Date().getFullYear()} /> {site.name}

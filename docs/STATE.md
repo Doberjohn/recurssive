@@ -187,6 +187,24 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   Regenerate it, never hand-edit. Used in the footer and the nav lockup
   (146.2x17.9 there). No webfont: At Hauss is commercial, this is the only place
   it appears, and outlines cost no request, no licence and no FOUT.
+- **`background-repeat` bites the moment you stop using `cover`.** `cover` can
+  never leave a gap, so the default `repeat` was invisible — until `--mesh-size`
+  let a surface declare its own size. On a 440px phone the footer mesh resolved
+  to an 877.9px image in a 1065.3px band and tiled, drawing a hard seam straight
+  across. `.mesh` is now `no-repeat`; the grain overlay still repeats, which is
+  correct. **Any declared `background-size` needs `no-repeat` with it.**
+- **A tall narrow band cannot use the drawn crop.** Below 768 the footer stacks
+  and runs ~1060px tall, where `cover` is height-driven and shows the gradient's
+  full height — putting the white core behind the text, at roughly 1:1 contrast.
+  Fixed with `background-size: auto 152%` + `center top`: height-driven so it
+  always covers, and 1/1.52 = 65.8% of the source shows, which lands the bottom
+  edge where both frames put it (66.5% at 1920, 60.6% at 768) and keeps the core
+  below the wordmark. Sizing by height is what makes it independent of how tall
+  the band grows.
+- **`justify-between` is wrong once a flex row wraps.** It stretches whatever
+  landed on the last row across the full width — two items with a chasm between
+  them. The footer's legal row now only gets it from 768 up, where it fits on
+  one line.
 - **`Logo.tsx` had a wrong viewBox for months.** It carried `1269.18 1517.68
   95.49 57.76`, a crop rectangle from the 100-tile lockup sheet, aspect 1.653.
   The mark is **1.497** — two independent designer exports agree (`footer.svg`
