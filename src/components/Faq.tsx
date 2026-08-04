@@ -1,6 +1,20 @@
 /**
- * FAQ accordion — Frame 4 / Frame 49: 686x48, r14, #EAEAEA, question in
- * Open Sans SemiBold 18px, and a "+" that becomes "−" when open (#360D9D).
+ * FAQ accordion.
+ *
+ * Measured off `Home.svg` rather than the node tree, which had the rows wrong
+ * because their panels are vectors and the manifest excluded vectors:
+ *
+ *   panel      686.1 x 47.6, r11.3, #EAEAEA   (x616.9..1303.1)
+ *   question   17.1px in, 18px, #0F0F0F
+ *   icon       8.75px cross, 1.93px bars, #360D9D, centre 33px from the right
+ *   row pitch  64.3px — a 16.7px gap
+ *
+ * The one that changes the markup: **the answer is not inside the panel.** The
+ * open row's #EAEAEA panel stays 47.6px like every other; the answer sits below
+ * it on the page ground in #6B6B6B. So the panel belongs to <summary>, not to
+ * <details>. That also retires a workaround — #6B6B6B measures 4.43:1 on
+ * #EAEAEA (which is why an on-surface override existed) but 5.10:1 on #FAFAFA,
+ * so putting the answer where it is drawn passes AA on its own.
  *
  * Native <details>/<summary>. No JavaScript, and — more importantly — the
  * answers stay in the served HTML whether open or closed. A JS accordion that
@@ -15,33 +29,34 @@ export function Faq({
   defaultOpen,
 }: {
   items: { question: string; answer: string }[]
-  /** Index to ship expanded. The designs draw the first row open. */
+  /** Index to ship expanded. The file draws row 2 open. */
   defaultOpen?: number
 }) {
   return (
     <div className="space-y-4">
       {items.map((item, i) => (
-        <details
-          key={item.question}
-          open={i === defaultOpen}
-          className="group rounded-3xl bg-surface px-6 open:pb-5"
-        >
-          <summary
-            className="t-question flex cursor-pointer list-none items-center justify-between gap-6 py-3 text-ink [&::-webkit-details-marker]:hidden"
-            // 48px drawn height; py-3 on an 18px line gives ~44px, and the
-            // whole row is the target rather than just the glyph.
-          >
-            <span className="font-semibold">{item.question}</span>
+        <details key={item.question} open={i === defaultOpen} className="group">
+          {/* min-h, not h: 48px is the drawn height at 1920, but the 768 frame
+              sets questions at 26px, where they wrap and the panel must grow. */}
+          <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 rounded-[11px] bg-surface px-[17px] py-2 text-ink [&::-webkit-details-marker]:hidden">
+            <span className="t-question font-semibold">{item.question}</span>
+            {/* 8.75px glyph centred in a 32px box: that puts its centre 33px
+                from the panel edge, as drawn, while keeping a real target. */}
             <span
               aria-hidden="true"
-              className="relative h-4 w-4 shrink-0 text-primary-deep"
+              className="flex h-8 w-8 shrink-0 items-center justify-center text-primary-deep"
             >
-              {/* Horizontal bar stays; vertical bar collapses when open. */}
-              <span className="absolute left-0 top-1/2 h-[2px] w-4 -translate-y-1/2 bg-current" />
-              <span className="absolute left-1/2 top-0 h-4 w-[2px] -translate-x-1/2 bg-current transition-transform duration-200 group-open:scale-y-0" />
+              <span className="relative block h-[9px] w-[9px]">
+                {/* Horizontal bar stays; vertical bar collapses when open. */}
+                <span className="absolute left-0 top-1/2 h-[2px] w-[9px] -translate-y-1/2 bg-current" />
+                <span className="absolute left-1/2 top-0 h-[9px] w-[2px] -translate-x-1/2 bg-current transition-transform duration-200 group-open:scale-y-0" />
+              </span>
             </span>
           </summary>
-          <p className="t-body pr-10 text-ink-muted-on-surface">{item.answer}</p>
+          {/* Outside the panel, aligned to the question, 23px below it. */}
+          <p className="t-body px-[17px] pt-[23px] text-ink-muted">
+            {item.answer}
+          </p>
         </details>
       ))}
     </div>

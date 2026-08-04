@@ -100,6 +100,14 @@ read it before re-raising anything.
   1594x196 VECTOR at x163 y6753 — invisible to every analysis built on it,
   including the 187-finding audit. A separate 255px RECURSSIVE *text* node sits
   parked off-canvas at x8887 in all 31 frames; that one is a decoy.
+  The same exclusion silently corrupted **every measurement of a panel**: the
+  FAQ column was built at 650px because that was the widest *text* run — the
+  #EAEAEA panels it sits on are vectors, and they are 686.1. Assume any width
+  taken from the manifest is a text bbox until checked against the SVG.
+- **`Home.svg` decodes cheaply.** It is 249 MB only because ten base64 rasters
+  are inlined; stream them out and the vector skeleton is 4.5 MB with 1689
+  paths and no `<text>` at all (Figma outlined it, one path per text run — so
+  a run's bbox gives you its font size and line count, not its glyphs).
 - **Measuring that a component is built correctly is not the same as checking it
   is the right component.** Look at the rendered page.
 - **Passing `hidden` via a component's className prop does not beat a `display`
@@ -112,6 +120,23 @@ read it before re-raising anything.
   three times now: unlayered CSS outranks everything in `@layer utilities`, so
   an unlayered `h1-h6 { font-weight: 600 }` cannot be overridden by
   `font-medium` at the call site. Anything global belongs in a layer.
+- **Never read `getComputedStyle` straight after `.focus()` or a hover.**
+  Everything interactive here carries `transition-* duration-200`, so a
+  synchronous read returns the value at t=0 — the *resting* one. This produced
+  a completely false "the whole hover state is broken" reading. Wait ~500ms
+  first. In real Chrome use top-level `await`; an `async` IIFE returns `{}`.
+- **`CSSStyleRule.cssRules` exists and is truthy** (an empty list) now that
+  Tailwind emits nested CSS. Walking the CSSOM with
+  `if (r.cssRules) { recurse; continue }` therefore skips every leaf rule and
+  reports zero matches. Test `r.cssRules?.length` instead.
+- **The in-app Browser pane cannot screenshot or hover** — it never composites,
+  and `requestAnimationFrame` never fires, so any `await rAF` hangs until the
+  tool times out. Use the `claude-in-chrome` MCP against the **production**
+  server for anything visual. chrome-devtools MCP is gone.
+- **Turbopack dev CSS went stale again**, and this time silently: rules that
+  exist in the production chunk were absent from the served dev stylesheet.
+  Verify CSS against `npm run start`, never `next dev`. There is now a
+  `recurssive-web-prod` entry in `.claude/launch.json` (port 3001) for this.
 
 ---
 

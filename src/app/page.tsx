@@ -8,6 +8,7 @@ import { Picture } from '@/components/ui/Picture'
 import { Button } from '@/components/ui/Button'
 import { ProcessFlow, IndustryMark, type Step } from '@/components/ProcessFlow'
 import { BinaryDiamond } from '@/components/BinaryDiamond'
+import { BrandGrid } from '@/components/BrandGrid'
 import { buildMetadata } from '@/lib/metadata'
 import { site } from '@/lib/site'
 
@@ -143,15 +144,28 @@ export default function Home() {
         </section>
 
         {/* ── FAQ ──────────────────────────────────────────────────────────
-            Centred column: heading at x662, rows spanning x634 to x1283. */}
-        <section className="py-32" aria-labelledby="faq">
+            Centred 686px column — the panels are 686.1 wide; the old 650 was
+            the text bbox, because the manifest that produced it skipped the
+            vectors the panels are drawn as.
+
+            The construction grid behind it is not scoped to the FAQ: it is a
+            full-bleed layer painted under the entire page, and this is just
+            the only stretch of bare ground it crosses. See BrandGrid. */}
+        <section
+          className="relative isolate overflow-hidden py-32"
+          aria-labelledby="faq"
+        >
+          <BrandGrid className="absolute left-0 top-1/2 -z-10 w-full -translate-y-1/2" />
           <div className="container-content">
-            <div className="mx-auto max-w-[650px]">
+            <div className="mx-auto max-w-[686px]">
               <h2 id="faq" className="t-section text-center text-ink">
                 Frequently Asked Questions
               </h2>
-              <p className="t-body mt-6 text-center text-ink-muted">{LOREM}</p>
-              <div className="mt-12">
+              {/* Drawn 338.7 wide, so it breaks to two lines. */}
+              <p className="t-body mx-auto mt-6 max-w-[340px] text-center text-ink-muted">
+                {LOREM}
+              </p>
+              <div className="mt-6">
                 <Faq items={faqs} defaultOpen={1} />
               </div>
             </div>
