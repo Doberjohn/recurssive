@@ -108,19 +108,28 @@ export function FeelFormFunction() {
               an artwork spanning 1197..1823, i.e. 43.8% down it. Reads the same
               at 768 (184 into 421).
 
-              justify-between, not centred: the row spans the artwork exactly, so
-              "Feel." starts on the left edge of the leftmost binary column and
-              the full stop after "Function." ends on the right edge of the
-              rightmost one. The negative insets cancel the two outer glyphs'
-              side bearings, which otherwise leave the ink a few px short of the
-              box on each side. */}
+              justify-between across the two PARALLELOGRAMS — shapes 2 and 4 —
+              not across the whole mark. Measured off feel-form-function.svg,
+              whose five binary clusters sit at:
+
+                1  479.0 ..  594.8   ellipse
+                2  632.1 ..  749.2   parallelogram   <- "Feel." ink at 636.1
+                3  778.3 .. 1142.5   rhombus
+                4 1171.5 .. 1286.9   parallelogram   <- "Function." ink to 1284.4
+                5 1325.3 .. 1441.0   ellipse
+
+              The words touch 2 and 4 to within 4px; the outer ellipses are 157px
+              away. Across the 962 artwork that is 15.92% to 83.98%.
+
+              The em insets cancel the outer glyphs' side bearings, so it is the
+              INK that lands on those edges rather than the layout boxes. */}
           <h2
             id="feel-form-function"
             className="absolute top-[43.8%] flex flex-nowrap items-baseline justify-between whitespace-nowrap font-heading font-semibold tracking-[-0.05em] text-cloud"
             style={{
               fontSize: 'clamp(24px, 25.97px + 1.632vw, 57.3px)',
-              left: 'calc(-1 * var(--ffs-bearing-l))',
-              right: 'calc(-1 * var(--ffs-bearing-r))',
+              left: 'calc(15.92% - var(--ffs-bearing-l))',
+              right: 'calc(16.02% - var(--ffs-bearing-r))',
               // Measured off the rendered font with canvas actualBoundingBox at
               // this weight and tracking: the F of "Feel." begins 0.0526em right
               // of its box, and the trailing full stop ends 0.0235em left of the
