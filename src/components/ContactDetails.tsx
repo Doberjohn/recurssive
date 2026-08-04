@@ -33,7 +33,7 @@ import { site } from '@/lib/site'
 
 const rows = [
   { label: '(general)', value: site.email, href: `mailto:${site.email}` },
-  { label: '(inquiry)', value: 'john@recurssive.com', href: 'mailto:john@recurssive.com' },
+  { label: '(inquiry)', value: 'inquiry@recurssive.com', href: 'mailto:inquiry@recurssive.com' },
   { label: '(social)', value: '@recurssive', href: null },
   { label: '(phone)', value: site.phone, href: `tel:${site.phone.replace(/\s/g, '')}` },
 ]
