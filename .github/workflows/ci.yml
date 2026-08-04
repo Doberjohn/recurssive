@@ -45,6 +45,32 @@ jobs:
           fi
           echo "All routes static."
 
+      # Horizontal overflow: every route at 13 widths. One element a few pixels
+      # too wide gives the whole document a horizontal scrollbar, and once the
+      # page can scroll sideways every full-bleed band slides off and exposes a
+      # strip of bare canvas down the edge. It presents as a rogue border rather
+      # than as overflow, which is why it needs a machine to find it.
+      #
+      # Runs against the local production server rather than the Vercel preview:
+      # this is a layout property, identical in both, and it should fail on push
+      # as well as on PRs — before a preview exists.
+      - name: Start production server
+        run: |
+          npx next start --port 3001 & echo $! > /tmp/next.pid
+          for i in $(seq 1 60); do
+            curl -fsS -o /dev/null http://127.0.0.1:3001/ && echo "up after ${i}s" && exit 0
+            sleep 1
+          done
+          echo "::error::next start did not come up on :3001"
+          exit 1
+
+      - name: Horizontal overflow
+        run: npm run check:overflow
+
+      - name: Stop production server
+        if: always()
+        run: kill "$(cat /tmp/next.pid)" || true
+
   lighthouse:
     name: Lighthouse (preview)
     runs-on: ubuntu-latest

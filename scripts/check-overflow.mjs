@@ -43,15 +43,20 @@ const ROUTES = [
 /** Breakpoints and their inside edges — where frame-derived values stop fitting. */
 const WIDTHS = [320, 360, 375, 440, 640, 768, 800, 1024, 1044, 1100, 1280, 1440, 1920]
 
-const CHROME = [
-  'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
-  '/usr/bin/google-chrome',
-  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-].find(existsSync)
+const CHROME =
+  (process.env.CHROME_PATH && existsSync(process.env.CHROME_PATH) ? process.env.CHROME_PATH : null) ??
+  [
+    'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+    '/usr/bin/google-chrome',
+    '/usr/bin/google-chrome-stable',
+    '/usr/bin/chromium-browser',
+    '/usr/bin/chromium',
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  ].find(existsSync)
 
 if (!CHROME) {
-  console.error('✗ no Chrome binary found')
+  console.error('✗ no Chrome binary found. Set CHROME_PATH to one.')
   process.exit(1)
 }
 
@@ -64,6 +69,9 @@ const chrome = spawn(CHROME, [
   '--no-default-browser-check',
   '--disable-gpu',
   '--hide-scrollbars', // so clientWidth is not confounded by scrollbar width
+  // CI runners have no sandbox namespaces and a 64 MB /dev/shm, which crashes
+  // the renderer part-way through a long sweep.
+  ...(process.env.CI ? ['--no-sandbox', '--disable-dev-shm-usage'] : []),
   'about:blank',
 ], { stdio: 'ignore' })
 
