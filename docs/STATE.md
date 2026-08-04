@@ -187,6 +187,22 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
   Regenerate it, never hand-edit. Used in the footer and the nav lockup
   (146.2x17.9 there). No webfont: At Hauss is commercial, this is the only place
   it appears, and outlines cost no request, no licence and no FOUT.
+- **A pale strip down one edge of the whole page means horizontal overflow, not
+  a background bug.** Chased this a long way: it looked like a rogue border, then
+  like the scrollbar track, then like `scrollbar-gutter`. It was the **nav**.
+  The drawn 50px link gap is a 1920 measurement; at a 1029 viewport the lockup
+  (214) + six links (~310) + CTA (115) + gaps came to ~953 against an 871px
+  content column, so the nav pushed the document 10px wider than the viewport.
+  The page then gained a horizontal scrollbar, and the moment it scrolled every
+  full-bleed band slid off and exposed bare `#FAFAFA` canvas down the edge.
+  Only visible between lg and the width where the nav finally fits, which is why
+  it looked like a mystery band of viewport widths.
+  **Diagnosis: `document.scrollWidth > clientWidth` is the tell.** Zero
+  `scrollLeft` before scanning for the culprit — otherwise every rect is shifted
+  by the scroll and the overflowing element hides from the scan. That cost a
+  whole round of wrong answers here.
+  **Any measurement taken from the 1920 frame is suspect at the narrow end of
+  lg.** The nav gap now ramps 24px at 1024 to the drawn 50px at 1920.
 - **`cover` stops overflowing vertically once the band's aspect drops under the
   image's.** Anything that offsets a background off one edge is silently relying
   on cover leaving spare pixels — and cover leaves *none* on the short axis by

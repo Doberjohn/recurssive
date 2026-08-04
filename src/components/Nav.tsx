@@ -52,8 +52,21 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
           <Wordmark className="h-auto w-[118px] md:w-[146px]" />
         </Link>
 
-        {/* Desktop links */}
-        <ul className={`ml-auto hidden items-center gap-[50px] lg:flex ${text}`}>
+        {/* Desktop links.
+            The drawn 50px gap is a 1920 measurement and does not survive the
+            narrow end of lg. At a 1029 viewport the content column is 871, while
+            the lockup (214) + six links (~310) + CTA (115) + the nav's own two
+            32px gaps + five 50px link gaps come to ~953. The nav then pushed the
+            document 10px wider than the viewport, which gave the whole page a
+            horizontal scrollbar — and once scrolled, every full-bleed band slid
+            off and exposed a strip of bare canvas down the edge. It looked like
+            a rogue border, and it only appeared between lg and the width where
+            the nav finally fits, which is what made it so odd to pin down.
+            Ramps 24px at 1024 to the drawn 50px at 1920. */}
+        <ul
+          className={`ml-auto hidden items-center lg:flex ${text}`}
+          style={{ gap: 'clamp(1.5rem, -0.357rem + 2.902vw, 3.125rem)' }}
+        >
           {navLinks.map((l) => (
             <li key={l.href}>
               <Link
