@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
-import { Nav } from '@/components/Nav'
-import { Footer } from '@/components/Footer'
-import { Button } from '@/components/ui/Button'
+import { NoticePage } from '@/components/NoticePage'
 import { buildMetadata } from '@/lib/metadata'
 import { site } from '@/lib/site'
 
@@ -24,41 +22,30 @@ export const metadata: Metadata = buildMetadata({
  * A separate page rather than a banner on /contact because reading a query
  * string would make /contact dynamic, and every route on this site is
  * prerendered — a constraint CI enforces.
+ *
+ * Shares NoticePage with /contact/thanks and the two error routes. The action
+ * goes back to the form rather than home: whoever lands here was mid-task, and
+ * their words are gone, so the useful next step is the form — with the address
+ * in the body as the escape hatch if the form is what is broken.
+ *
+ * Copy is still placeholder until the owner writes it.
  */
 export default function Problem() {
   return (
-    <>
-      <Nav tone="dark" />
-
-      <main className="flex flex-1 flex-col">
-        <section className="pt-[176px] lg:pt-[170px]">
-          <div className="container-content">
-            <h1 className="t-section max-w-[18ch] text-ink">
-              That didn&rsquo;t send.
-            </h1>
-
-            <p className="t-body mt-6 max-w-[52ch] text-ink-muted">
-              Something went wrong on our side and your message didn&rsquo;t reach
-              us &mdash; so please don&rsquo;t assume we&rsquo;ve seen it. Email{' '}
-              <a
-                href={`mailto:${site.email}`}
-                className="text-ink underline underline-offset-2"
-              >
-                {site.email}
-              </a>{' '}
-              directly, or try the form again.
-            </p>
-
-            <div className="mt-12 flex flex-wrap gap-4">
-              <Button href="/contact" variant="dark" arrow>
-                Back to the form
-              </Button>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </>
+    <NoticePage
+      heading="That didn’t send."
+      description={
+        <>
+          Your message didn’t reach us, so please don’t assume we’ve seen it.
+          Email{' '}
+          <a href={`mailto:${site.email}`} className="text-ink underline underline-offset-2">
+            {site.email}
+          </a>{' '}
+          directly, or try again.
+        </>
+      }
+      actionLabel="Back to the form"
+      actionHref="/contact"
+    />
   )
 }

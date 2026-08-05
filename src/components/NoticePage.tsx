@@ -4,7 +4,13 @@ import { Footer } from './Footer'
 import { BinaryMark } from './ui/BinaryMark'
 
 /**
- * The shared error / empty state.
+ * A whole page that says one thing and offers one way out.
+ *
+ * Named for what it is rather than what it was: this began as the error states,
+ * but it now also carries `/contact/thanks`, which is a success. "Notice" covers
+ * a 404, a failure, a confirmation and an empty list without lying about any of
+ * them — and avoids "message", which already means something specific here (Send
+ * Message, Message sent, the enquiry email).
  *
  * The design draws three frames — 404, 500 and "No Content" — that are the same
  * layout with different copy, so this is one component. Measured from the six
@@ -41,7 +47,7 @@ import { BinaryMark } from './ui/BinaryMark'
 /** 534 at 768 and 764 at 1920, ramped; never wider than its container. */
 const ARTWORK = 'min(764px, calc(380.7px + 19.97vw), 100%)'
 
-export function ErrorState({
+export function NoticeBlock({
   heading,
   description,
   actionLabel = 'Go back to home',
@@ -50,7 +56,12 @@ export function ErrorState({
   as: Heading = 'h1',
 }: {
   heading: string
-  description: string
+  /**
+   * ReactNode, not string: /contact/problem has to offer a mailto that does not
+   * depend on the form working, and a plain-text address on a failure page is a
+   * worse page. Every other caller passes a string, which is a ReactNode.
+   */
+  description: React.ReactNode
   actionLabel?: string
   actionHref?: string
   as?: 'h1' | 'h2' | 'p'
@@ -122,7 +133,7 @@ export function ErrorState({
  * stays at the top and the growth goes below it, which is also what keeps the
  * footer off the fold on a short page.
  */
-export function ErrorPage(props: Parameters<typeof ErrorState>[0]) {
+export function NoticePage(props: Parameters<typeof NoticeBlock>[0]) {
   return (
     <>
       {/* Dark links: like Contact, this page opens on the pale ground rather
@@ -137,7 +148,7 @@ export function ErrorPage(props: Parameters<typeof ErrorState>[0]) {
         }}
       >
         <div className="container-content">
-          <ErrorState {...props} />
+          <NoticeBlock {...props} />
         </div>
       </main>
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { ErrorPage } from '@/components/ErrorState'
+import { NoticePage } from '@/components/NoticePage'
 
 /**
  * 404 — both the root handler for any unmatched URL and the target of every
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <ErrorPage
+    <NoticePage
       heading="404 Not found"
       description="We looked again and again but found nothing..."
     />

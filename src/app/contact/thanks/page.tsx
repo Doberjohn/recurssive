@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { ErrorPage } from '@/components/ErrorState'
+import { NoticePage } from '@/components/NoticePage'
 import { buildMetadata } from '@/lib/metadata'
 import { site } from '@/lib/site'
 
@@ -30,8 +30,8 @@ export default function Thanks() {
   return (
     // Literal — and + rsquo, not &mdash;/&rsquo;. These are props, not JSX text,
     // so an entity would render as the characters "&mdash;".
-    <ErrorPage
-      heading="Thanks — we’ve got it."
+    <NoticePage
+      heading="Thanks, we’ve got it."
       description={`We’ll come back to you within two working days. If it’s urgent, ${site.supportEmail} reaches us directly.`}
     />
   )

@@ -1,7 +1,7 @@
 'use client' // Error boundaries must be Client Components
 
 import { useEffect } from 'react'
-import { ErrorPage } from '@/components/ErrorState'
+import { NoticePage } from '@/components/NoticePage'
 
 /**
  * The generic error state, for anything that throws while rendering a route.
@@ -44,7 +44,7 @@ export default function Error({
   }, [error])
 
   return (
-    <ErrorPage
+    <NoticePage
       heading="Something went wrong"
       description="Try to refresh the page. If it doesn’t work, circle back later."
     />
