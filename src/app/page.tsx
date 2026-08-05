@@ -31,16 +31,66 @@ const services: Service[] = [
 ]
 
 /** Nine questions, as drawn. The first ships expanded in the file. */
+/**
+ * The nine questions are the drawn ones, in the drawn order — not invented.
+ *
+ * Answers are sized to the frame: the column is 686px at 16px, which is 86
+ * characters a line, and the drawn answer box is 91 tall — three to four lines,
+ * so ~250-340 characters. Much longer and the open row pushes the rows below it
+ * off the composition.
+ *
+ * Three of these encode business commitments rather than facts about software,
+ * and were settled by the owner rather than guessed: cost describes what drives
+ * it and quotes no numbers, timeline describes the phases rather than weeks, and
+ * rescue work is something we actively want. Do not add figures to the first two
+ * without asking — they become a public promise.
+ */
 const faqs = [
-  { question: 'What is app development?', answer: LOREM },
-  { question: 'What is enterprise app development?', answer: LOREM },
-  { question: 'What types of apps does Recurssive build?', answer: LOREM },
-  { question: 'Should I build a web app or mobile app?', answer: LOREM },
-  { question: 'How long does it take to build an app?', answer: LOREM },
-  { question: 'How much does app development cost?', answer: LOREM },
-  { question: 'Do you build iOS and Android apps?', answer: LOREM },
-  { question: 'What is MVP app development?', answer: LOREM },
-  { question: 'Do you offer app redesign and rescue services?', answer: LOREM },
+  {
+    question: 'What is app development?',
+    answer:
+      'Designing and building software people actually use — on a phone, in a browser, or both. It covers the thinking as much as the code: what the thing is for, how it should feel, and what happens to it after launch.',
+  },
+  {
+    question: 'What is enterprise app development?',
+    answer:
+      'The same craft with more constraints: existing systems to integrate with, security and compliance to satisfy, and more people who have to agree. Less of the work is writing code and more of it is making the thing fit what is already there.',
+  },
+  {
+    question: 'What types of apps does Recurssive build?',
+    answer:
+      'Mobile apps in React Native and Expo, web apps, and increasingly work that runs AI on the device rather than in someone else’s cloud. If it has to work on a phone and in a browser without being built twice, that is the shape we like.',
+  },
+  {
+    question: 'Should I build a web app or mobile app?',
+    answer:
+      'Usually the honest answer is start with one. Web reaches everyone immediately and is cheaper to change; mobile earns its keep when you need the camera, offline use, or a place on the home screen. We will tell you which yours actually needs.',
+  },
+  {
+    question: 'How long does it take to build an app?',
+    answer:
+      'Discovery first, then a working slice you can put in front of real people, then iteration on what they tell you. You see something running early rather than waiting months for a launch date — which is also how the estimate stays honest.',
+  },
+  {
+    question: 'How much does app development cost?',
+    answer:
+      'Cost tracks scope more than hours: how many platforms, how much of it is genuinely new, and what it has to integrate with. Tell us what you are building and we will come back with a figure tied to that, rather than a range that fits anyone.',
+  },
+  {
+    question: 'Do you build iOS and Android apps?',
+    answer:
+      'Both, from one codebase. React Native and Expo mean iOS and Android share the same app instead of being built and maintained twice — which is usually the difference between shipping to both and quietly dropping one.',
+  },
+  {
+    question: 'What is MVP app development?',
+    answer:
+      'Building the smallest version that still answers the real question: will people use this? It is not a cheap version of the product. It is the fastest way to find out whether the expensive version is worth building at all.',
+  },
+  {
+    question: 'Do you offer app redesign and rescue services?',
+    answer:
+      'Often. Inheriting someone else’s codebase is normal work here — we start with an audit of what is there, then fix what is costing you most, whether that is performance, the design, or the parts nobody dares change.',
+  },
 ]
 
 /** Four steps, each on its flowchart shape — the logo's own construction. */
@@ -161,9 +211,12 @@ export default function Home() {
               <h2 id="faq" className="t-section text-center text-ink">
                 Frequently Asked Questions
               </h2>
-              {/* Drawn 338.7 wide, so it breaks to two lines. */}
+              {/* Drawn 338.7 wide, so it breaks to two lines — roughly 41
+                  characters a line, which is why this is short rather than a
+                  paragraph. */}
               <p className="t-body mx-auto mt-6 max-w-[340px] text-center text-ink-muted">
-                {LOREM}
+                Short answers to what people ask us most. If yours is not here,
+                just ask.
               </p>
               <div className="mt-6">
                 <Faq items={faqs} defaultOpen={1} />
