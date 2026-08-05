@@ -149,9 +149,14 @@ export default function Home() {
                 lines in a 375 column and ate 40% of the hero, which is what
                 pushed it to 43% down where the frame has it at 88%. Ramps to the
                 drawn 48 at 768 and 72 at 1920; the 26 floor is legibility. */}
-            <p className="max-w-[970px] font-heading font-semibold leading-[0.9] tracking-[-0.05em] text-white [font-size:clamp(26px,6.25vw,48px)] lg:[font-size:72px]">
+            {/* An h1, not a p. Home had no h1 at all, which is both an SEO gap
+                and a screen-reader one — this IS the page's heading. The base
+                h1 rule in globals.css already sets font-heading, 600 and
+                -0.05em, so the classes below are belt-and-braces rather than
+                overrides. */}
+            <h1 className="max-w-[970px] font-heading font-semibold leading-[0.9] tracking-[-0.05em] text-white [font-size:clamp(26px,6.25vw,48px)] lg:[font-size:72px]">
               Crafting custom web &amp; app experiences that help people.
-            </p>
+            </h1>
           </div>
         </section>
 
@@ -162,7 +167,12 @@ export default function Home() {
               What we do best
             </h2>
           </div>
-          <div className="mt-[100px]">
+          {/* 100 flat was wrong at both breakpoints and badly wrong on mobile:
+              the frames put the first rule 61 below the heading at 1920 and just
+              26 at 768, so this was nearly four times the drawn gap on the narrow
+              layout. Ramps below 768 rather than holding 26, which is already
+              tight at a phone's heading size. */}
+          <div className="mt-[clamp(16px,3.385vw,26px)] lg:mt-[61px]">
             <ServiceIndex services={services} />
           </div>
         </section>
