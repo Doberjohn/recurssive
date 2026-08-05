@@ -73,7 +73,13 @@ export function FeelFormFunction() {
         {/* Artwork: 962 wide at 1920, 647 at 768 — ramped, not frozen. */}
         <div
           className="relative mx-auto [container-type:inline-size]"
-          style={{ width: 'clamp(320px, 437px + 27.34vw, 962px)' }}
+          // The ramp is correct from 768 up (647 at 768, 962 at 1920) but it
+          // does not shrink fast enough below: at a 375 viewport it still asked
+          // for 539px, and the section's overflow-clip simply cut "Function."
+          // off the right edge. The vw cap is the drawn artwork-to-viewport
+          // ratio at 768 (647/768 = 84.2%), which the ramp already matches at
+          // both frames, so it only bites below them.
+          style={{ width: 'min(clamp(320px, 437px + 27.34vw, 962px), 84.2vw)' }}
         >
           <BinaryMark className="reflow-binary" />
 
@@ -100,7 +106,12 @@ export function FeelFormFunction() {
             id="feel-form-function"
             className="absolute top-[43.8%] flex flex-nowrap items-baseline justify-between whitespace-nowrap font-heading font-semibold tracking-[-0.05em] text-cloud"
             style={{
-              fontSize: 'clamp(24px, 25.97px + 1.632vw, 57.3px)',
+              // cqi, not vw: the words are pinned to shapes 2 and 4 of the
+              // artwork, so they have to track the ARTWORK, not the viewport.
+              // 38.5/647 at 768 and 57.3/962 at 1920 are both 5.95%, so one
+              // container ratio reproduces the drawn size at each frame and
+              // stays aligned at every width between and below them.
+              fontSize: 'min(57.3px, 5.95cqi)',
               left: 'calc(15.92% - var(--ffs-bearing-l))',
               right: 'calc(16.02% - var(--ffs-bearing-r))',
               // Measured off the rendered font with canvas actualBoundingBox at

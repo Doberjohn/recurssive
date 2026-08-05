@@ -41,7 +41,10 @@ export default function Contact() {
       <Nav tone="dark" />
 
       <main className="flex flex-1 flex-col">
-        <section className="pt-[176px] lg:pt-[170px]">
+        {/* 176 is the drawn 768 value and was applied flat, so a 375 phone got
+            the same 176px of dead space above the h1. Ramped to ~86 at 375,
+            which still clears the absolutely-positioned nav. */}
+        <section className="pt-[clamp(88px,22.9vw,176px)] lg:pt-[170px]">
           <div className="container-content">
             <h1 className="t-section text-ink">Let&rsquo;s Talk</h1>
 

@@ -46,8 +46,13 @@ const variants: Record<Variant, string> = {
   // the Contact frames, where 16 + 170 + 16 = 202 exactly. That the padding
   // accounts for the full width is also how we know the drawn accent button has
   // no arrow: there is no room for one.
+  // A step, not a ramp: the drawn button gets SMALLER as the viewport grows
+  // (53 at 768, 39 at 1920), so one linear interpolation extended below 768
+  // would make it larger on a phone, not smaller. h-11 keeps the 44px touch
+  // target. Deliberately not container-query based — accent is also the Home
+  // CTA, which has no container to measure against.
   accent:
-    'h-[53px] px-4 text-2xl lg:h-[39px] lg:px-[15px] lg:text-base ' +
+    'h-11 px-4 text-base md:h-[53px] md:text-2xl lg:h-[39px] lg:px-[15px] lg:text-base ' +
     'rounded-md bg-primary text-cloud hover:bg-primary-deep',
 }
 

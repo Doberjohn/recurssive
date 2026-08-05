@@ -37,7 +37,11 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
   return (
     <header className="absolute inset-x-0 top-0 z-50">
       <nav
-        className="container-content flex items-center gap-8 pt-8 md:pt-10"
+        // justify-between so the trailing group sits on the right edge. The
+        // `ml-auto` that used to do that lives on the desktop link list, which
+        // is `hidden` below lg — so on mobile the hamburger had nothing pushing
+        // it and sat one gap away from the logo.
+        className="container-content flex items-center justify-between gap-8 pt-8 md:pt-10"
         aria-label="Main"
       >
         {/* The drawn lockup: mark 60.6x37.4 at x163, a 7.2px gap, then the
