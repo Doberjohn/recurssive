@@ -112,66 +112,90 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
   )
 }
 
+/** The row arrow, taken verbatim from the export — hence the offset viewBox. */
+const ROW_ARROW =
+  'M687.414 345.414C688.195 344.633 688.195 343.367 687.414 342.586L674.686 329.858C673.905 329.077 672.639 329.077 671.858 329.858C671.077 330.639 671.077 331.905 671.858 332.686L683.172 344L671.858 355.314C671.077 356.095 671.077 357.361 671.858 358.142C672.639 358.923 673.905 358.923 674.686 358.142L687.414 345.414ZM646 344L646 346L686 346L686 344L686 342L646 342L646 344Z'
+
 /**
  * Drawer. Rendered inside the nav so the `peer` relationship holds; positioned
  * fixed so it escapes the header's stacking context.
+ *
+ * The Menu frame is a full-bleed #FAFAFA sheet, not the dark partial panel this
+ * used to be: 100px rows on 1.5px rules, 42px Inter Medium at ls -5%, a right
+ * arrow at the far edge of each row, then the phone and email against a dark
+ * "Start a project" pill. Rules, gradient and sizing live in .menu-* in
+ * globals.css — see the note there on why the border sits on the row's top.
+ *
+ * No scrim: the sheet covers the viewport, so there is nothing to see behind it.
+ * Closing is the X, which is where the hamburger was.
+ *
+ * `overflow-y-auto` because the frame is 1203 tall against a phone viewport of
+ * roughly 812 — the rows ramp down, but the sheet still has to be able to
+ * scroll rather than clip its own CTA.
  */
 function MobileMenu() {
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-50 opacity-0 transition-opacity duration-200 peer-checked:pointer-events-auto peer-checked:opacity-100 lg:hidden"
+      className="pointer-events-none fixed inset-0 z-50 flex flex-col overflow-y-auto bg-bg opacity-0 transition-opacity duration-200 peer-checked:pointer-events-auto peer-checked:opacity-100 lg:hidden"
       id="mobile-menu"
     >
-      {/* Scrim doubles as the close affordance. */}
-      <label
-        htmlFor="nav-toggle"
-        className="absolute inset-0 bg-phantom/70"
-        aria-label="Close menu"
-      />
+      <div className="flex shrink-0 items-center justify-between px-[10.3vw] pt-[7vw]">
+        <span className="flex items-center gap-[7px] text-ink">
+          <Logo className="h-9 w-auto" />
+          <Wordmark className="h-auto w-[118px]" />
+        </span>
+        <label
+          htmlFor="nav-toggle"
+          className="flex h-11 w-11 cursor-pointer items-center justify-center text-ink"
+          aria-label="Close menu"
+        >
+          <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+            <path
+              d="M3 3l20 20M23 3L3 23"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="square"
+            />
+          </svg>
+        </label>
+      </div>
 
-      <div className="mesh absolute inset-x-0 top-0 px-[79px] pb-16 pt-8">
-        <div className="relative z-10">
-          <div className="flex items-start justify-between">
-            <Logo className="h-[43px] w-auto text-cloud" />
-            <label
-              htmlFor="nav-toggle"
-              className="flex h-11 w-11 cursor-pointer items-center justify-center text-cloud"
-              aria-label="Close menu"
+      <ul className="menu-list mt-[7.5vw]">
+        {navLinks.map((l) => (
+          <li key={l.href}>
+            <Link
+              href={l.href}
+              className="menu-link flex h-full items-center justify-between px-[10.3vw] font-heading font-medium tracking-[-0.05em] text-ink transition-colors [li:focus-within_&]:text-cloud [li:hover_&]:text-cloud"
             >
-              <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
-                <path
-                  d="M2 2l18 18M20 2L2 20"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
+              {l.label}
+              {/* viewBox matches the exported coordinates so the path needs no
+                  translation; currentColor lets it flip with the row. */}
+              <svg
+                viewBox="646 329 42 30"
+                aria-hidden="true"
+                className="h-[min(30px,3.9vw)] w-auto shrink-0"
+              >
+                <path d={ROW_ARROW} fill="currentColor" />
               </svg>
-            </label>
-          </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
 
-          <ul className="mt-12 space-y-5">
-            {navLinks.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="text-4xl text-cloud">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-12 space-y-2 text-base text-cloud/80">
-            <a href={`mailto:${site.email}`} className="block">
-              {site.email}
-            </a>
-            <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="block">
-              {site.phone}
-            </a>
-          </div>
-
-          <Button href="/contact" variant="light" arrow className="mt-10 w-full">
-            Start a project
-          </Button>
+      {/* Drawn as one band: phone and email at x79, the pill ending at x688. */}
+      <div className="mt-[8vw] flex flex-wrap items-center justify-between gap-6 px-[10.3vw] pb-[10vw]">
+        <div className="menu-meta space-y-1 text-ink">
+          <a className="block hover:underline" href={`tel:${site.phone.replace(/\s/g, '')}`}>
+            {site.phone}
+          </a>
+          <a className="block hover:underline" href={`mailto:${site.email}`}>
+            {site.email}
+          </a>
         </div>
+
+        <Button href="/contact" variant="dark" arrow className="menu-cta">
+          Start a project
+        </Button>
       </div>
     </div>
   )

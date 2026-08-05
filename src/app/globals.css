@@ -218,6 +218,57 @@
     .cc-label { font-size: 0.875rem; }
   }
 
+  /* Mobile menu rows — the Menu frame, 768x1203.
+   *
+   * Drawn: 100px rows on 1.5px #EAEAEA rules, 42px Inter Medium at ls -5%, and
+   * one row carrying the signature gradient with #FAFAFA text. That row's rules
+   * are #A59BFF, not #EAEAEA — the highlight is bounded top AND bottom.
+   *
+   * The frame draws the highlight on "Cases" with no page context, so it is the
+   * hover state, not a fixed row — treated like the "(active)"/"(error)"
+   * annotations on the form: drawn once, wired to real interaction here.
+   *
+   * The border lives on the TOP of each row so the highlight can reach its lower
+   * rule through `+` (next sibling). CSS has no previous-sibling combinator, so
+   * a bottom-border version could not colour the rule above the hovered row.
+   *
+   * Sizes ramp below 768 and cap at the drawn value: the frame is 1203 tall
+   * against a ~812 phone viewport, so a flat copy would not fit.
+   */
+  .menu-list > li {
+    border-top: 1.5px solid var(--color-silver);
+    height: min(100px, max(56px, 13.02vw));
+  }
+  .menu-list > li:last-child {
+    border-bottom: 1.5px solid var(--color-silver);
+  }
+  .menu-list > li:hover,
+  .menu-list > li:focus-within {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-grad-1) 0%,
+      var(--color-grad-2) 34.01%,
+      var(--color-grad-3) 69.24%,
+      var(--color-grad-4) 100%
+    );
+    border-top-color: var(--color-accent);
+  }
+  .menu-list > li:hover + li,
+  .menu-list > li:focus-within + li {
+    border-top-color: var(--color-accent);
+  }
+  .menu-list > li:last-child:hover,
+  .menu-list > li:last-child:focus-within {
+    border-bottom-color: var(--color-accent);
+  }
+  .menu-link {
+    font-size: min(42px, max(20px, 5.469vw));
+  }
+  .menu-meta {
+    font-size: min(26px, max(15px, 3.385vw));
+  }
+
+
   /* Contact form type and controls.
    *
    * Same problem the card had: the frames give absolute sizes for a 610px form
@@ -378,4 +429,24 @@ pre.shiki code {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* UNLAYERED, deliberately. Both rules below have to beat a Tailwind utility on
+ * the same property — `text-ink` on the menu link, `h-[47px]`/`text-[22px]` from
+ * Button's variant — and @layer utilities outranks @layer components no matter
+ * how specific the selector is. An id selector loses there too; only unlayered
+ * CSS wins. Same reasoning as the note on @layer base near the top of this file.
+ */
+
+/* The highlighted row inverts its text, as drawn: #FAFAFA on the gradient. */
+.menu-list > li:hover a,
+.menu-list > li:focus-within a {
+  color: var(--color-cloud);
+}
+
+/* The menu's CTA is drawn LARGER than the nav's — 249x59 at 26px against
+ * 198x47 at 22px — so the shared variant's size is wrong here specifically. */
+#mobile-menu .menu-cta {
+  height: min(59px, max(44px, 7.68vw));
+  font-size: min(26px, max(16px, 3.385vw));
 }
