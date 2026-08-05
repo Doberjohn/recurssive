@@ -238,7 +238,7 @@ export default function Home() {
               {/* Drawn 338.7 wide, so it breaks to two lines — roughly 41
                   characters a line, which is why this is short rather than a
                   paragraph. */}
-              <p className="t-body mx-auto mt-6 max-w-[340px] text-center text-ink-muted">
+              <p className="t-body mx-auto mt-6 max-w-[380px] text-center text-ink-muted">
                 Short answers to what people ask us most. If yours is not here,
                 just ask.
               </p>
