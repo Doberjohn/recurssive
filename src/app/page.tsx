@@ -232,7 +232,9 @@ export default function Home() {
                 {/* Real copy, not lorem. The two-working-days promise is also
                     made on /contact/thanks — if one changes, change both, or the
                     site promises one thing before the form and another after. */}
-                <p className="t-body relative z-10 mt-6 max-w-md text-ink-muted">
+                {/* 600 is a real instance, not a synthesised bold: fonts.ts
+                    loads Open Sans as a variable font across 400-700. */}
+                <p className="t-body relative z-10 mt-6 max-w-md font-semibold text-ink-muted">
                   Tell us what you&rsquo;re building, even if it&rsquo;s still
                   rough. We read every message ourselves and come back within two
                   working days.
