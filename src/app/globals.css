@@ -177,6 +177,47 @@
     color: var(--color-silver);
   }
 
+  /* Contact card type.
+   *
+   * The frames give absolute sizes at 768 and 1920, but below 768 the card keeps
+   * shrinking with the viewport while those sizes do not. At 375 that left a
+   * 327px card with 66px padding — a 195px content column — where the 36px
+   * heading wrapped to three lines and the 24px body to nine, overflowing a
+   * fixed 683px card by 77px. The card carries overflow-hidden, so the phone row
+   * was not merely cramped, it was cut off.
+   *
+   * These track the card's own content box (cqi) and cap at the drawn value, so
+   * 768 and 1920 are unchanged and only smaller screens scale. The ratios are
+   * against the 478px content column both frames share:
+   *   36/478 = 7.531   24/478 = 5.021   20/478 = 4.184
+   *
+   * The max() is a legibility floor, not a design value. Pure proportion put the
+   * body at 12.9px and the labels at 10.7px on a 375 phone — correctly scaled
+   * and too small to read. The floors bite only below ~430px, where the drawn
+   * ratio has already stopped being the point.
+   */
+  .cc-heading {
+    font-size: min(2.25rem, max(1.375rem, 7.531cqi));
+    line-height: 1.1;
+  }
+  .cc-body {
+    font-size: min(1.5rem, max(0.875rem, 5.021cqi));
+    line-height: 1.4;
+  }
+  .cc-label {
+    font-size: min(1.25rem, max(0.75rem, 4.184cqi));
+    line-height: 1.2;
+  }
+  .cc-value {
+    font-size: min(2rem, max(1.125rem, 6.694cqi));
+  }
+
+  @media (min-width: 1024px) {
+    .cc-heading { font-size: 2rem; }
+    .cc-body { font-size: 1rem; }
+    .cc-label { font-size: 0.875rem; }
+  }
+
   /* The consent box, drawn as a Silver Grey square with a dark tick — 28x28 r4
    * with a 15x12 tick at 768, 14x14 r2 at 1920.
    *

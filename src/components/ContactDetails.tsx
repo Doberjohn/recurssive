@@ -44,16 +44,24 @@ export function ContactDetails({ className = '' }: { className?: string }) {
     // overflow-hidden is load-bearing: .mesh::after carries no border-radius, so
     // without it the grain paints square over the 46px corners. No other .mesh
     // consumer is rounded, so this had never been exercised.
+    // Height is fixed only from 768 up, where the drawn 683 applies. Below it the
+    // card must be content-driven: overflow-hidden turns any shortfall into
+    // silently deleted contact details, which is exactly what happened at 375.
     <div
-      className={`mesh contact-card relative h-[683px] overflow-hidden rounded-[46px] bg-ink ${className}`}
+      className={`mesh contact-card relative overflow-hidden rounded-[46px] bg-ink md:h-[683px] ${className}`}
     >
-      {/* pt 71, not 65: the heading is drawn at y324 against a card top of 253. */}
-      <div className="relative z-10 flex h-full flex-col px-[66px] pb-[92px] pt-[71px] [container-type:inline-size] lg:px-[85px] lg:pb-[98px] lg:pt-[70px]">
-        <h2 className="t-item font-heading font-bold tracking-normal text-cloud">
+      {/* Padding is a percentage of the card below 768, so it shrinks with it —
+          66/610 = 10.8%, 71/610 = 11.6%, 92/610 = 15.1%. Percentage padding
+          resolves against the inline size on all four sides, so the vertical
+          ones track too. At 768 these land on the drawn pixels exactly, and
+          md:/lg: pin them from there.
+          pt 71, not 65: the heading is drawn at y324 against a card top of 253. */}
+      <div className="relative z-10 flex h-full flex-col px-[10.8%] pb-[15.1%] pt-[11.6%] [container-type:inline-size] md:px-[66px] md:pb-[92px] md:pt-[71px] lg:px-[85px] lg:pb-[98px] lg:pt-[70px]">
+        <h2 className="cc-heading font-heading font-bold tracking-normal text-cloud">
           We want to hear from you
         </h2>
 
-        <p className="t-form mt-3 text-cloud">
+        <p className="cc-body mt-3 text-cloud">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna.
         </p>
@@ -61,11 +69,13 @@ export function ContactDetails({ className = '' }: { className?: string }) {
         {/* mt-auto rather than a fixed gap: the block is pinned to the bottom of
             a fixed-height card, which is what reproduces both row pitches (109
             at 1920, 92 at 768) without a gap value that suits neither. */}
-        <ul className="mt-auto space-y-[36px] lg:space-y-[60px]">
+        {/* mt-auto only once the card has a fixed height to distribute. Below
+            768 there is no free space to push against, so it needs a real gap. */}
+        <ul className="mt-10 space-y-[36px] md:mt-auto lg:space-y-[60px]">
           {rows.map((r) => (
             <li key={r.label}>
-              <span className="t-index block text-accent">{r.label}</span>
-              <span className="block font-heading font-bold leading-none text-cloud [font-size:min(2rem,6.694cqi)]">
+              <span className="cc-label block text-accent">{r.label}</span>
+              <span className="cc-value block font-heading font-bold leading-none text-cloud">
                 {r.href ? (
                   <a href={r.href} className="hover:underline">
                     {r.value}
