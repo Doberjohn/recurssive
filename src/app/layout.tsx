@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import { inter, openSans } from './fonts'
 import { site, siteUrl } from '@/lib/site'
 import './globals.css'
@@ -39,7 +40,18 @@ export default function RootLayout({
       lang={site.locale}
       className={`${inter.variable} ${openSans.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {/* Vercel Web Analytics. Cookieless and with no cross-site identifier,
+            which is the whole reason this site needs no consent banner —
+            ePrivacy Art. 5(3) is not engaged when nothing is stored on the
+            device. Swapping it for anything that sets a cookie reopens that
+            question, so it is not a like-for-like choice.
+            The `/next` entry, not `/react`: it reads route changes from the App
+            Router rather than guessing from history. It self-disables outside
+            production, so local runs send nothing. */}
+        <Analytics />
+      </body>
     </html>
   )
 }
