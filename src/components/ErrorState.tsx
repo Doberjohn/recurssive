@@ -64,7 +64,12 @@ export function ErrorState({
         <BinaryMark className="error-binary" />
       </div>
 
-      <div className="col-start-1 row-start-1 flex w-full flex-col items-center text-center">
+      {/* `relative z-10` is load-bearing, not decoration. The binary field is
+          `position: absolute` inside its cell, and positioned elements paint
+          above in-flow static ones whatever the DOM order — so without this the
+          glyphs sit ON TOP of the headline. Being later in the source is not
+          enough; the text has to be positioned too before z-index applies. */}
+      <div className="relative z-10 col-start-1 row-start-1 flex w-full flex-col items-center text-center">
         <Heading
           className="font-heading font-semibold leading-none tracking-[-0.05em] text-ink"
           style={{ fontSize: 'clamp(36px, 38.67px + 1.736vw, 72px)' }}

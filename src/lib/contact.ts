@@ -48,8 +48,9 @@ export const MESSAGES = {
     missing: 'Please give your email address.',
     invalid: 'That email address does not look right.',
   },
+  // Optional, so there is no "missing" case — only a number that is present and
+  // implausibly short. The form renders no empty-state message for this field.
   tel: {
-    missing: 'Please give a phone number.',
     invalid: 'That number looks too short.',
   },
   description: {
@@ -71,11 +72,16 @@ export const contactSchema = z.object({
   // and over-strict patterns reject valid addresses (apostrophes, new TLDs).
   email: trimmed(254).pipe(z.email(MESSAGES.email.invalid)),
 
-  // Drawn with an asterisk, so required. Worth revisiting: under GDPR Art.
-  // 5(1)(c) an email address already suffices to reply, which makes a mandatory
-  // phone number hard to justify. Loosen to `.optional()` and drop the asterisk
-  // together if that reading wins.
-  tel: trimmed(40).min(6, MESSAGES.tel.missing),
+  // Drawn with an asterisk, but optional on the owner's instruction — GDPR Art.
+  // 5(1)(c) data minimisation: an email address already suffices to reply, so a
+  // mandatory phone number collects more than the purpose needs.
+  //
+  // An empty text input still POSTs `tel=` — the key is present with an empty
+  // value — so accepting `''` is what actually makes it optional. `.optional()`
+  // alone would only cover the key being absent, which a browser never does.
+  tel: trimmed(40)
+    .refine((v) => v === '' || v.length >= 6, MESSAGES.tel.invalid)
+    .optional(),
 
   description: trimmed(4000).min(10, MESSAGES.description.missing),
 
@@ -124,7 +130,9 @@ export function renderEnquiry(data: ContactInput, at = new Date()) {
   const rows: [string, string][] = [
     ['Name', data.name],
     ['Email', data.email],
-    ['Phone', data.tel],
+    // Optional now, so say so explicitly rather than printing a blank row that
+    // reads like the pipeline dropped something.
+    ['Phone', data.tel || 'Not given'],
     ['Interest', data.interest],
     ['Budget', data.budget],
     ['Consent', `Accepted ${stamp(at)}`],

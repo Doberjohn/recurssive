@@ -39,6 +39,10 @@ const ROUTES = [
   '/capabilities/react-native-performance',
   '/cases/placeholder-fintech-app',
   '/this-route-does-not-exist', // renders the 404
+  // The outcome pages share the error states' full-bleed layout, so they are
+  // the same class of risk and were previously unchecked.
+  '/contact/thanks',
+  '/contact/problem',
 ]
 
 /** Breakpoints and their inside edges — where frame-derived values stop fitting. */

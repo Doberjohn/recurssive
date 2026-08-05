@@ -57,8 +57,11 @@ function Field({
   maxLength?: number
   pattern?: string
   title?: string
-  /** From MESSAGES in lib/contact — the same strings the server rejects with. */
-  messages: { readonly missing: string; readonly invalid?: string }
+  /**
+   * From MESSAGES in lib/contact — the same strings the server rejects with.
+   * `missing` is absent on optional fields, which have no empty-state failure.
+   */
+  messages: { readonly missing?: string; readonly invalid?: string }
 }) {
   const shared =
     'peer w-full border-0 border-b border-border bg-transparent pb-2 pt-1 text-base text-ink ' +
@@ -70,7 +73,10 @@ function Field({
 
   // Only the visible message is in the accessibility tree — the other is
   // display:none — so naming both here exposes exactly one at a time.
-  const describedBy = [`${name}-missing`, messages.invalid && `${name}-invalid`]
+  const describedBy = [
+    messages.missing && `${name}-missing`,
+    messages.invalid && `${name}-invalid`,
+  ]
     .filter(Boolean)
     .join(' ')
 
@@ -121,9 +127,14 @@ function Field({
           Empty vs typed-but-wrong is the whole distinction, and it is the only
           one that exists — maxLength caps input rather than failing it, so each
           field has exactly one way to be filled and still invalid. */}
-      <p id={`${name}-missing`} className={`${msg} peer-user-invalid:peer-placeholder-shown:block`}>
-        {messages.missing}
-      </p>
+      {messages.missing && (
+        <p
+          id={`${name}-missing`}
+          className={`${msg} peer-user-invalid:peer-placeholder-shown:block`}
+        >
+          {messages.missing}
+        </p>
+      )}
       {messages.invalid && (
         <p
           id={`${name}-invalid`}
@@ -227,10 +238,14 @@ export function ContactForm() {
         title="Include the full domain, for example name@example.com"
         messages={MESSAGES.email}
       />
+      {/* Optional on the owner's instruction. `required={false}` also drops the
+          asterisk, since the label renders it from the same prop — the drawn
+          frame shows one, but an email address is already enough to reply. */}
       <Field
         label="Telephone"
         name="tel"
         type="tel"
+        required={false}
         autoComplete="tel"
         minLength={6}
         maxLength={40}

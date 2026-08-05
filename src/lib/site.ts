@@ -29,6 +29,7 @@ export const site = {
     'Recurssive is a visionary web and app studio crafting custom web & app experiences that help people.',
   tagline: 'Feel. Form. Function.',
   email: 'info@recurssive.com',
+  supportEmail: 'support@recurssive.com',
   phone: '+30 698 950 2436',
   locale: 'en',
 } as const
