@@ -26,6 +26,12 @@ import { INTERESTS, BUDGETS, MESSAGES } from '@/lib/contact'
 const interests = INTERESTS
 const budgets = BUDGETS
 
+/** Display only — the submitted value is always the full string. */
+const SHORT_LABELS: Record<string, string> = {
+  'Web Development': 'Web Dev',
+  'UI/UX Design': 'UI/UX',
+}
+
 function Field({
   label,
   name,
@@ -66,7 +72,7 @@ function Field({
   // because an underline field whose value is smaller than its own label reads
   // as disabled.
   const shared =
-    'peer w-full border-0 border-b-[1.5px] border-ink-muted bg-transparent t-form pb-1 pt-0.5 text-ink ' +
+    'peer w-full border-0 border-b-[1.5px] border-ink-muted bg-transparent cf-label pb-1 pt-0.5 text-ink ' +
     'outline-none transition-colors placeholder:text-ink-muted ' +
     'focus:border-primary ' +
     // :invalid only bites once the field has been interacted with, so the form
@@ -88,9 +94,16 @@ function Field({
     <div className="group relative">
       <label
         htmlFor={name}
-        className="t-form block text-ink transition-colors group-has-[:focus]:text-primary"
+        className="cf-label block text-ink transition-colors group-has-[:focus]:text-primary"
       >
-        {required && <span aria-hidden="true">*</span>}
+        {/* The asterisk is its own character run in every drawn label, filled
+            #A59BFF against #0F0F0F copy — checked in the style override table,
+            not inferred from the pixels. */}
+        {required && (
+          <span aria-hidden="true" className="text-accent">
+            *
+          </span>
+        )}
         {label}
       </label>
       {textarea ? (
@@ -166,31 +179,35 @@ function ChipGroup({
   name,
   options,
   message,
-  muted = false,
 }: {
   legend: string
   name: string
   options: readonly string[]
   message: string
-  muted?: boolean
 }) {
   return (
     // `group` + `has()` rather than `peer`: a radio group has no single sibling
     // to hang the message off, so the fieldset reports on its own contents.
     <fieldset className="group" aria-describedby={`${name}-missing`}>
-      <legend className={`t-form ${muted ? 'text-storm' : 'text-ink'}`}>
-        <span aria-hidden="true">*</span>
+      {/* "Project budget" is NOT the muted #999999 it appears to be: that is the
+          node's base fill, overridden to #0F0F0F on every character. Storm Grey
+          is 2.73:1 on Cloud — theme.css says never to set text in it, and the
+          design does not. */}
+      <legend className="cf-label text-ink">
+        <span aria-hidden="true" className="text-accent">
+          *
+        </span>
         {legend}
       </legend>
       {/* Drawn: 50 tall with a 13 gap at 768, 42 with a 15 gap at 1920. The
           unselected chip is a 1.5px #6B6B6B outline at r10; the selected one
           drops to r6 and fills #4813D0 — the radius change is part of the
           design, not an accident. */}
-      <div className="mt-3 flex flex-wrap gap-[13px] lg:gap-[15px]">
+      <div className="cf-chips mt-3 flex flex-wrap">
         {options.map((o) => (
           <label
             key={o}
-            className="relative flex h-[50px] cursor-pointer items-center rounded-[10px] border-[1.5px] border-ink-muted t-body px-4 text-ink transition-colors lg:h-[42px] has-[:checked]:rounded-md has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-cloud has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
+            className="cf-chip relative flex cursor-pointer items-center whitespace-nowrap rounded-[10px] border-[1.5px] border-ink-muted text-ink transition-colors has-[:checked]:rounded-md has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-cloud has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
           >
             {/* Not sr-only: a 1x1 clipped input makes the browser anchor its
                 validation bubble to the corner of the form instead of the chip.
@@ -202,7 +219,14 @@ function ChipGroup({
               required
               className="absolute inset-0 h-full w-full cursor-pointer appearance-none opacity-0"
             />
-            {o}
+            {/* The frames use shorter labels on the narrow layout — "Web Dev"
+                and "UI/UX" at 768, the full names at 1920 — which is how five
+                chips stay on one row there. The submitted `value` never changes,
+                so the server allow-list is untouched. `hidden` is display:none,
+                so only the visible one reaches the accessibility tree and the
+                radio keeps a single accessible name. */}
+            <span className="lg:hidden">{SHORT_LABELS[o] ?? o}</span>
+            <span className="hidden lg:inline">{o}</span>
           </label>
         ))}
       </div>
@@ -218,7 +242,13 @@ function ChipGroup({
 
 export function ContactForm() {
   return (
-    <form className="relative space-y-8" action="/api/contact" method="post">
+    // container-type so everything inside can size against the form column
+    // rather than the viewport — see the .cf-* rules in globals.css.
+    <form
+      className="relative space-y-8 [container-type:inline-size]"
+      action="/api/contact"
+      method="post"
+    >
       <Field
         label="Name"
         name="name"
@@ -279,7 +309,6 @@ export function ContactForm() {
         name="budget"
         options={budgets}
         message={MESSAGES.budget.missing}
-        muted
       />
 
       {/* Wrapped so the message can sit outside the label — inside it, clicking
@@ -288,14 +317,14 @@ export function ContactForm() {
         {/* Drawn 28x28 r4 beside 22px copy at 768, and 14x14 r2 beside 14px at
             1920 — the box and the type ramp together. Gap is 8 at 768, 5 at
             1920. */}
-        <label className="flex items-start gap-2 text-[22px] text-ink lg:gap-[5px] lg:text-sm">
+        <label className="cf-terms flex items-start gap-2 text-ink lg:gap-[5px]">
           {/* Unchecked by default — see the note at the top of this file. */}
           <input
             type="checkbox"
             name="terms"
             required
             aria-describedby="terms-missing"
-            className="consent-box mt-0.5 h-7 w-7 shrink-0 lg:h-3.5 lg:w-3.5"
+            className="consent-box cf-box mt-0.5 shrink-0"
           />
           <span>
             I&rsquo;ve read and accepted the{' '}

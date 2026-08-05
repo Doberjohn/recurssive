@@ -218,6 +218,50 @@
     .cc-label { font-size: 0.875rem; }
   }
 
+  /* Contact form type and controls.
+   *
+   * Same problem the card had: the frames give absolute sizes for a 610px form
+   * column, and below 768 the column shrinks while those sizes do not. At 375
+   * that left 24px labels and 50px chips in a 327px column, wrapping the five
+   * interest chips onto four rows and the budgets onto three, where the frame
+   * puts each on one.
+   *
+   * Ratios are against the 610 column: 24/610 = 3.934, 22/610 = 3.607,
+   * 50/610 = 8.197, 28/610 = 4.590, 13/610 = 2.131. The max() is a legibility
+   * and touch-target floor, not a design value.
+   */
+  .cf-label {
+    font-size: min(1.5rem, max(1rem, 3.934cqi));
+    line-height: 1.4;
+  }
+  .cf-chip {
+    font-size: min(1.375rem, max(0.875rem, 3.607cqi));
+    height: min(50px, max(36px, 8.197cqi));
+    /* 14, not the drawn 16: Figma counts its 1.5px stroke inside the frame
+       width, the browser adds it outside the padding box. At 16 each chip came
+       out 3-4px wide and the five interest chips totalled 625 against a 610
+       column, wrapping a row the frame fits. */
+    padding-inline: min(14px, max(10px, 2.295cqi));
+  }
+  .cf-chips {
+    gap: min(13px, max(8px, 2.131cqi));
+  }
+  .cf-terms {
+    font-size: min(1.375rem, max(0.875rem, 3.607cqi));
+  }
+  .cf-box {
+    width: min(28px, max(20px, 4.59cqi));
+    height: min(28px, max(20px, 4.59cqi));
+  }
+
+  @media (min-width: 1024px) {
+    .cf-label { font-size: 1rem; }
+    .cf-chip { font-size: 1rem; height: 42px; padding-inline: 14px; }
+    .cf-chips { gap: 15px; }
+    .cf-terms { font-size: 0.875rem; }
+    .cf-box { width: 14px; height: 14px; }
+  }
+
   /* The consent box, drawn as a Silver Grey square with a dark tick — 28x28 r4
    * with a 15x12 tick at 768, 14x14 r2 at 1920.
    *
