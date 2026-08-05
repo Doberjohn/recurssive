@@ -111,7 +111,10 @@
     font-size: 3.18cqi;
     line-height: 1.15;
     letter-spacing: calc(0.5254em - 1ch);
-    opacity: 0.1;
+    /* The export's group opacity is 0.10. Raised to 0.20 on the owner's
+       instruction — the same call made on .reflow-binary, and a departure from
+       the file rather than a correction to it. */
+    opacity: 0.2;
     background-image: var(--mesh-5);
     background-size: 282.8% auto;   /* the file draws it 1165 wide in a 412 box */
     background-position: center;

@@ -205,17 +205,33 @@ export default function Home() {
         <section className="relative overflow-hidden py-32" aria-labelledby="contact">
           <div className="container-content">
             <div className="grid gap-16 lg:grid-cols-2">
-              <div>
-                <h2 id="contact" className="t-section text-ink">
-                  Ready for success?
-                </h2>
-                <p className="t-body mt-6 max-w-md text-ink-muted">{LOREM}</p>
-
+              <div className="relative">
                 {/* Drawn as a 411x707 masked field of ones and zeroes — the
-                    "0's & 1's" principle, not a photograph. */}
-                <div className="mt-16 hidden h-[707px] w-[411px] max-w-full [container-type:inline-size] lg:block">
+                    "0's & 1's" principle, not a photograph.
+
+                    It sits BEHIND the copy and starts above it: the frame puts
+                    the field at y5447 against a heading at y5522, so 75px of it
+                    shows before the text begins and the rest reads through it.
+                    It was in flow below the paragraph, which put the whole thing
+                    under the text instead of behind it.
+
+                    z-10 on the copy is load-bearing, not decoration — the field
+                    is absolutely positioned, and positioned elements paint above
+                    in-flow static ones whatever the source order. Without it the
+                    glyphs sit on top of the heading. */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-0 top-[-75px] hidden h-[707px] w-[411px] max-w-full [container-type:inline-size] lg:block"
+                >
                   <BinaryDiamond className="h-full w-full" />
                 </div>
+
+                <h2 id="contact" className="t-section relative z-10 text-ink">
+                  Ready for success?
+                </h2>
+                <p className="t-body relative z-10 mt-6 max-w-md text-ink-muted">
+                  {LOREM}
+                </p>
               </div>
 
               <ContactForm />
