@@ -3,10 +3,27 @@ import type { LegalSection } from '@/components/LegalPage'
 /**
  * Legal copy for /privacy-policy and /terms-of-service.
  *
- * Generated straight out of the decoded .fig text nodes rather than retyped, so
- * no wording drifted in the copying. Regenerate with scripts/gen-legal.mjs if
- * the frames change; do not hand-edit unless the frames are no longer the source
- * of truth.
+ * Started as a transcription of the decoded .fig text nodes, so no wording
+ * drifted in the copying. It is NO LONGER a pure transcription: the drawn policy
+ * described a different website, and the following were amended on the owner's
+ * instruction to match what this site actually does.
+ *
+ *   dropped    Media (no upload feature), Facebook (no pixel, no advertising),
+ *              Mailchimp (no newsletter, no marketing email)
+ *   rewritten  Cookies (this site sets none), Google Analytics -> Analytics
+ *              (Vercel Web Analytics, cookieless), Contact Forms (the fields the
+ *              form actually collects), Data Retention and What rights (both
+ *              referenced user accounts and comments that do not exist), Who we
+ *              share your data with (Vercel and Resend, not Facebook/Google/
+ *              Mailchimp)
+ *   Terms      third-party services no longer claims advertising platforms
+ *
+ * The cookie line matters most: the case for having no consent banner is that
+ * nothing is stored on the device, and a policy saying otherwise would undermine
+ * it in our own words.
+ *
+ * Owner is taking both documents to a lawyer regardless. Treat this as accurate
+ * rather than final.
  *
  * Headings lose the trailing colon the frames set on some of them: a colon on a
  * standalone heading reads as a typo once it is an <h2> rather than a line of
@@ -21,39 +38,21 @@ export const privacySections: LegalSection[] = [
     ],
   },
   {
-    heading: "Media",
-    body: [
-      "If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included.",
-    ],
-  },
-  {
     heading: "Contact Forms",
     body: [
-      "We collect personal data when you submit a contact form, such as your name, email address, and phone number. This information is used to respond to your inquiries or requests for information.",
+      "We collect personal data when you submit the contact form: your name, email address, phone number, what you are interested in, your budget range, and whatever you write in the description. We also record when you accepted these terms. We use this only to answer your enquiry. We do not sell it and we do not use it for marketing.",
     ],
   },
   {
     heading: "Cookies",
     body: [
-      "We use cookies to enhance your browsing experience and provide you with personalized content. Cookies also help us to understand how you use our site and to improve our services. By using our site, you consent to the use of cookies.",
+      "We do not use cookies. This site sets none, and stores nothing in your browser local or session storage. Because nothing is placed on your device, there is no cookie banner to accept or decline.",
     ],
   },
   {
-    heading: "Google Analytics",
+    heading: "Analytics",
     body: [
-      "We use Google Analytics to analyze user behavior and improve our services. Google Analytics may use cookies and other tracking technologies to collect and analyze information about website usage.",
-    ],
-  },
-  {
-    heading: "Facebook",
-    body: [
-      "We use Facebook to improve our advertising efforts and to reach a wider audience. Facebook may use cookies and other tracking technologies to collect and analyze information about website usage.",
-    ],
-  },
-  {
-    heading: "Mailchimp",
-    body: [
-      "We use Mailchimp to manage our email marketing campaigns. When you sign up for our newsletter, we collect personal data such as your name and email address. This information is used to send you newsletters, updates, and other marketing materials.",
+      "We use Vercel Web Analytics to count page views and see which pages are read. It is cookieless and records no cross-site identifier, so a visit cannot be linked to you or followed onto other websites. You can read Vercel privacy policy here: https://vercel.com/legal/privacy-policy.",
     ],
   },
   {
@@ -65,17 +64,16 @@ export const privacySections: LegalSection[] = [
   {
     heading: "Data Retention",
     body: [
-      "We retain personal data for as long as necessary to provide you with our services and to comply with our legal obligations. If you have an account on our site, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us.",
+      "We keep enquiries for as long as we need them to answer you and to keep a record of work we have discussed, and for as long as the law requires. This site has no user accounts, so there is nothing held about you beyond the messages you choose to send.",
     ],
   },
   {
     heading: "Who we share your data with",
     body: [
-      "We share your data with third-party service providers who help us provide our website and services, such as website hosting, payment processing, and email communication.",
+      "We share your data only with the providers we need to run this site and to reply to you. We do not sell it, and we do not share it for advertising.",
       "Specifically, we share your data with the following third-party service providers:",
-      "Facebook: We use Facebook Pixel to track the effectiveness of our Facebook advertising campaigns. You can learn more about Facebook’s data policy here: https://www.facebook.com/about/privacy/update.",
-      "Google Analytics: We use Google Analytics to track website usage and behavior. You can learn more about how Google collects and processes data here: https://policies.google.com/privacy.",
-      "Mailchimp: We use Mailchimp to manage our email newsletter. You can learn more about Mailchimp’s privacy practices here: https://mailchimp.com/legal/privacy/.",
+      "Vercel, who host the site and provide its cookieless analytics. You can read their privacy policy here: https://vercel.com/legal/privacy-policy.",
+      "Resend, who deliver the email that your contact form generates. You can read their privacy policy here: https://resend.com/legal/privacy-policy.",
     ],
   },
   {
@@ -87,7 +85,7 @@ export const privacySections: LegalSection[] = [
   {
     heading: "What rights you have over your data",
     body: [
-      "You have the right to request access to and receive a copy of the personal data we hold about you. You may also request that we correct, update, or delete any personal data we have about you. To exercise these rights, please contact us at info@recurssive.com. If you have an account on our website or have left comments, you can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.",
+      "You have the right to request access to and receive a copy of the personal data we hold about you. You may also request that we correct, update, or delete any personal data we have about you. To exercise these rights, please contact us at info@recurssive.com. This does not include any data we are obliged to keep for administrative, legal, or security purposes.",
     ],
   },
   {
@@ -144,7 +142,7 @@ export const termsSections: LegalSection[] = [
   {
     heading: "Third-Party Links and Services",
     body: [
-      "Our Site may contain links to third-party websites or make use of third-party tools and services (such as analytics or advertising platforms). We are not responsible for the content, accuracy, or practices of third-party sites or services. Use of any third-party service is subject to that party's own terms and privacy policies.",
+      "Our Site may contain links to third-party websites or make use of third-party tools and services (such as analytics). We are not responsible for the content, accuracy, or practices of third-party sites or services. Use of any third-party service is subject to that party's own terms and privacy policies.",
     ],
   },
   {
