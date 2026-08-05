@@ -50,7 +50,7 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
         <Link
           href="/"
           className={`${text} flex shrink-0 items-center gap-[7px]`}
-          aria-label="Recurssive — home"
+          aria-label="Recurssive, home"
         >
           <Logo className="h-9 w-auto md:h-[37px]" />
           <Wordmark className="h-auto w-[118px] md:w-[146px]" />

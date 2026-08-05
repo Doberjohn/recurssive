@@ -51,7 +51,7 @@ export async function POST(request: Request) {
   // Honeypot. Thank the bot and drop it, rather than send it to the failure
   // page — a failure tells it something was wrong and is worth retrying.
   if (parsed.data.company?.trim()) {
-    console.info('[contact] honeypot tripped — discarded')
+    console.info('[contact] honeypot tripped, discarded')
     return seeOther('/contact/thanks', request)
   }
 
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
 
   const key = process.env.RESEND_API_KEY
   if (!key) {
-    console.error('[contact] RESEND_API_KEY is not set — enquiry NOT delivered')
+    console.error('[contact] RESEND_API_KEY is not set, enquiry NOT delivered')
     // Outside production, print what would have gone out. Makes the whole flow
     // testable before the Resend account exists, and shows the exact wording of
     // the email without sending one. Never in production: this is personal data.

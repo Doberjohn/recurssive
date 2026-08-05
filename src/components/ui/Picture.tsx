@@ -60,7 +60,7 @@ export function Picture({
   grain = false,
 }: Props) {
   const img = images[name]
-  if (!img) throw new Error(`Unknown image "${name}" — run \`npm run build:images\``)
+  if (!img) throw new Error(`Unknown image "${name}". Run \`npm run build:images\``)
 
   const srcSet = (ext: 'avif' | 'jpg') =>
     img.widths.map((w) => `${img.src}/${w}.${ext} ${w}w`).join(', ')

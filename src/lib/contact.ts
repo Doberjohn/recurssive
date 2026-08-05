@@ -135,14 +135,14 @@ export function renderEnquiry(data: ContactInput, at = new Date()) {
     ...rows.map(([k, v]) => k.padEnd(pad) + v),
     '',
     'Description',
-    '—'.repeat(11),
+    '-'.repeat(11),
     data.description,
     '',
-    `— sent from ${siteUrl.replace(/^https?:\/\//, '')}/contact`,
+    `Sent from ${siteUrl.replace(/^https?:\/\//, '')}/contact`,
   ].join('\n')
 
   return {
-    subject: `New enquiry — ${data.name} — ${data.interest} — ${data.budget}`,
+    subject: `New enquiry: ${data.name}, ${data.interest}, ${data.budget}`,
     text,
     // So a reply goes to the person who wrote in, not into the void. This is the
     // single most useful line in the whole file.

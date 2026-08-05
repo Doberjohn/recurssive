@@ -67,7 +67,7 @@ export function Footer() {
       style={{ ['--mesh' as string]: 'var(--mesh-12)' }}
     >
       <div className="container-content relative z-10 pt-[46px] lg:pt-[70px]">
-        <Link href="/" aria-label="Recurssive — home" className="mx-auto block w-fit">
+        <Link href="/" aria-label="Recurssive, home" className="mx-auto block w-fit">
           <Logo className="h-auto w-[120px] text-cloud lg:w-[160px]" />
         </Link>
 

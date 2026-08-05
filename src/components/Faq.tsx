@@ -16,6 +16,10 @@
  * #EAEAEA (which is why an on-surface override existed) but 5.10:1 on #FAFAFA,
  * so putting the answer where it is drawn passes AA on its own.
  *
+ * No row ships expanded, on the owner's instruction: the frame draws row 2
+ * open, but that is the file showing what an open row looks like rather than a
+ * state the page should load in.
+ *
  * Native <details>/<summary>. No JavaScript, and — more importantly — the
  * answers stay in the served HTML whether open or closed. A JS accordion that
  * mounts answers on click hides them from crawlers entirely, and Google is
@@ -24,18 +28,11 @@
  * Deliberately no FAQPage structured data: Google removed FAQ rich results
  * from Search on 7 May 2026, so the markup would earn nothing.
  */
-export function Faq({
-  items,
-  defaultOpen,
-}: {
-  items: { question: string; answer: string }[]
-  /** Index to ship expanded. The file draws row 2 open. */
-  defaultOpen?: number
-}) {
+export function Faq({ items }: { items: { question: string; answer: string }[] }) {
   return (
     <div className="space-y-4">
-      {items.map((item, i) => (
-        <details key={item.question} open={i === defaultOpen} className="group">
+      {items.map((item) => (
+        <details key={item.question} className="group">
           {/* min-h, not h: 48px is the drawn height at 1920, but the 768 frame
               sets questions at 26px, where they wrap and the panel must grow. */}
           <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 rounded-[11px] bg-surface px-[17px] py-2 text-ink [&::-webkit-details-marker]:hidden">

@@ -13,7 +13,7 @@ import { buildMetadata } from '@/lib/metadata'
 import { site } from '@/lib/site'
 
 export const metadata: Metadata = buildMetadata({
-  title: `${site.name} — ${site.descriptor}`,
+  title: `${site.name} | ${site.descriptor}`,
   path: '/',
 })
 
@@ -30,9 +30,8 @@ const services: Service[] = [
   { index: '06', name: 'Product Strategy', image: 'ai', description: LOREM, href: '/capabilities/product-development' },
 ]
 
-/** Nine questions, as drawn. The first ships expanded in the file. */
 /**
- * The nine questions are the drawn ones, in the drawn order — not invented.
+ * The nine questions are the drawn ones, in the drawn order, not invented.
  *
  * Answers are sized to the frame: the column is 686px at 16px, which is 86
  * characters a line, and the drawn answer box is 91 tall — three to four lines,
@@ -49,7 +48,7 @@ const faqs = [
   {
     question: 'What is app development?',
     answer:
-      'Designing and building software people actually use — on a phone, in a browser, or both. It covers the thinking as much as the code: what the thing is for, how it should feel, and what happens to it after launch.',
+      'Designing and building software people actually use, on a phone, in a browser, or both. It covers the thinking as much as the code: what the thing is for, how it should feel, and what happens to it after launch.',
   },
   {
     question: 'What is enterprise app development?',
@@ -69,7 +68,7 @@ const faqs = [
   {
     question: 'How long does it take to build an app?',
     answer:
-      'Discovery first, then a working slice you can put in front of real people, then iteration on what they tell you. You see something running early rather than waiting months for a launch date — which is also how the estimate stays honest.',
+      'Discovery first, then a working slice you can put in front of real people, then iteration on what they tell you. You see something running early rather than waiting months for a launch date. That is also how the estimate stays honest.',
   },
   {
     question: 'How much does app development cost?',
@@ -79,7 +78,7 @@ const faqs = [
   {
     question: 'Do you build iOS and Android apps?',
     answer:
-      'Both, from one codebase. React Native and Expo mean iOS and Android share the same app instead of being built and maintained twice — which is usually the difference between shipping to both and quietly dropping one.',
+      'Both, from one codebase. React Native and Expo mean iOS and Android share the same app instead of being built and maintained twice, which is usually the difference between shipping to both and quietly dropping one.',
   },
   {
     question: 'What is MVP app development?',
@@ -89,7 +88,7 @@ const faqs = [
   {
     question: 'Do you offer app redesign and rescue services?',
     answer:
-      'Often. Inheriting someone else’s codebase is normal work here — we start with an audit of what is there, then fix what is costing you most, whether that is performance, the design, or the parts nobody dares change.',
+      'Often. Inheriting someone else’s codebase is normal work here. We start with an audit of what is there, then fix what is costing you most, whether that is performance, the design, or the parts nobody dares change.',
   },
 ]
 
@@ -219,7 +218,7 @@ export default function Home() {
                 just ask.
               </p>
               <div className="mt-6">
-                <Faq items={faqs} defaultOpen={1} />
+                <Faq items={faqs} />
               </div>
             </div>
           </div>
