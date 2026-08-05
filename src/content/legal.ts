@@ -25,6 +25,31 @@ import type { LegalSection } from '@/components/LegalPage'
  * Owner is taking both documents to a lawyer regardless. Treat this as accurate
  * rather than final.
  *
+ * FACEBOOK AND A PIXEL ARE PLANNED, roughly a month out. They are deliberately
+ * NOT pre-declared here, for two reasons.
+ *
+ * A privacy policy states what happens now. Declaring processing that does not
+ * exist yet is inaccurate in the present, and it is inaccurate in the direction
+ * that costs something: a policy claiming cookies and cross-site tracking is a
+ * policy that needs a consent banner TODAY, months before the pixel exists.
+ *
+ * More usefully, adding the pixel is not a copy change. A Meta pixel writes
+ * cookies and tracks across sites, so under ePrivacy Art. 5(3) it may not load
+ * until the visitor has consented. That deploy has to carry, together:
+ *
+ *   1. a consent gate that blocks the pixel until it is accepted, and records
+ *      the refusal as well as the acceptance
+ *   2. conditional loading, so the script is absent rather than merely inert
+ *      before consent
+ *   3. these sections restored, and the Cookies section rewritten again, since
+ *      "we do not use cookies" stops being true the moment it ships
+ *
+ * The wording that was dropped is recoverable from git: it is in the parent of
+ * the commit that amended this file, not lost.
+ *
+ * The plan already flagged the banner as an open decision. This is the thing
+ * that decides it.
+ *
  * Headings lose the trailing colon the frames set on some of them: a colon on a
  * standalone heading reads as a typo once it is an <h2> rather than a line of
  * type in a layout.

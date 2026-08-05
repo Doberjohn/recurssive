@@ -29,12 +29,32 @@ export type LegalSection = {
   body: string[]
 }
 
+/**
+ * Formatted in UTC deliberately. `new Date('2026-08-05')` parses as UTC
+ * midnight, and formatting that in a timezone behind UTC renders the day before.
+ */
+function formatUpdated(iso: string) {
+  return new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(iso))
+}
+
 export function LegalPage({
   title,
   sections,
+  updated,
 }: {
   title: string
   sections: LegalSection[]
+  /**
+   * ISO date the WORDING last changed, not the build date. A "last updated" that
+   * moves every deploy tells a reader nothing and is worse than none, since it
+   * implies review that did not happen.
+   */
+  updated: string
 }) {
   return (
     <>
@@ -48,6 +68,15 @@ export function LegalPage({
             <h1 className="font-heading font-semibold leading-none tracking-[-0.05em] text-ink [font-size:clamp(28px,5.469vw,42px)] lg:[font-size:48px]">
               {title}
             </h1>
+
+            {/* Not drawn in either frame. Added because a legal document without
+                a date cannot be argued about: nobody can say which version they
+                agreed to. <time> so the machine-readable date is the same one
+                the sentence shows. */}
+            <p className="mt-4 text-ink-muted [font-size:clamp(14px,2.6vw,20px)] lg:[font-size:16px]">
+              Last updated{' '}
+              <time dateTime={updated}>{formatUpdated(updated)}</time>
+            </p>
 
             {/* 861 at 1920; at 768 the content column is already 610, so this
                 only bites on the wide layout. A measure, not a container. */}

@@ -17,5 +17,5 @@ export const metadata: Metadata = buildMetadata({
  * Copy is generated from the frame rather than retyped. See src/content/legal.ts.
  */
 export default function TermsOfService() {
-  return <LegalPage title="Terms of Service" sections={termsSections} />
+  return <LegalPage title="Terms of Service" sections={termsSections} updated="2026-08-05" />
 }

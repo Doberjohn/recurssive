@@ -17,5 +17,5 @@ export const metadata: Metadata = buildMetadata({
  * Copy is generated from the frame rather than retyped. See src/content/legal.ts.
  */
 export default function PrivacyPolicy() {
-  return <LegalPage title="Privacy Policy" sections={privacySections} />
+  return <LegalPage title="Privacy Policy" sections={privacySections} updated="2026-08-05" />
 }
