@@ -195,6 +195,27 @@ band; and the downscale runs in gamma space rather than linear light (ΔE 1.80).
 
 ## Traps that have already bitten
 
+- **The preview pane is a HIDDEN document, and it makes working code look
+  broken.** `document.visibilityState` is `"hidden"` whenever the pane is not
+  displayed, and three separate things stop working as a result. This cost most
+  of a session before it was named, across three different features:
+  - **`requestAnimationFrame` never fires.** Measured: 0 rAF callbacks against 1
+    `setTimeout`. Anything deferred to a frame simply does not run, so a pointer
+    parallax that was entirely correct read as dead.
+  - **CSS transitions never advance.** `getComputedStyle` returns the frozen
+    START value, so a `transition-colors` element reports its old colour forever.
+    Disable the transition on the specific element before reading, and note that
+    disabling it on an ancestor does nothing.
+  - **`:focus` does not match at all** while `document.hasFocus()` is false, so
+    focus styles report as missing. A real click via the `computer` tool restores
+    document focus; `element.focus()` does not.
+
+  Before concluding that an interaction is broken here, check
+  `document.visibilityState` and `document.hasFocus()`. If the behaviour depends
+  on a frame, a transition or focus, it cannot be observed in this pane — verify
+  the CSS by setting its inputs by hand and ask the owner to confirm the live
+  behaviour, rather than reporting a bug that is not there.
+
 - **Turbopack dev serves stale CSS.** A utility can appear missing when it is
   present in the production build. Verify against `next build`, or `rm -rf .next`.
 - **Unlayered CSS outranks `@layer utilities`.** `.grained`'s `position: relative`
