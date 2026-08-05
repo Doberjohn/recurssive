@@ -118,7 +118,18 @@ export default function Home() {
             Image 1920x1280 at y-77; a single 72px line at x163, y966 — roughly
             three-quarters down. There is no wordmark here: the 255px
             RECURSSIVE text node in this frame sits at x8887, off-canvas. */}
-        <section className="relative isolate flex min-h-[80vh] items-end overflow-hidden pb-28 pt-40 lg:min-h-[1203px]">
+        {/* min(1203px, 100svh), not a flat 1203. The drawn hero is 1203 tall,
+            which is taller than a 1080p viewport: the headline sits 107 above
+            its bottom, so at 1920x1080 it landed 11px under the fold with NO
+            browser chrome, and roughly 140 under with a real browser's UI. The
+            first thing on the site was invisible without scrolling.
+
+            svh rather than vh so mobile browser UI is accounted for rather than
+            guessed at. On a tall display the cap never bites and the drawn 1203
+            still applies.
+
+            pb 56 at 768 and 112 at 1920 are the drawn gaps below the headline. */}
+        <section className="relative isolate flex min-h-[min(1203px,100svh)] items-end overflow-hidden pb-14 pt-40 lg:pb-28">
           <Picture
             name="home-texture"
             alt=""
@@ -134,7 +145,11 @@ export default function Home() {
             className="absolute inset-0 -z-10 bg-gradient-to-t from-phantom via-phantom/60 to-phantom/25"
           />
           <div className="container-content">
-            <p className="t-hero max-w-[970px] font-heading font-semibold text-white">
+            {/* The drawn 48px is a 768 value. Applied flat it wrapped to SIX
+                lines in a 375 column and ate 40% of the hero, which is what
+                pushed it to 43% down where the frame has it at 88%. Ramps to the
+                drawn 48 at 768 and 72 at 1920; the 26 floor is legibility. */}
+            <p className="max-w-[970px] font-heading font-semibold leading-[0.9] tracking-[-0.05em] text-white [font-size:clamp(26px,6.25vw,48px)] lg:[font-size:72px]">
               Crafting custom web &amp; app experiences that help people.
             </p>
           </div>
