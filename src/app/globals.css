@@ -487,3 +487,44 @@ pre.shiki code {
     will-change: auto;
   }
 }
+
+/* The hero headline, sized to hold TWO lines at every width.
+ *
+ * Two lines is a width relationship rather than a font size, so a fixed floor
+ * cannot deliver it: 25px holds two lines at 375 and three at 320, because the
+ * column shrank while the type did not.
+ *
+ * Measured: this sentence occupies 24.84px of ink per 1px of font size (621px
+ * at 25px). Two lines therefore fit while
+ *
+ *     fontSize <= column / 12.42        and column = 100vw - 48px
+ *     fontSize <= 8.05vw - 3.86px
+ *
+ * The 7.65vw - 3.67px below is that at 95%, because the exact boundary is a
+ * knife-edge: at 375 the largest two-line size is 26.3px and 26px already tips
+ * to three. The 5% keeps a real gap. It lands on 25px at 375, which is the value
+ * the owner asked for.
+ *
+ * Capped at the drawn 48 so it never exceeds the frame on the way up, and
+ * floored at 18 so it cannot become unreadable; the floor only bites below
+ * ~270px, where two lines stop being achievable anyway.
+ *
+ * This is fitted to THIS sentence. Reword the headline and the 24.84 changes,
+ * so re-measure rather than assuming the numbers still hold.
+ */
+.hero-headline {
+  font-size: min(48px, max(18px, 7.65vw - 3.67px));
+}
+
+/* At and above 1024 the container changes to 100vw - 158, so the relationship
+ * changes with it: fontSize <= (100vw - 158px) / 12.42, again at 95%.
+ *
+ * A flat 72 here was wrong in a narrow band. At exactly 1024 the column is 866
+ * and 72px needs 894, so the headline broke to three lines from 1024 to ~1052
+ * and then silently fixed itself. That is the kind of window nobody opens a
+ * browser at deliberately, which is why it survives review. */
+@media (min-width: 1024px) {
+  .hero-headline {
+    font-size: min(72px, 7.65vw - 12.08px);
+  }
+}

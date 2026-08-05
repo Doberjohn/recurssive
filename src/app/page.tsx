@@ -154,7 +154,7 @@ export default function Home() {
                 h1 rule in globals.css already sets font-heading, 600 and
                 -0.05em, so the classes below are belt-and-braces rather than
                 overrides. */}
-            <h1 className="max-w-[970px] font-heading font-semibold leading-[0.9] tracking-[-0.05em] text-white [font-size:clamp(25px,6.25vw,48px)] lg:[font-size:72px]">
+            <h1 className="max-w-[970px] font-heading font-semibold leading-[0.9] tracking-[-0.05em] hero-headline text-white">
               Crafting custom web &amp; app experiences that help people.
             </h1>
           </div>
