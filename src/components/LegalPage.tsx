@@ -78,9 +78,18 @@ export function LegalPage({
               <time dateTime={updated}>{formatUpdated(updated)}</time>
             </p>
 
-            {/* 861 at 1920; at 768 the content column is already 610, so this
-                only bites on the wide layout. A measure, not a container. */}
-            <div className="mt-12 max-w-[861px] space-y-10 lg:mt-16">
+            {/* Line 58: 1593x0 @165,298 at 1920, 610x0 @79,331 at 768. It spans
+                the CONTAINER, not the text column, which is why it sits out here
+                rather than inside the measure below. */}
+            <hr className="mt-8 border-0 border-t-[1.5px] border-ink-muted lg:mt-10" />
+
+            {/* CENTRED, not left-aligned. The frame puts this column at x530
+                with a width of 861, inside a container spanning 163..1757 —
+                367 left and 366 right, so it is centred rather than hung off the
+                title. At 768 the column is 610, which is the container itself,
+                so mx-auto does nothing there and the two layouts agree.
+                Gap after the rule is the drawn 68 at 768 and 96 at 1920. */}
+            <div className="mx-auto mt-[68px] max-w-[861px] space-y-10 lg:mt-24">
               {sections.map((s) => (
                 <section key={s.heading}>
                   <h2 className="font-heading font-semibold leading-tight tracking-[-0.05em] text-ink [font-size:clamp(24px,4.6875vw,36px)] lg:[font-size:32px]">
