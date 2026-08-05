@@ -43,6 +43,8 @@ const ROUTES = [
   // the same class of risk and were previously unchecked.
   '/contact/thanks',
   '/contact/problem',
+  '/privacy-policy',
+  '/terms-of-service',
 ]
 
 /** Breakpoints and their inside edges — where frame-derived values stop fitting. */
