@@ -4,8 +4,17 @@
  * Measured off `Home.svg` rather than the node tree, which had the rows wrong
  * because their panels are vectors and the manifest excluded vectors:
  *
- *   panel      686.1 x 47.6, r11.3, #EAEAEA   (x616.9..1303.1)
- *   question   17.1px in, 18px, #0F0F0F
+ *   panel      1920: 686x48, r14    768: 610x61, r14
+ *   question   1920: 17px in, 18px   768: 37px in, 26px
+ *
+ * The panel is NOT one size. 48/17 are the 1920 values and were applied flat,
+ * so on the narrow layout the question sat less than half as far in as drawn and
+ * the panel was 11px short. Both ramp below 768 rather than holding 37, which is
+ * a lot of inset on a phone-width column.
+ *
+ * r14, not the r11.3 this file used to claim. That number came from measuring
+ * Home.svg; the node tree says cornerRadius 14 at both breakpoints, and the node
+ * tree is the source rather than a render of it.
  *   icon       8.75px cross, 1.93px bars, #360D9D, centre 33px from the right
  *   row pitch  64.3px — a 16.7px gap
  *
@@ -35,7 +44,7 @@ export function Faq({ items }: { items: { question: string; answer: string }[] }
         <details key={item.question} className="group">
           {/* min-h, not h: 48px is the drawn height at 1920, but the 768 frame
               sets questions at 26px, where they wrap and the panel must grow. */}
-          <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 rounded-[11px] bg-surface px-[17px] py-2 text-ink [&::-webkit-details-marker]:hidden">
+          <summary className="flex min-h-[clamp(44px,7.94vw,61px)] cursor-pointer list-none items-center justify-between gap-4 rounded-[14px] bg-surface px-[clamp(16px,4.818vw,37px)] py-2 text-ink lg:min-h-12 lg:px-[17px] [&::-webkit-details-marker]:hidden">
             <span className="t-question font-semibold">{item.question}</span>
             {/* 8.75px glyph centred in a 32px box: that puts its centre 33px
                 from the panel edge, as drawn, while keeping a real target. */}
@@ -51,7 +60,7 @@ export function Faq({ items }: { items: { question: string; answer: string }[] }
             </span>
           </summary>
           {/* Outside the panel, aligned to the question, 23px below it. */}
-          <p className="t-body px-[17px] pt-[23px] text-ink-muted">
+          <p className="t-body px-[clamp(16px,4.818vw,37px)] pt-[23px] text-ink-muted lg:px-[17px]">
             {item.answer}
           </p>
         </details>
