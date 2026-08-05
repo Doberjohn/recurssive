@@ -1,5 +1,6 @@
 import { Nav } from './Nav'
 import { Footer } from './Footer'
+import { BuildVision } from './BuildVision'
 
 /**
  * The layout both legal documents share.
@@ -116,6 +117,9 @@ export function LegalPage({
           </div>
         </section>
       </main>
+
+      {/* Sits between the document and the footer, as both frames draw it. */}
+      <BuildVision />
 
       <Footer />
     </>

@@ -453,3 +453,37 @@ pre.shiki code {
   height: min(59px, max(44px, 7.68vw));
   font-size: min(26px, max(16px, 3.385vw));
 }
+
+/* The "Let's build your vision" backdrop.
+ *
+ * The transform lives here rather than in JS so the browser composites it: the
+ * script writes two numbers, CSS decides what they mean. That is the difference
+ * between a compositor-only animation and one that recalculates style per frame.
+ *
+ * scale(1.08) is the headroom. Moving the image without oversizing it would drag
+ * an edge into view; the frame does the same thing, drawing the photograph 2052
+ * wide in a 1920 band. 8% is ~77px of bleed each side against an 18px amplitude.
+ *
+ * The transition is what makes it read as subtle rather than twitchy: the layer
+ * eases toward the pointer instead of tracking it exactly.
+ *
+ * Same direction as the pointer, deliberately. Inverting it (depth parallax) is
+ * a single minus sign if that reads better.
+ */
+.vision-parallax > * {
+  transform: translate3d(calc(var(--px, 0) * 18px), calc(var(--py, 0) * 18px), 0)
+    scale(1.08);
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Belt and braces. VisionBackdrop already refuses to attach its listeners under
+ * this setting, so --px never changes; this makes the rule itself inert too, in
+ * case the property is ever set from somewhere else. */
+@media (prefers-reduced-motion: reduce) {
+  .vision-parallax > * {
+    transform: scale(1.08);
+    transition: none;
+    will-change: auto;
+  }
+}
