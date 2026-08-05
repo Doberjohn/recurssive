@@ -70,12 +70,15 @@ to be filled and still invalid** — `maxLength` caps input rather than failing 
 so it never fires. If a field ever gains a second such mode, this stops being
 sufficient and the choice becomes JS or a redesign.
 
-**Telephone is optional** — settled, do not reinstate the asterisk. The frame
-draws one, but GDPR Art. 5(1)(c) data minimisation says an email address already
-suffices to reply. It therefore has no `missing` message at all, only the
-too-short one, which is why `messages.missing` is optional in `Field`. Note that
-an empty input still POSTs `tel=`, so the schema has to accept `''`;
-`.optional()` alone only covers an absent key, which a browser never sends.
+**Telephone is required** — settled, do not propose making it optional again.
+It was briefly made optional on a data-minimisation reading of GDPR Art. 5(1)(c)
+(an email address already suffices to reply) and the owner reverted it. Every
+field therefore has both a `missing` and an `invalid` message.
+
+If it is ever revisited: an empty input still POSTs `tel=`, so making it optional
+means the schema has to accept `''`. `.optional()` alone covers only an absent
+key, which a browser never sends, so it would silently reject every submission
+without a number.
 
 Three things that are load-bearing and look removable:
 
