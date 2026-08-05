@@ -62,8 +62,7 @@ export function ContactDetails({ className = '' }: { className?: string }) {
         </h2>
 
         <p className="cc-body mt-3 text-cloud">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna.
+          Tell us what you’re building, even if it’s still rough. We read all messages and come back within two working days.
         </p>
 
         {/* mt-auto rather than a fixed gap: the block is pinned to the bottom of
