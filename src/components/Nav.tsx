@@ -139,10 +139,15 @@ function MobileMenu() {
       className="pointer-events-none fixed inset-0 z-50 flex flex-col overflow-y-auto bg-bg opacity-0 transition-opacity duration-200 peer-checked:pointer-events-auto peer-checked:opacity-100 lg:hidden"
       id="mobile-menu"
     >
-      <div className="flex shrink-0 items-center justify-between px-[10.3vw] pt-[7vw]">
-        <span className="flex items-center gap-[7px] text-ink">
-          <Logo className="h-9 w-auto" />
-          <Wordmark className="h-auto w-[118px]" />
+      {/* Deliberately the SAME container and padding as the nav above —
+          `container-content` plus `pt-8 md:pt-10`, and the same Logo/Wordmark
+          sizes. The menu used a 10.3vw gutter, which agrees with the container
+          at 768 but is 38.6 against 24 at 375, so the lockup and the icon both
+          jumped as the sheet opened. Nothing here may drift from the nav. */}
+      <div className="container-content flex shrink-0 items-center justify-between gap-8 pt-8 md:pt-10">
+        <span className="flex shrink-0 items-center gap-[7px] text-ink">
+          <Logo className="h-9 w-auto md:h-[37px]" />
+          <Wordmark className="h-auto w-[118px] md:w-[146px]" />
         </span>
         <label
           htmlFor="nav-toggle"
@@ -165,7 +170,11 @@ function MobileMenu() {
           <li key={l.href}>
             <Link
               href={l.href}
-              className="menu-link flex h-full items-center justify-between px-[10.3vw] font-heading font-medium tracking-[-0.05em] text-ink transition-colors [li:focus-within_&]:text-cloud [li:hover_&]:text-cloud"
+              // Same gutter as container-content (24 below 768, the drawn 79
+              // above), so the label column lines up with the lockup. Padding
+              // rather than the container class itself: the row's rule and
+              // gradient are full-bleed, and the tap target should be too.
+              className="menu-link flex h-full items-center justify-between px-6 font-heading font-medium tracking-[-0.05em] text-ink transition-colors md:px-[79px]"
             >
               {l.label}
               {/* viewBox matches the exported coordinates so the path needs no
@@ -183,7 +192,7 @@ function MobileMenu() {
       </ul>
 
       {/* Drawn as one band: phone and email at x79, the pill ending at x688. */}
-      <div className="mt-[8vw] flex flex-wrap items-center justify-between gap-6 px-[10.3vw] pb-[10vw]">
+      <div className="mt-[8vw] flex flex-wrap items-center justify-between gap-6 px-6 pb-[10vw] md:px-[79px]">
         <div className="menu-meta space-y-1 text-ink">
           <a className="block hover:underline" href={`tel:${site.phone.replace(/\s/g, '')}`}>
             {site.phone}
