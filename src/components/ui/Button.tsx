@@ -16,12 +16,13 @@ import Link from 'next/link'
 
 type Variant = 'light' | 'dark' | 'accent'
 
+// Size lives on the variants, not here: the drawn buttons are not one size, and
+// putting `text-base`/`h-10` in the shared string would make every override a
+// Tailwind specificity coin-toss (two plain utilities of the same kind resolve
+// by stylesheet order, not by class-attribute order).
 const base =
-  'inline-flex items-center justify-center gap-2 font-heading text-base ' +
+  'inline-flex items-center justify-center gap-2 font-heading font-medium ' +
   'transition-colors duration-150 ' +
-  // 39px is the drawn height; min-h-11 lifts the touch target to 44px without
-  // changing the visual box, via padding on the label row.
-  'h-10 px-5 ' +
   // The <a> branch gets `pointer` free from the UA stylesheet; a <button> does
   // not — its browser default is `default`, which Tailwind v4's Preflight makes
   // explicit. Without this the same component gives two different affordances
@@ -30,9 +31,15 @@ const base =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
 
 const variants: Record<Variant, string> = {
-  light: 'rounded-lg bg-cloud text-ink hover:bg-silver',
-  dark: 'rounded-lg bg-ink text-cloud hover:bg-[#232323]',
-  accent: 'rounded-md bg-primary text-cloud hover:bg-primary-deep',
+  light: 'h-10 px-5 text-base rounded-lg bg-cloud text-ink hover:bg-silver',
+  dark: 'h-10 px-5 text-base rounded-lg bg-ink text-cloud hover:bg-[#232323]',
+  // 202x53 with 24px type at 768, 143x39 with 16px at 1920 — both measured off
+  // the Contact frames, where 16 + 170 + 16 = 202 exactly. That the padding
+  // accounts for the full width is also how we know the drawn accent button has
+  // no arrow: there is no room for one.
+  accent:
+    'h-[53px] px-4 text-2xl lg:h-[39px] lg:px-[15px] lg:text-base ' +
+    'rounded-md bg-primary text-cloud hover:bg-primary-deep',
 }
 
 type Props = {

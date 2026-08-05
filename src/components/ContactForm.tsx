@@ -60,8 +60,13 @@ function Field({
   /** From MESSAGES in lib/contact — the same strings the server rejects with. */
   messages: { readonly missing: string; readonly invalid?: string }
 }) {
+  // The rule is #6B6B6B at 1.5px in both Contact frames, not the silver
+  // divider token — measured, and the single most visible thing that was wrong.
+  // The value matches the label's ramp (t-form: 24px at 768, 16px at 1024+),
+  // because an underline field whose value is smaller than its own label reads
+  // as disabled.
   const shared =
-    'peer w-full border-0 border-b border-border bg-transparent pb-2 pt-1 text-base text-ink ' +
+    'peer w-full border-0 border-b-[1.5px] border-ink-muted bg-transparent t-form pb-1 pt-0.5 text-ink ' +
     'outline-none transition-colors placeholder:text-ink-muted ' +
     'focus:border-primary ' +
     // :invalid only bites once the field has been interacted with, so the form
@@ -77,8 +82,14 @@ function Field({
   const msg = 'mt-2 hidden text-base text-error'
 
   return (
-    <div className="relative">
-      <label htmlFor={name} className="t-form block text-ink">
+    // `group`, not `peer`: the label comes BEFORE the input, and `peer-*`
+    // compiles to `~`, which only looks forward. The wrapper reports on its own
+    // contents instead.
+    <div className="group relative">
+      <label
+        htmlFor={name}
+        className="t-form block text-ink transition-colors group-has-[:focus]:text-primary"
+      >
         {required && <span aria-hidden="true">*</span>}
         {label}
       </label>
@@ -171,11 +182,15 @@ function ChipGroup({
         <span aria-hidden="true">*</span>
         {legend}
       </legend>
-      <div className="mt-3 flex flex-wrap gap-2">
+      {/* Drawn: 50 tall with a 13 gap at 768, 42 with a 15 gap at 1920. The
+          unselected chip is a 1.5px #6B6B6B outline at r10; the selected one
+          drops to r6 and fills #4813D0 — the radius change is part of the
+          design, not an accident. */}
+      <div className="mt-3 flex flex-wrap gap-[13px] lg:gap-[15px]">
         {options.map((o) => (
           <label
             key={o}
-            className="relative cursor-pointer rounded-xl border border-border t-body px-4 py-1.5 text-ink transition-colors has-[:checked]:rounded-md has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-cloud has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
+            className="relative flex h-[50px] cursor-pointer items-center rounded-[10px] border-[1.5px] border-ink-muted t-body px-4 text-ink transition-colors lg:h-[42px] has-[:checked]:rounded-md has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-cloud has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent"
           >
             {/* Not sr-only: a 1x1 clipped input makes the browser anchor its
                 validation bubble to the corner of the form instead of the chip.
@@ -270,14 +285,17 @@ export function ContactForm() {
       {/* Wrapped so the message can sit outside the label — inside it, clicking
           the message would toggle the box. */}
       <div className="group">
-        <label className="flex items-start gap-3 text-sm text-ink">
+        {/* Drawn 28x28 r4 beside 22px copy at 768, and 14x14 r2 beside 14px at
+            1920 — the box and the type ramp together. Gap is 8 at 768, 5 at
+            1920. */}
+        <label className="flex items-start gap-2 text-[22px] text-ink lg:gap-[5px] lg:text-sm">
           {/* Unchecked by default — see the note at the top of this file. */}
           <input
             type="checkbox"
             name="terms"
             required
             aria-describedby="terms-missing"
-            className="mt-0.5 h-6 w-6 shrink-0 accent-primary"
+            className="consent-box mt-0.5 h-7 w-7 shrink-0 lg:h-3.5 lg:w-3.5"
           />
           <span>
             I&rsquo;ve read and accepted the{' '}

@@ -60,7 +60,8 @@ export function SubmitButton({
     <Button
       ref={ref}
       type="submit"
-      arrow
+      // No arrow: the drawn button is 202 wide and its padding plus label
+      // account for all of it (16 + 170 + 16). Arrows are the nav CTA's.
       disabled={sending}
       aria-busy={sending}
       // Set here rather than in Button's base: a disabled button is not always a

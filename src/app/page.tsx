@@ -136,9 +136,9 @@ export default function Home() {
             </div>
 
             <div className="mt-24 flex justify-center">
-              <Button href="/contact" arrow>
-                Start a project
-              </Button>
+              {/* No arrow: the drawn accent CTA is 140x39 and 15 + 110 + 15
+                  accounts for all of it. Arrows belong to the nav CTA. */}
+              <Button href="/contact">Start a project</Button>
             </div>
           </div>
         </section>

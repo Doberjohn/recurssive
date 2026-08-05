@@ -34,7 +34,7 @@ import { site } from '@/lib/site'
 
 const rows = [
   { label: '(general)', value: site.email, href: `mailto:${site.email}` },
-  { label: '(support)', value: 'support@recurssive.com', href: 'mailto:support@recurssive.com' },
+  { label: '(support)', value: site.supportEmail, href: `mailto:${site.supportEmail}` },
   { label: '(social)', value: '@recurssive', href: null },
   { label: '(phone)', value: site.phone, href: `tel:${site.phone.replace(/\s/g, '')}` },
 ]
@@ -47,7 +47,8 @@ export function ContactDetails({ className = '' }: { className?: string }) {
     <div
       className={`mesh contact-card relative h-[683px] overflow-hidden rounded-[46px] bg-ink ${className}`}
     >
-      <div className="relative z-10 flex h-full flex-col px-[66px] pb-[92px] pt-[65px] [container-type:inline-size] lg:px-[85px] lg:pb-[98px] lg:pt-[70px]">
+      {/* pt 71, not 65: the heading is drawn at y324 against a card top of 253. */}
+      <div className="relative z-10 flex h-full flex-col px-[66px] pb-[92px] pt-[71px] [container-type:inline-size] lg:px-[85px] lg:pb-[98px] lg:pt-[70px]">
         <h2 className="t-item font-heading font-bold tracking-normal text-cloud">
           We want to hear from you
         </h2>
