@@ -288,7 +288,7 @@ export default function Home() {
                     loads Open Sans as a variable font across 400-700. */}
                 <p className="t-body relative z-10 mt-6 max-w-md font-semibold text-ink-muted">
                   Tell us what you&rsquo;re building, even if it&rsquo;s still
-                  rough. We read every message ourselves and come back within two
+                  rough. We read all messages and come back within two
                   working days.
                 </p>
               </div>
