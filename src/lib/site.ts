@@ -34,13 +34,25 @@ export const site = {
   locale: 'en',
 } as const
 
-/** Every indexable route. Drives sitemap.ts; extend as pages land. */
+/**
+ * Every indexable route. Drives sitemap.ts; extend as pages land.
+ *
+ * /about, /cases, /capabilities and /blog are NOT here yet. They now exist and
+ * return 200 instead of 404, but they are empty, and an empty page in a sitemap
+ * is a soft 404 — a worse signal than the hard 404 it replaced, because it asks
+ * to be indexed and then offers nothing. They carry `noIndex: true` to match.
+ *
+ * Uncomment each line as that page gets real content, and drop `noIndex` from
+ * the matching page.tsx in the same commit. The two must move together: a route
+ * in the sitemap that serves `noindex` is the contradiction the 404 page shipped
+ * before, and it is invisible until someone reads the headers.
+ */
 export const routes = [
   '/',
-  '/about',
-  '/cases',
-  '/capabilities',
-  '/blog',
+  // '/about',
+  // '/cases',
+  // '/capabilities',
+  // '/blog',
   '/contact',
   '/privacy-policy',
   '/terms-of-service',

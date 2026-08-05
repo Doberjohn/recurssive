@@ -32,6 +32,10 @@ const PORT = 9223
 const ROUTES = [
   '/',
   '/contact',
+  '/about',
+  '/blog',
+  '/cases',
+  '/capabilities',
   '/blog/why-recursion',
   '/capabilities/enterprise-migration',
   '/capabilities/on-device-ai',
