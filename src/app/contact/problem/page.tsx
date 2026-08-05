@@ -38,8 +38,8 @@ export default function Problem() {
         <>
           Your message didn’t reach us, so please don’t assume we’ve seen it.
           Email{' '}
-          <a href={`mailto:${site.email}`} className="text-ink underline underline-offset-2">
-            {site.email}
+          <a href={`mailto:${site.supportEmail}`} className="text-ink underline underline-offset-2">
+            {site.supportEmail}
           </a>{' '}
           directly, or try again.
         </>
