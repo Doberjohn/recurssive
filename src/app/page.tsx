@@ -229,8 +229,13 @@ export default function Home() {
                 <h2 id="contact" className="t-section relative z-10 text-ink">
                   Ready for success?
                 </h2>
+                {/* Real copy, not lorem. The two-working-days promise is also
+                    made on /contact/thanks — if one changes, change both, or the
+                    site promises one thing before the form and another after. */}
                 <p className="t-body relative z-10 mt-6 max-w-md text-ink-muted">
-                  {LOREM}
+                  Tell us what you&rsquo;re building, even if it&rsquo;s still
+                  rough. We read every message ourselves and come back within two
+                  working days.
                 </p>
               </div>
 
