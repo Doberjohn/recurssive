@@ -25,31 +25,67 @@ export const BUDGETS = ['<10K', '10-20K', '20-50K', '50-100K', '>100K', 'Not sur
 /** Where enquiries land. */
 export const INBOX = site.email
 
+/**
+ * Every message a failed field can produce, in one place.
+ *
+ * The form renders these inline and the schema rejects with them, so the two
+ * halves cannot drift apart — and the wording can be rewritten here without
+ * touching a component.
+ *
+ * `missing` is the empty case. `invalid` is present only where a field has a
+ * second, reachable failure: something typed that is still wrong. It is exactly
+ * one mode per field, which is what lets the form pick between them in CSS —
+ * `maxLength` caps input rather than rejecting it, so it never fails.
+ *
+ * The chip groups and the consent box have one mode each: nothing chosen.
+ */
+export const MESSAGES = {
+  name: {
+    missing: 'Please give your name.',
+    invalid: 'That looks too short.',
+  },
+  email: {
+    missing: 'Please give your email address.',
+    invalid: 'That email address does not look right.',
+  },
+  tel: {
+    missing: 'Please give a phone number.',
+    invalid: 'That number looks too short.',
+  },
+  description: {
+    missing: 'Please tell us a little about the project.',
+    invalid: 'A sentence or two would help.',
+  },
+  interest: { missing: 'Please choose what you are interested in.' },
+  budget: { missing: 'Please choose a budget range.' },
+  terms: { missing: 'Please accept the terms and conditions.' },
+} as const
+
 const trimmed = (max: number) => z.string().trim().max(max)
 
 export const contactSchema = z.object({
-  name: trimmed(100).min(2, 'Please give your name.'),
+  name: trimmed(100).min(2, MESSAGES.name.missing),
 
   // max 254 is the RFC 5321 limit on a whole address. Zod's email check is
   // deliberately permissive; the only real test of an address is sending to it,
   // and over-strict patterns reject valid addresses (apostrophes, new TLDs).
-  email: trimmed(254).pipe(z.email('That email address does not look right.')),
+  email: trimmed(254).pipe(z.email(MESSAGES.email.invalid)),
 
   // Drawn with an asterisk, so required. Worth revisiting: under GDPR Art.
   // 5(1)(c) an email address already suffices to reply, which makes a mandatory
   // phone number hard to justify. Loosen to `.optional()` and drop the asterisk
   // together if that reading wins.
-  tel: trimmed(40).min(6, 'Please give a phone number we can reach you on.'),
+  tel: trimmed(40).min(6, MESSAGES.tel.missing),
 
-  description: trimmed(4000).min(10, 'Please tell us a little about the project.'),
+  description: trimmed(4000).min(10, MESSAGES.description.missing),
 
-  interest: z.enum(INTERESTS, { message: 'Please choose what you are interested in.' }),
-  budget: z.enum(BUDGETS, { message: 'Please choose a budget range.' }),
+  interest: z.enum(INTERESTS, { message: MESSAGES.interest.missing }),
+  budget: z.enum(BUDGETS, { message: MESSAGES.budget.missing }),
 
   // An unticked checkbox is absent from the payload entirely, so presence IS
   // the consent. Never defaulted — a pre-ticked box is not consent under
   // Art. 4(11) / Recital 32.
-  terms: z.literal('on', { message: 'Please accept the terms and conditions.' }),
+  terms: z.literal('on', { message: MESSAGES.terms.missing }),
 
   // Honeypot. Deliberately permissive — the route decides what to do with it.
   // Rejecting it here instead would send the bot to the failure page, which

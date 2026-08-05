@@ -1,5 +1,5 @@
 import { Button } from './ui/Button'
-import { INTERESTS, BUDGETS } from '@/lib/contact'
+import { INTERESTS, BUDGETS, MESSAGES } from '@/lib/contact'
 
 /**
  * Contact form — the block at x975 on Home, repeated on /contact.
@@ -37,6 +37,7 @@ function Field({
   maxLength,
   pattern,
   title,
+  messages,
 }: {
   label: string
   name: string
@@ -56,6 +57,8 @@ function Field({
   maxLength?: number
   pattern?: string
   title?: string
+  /** From MESSAGES in lib/contact — the same strings the server rejects with. */
+  messages: { readonly missing: string; readonly invalid?: string }
 }) {
   const shared =
     'peer w-full border-0 border-b border-border bg-transparent pb-2 pt-1 text-base text-ink ' +
@@ -64,6 +67,14 @@ function Field({
     // :invalid only bites once the field has been interacted with, so the form
     // does not open covered in red.
     'user-invalid:border-error'
+
+  // Only the visible message is in the accessibility tree — the other is
+  // display:none — so naming both here exposes exactly one at a time.
+  const describedBy = [`${name}-missing`, messages.invalid && `${name}-invalid`]
+    .filter(Boolean)
+    .join(' ')
+
+  const msg = 'mt-2 hidden text-base text-error'
 
   return (
     <div className="relative">
@@ -80,6 +91,11 @@ function Field({
           minLength={minLength}
           maxLength={maxLength}
           autoComplete={autoComplete}
+          // A space, never seen. :placeholder-shown is the only way CSS can ask
+          // "is this empty?", and it does not match at all without the
+          // attribute — verified in the browser before relying on it.
+          placeholder=" "
+          aria-describedby={describedBy}
           className={`${shared} resize-none`}
         />
       ) : (
@@ -93,8 +109,28 @@ function Field({
           pattern={pattern}
           title={title}
           autoComplete={autoComplete}
+          placeholder=" "
+          aria-describedby={describedBy}
           className={shared}
         />
+      )}
+
+      {/* Siblings of the input, not children of a wrapper: `peer-*` compiles to
+          the `~` combinator, which cannot reach into a descendant.
+
+          Empty vs typed-but-wrong is the whole distinction, and it is the only
+          one that exists — maxLength caps input rather than failing it, so each
+          field has exactly one way to be filled and still invalid. */}
+      <p id={`${name}-missing`} className={`${msg} peer-user-invalid:peer-placeholder-shown:block`}>
+        {messages.missing}
+      </p>
+      {messages.invalid && (
+        <p
+          id={`${name}-invalid`}
+          className={`${msg} peer-user-invalid:peer-not-placeholder-shown:block`}
+        >
+          {messages.invalid}
+        </p>
       )}
       {/* The "(active)" / "(error)" annotations from the designs, wired to real
           state rather than drawn in place. */}
@@ -118,15 +154,19 @@ function ChipGroup({
   legend,
   name,
   options,
+  message,
   muted = false,
 }: {
   legend: string
   name: string
   options: readonly string[]
+  message: string
   muted?: boolean
 }) {
   return (
-    <fieldset>
+    // `group` + `has()` rather than `peer`: a radio group has no single sibling
+    // to hang the message off, so the fieldset reports on its own contents.
+    <fieldset className="group" aria-describedby={`${name}-missing`}>
       <legend className={`t-form ${muted ? 'text-storm' : 'text-ink'}`}>
         <span aria-hidden="true">*</span>
         {legend}
@@ -151,6 +191,12 @@ function ChipGroup({
           </label>
         ))}
       </div>
+      <p
+        id={`${name}-missing`}
+        className="mt-2 hidden text-base text-error group-has-[:user-invalid]:block"
+      >
+        {message}
+      </p>
     </fieldset>
   )
 }
@@ -158,7 +204,14 @@ function ChipGroup({
 export function ContactForm() {
   return (
     <form className="relative space-y-8" action="/api/contact" method="post">
-      <Field label="Name" name="name" autoComplete="name" minLength={2} maxLength={100} />
+      <Field
+        label="Name"
+        name="name"
+        autoComplete="name"
+        minLength={2}
+        maxLength={100}
+        messages={MESSAGES.name}
+      />
       {/* type="email" alone accepts "maria@gmail" — a missing TLD is an ordinary
           typo, and the server rejects it, so without this the enquirer loses
           everything they wrote. The pattern is the weaker of the two checks by
@@ -172,6 +225,7 @@ export function ContactForm() {
         maxLength={254}
         pattern="[^@\s]+@[^@\s]+\.[^@\s]{2,}"
         title="Include the full domain, for example name@example.com"
+        messages={MESSAGES.email}
       />
       <Field
         label="Telephone"
@@ -180,6 +234,7 @@ export function ContactForm() {
         autoComplete="tel"
         minLength={6}
         maxLength={40}
+        messages={MESSAGES.tel}
       />
       <Field
         label="Description"
@@ -187,6 +242,7 @@ export function ContactForm() {
         textarea
         minLength={10}
         maxLength={4000}
+        messages={MESSAGES.description}
       />
 
       {/* Honeypot. Never shown, never announced, never focusable — anything in
@@ -197,24 +253,46 @@ export function ContactForm() {
         <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <ChipGroup legend="Interested in" name="interest" options={interests} />
-      <ChipGroup legend="Project budget" name="budget" options={budgets} muted />
+      <ChipGroup
+        legend="Interested in"
+        name="interest"
+        options={interests}
+        message={MESSAGES.interest.missing}
+      />
+      <ChipGroup
+        legend="Project budget"
+        name="budget"
+        options={budgets}
+        message={MESSAGES.budget.missing}
+        muted
+      />
 
-      <label className="flex items-start gap-3 text-sm text-ink">
-        {/* Unchecked by default — see the note at the top of this file. */}
-        <input
-          type="checkbox"
-          name="terms"
-          required
-          className="mt-0.5 h-6 w-6 shrink-0 accent-primary"
-        />
-        <span>
-          I&rsquo;ve read and accepted the{' '}
-          <a href="/terms-of-service" className="underline underline-offset-2">
-            terms and conditions
-          </a>
-        </span>
-      </label>
+      {/* Wrapped so the message can sit outside the label — inside it, clicking
+          the message would toggle the box. */}
+      <div className="group">
+        <label className="flex items-start gap-3 text-sm text-ink">
+          {/* Unchecked by default — see the note at the top of this file. */}
+          <input
+            type="checkbox"
+            name="terms"
+            required
+            aria-describedby="terms-missing"
+            className="mt-0.5 h-6 w-6 shrink-0 accent-primary"
+          />
+          <span>
+            I&rsquo;ve read and accepted the{' '}
+            <a href="/terms-of-service" className="underline underline-offset-2">
+              terms and conditions
+            </a>
+          </span>
+        </label>
+        <p
+          id="terms-missing"
+          className="mt-2 hidden text-base text-error group-has-[:user-invalid]:block"
+        >
+          {MESSAGES.terms.missing}
+        </p>
+      </div>
 
       <Button type="submit" arrow>
         Send Message

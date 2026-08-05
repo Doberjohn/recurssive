@@ -52,6 +52,42 @@ are an allow-list, since a radio group is trivially forged. A honeypot field
 inbox is readable unopened, and **Reply-To is the enquirer** so a reply reaches
 them. Plain text on purpose.
 
+### Field messages are CSS-only — keep them that way
+
+Every message a field can produce lives in `MESSAGES` in `src/lib/contact.ts`,
+and the zod schema rejects with those same strings. Wording changes there and
+nowhere else.
+
+Each field shows the real message inline, chosen **without any JavaScript**:
+
+| selector | shows |
+| --- | --- |
+| `peer-user-invalid:peer-placeholder-shown` | the empty case |
+| `peer-user-invalid:peer-not-placeholder-shown` | typed but wrong |
+
+Two messages cover every reachable case because **each field has exactly one way
+to be filled and still invalid** — `maxLength` caps input rather than failing it,
+so it never fires. If a field ever gains a second such mode, this stops being
+sufficient and the choice becomes JS or a redesign.
+
+Three things that are load-bearing and look removable:
+
+- **`placeholder=" "` on every input.** `:placeholder-shown` does not match *at
+  all* without the attribute — measured, not assumed. Remove it and the empty
+  case silently stops showing.
+- **The message elements are siblings of the input, not children of a wrapper.**
+  `peer-*` compiles to the `~` combinator, which cannot reach a descendant.
+- **Radio groups and the consent box use `group-has-[:user-invalid]` instead**,
+  because a fieldset has no single sibling to hang the message off.
+
+`aria-describedby` names both ids; the inactive one is `display:none` and so is
+absent from the accessibility tree. Before this, the only error signal was an
+`aria-hidden` "(error)" tag — nothing was announced at all, a WCAG 3.3.1 failure.
+
+Testing trap: `minLength` sets `tooShort` **only for user-entered values**.
+Assigning `.value` in a script leaves the field valid, so a scripted check will
+report the message missing when it is working. Type with real key events.
+
 ## Blockers — only the owner can clear these
 
 1. **Tony Noel photograph licence.** It is the About page hero — full-bleed,
