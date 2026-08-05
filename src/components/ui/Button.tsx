@@ -22,6 +22,11 @@ const base =
   // 39px is the drawn height; min-h-11 lifts the touch target to 44px without
   // changing the visual box, via padding on the label row.
   'h-10 px-5 ' +
+  // The <a> branch gets `pointer` free from the UA stylesheet; a <button> does
+  // not — its browser default is `default`, which Tailwind v4's Preflight makes
+  // explicit. Without this the same component gives two different affordances
+  // depending on whether it was passed an href.
+  'cursor-pointer disabled:opacity-70 ' +
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
 
 const variants: Record<Variant, string> = {
@@ -37,7 +42,10 @@ type Props = {
   className?: string
   /** Trailing arrow, as drawn on the nav CTA. */
   arrow?: boolean
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
+  // ComponentPropsWithRef, not ButtonHTMLAttributes: the latter has no `ref`,
+  // and SubmitButton needs one to reach `.form`. React 19 passes ref to function
+  // components as an ordinary prop, so no forwardRef is required.
+} & React.ComponentPropsWithRef<'button'>
 
 export function Button({
   children,

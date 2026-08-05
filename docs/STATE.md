@@ -32,11 +32,30 @@ Posts to `/api/contact`, a Route Handler — **the only server function in the
 deployment**. Every page is still prerendered; CI asserts that and now exempts
 `/api` specifically, so a page going dynamic still fails the build.
 
-A plain form POST with a 303 redirect, not `fetch()`. That is why the form costs
-0 KB of client JS, works with scripting off, and cannot be resubmitted by a
-refresh. Outcomes are two prerendered pages: `/contact/thanks` and
-`/contact/problem`. A banner on `/contact` was rejected — reading a query string
-would make the page dynamic.
+A plain form POST with a 303 redirect, not `fetch()`. That is why it works with
+scripting off and cannot be resubmitted by a refresh. Outcomes are two
+prerendered pages: `/contact/thanks` and `/contact/problem`. A banner on
+`/contact` was rejected — reading a query string would make the page dynamic.
+
+**It ships 0.6 KB of client JS, and only that** — `SubmitButton`, nothing else.
+The form was 0 KB until a measurement changed the answer: a valid submission
+spends **~394ms server-side on the Resend call** before the 303 is issued, plus
+the visitor's own network. Nothing acknowledged the click for the best part of a
+second, and a second click sent a second email, because a native POST has no
+double-submit protection. Do not "restore" it to 0 KB without solving both.
+
+Three things in that component are load-bearing:
+
+- It listens for **`submit`, not `click`**. `submit` fires only after the
+  browser's constraint validation passes, so an invalid form never leaves the
+  button disabled behind a validation bubble.
+- Disabling happens via React state, which applies *after* the handler returns —
+  by then the browser has already begun the submission. Setting `disabled`
+  synchronously inside the handler can cancel it. Verified by submitting for
+  real and landing on `/contact/thanks`.
+- It resets on **`pageshow` with `persisted`**. Back-navigation restores the page
+  from bfcache with the JS heap intact, so without this the button comes back
+  stuck on "Sending…" and permanently disabled.
 
 **It fails closed.** No API key, provider error, or invalid payload all land on
 `/contact/problem`, which tells the visitor plainly that the message did not

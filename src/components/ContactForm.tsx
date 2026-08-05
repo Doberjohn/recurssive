@@ -1,4 +1,4 @@
-import { Button } from './ui/Button'
+import { SubmitButton } from './SubmitButton'
 import { INTERESTS, BUDGETS, MESSAGES } from '@/lib/contact'
 
 /**
@@ -294,9 +294,7 @@ export function ContactForm() {
         </p>
       </div>
 
-      <Button type="submit" arrow>
-        Send Message
-      </Button>
+      <SubmitButton label="Send Message" />
     </form>
   )
 }
