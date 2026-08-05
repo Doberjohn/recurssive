@@ -46,7 +46,11 @@ export function Logo({
       fill="currentColor"
       role="img"
       aria-label={title}
-      className={className}
+      // Same reason as Wordmark: the ink starts at exactly y=0, tangent to the
+      // viewBox, so the default clip shaves the antialiased top row off the
+      // round shapes. The bottom has 0.71 units of slack and was never affected,
+      // which is why only the top read as flattened.
+      className={`overflow-visible ${className}`}
     >
       {LOGO_PATHS.map((d) => (
         <path key={d} d={d} />

@@ -18,11 +18,22 @@
  */
 export function Wordmark({ className = '' }: { className?: string }) {
   return (
+    // overflow-visible, and it is not cosmetic. The ink bbox is EXACTLY
+    // 0..1594 x 0..196 — the same numbers as the viewBox — so the round letters'
+    // overshoot sits tangent to the clip edge. An SVG clips at its viewBox by
+    // default, and at 18px tall one user unit is 0.09 CSS px, so the antialiased
+    // edge row was being eaten and the bottoms of C, U, S and O read as shaved
+    // flat.
+    //
+    // Deliberately NOT padding the viewBox: the box-to-ink relationship is
+    // load-bearing here (see above), and adding bleed would shift the ink
+    // relative to the box and break the footer alignment. Nothing actually
+    // paints outside the box, so this changes the raster and nothing else.
     <svg
       viewBox="0 0 1594 196"
       fill="currentColor"
       aria-hidden="true"
-      className={className}
+      className={`overflow-visible ${className}`}
     >
       <path d="M0 194.1V1.9H77.8C122.1 1.9 145.5 21.4 145.5 57.9C145.5 81.3 133.8 98.8 113.7 106.5V107.6C130.3 113.1 135.7 121.1 139.3 148.8L139.8 153.7C142 168.8 145.5 184.5 148.3 194.1H109.4C107.2 185.3 105.5 176 103.1 158.4L102.6 153.5C99 127.1 94.4 121.9 73.7 121.9H38.4V194.1H0ZM38.4 91.4H73.4C96 91.4 106.6 82.1 106.6 62.3C106.6 42.3 96 32.9 73.4 32.9H38.4V91.4Z" />
       <path d="M171.5 194.1V1.9H300.4V32.9H209.8V81.8H295V113.1H209.8V163.1H302.9V194.1H171.5Z" />

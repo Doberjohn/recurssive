@@ -26,7 +26,9 @@ export const navLinks = [
   { href: '/capabilities', label: 'Capabilities' },
   { href: '/about', label: 'About' },
   { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
+  // No Contact link: "Start a project" already points at /contact, and the two
+  // sat next to each other going to the same place. The footer keeps its own
+  // Contact link, which is a separate list.
 ] as const
 
 export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
