@@ -152,6 +152,52 @@ const PROBE = `(() => {
   return { client, scrollWidth: d.scrollWidth, overflow: +(d.scrollWidth - client).toFixed(1), culprits: over.slice(0, 3) };
 })()`
 
+/**
+ * Preflight: prove the stylesheet actually applied before trusting a single
+ * measurement.
+ *
+ * `next start` serves the prerendered HTML it read at boot, and that HTML names
+ * content-hashed assets. Re-run `next build` underneath a running server and the
+ * hashes change on disk while the served HTML keeps pointing at the old ones —
+ * so every stylesheet request 500s. The app sends `X-Content-Type-Options:
+ * nosniff`, so Chrome refuses the error body as a stylesheet and renders the
+ * page with no CSS at all.
+ *
+ * That failure is invisible in a browser you have already used, because
+ * `_next/static` is served immutable and the old CSS is still in its HTTP cache.
+ * A fresh headless Chrome has no cache and gets the naked page.
+ *
+ * Unstyled, every image drops to its natural size and every route overflows by
+ * thousands of pixels — 90 of 169 checks, reported as layout bugs on pages whose
+ * layout was never the problem. A gate that fails this way is worse than no gate:
+ * it costs a day of chasing phantom regressions. So this refuses to run at all
+ * rather than hand back a screen of noise.
+ */
+{
+  const loaded = once('Page.loadEventFired')
+  await send('Page.navigate', { url: BASE + ROUTES[0] })
+  await Promise.race([loaded, sleep(10000)])
+  await sleep(200)
+  const { result } = await send('Runtime.evaluate', {
+    expression: `(() => {
+      let applied = 0
+      for (const s of document.styleSheets) { try { applied += s.cssRules.length } catch {} }
+      return { links: document.querySelectorAll('link[rel=stylesheet]').length, applied }
+    })()`,
+    returnByValue: true,
+  })
+  const { links, applied } = result.value
+  if (links > 0 && applied === 0) {
+    console.error(`✗ ${BASE} served ${links} stylesheet link(s) but none applied — the page is unstyled.`)
+    console.error('  Almost always a stale server: `next build` was re-run while `next start` kept')
+    console.error('  running, so the served HTML points at asset hashes that no longer exist.')
+    console.error('  Restart the server on that port, then re-run. Measuring this would report')
+    console.error('  overflow on every route and none of it would be real.')
+    cleanup()
+    process.exit(1)
+  }
+}
+
 const failures = []
 let checks = 0
 
