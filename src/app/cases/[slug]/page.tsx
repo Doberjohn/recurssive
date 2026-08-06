@@ -25,6 +25,11 @@ export async function generateMetadata({
     path: `/cases/${slug}`,
     type: 'article',
     publishedTime: study.meta.publishedAt,
+    // The only study in the collection is a placeholder, and the whole /cases
+    // section is unlinked until there is real work to show. Drop this in the
+    // same commit that restores the nav link and the sitemap entry — the index
+    // at /cases carries the matching flag. See src/lib/site.ts.
+    noIndex: true,
   })
 }
 

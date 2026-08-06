@@ -34,6 +34,10 @@ const ROUTES = [
   '/contact',
   '/about',
   '/blog',
+  // /cases and /cases/[slug] stay on this list even though nothing links to
+  // them any more. They still render at 200 and they are still live design
+  // work — unlinked is not unbuilt, and an unchecked page is exactly the one
+  // that comes back overflowing. See src/lib/site.ts.
   '/cases',
   '/capabilities',
   '/blog/why-recursion',

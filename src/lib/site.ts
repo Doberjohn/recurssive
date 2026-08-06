@@ -46,11 +46,33 @@ export const site = {
  * the matching page.tsx in the same commit. The two must move together: a route
  * in the sitemap that serves `noindex` is the contradiction the 404 page shipped
  * before, and it is invisible until someone reads the headers.
+ *
+ * /cases goes further: it is also UNLINKED. Not being in this list only keeps a
+ * page out of the sitemap — it says nothing about the nav, the footer, or a
+ * cross-link from another page, and those are how a crawler actually finds
+ * things. Five things had to move together, and all five move back together
+ * when there is real work to show:
+ *
+ *   1. `navLinks` in components/Nav.tsx        (desktop nav + mobile drawer)
+ *   2. `contents` in components/Footer.tsx     (Contents column)
+ *   3. "Related work" in capabilities/[slug]   (the reverse-reference section)
+ *   4. `'cases'` in app/sitemap.ts             (the detail routes)
+ *   5. `noIndex` on BOTH cases/page.tsx and cases/[slug]/page.tsx
+ *
+ * (3) and (5) are the ones that are easy to miss. The capability detail pages
+ * are themselves indexed, so their "Related work" list was a live crawl path
+ * into /cases; and /cases/[slug] was indexable AND sitemapped while the index
+ * above it was already noIndex, which made the section's one placeholder study
+ * its most discoverable page. robots.ts explains why none of this is a
+ * `Disallow`.
+ *
+ * The routes still return 200 on a direct URL. That is intentional — the pages
+ * are live design work and scripts/check-overflow.mjs still measures them.
  */
 export const routes = [
   '/',
   // '/about',
-  // '/cases',
+  // '/cases',      // unlinked too — see the 5-point checklist in the note above
   // '/capabilities',
   // '/blog',
   '/contact',

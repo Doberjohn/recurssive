@@ -22,13 +22,17 @@ import { site } from '@/lib/site'
 
 export const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/cases', label: 'Cases' },
   { href: '/capabilities', label: 'Capabilities' },
   { href: '/about', label: 'About' },
   { href: '/blog', label: 'Blog' },
   // No Contact link: "Start a project" already points at /contact, and the two
   // sat next to each other going to the same place. The footer keeps its own
   // Contact link, which is a separate list.
+  //
+  // No Cases link either: /cases still renders, but there is not enough real
+  // work to show yet, so the route is unlinked and unindexed until there is.
+  // Restore this entry, the Footer's, and the "Related work" section in
+  // capabilities/[slug] in the same commit that unhides it — see src/lib/site.ts.
 ] as const
 
 export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {

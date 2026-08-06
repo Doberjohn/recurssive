@@ -27,7 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Content routes, dated from frontmatter rather than build time — a real
     // signal, and stable across rebuilds that did not change the content.
-    ...(['blog', 'cases', 'capabilities'] as const).flatMap((collection) =>
+    //
+    // `cases` is omitted. The index at /cases has always been noIndex, but the
+    // detail pages were listed here and carried no robots directive, so the one
+    // placeholder study was the single most crawlable thing about a section
+    // that is not ready — asked for by the sitemap, reachable, and lorem. It
+    // goes back in the same commit as the /cases nav link. See src/lib/site.ts.
+    ...(['blog', 'capabilities'] as const).flatMap((collection) =>
       getAll(collection).map((entry) => ({
         url: `${siteUrl}/${collection}/${entry.slug}`,
         lastModified: stamp(entry.meta.updatedAt ?? entry.meta.publishedAt),

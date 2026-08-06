@@ -15,6 +15,16 @@ import { siteUrl } from '@/lib/site'
  *
  * Deliberately no llms.txt: of 137,210 domains studied, 28% served one and 97%
  * of those received zero requests. Nothing probes for it.
+ *
+ * Deliberately no `Disallow: /cases` either, even though that section is being
+ * held back. Disallow blocks the FETCH, so a crawler never reads the `noindex`
+ * on the page — a URL it learns about some other way (an external link, a stray
+ * reference, an already-crawled copy) can still be indexed as a bare URL, and
+ * then cannot be removed because the directive that would remove it is
+ * unreachable. `noindex` is the stronger tool here and /cases and /cases/[slug]
+ * both carry it. If those URLs are ever confirmed absent from the index and
+ * crawl budget becomes a reason, a Disallow can be added on top — in that
+ * order, never before.
  */
 export default function robots(): MetadataRoute.Robots {
   return {

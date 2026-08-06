@@ -35,9 +35,14 @@ import { site } from '@/lib/site'
  *
  *  - The "Contents" column lists Home / Services / About / Contact. "Services"
  *    is not a page; Cases, Capabilities and Blog are missing. Corrected to the
- *    real navigation. This is why the band is 764px rather than the drawn 685:
- *    six links occupy ~60px more than the four drawn. The extra height is
- *    absorbed at the top of the gradient, where it is darkest and least visible.
+ *    real navigation, minus Cases while that route is held back (Nav.tsx).
+ *    This is why the band does not match the drawn 685: the Contents column is
+ *    the tallest thing in that row, so every link past the four drawn adds one
+ *    line of it — measured at exactly one line-height, 24px at 1920 and 32.5px
+ *    at 768. Five links measure 709.7 at a 1905 content width; adding a sixth
+ *    puts it at 733.7. The difference is absorbed at the top of the gradient,
+ *    where it is darkest and least visible, which is why the count can move
+ *    without redrawing anything.
  *  - The clock reads a hardcoded 22:52:19 on all 31 frames. Shipping a frozen
  *    timestamp reads as broken, so it runs live — see Clock.tsx. The offset is
  *    derived from Europe/Athens rather than pinned to the drawn "+3", which is
@@ -46,11 +51,12 @@ import { site } from '@/lib/site'
 
 const contents = [
   { href: '/', label: 'Home' },
-  { href: '/cases', label: 'Cases' },
   { href: '/capabilities', label: 'Capabilities' },
   { href: '/about', label: 'About' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
+  // Cases is deliberately absent — see the note in Nav.tsx. Restore it here in
+  // the same commit that restores the nav entry.
 ]
 
 const socials = [
