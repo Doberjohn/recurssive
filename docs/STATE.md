@@ -3,7 +3,7 @@
 Living handoff. Update it when a phase closes or a decision is made. If a
 session ends unexpectedly, start here.
 
-**Last updated:** 2026-08-03
+**Last updated:** 2026-08-06
 
 ---
 
@@ -18,11 +18,92 @@ design's structure; a fidelity audit is running to find remaining differences.
 | 1 — Skeleton, tokens, CI budget gate | ✅ done |
 | 2 — Image pipeline | ✅ done |
 | 3 — MDX content layer | ✅ done |
-| 4 — Pages | 🔄 Home built and audited (187 findings, systemic + high fixed, responsive scale in). Remaining: mid/low-tier polish. Then: Capability template → Capabilities → Cases/Case → About → Blog/Post → Contact → Legal → error states |
+| 4 — Pages | 🔄 Home built and audited (187 findings, systemic + high fixed, responsive scale in). Our Process rebuilt from its own export — see below. Remaining: mid/low-tier polish. Then: Capability template → Capabilities → Cases/Case → About → Blog/Post → Contact → Legal → error states |
 | 5 — SEO polish, OG images | not started |
 
-**Measured state:** JS 125.3 KB against a 152 KB ceiling (26.7 KB headroom).
-Every route statically prerendered. CI green.
+**Measured state:** JS 125.0 KB against a 152 KB ceiling (27.0 KB headroom) —
+down from 134.7 on 16.2, with no code change. Every route statically
+prerendered. CI green.
+
+### Our Process — rebuilt from a standalone export
+
+The owner supplied `Our Process.svg`, a 1920x1201 export of that one section,
+in `Recurssive Folder/Recurssive Folder/`. It is **157 MB**, because all five
+surfaces are embedded base64 rasters; strip `base64,…` to a marker and it is
+825 KB of readable geometry. Do not try to open it directly, and do not regex
+the blobs — one match is 35 MB and blows the regex engine's stack. Scan with
+`indexOf`.
+
+It settled three things the figspec could only render as `<N vector path(s)>`,
+and the answers are now in ProcessFlow.tsx:
+
+- Each shape has its **own** gradient at its own crop — mesh 2 / 7 / 3 / 12,
+  top to bottom. All four matched files already in the pipeline at **RMSE 0**
+  against a next-best of 18-56, so nothing new had to be generated. This
+  retires `.bg-mesh-placeholder` for this section; the class is still in
+  theme.css and still marked interim for whatever else uses it.
+- The connector's arrowhead is a **chevron**, 2px accent with round caps — not
+  the solid cloud triangle that was standing in, and not absent as the earlier
+  note in ProcessFlow.tsx concluded. There are also 6px accent dots on each
+  shape's bottom edge, which were missing entirely.
+- The step-name rule is **3px #A59BFF**, at both breakpoints (the 768 frame's
+  "Line 116" agrees). It was 1px silver/60.
+
+Also corrected: the row grid (names were 32px right of drawn, shapes 107px),
+the band's own padding, and the photograph, which the file stores **greyscale**
+— identical frame otherwise, RMSE 2.83.
+
+**Two things are deliberately NOT done. Both are open questions for the owner:**
+
+1. **The Fibonacci spiral.** The export draws it inside the band, 742x1200
+   flush right, ~20 arcs at #FAFAFA 0.5px. The Home 1920 frame parks the same
+   construction *outside* the artboard at x1920, rotated the other way. The two
+   sources disagree; the export is newer and is named for this section, so it
+   probably wins, but it is a new decorative element rather than a correction
+   and was left out pending a decision.
+2. **The 768 layout is not the drawn one.** The 768 frame draws this band
+   **1320** tall, with index/name/body in a left column and the shapes beside
+   them at x429..689. We still stack all four in one column, which makes the
+   band **2345**. Stretching the drawn gradient crop over 1.8x the height lifts
+   its bright core up behind the heading. Without help, six elements fail WCAG
+   AA at 768 — heading **1.54**, intro **1.72**, "(01)" **1.12**, name "Ask"
+   **2.39**. A narrow-only scrim in page.tsx holds the first three at 5.12, 4.94
+   and 4.89; it is marked as a departure and should be deleted, not tuned, when
+   the two-column layout lands.
+
+### Contrast: exactly one element type, and it is the design's
+
+**Measure with the type hidden.** Sampling a text element's bounding box while
+the glyphs are in it averages the light glyph pixels into the "background" and
+reports a ratio far worse than reality — it produced 2.09:1 for a heading that
+actually measures 3.58:1. For the file, strip the text paths (top-level `<path>`
+with a text fill and `d` longer than 500 chars — that threshold clears the 418ch
+chevrons and the 355/277ch mask outlines) and re-render. For the built page,
+`visibility: hidden` keeps layout and gives the same thing.
+
+Measured that way at 1920, on the file and on the build:
+
+| element | file | build | needs | |
+|---|---|---|---|---|
+| heading "Our Process" | 3.58 | 3.53 | 3.0 | pass |
+| intro paragraph | 4.46 | 4.26 | 4.5 | **marginal fail** |
+| **"(01)"** | **2.94** | **2.58** | 4.5 | **fail** |
+| **"(02)"** | **4.19** | **3.91** | 4.5 | **fail** |
+| "(03)" / "(04)" | 5.37 / 6.29 | 4.65 / 5.26 | 4.5 | pass |
+| step names | 6.14–12.37 | 5.34–10.38 | 3.0 | pass |
+| body paragraphs | 7.47–13.18 | 4.87–11.33 | 4.5 | pass |
+| shape labels | 4.92–6.51 | 4.98–6.69 | 4.5 | pass |
+
+So it is **the accent index labels**, and marginally the intro — nothing else.
+The cause is structural, not a crop that can be nudged: `#A59BFF` has a relative
+luminance of 0.385, so against the mesh's upper-left quadrant it cannot reach
+4.5:1 at any crop. It only passes further down the band, where the gradient goes
+dark — which is exactly what the table shows happening between (02) and (03).
+
+The build reproduces the file (every row within 0.4, same pass/fail pattern), so
+this is the owner's call, not an implementation bug. Three ways out: darken the
+band's upper-left, use a darker accent for these four labels only, or accept it
+— they are decorative numbering that the adjacent step name already conveys.
 
 ---
 
@@ -150,13 +231,28 @@ Anything outside `app/` exists on one disk only. The decoders in
 
 ## Decisions that are settled — do not reopen
 
-- **Next.js 16.2.x App Router**, fully static, `cacheComponents` off, Tailwind v4,
+- **Next.js 16.3.x App Router**, fully static, `cacheComponents` off, Tailwind v4,
   MDX in repo, Vercel Pro `fra1`. Reasoning in `KNOWLEDGE-BASE.md` §5.
+- **TypeScript stays on 5.x.** Next 16.3 itself type-checks fine with TS 7,
+  but `eslint-config-next` ships at the same version and depends on
+  `typescript-eslint`, which hard-throws on TS >= 7 — so `npm run lint` cannot
+  run. Tried end to end and reverted; the win was only ~3.6s per build. Revisit
+  when TS 7.1 ships the new compiler API and typescript-eslint follows
+  ([typescript-eslint#10940](https://github.com/typescript-eslint/typescript-eslint/issues/10940)).
 - **Cloud White is `#FAFAFA`**, not `#FDFDFD`.
 - **Purple/blue palette is deliberate** and measured as differentiated.
 - **"Omnics Digital Agency" is the designer's credit**, not a Recurssive descriptor.
 - **Zero Figma components is accepted** — the component layer lives in code.
 - **Not `next/image`** — build-time `sharp` pipeline, custom `<Picture>`.
+- **/cases is unlinked, not just noindex** — there is not enough real work to
+  show. The nav, the footer's Contents column and the "Related work" section on
+  `/capabilities/[slug]` all gave up their links, and the detail routes left the
+  sitemap; `/cases/[slug]` was the miss, since it was indexable AND sitemapped
+  while the index was already noIndex. Both now serve `noindex, nofollow`, and
+  the routes still return 200 on a direct URL so the design work stays
+  reviewable and `check:overflow` keeps covering them. `src/lib/site.ts` lists
+  the five things that move back together; `robots.ts` records why this is not a
+  `Disallow` (it would block the fetch, so the `noindex` would never be read).
 - **Every interaction is CSS.** INP excludes hover and scroll, so hover states
   cost nothing. Do not route them through React state.
 - **The two design frames disagree on purpose.** At 768 headings are SMALLER

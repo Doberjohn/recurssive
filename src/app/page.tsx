@@ -253,18 +253,106 @@ export default function Home() {
             Full-bleed photograph (1920x1200 at y4146). Four steps stacked
             vertically ~209px apart, each a row of index + name, a short label,
             and a body column — not a four-across grid. */}
-        <section className="relative isolate overflow-hidden py-28" aria-labelledby="process">
+        {/* Padding is the drawn band, not a round number: the export is
+            1920x1201 and puts the first shape's top edge at y298.25 and the
+            last shape's bottom at y1054.25. py-28 landed the flow 24px low and
+            closed the bottom by 34. lg only — the export is a 1920 frame and
+            says nothing about 768, where py-28 stays. */}
+        <section
+          className="relative isolate overflow-hidden py-28 lg:pt-[88px] lg:pb-[145px]"
+          aria-labelledby="process"
+        >
+          {/* The band is three layers in the file, not a photograph behind a
+              neutral scrim. The scrim IS the brand gradient, which is why the
+              section reads purple rather than grey.
+
+              Greyscale is the file's, not a stylistic addition: its copy of
+              this photograph is stored desaturated (all three channel means are
+              exactly 98.0), and it is otherwise the same frame we ship —
+              greyscale RMSE 2.83 between the two. Done in CSS rather than in
+              the pipeline so one asset still serves both, the way the file
+              reuses one image.
+
+              `object-position` is not a default either: the file draws the
+              2806x4096 photograph at 1920 wide (so 2802.7 tall) offset -1560.7,
+              i.e. the window sits 97.4% of the way down the overflow. Centred,
+              the frame filled with the window above the desk, not the desk. */}
           <Picture
             name="process"
             alt=""
             sizes="100vw"
             grain
             fill
-            className="-z-20"
+            className="-z-30"
+            imgClassName="object-[center_97.4%] grayscale"
           />
-          {/* In the file this scrim is offset 461px right, leaving the light
-              type on bare photograph. Full-width here. */}
-          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-phantom/75 via-phantom/60 to-phantom/75" />
+
+          {/* --mesh-2 over the photograph at 75%, rotated 180deg. The rotation
+              is the file's: the rect is drawn at (1920,1200) and turned about
+              that corner, which lands the gradient's bright core bottom-right.
+              CSS cannot flip a background, so the layer itself is rotated —
+              free, since it is absolutely positioned and paints nothing else.
+
+              The size is anchored to HEIGHT, and that is the whole trick — the
+              same one .footer-mesh documents. The file draws the image 2024x1265
+              on a 1920x1200 band, which is 105.42% either way at that one size,
+              and `105.42% auto` reads more naturally. But this band is not a
+              fixed 1200: it is content-driven, and every width below 1920 makes
+              it TALLER while making a width-anchored image shorter. At 768 the
+              band is 2345 tall against an 810x506 image — it covered the bottom
+              fifth and left the rest bare photograph.
+
+              So state the requirement rather than hoping one number satisfies
+              it: tall enough to cover the band (105.42%) OR tall enough that
+              its 1.6 aspect spans the viewport (62.5vw), whichever is larger.
+              The first term wins at every real width; the second is the guard
+              for a band wider than 1.6x its height. At 1920 it resolves to
+              1265x2024 — the drawn crop exactly.
+
+              Grain is left at the default: this draws the 4000px source at
+              1.98x against the 2.08x --grain-opacity is calibrated for, so the
+              correction the shapes need does not apply here. */}
+          <div
+            aria-hidden="true"
+            className="mesh absolute inset-0 -z-20 rotate-180 opacity-75"
+            style={{
+              ['--mesh' as string]: 'var(--mesh-2)',
+              ['--mesh-size' as string]: 'auto max(105.42%, 62.5vw)',
+              ['--mesh-pos' as string]: 'left top',
+            }}
+          />
+
+          {/* Transparent to #0F0F0F top-to-bottom at 25%. Weighted to the
+              bottom, where the last step and the body column sit — the scrim
+              this replaces was flat 60-75% across the whole band, which cost
+              the photograph most of its contrast at the top. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-phantom opacity-25"
+          />
+
+          {/* A DEPARTURE from the file, below lg only, and it should be deleted
+              rather than tuned once the narrow layout is right.
+
+              Both frames build this band the same way, so the gradient above is
+              correct at every width. What is not correct is the band's HEIGHT:
+              the 768 frame draws it 1320 tall, with the index, name and body in
+              a left column and the shapes beside them at x429..689. We still
+              stack all four in one column, which makes the band 2345 — 1.8x
+              drawn — and stretching the same crop over 1.8x the height lifts the
+              gradient's bright core up behind the heading.
+
+              Measured at 768 with the type hidden, so the samples are the real
+              ground and not the glyphs. WITHOUT this layer six elements fail
+              WCAG AA: heading 1.54, intro 1.72, "(01)" 1.12, "(02)" 2.37,
+              "(03)" 4.00, name "Ask" 2.39. WITH it, the heading is 5.12, the
+              intro 4.94 and "Ask" 4.89, and what still fails is only the accent
+              index — which fails in the file at 1920 too, and is a design-level
+              question rather than this layer's job. See STATE.md. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-gradient-to-b from-phantom/60 via-transparent to-transparent lg:hidden"
+          />
 
           <div className="container-content">
             <h2 id="process" className="t-section text-silver">
