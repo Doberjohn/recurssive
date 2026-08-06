@@ -35,11 +35,14 @@ export default async function CapabilityPage({
   const capability = getBySlug('capabilities', slug)
   if (!capability) notFound()
 
-  // Cases that name this capability — the reverse of the reference validated
-  // at build time in lib/content/validateReferences.
-  const related = getAll('cases').filter((c) =>
-    c.meta.capabilities.includes(slug)
-  )
+  // A "Related work" section used to live here: the cases naming this
+  // capability, the reverse of the reference validated at build time in
+  // lib/content/validateReferences. It was the last in-app path to /cases, and
+  // this route IS indexed, so it was also a crawl path — removed with the nav
+  // and footer links. Restore it in the commit that unhides /cases; the
+  // reverse-reference lookup is `getAll('cases').filter((c) =>
+  // c.meta.capabilities.includes(slug))`, and validateReferences still keeps
+  // both sides honest in the meantime.
 
   return (
     <article className="container-content py-24">
@@ -69,24 +72,6 @@ export default async function CapabilityPage({
       <div className="mt-16 max-w-3xl">
         <Mdx source={capability.body} />
       </div>
-
-      {related.length > 0 && (
-        <section className="mt-24 max-w-3xl border-t border-border pt-10">
-          <h2 className="text-2xl text-ink">Related work</h2>
-          <ul className="mt-6 space-y-4">
-            {related.map((c) => (
-              <li key={c.slug}>
-                <a
-                  href={`/cases/${c.slug}`}
-                  className="text-base text-primary underline underline-offset-4"
-                >
-                  {c.meta.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
     </article>
   )
 }
