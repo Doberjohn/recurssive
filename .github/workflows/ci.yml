@@ -5,6 +5,12 @@ on:
     branches: [main]
   pull_request:
 
+  # Manual trigger. Without it there is no "Run workflow" button and
+  # `gh workflow run ci.yml` returns 422, so a run that should have fired and
+  # did not cannot be re-attempted except by pushing another commit. Added
+  # after four commits reached main with no run created for any of them.
+  workflow_dispatch:
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
