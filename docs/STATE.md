@@ -3,7 +3,7 @@
 Living handoff. Update it when a phase closes or a decision is made. If a
 session ends unexpectedly, start here.
 
-**Last updated:** 2026-08-06
+**Last updated:** 2026-08-07
 
 ---
 
@@ -18,12 +18,301 @@ design's structure; a fidelity audit is running to find remaining differences.
 | 1 — Skeleton, tokens, CI budget gate | ✅ done |
 | 2 — Image pipeline | ✅ done |
 | 3 — MDX content layer | ✅ done |
-| 4 — Pages | 🔄 Home built and audited (187 findings, systemic + high fixed, responsive scale in). Our Process rebuilt from its own export — see below. Remaining: mid/low-tier polish. Then: Capability template → Capabilities → Cases/Case → About → Blog/Post → Contact → Legal → error states |
+| 4 — Pages | 🔄 Home built and audited (187 findings, systemic + high fixed, responsive scale in). Our Process, What we do best and Industries we serve each rebuilt from their own standalone export — see below. Remaining: the **768/mobile** pass on all three (designs pending from the owner), then mid/low-tier polish. Then: Capability template → Capabilities → Cases/Case → About → Blog/Post → Contact → Legal → error states |
 | 5 — SEO polish, OG images | not started |
 
 **Measured state:** JS 125.0 KB against a 152 KB ceiling (27.0 KB headroom) —
 down from 134.7 on 16.2, with no code change. Every route statically
 prerendered. CI green.
+
+### What we do best / Industries we serve — rebuilt from their own exports
+
+The owner supplied `What we do best.svg` (1920x719, 9.8 MB) and
+`Industries we serve.svg` (1920x935, 44.6 MB) in `Recurssive Folder/Recurssive
+Folder/`. Strip the base64 rasters with the same `indexOf` scan the Our Process
+note describes and they are 1.07 MB and 0.63 MB of readable geometry. Both land
+exactly on the Home frame: the first at y1279.75, the second at y2116.
+
+Everything below is measured off those files and re-measured on the build at
+1920. The owner then supplied `What we do best mobile.svg` (768x1357),
+`Industries we serve mobile.svg` (768x835) and `our process mobile.svg`
+(768x1320); **the narrow pass is in too** and is recorded further down.
+
+**What we do best** (ServiceIndex.tsx, page.tsx):
+
+- **The service names carry NO letter-spacing.** `.t-item` sets -0.05em, which is
+  right for its other users and wrong here. Proof rather than reading: the drawn
+  boxes are 221/196/188/208/209/267 and canvas advance widths at tracking 0 are
+  219.6/195.8/187.3/208.4/209.5/264.6 — every one within 2.4px — against
+  200.4..239.0 as built. The 768 frame agrees (Inter Bold 36/100%, no `ls`).
+- **The index is a superscript, not a centred item.** Its box is at row+28, level
+  with the description's first line; `items-center` put it 11.6px lower. Now
+  `lg:self-start lg:mt-[27px]` — 27 and not 28 because the drawn offset is from
+  the rule's own y and its 1.5px stroke straddles that.
+- **The rules are 1.5px** and the 100px pitch is line to line, so the row is
+  98.5. Chrome snaps border widths to whole DEVICE pixels: at 1x the rule is used
+  at 1px and the pitch measures 99.5, at 2x it is exactly 100. Do not re-tune the
+  98.5 from a 1x measurement.
+- The index column is 28, not 32 — which is what put the name at x195 and the
+  description at x526 instead of the drawn 191 and 522.
+- **The preview card must outrank the rows below it.** It is 344 tall on a 100px
+  row and the file paints it over every rule it crosses. Each `<li>` is
+  `relative` with z-index auto, so rows N+1 and N+2 painted their rules straight
+  across it. `hover:z-10 focus-within:z-10`.
+- The active band carries Figma's Noise effect, spelled out in the export as
+  black at 25% over ~51% of pixels. That is a per-pixel sigma of 12.5% of the
+  value; the grain tile through `overlay` perturbs by 2*0.102*opacity, so it
+  wants 0.61 — the same 0.60 the mesh surfaces already use. `.grained` with
+  `--grain-photo-opacity: 0.6`. Residual: the file's noise also DARKENS the band
+  ~13% on average, which a mean-preserving overlay does not reproduce.
+- The one card the design draws uses `kreit-xRuG2k1sjaw-unsplash`, which the
+  pipeline calls **`case-hero`**. Row 3 had `home-texture` (the hero photo).
+
+**Industries we serve** (page.tsx, `IndustryMark` in ProcessFlow.tsx):
+
+- **Two full-bleed 1px #A59BFF rules were missing entirely**, at y302.5 and
+  y733.5. They are in the 1920 frame (Line 120/121), the 768 frame (Line
+  121/122) and the export, so they are content and not a guide.
+- **The marks were wrong in every respect except their 75px height.** The file
+  builds them the way it builds the process shapes — a mask of 2px STROKED
+  outlines with a meshnoise rect behind — so what you see is gradient in the
+  shape of three outlines, not an accent border. Startups is three 101x45
+  ellipses stacked VERTICALLY (they were 45x101 offset sideways, i.e. rotated
+  90 degrees and stacked on the wrong axis); SMBs is three TRAPEZOIDS (100.5
+  across the top, 67.1 at the bottom), not rectangles; Enterprise is three
+  OUTLINE triangles, not filled ones. The group boxes are **101 / 131 / 132** —
+  not one size. Gradient identified as **`--mesh-4`** at RMSE 1.02 against a
+  next-best of 41.35; first use of that token in the build.
+- **The scrim runs the wrong way.** Drawn: #0F0F0F at 0 / 0.5 / 1.0 over 0 / 30%
+  / 100%, whole fill at 0.75 — clear at the top, darkest at the bottom. It was
+  70% at the top and 55% in the middle.
+- **The photograph is stored greyscale** (all three channel means and stddevs
+  116.85 / 74.80), the same as the Process band's copy. It was in colour.
+- **The crop is not cover.** The pattern transform draws the 4096x2731 image
+  2309x1539.5 at (-387, -324.4) on a 1922x935 rect: cover x1.2015, right edges
+  coincident, 53.7% vertically. Reproduced as `object-[100%_53.7%]` +
+  `origin-[100%_53.7%] scale-[1.2015]` — scaling about the same point the
+  object-position anchors is what makes it come out at the drawn offsets.
+- **The top row is placed, not halved**: the heading's box is 255 wide, which is
+  what breaks it to "Industries / we serve", and the lead starts at x1147. So
+  984 | 610 with no gap, not `grid-cols-2`'s 777 | 777.
+- **The three columns are placed too** — 163 / 751 / 1326, i.e. 588 | 575 | 431,
+  which no gap rule reproduces (same situation as the footer). `gap-12` gave 499
+  columns and put columns 2 and 3 forty-one and sixty-eight px left of drawn.
+- Body copy is **18px/27**, the one place on the page the designs step body copy
+  up from `.t-body`'s 16.
+- The industry columns are drawn as **five** lines, which is the long lorem, not
+  the short one every other block uses. With the short one the band came out 57px
+  under its drawn height. `LOREM_LONG` in page.tsx.
+
+**Contrast — one marginal fail, and it is the design's.** Measured with the type
+stripped, on the export and again on the build's own composite:
+
+| element | drawn scrim | + the departure | needs |
+|---|---|---|---|
+| **heading** | **2.61** | **3.15** | 3.0 |
+| lead paragraph | 5.92 | 6.87 | 4.5 |
+| name "Startups" | 5.72 | 5.72 | 3.0 |
+| bodies 1 / 2 / 3 | 6.68 / 10.27 / 13.08 | same | 4.5 |
+
+So the drawn scrim fails on exactly one element, by 0.39. `page.tsx` carries a
+second scrim layer — 25% at the top, fading out at the same 30% the drawn
+gradient uses — marked as a departure. It is one line and nothing depends on it;
+delete it if the owner would rather have the drawn scrim exactly.
+
+**Designer-side, still open for the owner:**
+
+1. **The Enterprise mark disagrees between sources.** The `.fig` has it 146x100
+   (polygons 116x100); the export renders it ~129x74. Startups and SMBs match
+   both sources exactly (101x75, 131x75), so the export reads as a later
+   correction. Built from the export.
+2. **The SMB mark's offsets are 12 and 28px** where the other two use 15 and 30.
+   Reproduced verbatim, which is what makes that group 131 wide rather than 133.
+3. **Row 1's description node in What we do best** has a collapsed 19px box and a
+   100% line-height where rows 2-6 have 43px auto boxes, so it renders 1px lower
+   and 2px shorter and is the only row off the 100px grid. Not reproduced.
+
+### The 768 pass — three more exports, and one of them is a carousel
+
+The narrow frames are not reflows of the wide ones. Each is a different
+composition, and two of them change what is on the page at all.
+
+**What we do best** (768x1357) is TWO lines per row, not four stacked:
+`(0N)` and the name share the first at x79 / x120, the description takes the
+second AT THE GUTTER rather than indented to the name, and the arrow — which
+was hidden below lg because no narrow drawing existed — sits at x630, inset 16
+from the column. Row pitch 213.67 (1282/6). The arrow is not the 1920 one
+scaled: Figma expanded a 5.06px stroke there against 4px here and the head's
+arms grow faster than the shaft, so the box goes 37.2x29.85 -> 42.78x37.75, a
+different aspect. Both outlines are the file's own. The `lg:contents` wrappers
+that build those two lines generate no box at lg, so the five drawn columns are
+the link's own flex children again.
+
+**Industries we serve** (768x835) drops the lead paragraph entirely — not
+shortened, absent — and shows ONE industry with an arrow either side. It is a
+carousel. Built as a scroll-snap track, so a swipe is native and free; the
+arrows are anchors to the neighbouring slides, wrapping at both ends so both are
+always live as drawn. `CarouselTrack.tsx` is the only client JS on the page
+besides the contact button, 0.1 KB, and it exists for one measured reason:
+fragment navigation aligns the target's TOP to the viewport, and a slide is
+700px in a 667px viewport, so every press dragged the page down 103px.
+**`scrollIntoView({block: 'nearest'})` does not fix that** — "nearest" only means
+"do nothing" when the element is FULLY visible, which a slide never is. Scrolling
+the track itself is the only version that cannot touch the page. With scripting
+off the anchors still work.
+
+**Our Process** (768x1320) settles the layout STATE.md listed as drawn-but-not-
+built: index / name / body down the left at x79 / x123 / x79, shapes beside them
+flush right at x429..689, uniform 128 gaps. Three things worth keeping:
+
+- The four shapes' mesh specs are IDENTICAL at both breakpoints — same gradient,
+  same size, same offset, same rotation. Only the band's own crop changes.
+- The band's mesh is a different WINDOW at 768, not the same one resized:
+  `auto max(102.77%, 62.5vw)` at `49.51% 17.95%`. Holding the wide values showed
+  0..34.5% of the image where the file shows 32.6..68.
+- The photograph keeps the 97.33% vertical anchor but is **227.7% of cover**
+  there, because cover flips to height-driven at that aspect and would show a
+  904px-wide slice of a 768 band.
+- Two columns only from **sm (640)**, not all the way down. The shape column is a
+  fixed 266 and the content column is 327 at 375px, which leaves 61 for the text.
+  Ramping type cannot fix a fixed-width graphic; the shapes' clip-paths are px
+  `path()` values, so making them scalable means SVG clipPaths in
+  objectBoundingBox units. Until then it stacks below 640.
+- **GAPS is now a floor, not a fixed height**, and the connector grows into the
+  rest. The drawn rhythm has no slack: the file's 768 step body is 88 characters
+  in a 321 column, ours is 123, which is five lines instead of three, and with a
+  fixed gap step 2's index landed 22px inside step 1's last line.
+
+**The narrow-only scrim on the Process band is deleted**, which is exactly what
+this file said should happen once the two-column layout landed. Measured on the
+export with the type stripped, at the drawn 1320 height:
+
+| element | was (stretched band, with scrim) | now (drawn band, no scrim) | needs |
+|---|---|---|---|
+| heading | 5.12 (1.54 without) | **4.53** | 3.0 |
+| intro | 4.94 (1.72 without) | **4.66** | 4.5 |
+| step names | 4.89 (2.39 without) | 4.58 – 11.05 | 3.0 |
+| bodies | — | 8.34 – 12.49 | 4.5 |
+| **(01) / (02)** | 1.12 / 2.37 | **2.55 / 4.49** | 4.5 |
+
+So what is left is the accent index labels, at both breakpoints, which is the
+same design-level question §"Contrast" already records for 1920. Everything else
+passes on the drawn band with no help. Re-measured on the build's own composite
+at 375 (where the band stacks and runs 2328 tall): heading 3.74, intro 4.79,
+name 5.58, body 6.84 — and (01) at 2.59.
+
+**Three text colours were wrong, and two of them are the "do not invent
+de-emphasis" lesson again.** The Process intro is #FAFAFA at 768 and #EAEAEA at
+1920 (the design really does differ); it was silver at both, which is what put
+the 375 intro at 4.16. The Process step bodies and the Industry bodies are drawn
+solid #FAFAFA at BOTH breakpoints and were `text-cloud/85`. Check the export
+before styling anything as secondary.
+
+Verified after: `npm run verify` green at 125.1 KB (+0.1 for the carousel), and
+`npm run check:overflow` clean across 17 routes x 13 widths.
+
+**Known and copy-driven, not geometry:** the 768 bands run taller than drawn
+because the file uses SHORTER placeholder strings at 768 than at 1920 for the
+same elements (process bodies 88 characters against 123, the process intro 109
+against 123) and we ship one string. The Process band comes out 1477 against a
+drawn 1320 and its gaps grow 173/178/145 against a drawn 128. Geometry is exact
+— every column edge, the 128 floor, the two-column split — so this closes by
+itself when real copy lands.
+
+**The Process step bodies are 18/27 at 1920 too**, not `.t-body`'s 16/24 — the
+same step up the Industry columns take. Measured off `Our Process.svg`: the ink
+is 667.88x71.98 over three lines, so a 26.94 line-height, and the figspec agrees
+at 18px. That makes two of the three body blocks on this page 18 at 1920 and
+only the service descriptions 16, which is what `.t-body` was measured from.
+After it the band is 1200.4 against a drawn 1201, with gaps of exactly
+123 / 85 / 75.
+
+**Still open:** `.t-body`'s 22 at 768 against a drawn 24 remains as
+PageHeader.tsx already records — 24 ls-3 is the dominant narrow body size across
+all frames (99 uses) and 22 was measured off Home and Contact. One token,
+flagged, not forked.
+
+### The type scale RAMPS below lg — it used to hold
+
+Every `.t-*` token applied the drawn **768** value flat from 1023 all the way
+down to 320, and 768 is a tablet frame: 22px body, 24px form labels, 36px item
+names and a 42px section heading are drawn against a 610px column and were
+landing on a 327px one. Everything read a size too large on a phone. Three
+classes already ramped (`.footer-col`, `.footer-legal`, `.hero-headline`); the
+other nine now use the same construction — hit the drawn 768 value exactly at
+768, ease to a phone value by 360, clamp at both ends.
+
+The phone values are the 768 ones at a **uniform 0.727**, which is what "16px
+body" resolves to. Scaling every step by one factor is the point: it keeps the
+design's own hierarchy instead of flattening it.
+
+| | 360 | 768 | 1920 |
+|---|---|---|---|
+| hero / section / step | 36 / 30 / 28 | 48 / 42 / 40 | 72 / 48 / 48 |
+| item / question | 26 / 19 | 36 / 26 | 32 / 18 |
+| body / form | 16 / 16 | 22 / 24 | 16 / 16 |
+| index / label | 15 / 15 | 20 / 20 | 14 / 18 |
+
+Nothing at 768 or at lg moved — verified: section 48, item 32, step 48, index 14
+at 1920, and the whole 768 pass re-measured unchanged.
+
+**Two things the ramp broke, both worth knowing:**
+
+- **A px `max-width` tuned to one font size does not survive a ramp.** The
+  Industries heading had `max-w-[196px]`, the drawn box at 42px, and re-wrapped
+  to "Industries we / serve" as soon as the type reached 30. It is `5em` now —
+  the measure only has to land between "Industries" (4.43em) and "Industries we"
+  (5.73em), and in em it keeps doing that at every size.
+- Anything else measured in px against the 768 type is in the same position.
+  Check before assuming a drawn offset still holds at 375.
+
+### The Process shapes are fluid now, and the flowchart still stacks on a phone
+
+`clip-path: path()` has no relative units, which is the single reason the
+two-column narrow layout could not go below 640. The two outlines that need one
+are now SVG clipPaths in **objectBoundingBox** units, and the whole shape column
+derives from one variable:
+
+```
+--sw: min(43.61cqw, 266px)      /* 266 of the drawn 610 column */
+```
+
+Every box, radius, padding, gradient offset and the text block's own vertical
+anchor is `calc(var(--sw) * n/266)`. At 768 --sw resolves to exactly 266 and
+every one of them returns the drawn pixel value; the cap holds 768..1024 drawn.
+`container-type: inline-size` on the row is what makes `cqw` mean the content
+column rather than the viewport.
+
+**It is two columns at EVERY width**, including 320. Getting there took three
+things beyond making the shapes scalable, each found by measuring rather than
+by reasoning:
+
+- **The share ramps; it is not a flat 43.61%.** Proportional scaling is the
+  obvious answer and it does not work: at 375 it leaves a 148px text column and
+  eight ~20-character lines. The graphic can give up more than the text can, so
+  `--sw: clamp(60px, calc(50.18cqw - 40.1px), 266px)` — 266 at the drawn 610
+  column, 124 at 375, 96 at 320. Text column 164 at 375 against 148.
+- **The label sizes with the SHAPE, not the viewport.** `.t-label` is gone; a
+  20px label in a 115px diamond is wider than the diamond at the height it sits
+  at, and gets clipped by its own outline. It is
+  `max(11px, calc(var(--sw) * 20/266))` — the drawn 20 at 768, 11 on a phone,
+  and one line in every shape at every width down to 375 (two at 320, which the
+  shapes are tall enough for).
+- **`--txt-top` needs a floor.** The clearance between one step's text block and
+  the next IS `--txt-top`, because both are centred on their own shape and the
+  row is as tall as the taller of the two columns. `shapeH/2 - 25` goes to 2.5px
+  at 375 and NEGATIVE at 320, so consecutive blocks touched and the first one
+  rode up into the intro. `max(20px, ...)` holds a 20px clearance everywhere and
+  changes nothing at 768, where the term is already 28.
+
+Verified across 320 / 375 / 440 / 768 / 1920: no collisions, labels inside their
+shapes, and 1920 still exactly 262x106 with 123 / 85 / 75 gaps.
+
+**Trap:** `h-full` on the connector line silently collapsed it to nothing the
+moment GAPS became `min-height` instead of `height`. A percentage height
+resolves against the parent's SPECIFIED height, and the connector's is now
+`auto` with a floor — so `h-full` computed to `auto`, and a span with no content
+is 0 tall. `flex-1` is indifferent to how the parent got its height.
 
 ### Our Process — rebuilt from a standalone export
 
@@ -53,7 +342,7 @@ Also corrected: the row grid (names were 32px right of drawn, shapes 107px),
 the band's own padding, and the photograph, which the file stores **greyscale**
 — identical frame otherwise, RMSE 2.83.
 
-**Two things are deliberately NOT done. Both are open questions for the owner:**
+**One thing is deliberately NOT done, and it is an open question for the owner:**
 
 1. **The Fibonacci spiral.** The export draws it inside the band, 742x1200
    flush right, ~20 arcs at #FAFAFA 0.5px. The Home 1920 frame parks the same
@@ -61,15 +350,10 @@ the band's own padding, and the photograph, which the file stores **greyscale**
    sources disagree; the export is newer and is named for this section, so it
    probably wins, but it is a new decorative element rather than a correction
    and was left out pending a decision.
-2. **The 768 layout is not the drawn one.** The 768 frame draws this band
-   **1320** tall, with index/name/body in a left column and the shapes beside
-   them at x429..689. We still stack all four in one column, which makes the
-   band **2345**. Stretching the drawn gradient crop over 1.8x the height lifts
-   its bright core up behind the heading. Without help, six elements fail WCAG
-   AA at 768 — heading **1.54**, intro **1.72**, "(01)" **1.12**, name "Ask"
-   **2.39**. A narrow-only scrim in page.tsx holds the first three at 5.12, 4.94
-   and 4.89; it is marked as a departure and should be deleted, not tuned, when
-   the two-column layout lands.
+
+~~2. The 768 layout is not the drawn one.~~ **Done** — `our process mobile.svg`
+   arrived and the two-column layout is built. The narrow-only scrim is deleted
+   and the contrast re-measured. See the 768 pass above.
 
 ### Contrast: exactly one element type, and it is the design's
 

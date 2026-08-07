@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button'
 import { ProcessFlow, IndustryMark, type Step } from '@/components/ProcessFlow'
 import { BinaryDiamond } from '@/components/BinaryDiamond'
 import { BrandGrid } from '@/components/BrandGrid'
+import { CarouselTrack } from '@/components/CarouselTrack'
 import { buildMetadata } from '@/lib/metadata'
 import { site } from '@/lib/site'
 
@@ -20,11 +21,23 @@ export const metadata: Metadata = buildMetadata({
 const LOREM =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 
-/** Six rows on a 100px pitch, in the order drawn (y1428 to 1928). */
+/** The designs use two placeholder lengths, and the difference is load-bearing
+ *  rather than incidental: the industry columns are drawn as FIVE lines of 18px
+ *  in a 441 column, which is this string and not the one above. With the short
+ *  one they came to three lines and the whole band was 57px under its drawn
+ *  height. Measured: 1967.9px of text over 441 = 4.46, so five lines. */
+const LOREM_LONG = `${LOREM} Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`
+
+/** Six rows on a 100px pitch, rules drawn y1398 to 1998.
+ *
+ *  The designs draw the preview card once, on the active row — Web Design — and
+ *  the photograph in it is `kreit-xRuG2k1sjaw-unsplash`, which the pipeline
+ *  calls `case-hero`. The other five are ours: a hover state drawn once says
+ *  nothing about what the other rows show. */
 const services: Service[] = [
   { index: '01', name: 'Desktop Apps', image: 'home-desk', description: LOREM, href: '/capabilities/product-development' },
   { index: '02', name: 'Mobile Apps', image: 'home-collab', description: LOREM, href: '/capabilities/react-native-performance' },
-  { index: '03', name: 'Web Design', image: 'home-texture', description: LOREM, href: '/capabilities/product-development' },
+  { index: '03', name: 'Web Design', image: 'case-hero', description: LOREM, href: '/capabilities/product-development' },
   { index: '04', name: 'UI/UX Design', image: 'home-portrait', description: LOREM, href: '/capabilities/product-development' },
   { index: '05', name: 'AI Workflows', image: 'team-meeting', description: LOREM, href: '/capabilities/on-device-ai' },
   { index: '06', name: 'Product Strategy', image: 'ai', description: LOREM, href: '/capabilities/product-development' },
@@ -104,7 +117,7 @@ const process: Step[] = [
  *  organisational scale (deck p195). */
 const industries = [
   { name: 'Startups', shape: 'ellipse' as const },
-  { name: 'SMBs', shape: 'rect' as const },
+  { name: 'SMBs', shape: 'trapezoid' as const },
   { name: 'Enterprise', shape: 'triangle' as const },
 ]
 
@@ -178,9 +191,49 @@ export default function Home() {
         </section>
 
         {/* ── Industries ──────────────────────────────────────────────────
-            Full-bleed photograph (1922x935 at y2116) under a dark scrim, with
-            the heading left and a 32px lead paragraph right. */}
-        <section className="relative isolate mt-24 overflow-hidden py-28" aria-labelledby="industries">
+            Rebuilt from `Industries we serve.svg`, a standalone 1920x935 export
+            of this band. Section-local geometry, all read off that file:
+
+              heading   box 255x96 @163,118      lead para  @1147,109, 3 lines
+              rule 1    y302.5                   marks      y385..460
+              names     y475..514                bodies     y533..668, 18px
+              rule 2    y733.5                   CTA        140x39 @890.5,798
+
+            The 118 above the band is the drawn gap from the last service rule
+            (y1998) to the top of this photograph (y2116).
+
+            `Industries we serve mobile.svg` (768x835) is a different section,
+            not a reflow: there is NO lead paragraph, and only ONE industry is
+            on screen with a left and right arrow in the gutters. It is a
+            carousel. Section-local at 768:
+
+              heading  @81,69, 2 lines 42px    rule 1  y179.5
+              mark     @158,225 (101x75)       name    @158,315, 36px
+              body     @158,373, 461 wide      arrows  y447..477, x79 and x652
+              rule 2   y632.5                  CTA     198x53 @285,698 */}
+        <section
+          className="relative isolate mt-[95px] overflow-hidden pt-[69px] pb-[84px] lg:mt-[118px] lg:pt-28 lg:pb-[98px]"
+          aria-labelledby="industries"
+        >
+          {/* Three things about this photograph, none of them defaults:
+              - the file stores it GREYSCALE (all three channel means and
+                stddevs are 116.85 / 74.80), the same way the Process band
+                stores its own copy. Done in CSS so one asset serves both.
+              - it is drawn at 120.15% of cover, not cover.
+              - and anchored to the RIGHT edge, at 53.7% vertically.
+              The pattern transform is unambiguous about all three: a 4096x2731
+              image drawn 2309x1539.5 at (-387, -324.4) on a 1922x935 rect, so
+              the right edges coincide exactly and 387px runs off to the left.
+              Scaling about that same anchor point is what reproduces it —
+              `object-position` sets where cover sits, and the scale then grows
+              the content away from the anchor rather than from the centre.
+
+              The 768 export crops it somewhere else again — 2061.5x1373.4 at
+              (-854.5, -288.5) on a 768x835 rect, which is 164.6% of cover at
+              66.06% / 53.58%. Note cover flips axis between the two: the wide
+              band is width-driven and the narrow one height-driven, so the two
+              zoom factors are not comparable and neither interpolates into the
+              other. Two crops, one per frame. */}
           <Picture
             name="home-collab"
             alt=""
@@ -188,32 +241,144 @@ export default function Home() {
             grain
             fill
             className="-z-20"
+            imgClassName="grayscale object-[66.06%_53.58%] origin-[66.06%_53.58%] scale-[1.6462] lg:object-[100%_53.7%] lg:origin-[100%_53.7%] lg:scale-[1.2015]"
           />
-          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-phantom/70 via-phantom/55 to-phantom/75" />
 
+          {/* The drawn scrim: #0F0F0F at 0 / 0.5 / 1.0 over 0 / 30% / 100%, the
+              whole fill at 75% opacity. It is CLEAR at the top, where the build
+              previously had it at 70% — the darkest point in the design is the
+              bottom, behind nothing, and the lightest is behind the heading. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-gradient-to-b from-phantom/0 via-phantom/[0.375] via-30% to-phantom/75"
+          />
+
+          {/* A DEPARTURE, and a small one. Measured on the export with the type
+              stripped out (see STATE.md — sampling with the glyphs in the box
+              reads the glyphs, not the ground), the drawn scrim gives:
+                heading 2.63 : needs 3.0 : FAIL      lead 5.91 : PASS
+                names 5.75   : PASS                 bodies 6.74 / 10.35 / 13.17
+              So one element fails, by 0.37, and only that one. This layer is
+              the smallest fix that clears it: 25% at the top fading out at the
+              same 30% the drawn gradient uses. Re-measured on the BUILD's own
+              composite (same rendition, same crop, same layers) the drawn scrim
+              alone gives 2.61 and this takes it to 3.15, with the lead going
+              5.92 -> 6.87 and nothing else moving. Still far lighter at the top
+              than the 70% this replaced. Delete it if the owner would rather
+              have the drawn scrim exactly — it is one line and nothing else
+              depends on it. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-gradient-to-b from-phantom/25 to-transparent to-30%"
+          />
+
+          {/* The top row is placed, not halved. The heading's drawn box is 255
+              wide — which is what breaks it to "Industries / we serve" — and the
+              lead paragraph starts at x1147, so the split is 984 | 610 across
+              the 1594 column, with no gap between them. `lg:grid-cols-2` gave
+              777 | 777, a one-line heading and a lead starting 167px early.
+
+              The 768 frame drops the lead paragraph entirely — it is not a
+              wrapped or shortened version, it is absent — and keeps the same
+              two-line heading at 42px in a 196 box. */}
           <div className="container-content">
-            <div className="grid gap-10 lg:grid-cols-2">
-              <h2 id="industries" className="t-section text-cloud">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,984fr)_minmax(0,610fr)] lg:gap-0">
+              {/* Explicit leading, because this is the only section heading on
+                  the page that WRAPS, and `.t-section`'s 1.05 is a single-line
+                  measurement. The file sets it near 1.0 — measured baseline to
+                  baseline, 38 at 42px and 48.5 at 48px — so at 1.05 the block
+                  came out 12px too tall at 768 and pushed the first rule with
+                  it. */}
+              {/* 5em, not the drawn 196/255px. The measure only has to land
+                  between "Industries" (4.43em) and "Industries we" (5.73em) to
+                  break where the file breaks it — and stating it in em means it
+                  keeps doing that as `.t-section` ramps. At a px value tuned for
+                  42px type the heading re-wrapped to "Industries we / serve"
+                  the moment the ramp took it to 30. */}
+              <h2
+                id="industries"
+                className="t-section max-w-[5em] leading-[38px] text-cloud lg:leading-[48.5px]"
+              >
                 Industries we serve
               </h2>
-              <p className="t-item font-semibold text-cloud">{LOREM}</p>
+              <p className="t-item hidden font-semibold text-cloud lg:block">{LOREM}</p>
             </div>
+          </div>
 
-            <div className="mt-32 grid gap-12 lg:grid-cols-3">
-              {industries.map(({ name, shape }) => (
-                <div key={name}>
-                  <IndustryMark shape={shape} />
-                  <h3 className="t-item text-cloud">{name}</h3>
-                  <p className="t-body mt-6 text-cloud/85">{LOREM}</p>
-                </div>
+          {/* Both rules are full-bleed 1px #A59BFF and were missing entirely.
+              They are in the 1920 frame (Line 120/121), the 768 frame (Line
+              121/122) and both exports, so they are content, not a guide. Full
+              width means they sit outside .container-content, like the service
+              index's own rules. */}
+          <div aria-hidden="true" className="mt-[34px] h-px bg-accent lg:mt-[85px]" />
+
+          {/* Three columns at 1920, a CAROUSEL below lg.
+
+              Columns are placed, not distributed: left edges 163 / 751 / 1326
+              across the 1594 column, which is 588 | 575 | 431 and not a ratio
+              any gap rule reproduces — the same situation the footer documents.
+              `gap-12` with three equal columns gave 499 and put columns 2 and 3
+              forty-one and sixty-eight px left of where they are drawn.
+
+              At 768 the export shows ONE industry with an arrow either side, so
+              the three become a scroll-snap track. It is a real scroller, which
+              means a swipe works natively and it costs no JavaScript; the arrows
+              are anchors to the neighbouring slides, wrapping at both ends so
+              both are always live, as drawn. Keyboard and screen readers get a
+              plain list of three items in a focusable scroll region.
+
+              The arrows sit in the gutters (x79 and x652 against a card at
+              158..616), and 45 below the row's centre — half the mark block —
+              which is what puts them level with the name-and-body rather than
+              with the whole card. Drawn centre 462, this gives 450. */}
+          <div className="container-content mt-[45px] lg:mt-[82px]">
+            <CarouselTrack className="flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:snap-none lg:grid-cols-[minmax(0,588fr)_minmax(0,575fr)_minmax(0,431fr)] lg:overflow-visible">
+              {industries.map(({ name, shape }, i) => (
+                <li
+                  key={name}
+                  id={`industry-${i}`}
+                  className="relative flex w-full shrink-0 snap-center items-center gap-3 md:gap-9 lg:block lg:w-auto lg:gap-0"
+                >
+                  <a
+                    href={`#industry-${(i + industries.length - 1) % industries.length}`}
+                    aria-label={`Previous industry: ${industries[(i + industries.length - 1) % industries.length].name}`}
+                    className="mt-[110px] shrink-0 text-cloud outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:hidden"
+                  >
+                    <svg aria-hidden="true" viewBox="1723 1632.08 37.2 29.84" className="h-[30px] w-[37px] -scale-x-100 fill-current">
+                      <path d="M1759.41 1648.41C1760.2 1647.63 1760.2 1646.37 1759.41 1645.59L1746.69 1632.86C1745.91 1632.08 1744.64 1632.08 1743.86 1632.86C1743.08 1633.64 1743.08 1634.91 1743.86 1635.69L1755.17 1647L1743.86 1658.31C1743.08 1659.09 1743.08 1660.36 1743.86 1661.14C1744.64 1661.92 1745.91 1661.92 1746.69 1661.14L1759.41 1648.41ZM1723 1647L1723 1649L1758 1649L1758 1647L1758 1645L1723 1645L1723 1647Z" />
+                    </svg>
+                  </a>
+
+                  <div className="mx-auto w-[458px] max-w-full lg:mx-0 lg:w-auto">
+                    <IndustryMark shape={shape} />
+                    <h3 className="t-item text-cloud">{name}</h3>
+                    {/* 18px at 1920, not `.t-body`'s 16 — the one place on the
+                        page the designs set body copy a step UP. */}
+                    <p className="t-body mt-[19px] text-cloud lg:max-w-[441px] lg:text-[18px] lg:leading-[27px]">
+                      {LOREM_LONG}
+                    </p>
+                  </div>
+
+                  <a
+                    href={`#industry-${(i + 1) % industries.length}`}
+                    aria-label={`Next industry: ${industries[(i + 1) % industries.length].name}`}
+                    className="mt-[110px] shrink-0 text-cloud outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:hidden"
+                  >
+                    <svg aria-hidden="true" viewBox="1723 1632.08 37.2 29.84" className="h-[30px] w-[37px] fill-current">
+                      <path d="M1759.41 1648.41C1760.2 1647.63 1760.2 1646.37 1759.41 1645.59L1746.69 1632.86C1745.91 1632.08 1744.64 1632.08 1743.86 1632.86C1743.08 1633.64 1743.08 1634.91 1743.86 1635.69L1755.17 1647L1743.86 1658.31C1743.08 1659.09 1743.08 1660.36 1743.86 1661.14C1744.64 1661.92 1745.91 1661.92 1746.69 1661.14L1759.41 1648.41ZM1723 1647L1723 1649L1758 1649L1758 1647L1758 1645L1723 1645L1723 1647Z" />
+                    </svg>
+                  </a>
+                </li>
               ))}
-            </div>
+            </CarouselTrack>
+          </div>
 
-            <div className="mt-24 flex justify-center">
-              {/* No arrow: the drawn accent CTA is 140x39 and 15 + 110 + 15
-                  accounts for all of it. Arrows belong to the nav CTA. */}
-              <Button href="/contact">Start a project</Button>
-            </div>
+          <div aria-hidden="true" className="mt-[60px] h-px bg-accent lg:mt-[65px]" />
+
+          <div className="mt-[65px] flex justify-center lg:mt-16">
+            {/* No arrow: the drawn accent CTA is 140x39 and 15 + 110 + 15
+                accounts for all of it. Arrows belong to the nav CTA. */}
+            <Button href="/contact">Start a project</Button>
           </div>
         </section>
 
@@ -253,13 +418,14 @@ export default function Home() {
             Full-bleed photograph (1920x1200 at y4146). Four steps stacked
             vertically ~209px apart, each a row of index + name, a short label,
             and a body column — not a four-across grid. */}
-        {/* Padding is the drawn band, not a round number: the export is
-            1920x1201 and puts the first shape's top edge at y298.25 and the
-            last shape's bottom at y1054.25. py-28 landed the flow 24px low and
-            closed the bottom by 34. lg only — the export is a 1920 frame and
-            says nothing about 768, where py-28 stays. */}
+        {/* Padding is the drawn band, not a round number. The 1920x1201 export
+            puts the first shape's top edge at y298.25 and the last shape's
+            bottom at y1054.25; py-28 landed the flow 24px low and closed the
+            bottom by 34. `our process mobile.svg` is 768x1320 and settles the
+            other end: heading box at +86, last shape bottom at 1189, so 86
+            and 131. */}
         <section
-          className="relative isolate overflow-hidden py-28 lg:pt-[88px] lg:pb-[145px]"
+          className="relative isolate overflow-hidden pt-[86px] pb-[131px] lg:pt-[88px] lg:pb-[145px]"
           aria-labelledby="process"
         >
           {/* The band is three layers in the file, not a photograph behind a
@@ -276,7 +442,13 @@ export default function Home() {
               `object-position` is not a default either: the file draws the
               2806x4096 photograph at 1920 wide (so 2802.7 tall) offset -1560.7,
               i.e. the window sits 97.4% of the way down the overflow. Centred,
-              the frame filled with the window above the desk, not the desk. */}
+              the frame filled with the window above the desk, not the desk.
+
+              The 768 export keeps that 97.33% vertical anchor exactly — but it
+              is NOT cover there. It draws the image 2059x3005.3 on a 768x1320
+              band, which is 227.7% of cover, because cover goes height-driven
+              at that aspect and would show only a 904px-wide slice. Same
+              window, 2.28x closer. */}
           <Picture
             name="process"
             alt=""
@@ -284,7 +456,7 @@ export default function Home() {
             grain
             fill
             className="-z-30"
-            imgClassName="object-[center_97.4%] grayscale"
+            imgClassName="grayscale object-[48.95%_97.33%] origin-[48.95%_97.33%] scale-[2.2772] lg:object-[center_97.4%] lg:origin-center lg:scale-100"
           />
 
           {/* --mesh-2 over the photograph at 75%, rotated 180deg. The rotation
@@ -309,17 +481,23 @@ export default function Home() {
               for a band wider than 1.6x its height. At 1920 it resolves to
               1265x2024 — the drawn crop exactly.
 
+              The 768 export gives the narrow crop, and it is a different window
+              of the same gradient rather than the same one at another size:
+              2170.33x1356.5 on a 768x1320 band, which after the 180 rotation
+              reads as 102.77% of the band's height positioned 49.51% / 17.95%.
+              Holding `left top` there showed 0..34.5% of the image where the
+              file shows 32.6..68 — the wrong part of the gradient, not merely
+              the wrong scale.
+
               Grain is left at the default: this draws the 4000px source at
               1.98x against the 2.08x --grain-opacity is calibrated for, so the
               correction the shapes need does not apply here. */}
+          {/* Both crops are CLASSES, not the inline style the single-crop
+              version used: an inline declaration outranks every class, so an
+              `lg:` override of it silently does nothing. */}
           <div
             aria-hidden="true"
-            className="mesh absolute inset-0 -z-20 rotate-180 opacity-75"
-            style={{
-              ['--mesh' as string]: 'var(--mesh-2)',
-              ['--mesh-size' as string]: 'auto max(105.42%, 62.5vw)',
-              ['--mesh-pos' as string]: 'left top',
-            }}
+            className="mesh absolute inset-0 -z-20 rotate-180 opacity-75 [--mesh:var(--mesh-2)] [--mesh-pos:49.51%_17.95%] [--mesh-size:auto_max(102.77%,62.5vw)] lg:[--mesh-pos:left_top] lg:[--mesh-size:auto_max(105.42%,62.5vw)]"
           />
 
           {/* Transparent to #0F0F0F top-to-bottom at 25%. Weighted to the
@@ -331,34 +509,21 @@ export default function Home() {
             className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-phantom opacity-25"
           />
 
-          {/* A DEPARTURE from the file, below lg only, and it should be deleted
-              rather than tuned once the narrow layout is right.
-
-              Both frames build this band the same way, so the gradient above is
-              correct at every width. What is not correct is the band's HEIGHT:
-              the 768 frame draws it 1320 tall, with the index, name and body in
-              a left column and the shapes beside them at x429..689. We still
-              stack all four in one column, which makes the band 2345 — 1.8x
-              drawn — and stretching the same crop over 1.8x the height lifts the
-              gradient's bright core up behind the heading.
-
-              Measured at 768 with the type hidden, so the samples are the real
-              ground and not the glyphs. WITHOUT this layer six elements fail
-              WCAG AA: heading 1.54, intro 1.72, "(01)" 1.12, "(02)" 2.37,
-              "(03)" 4.00, name "Ask" 2.39. WITH it, the heading is 5.12, the
-              intro 4.94 and "Ask" 4.89, and what still fails is only the accent
-              index — which fails in the file at 1920 too, and is a design-level
-              question rather than this layer's job. See STATE.md. */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 -z-10 bg-gradient-to-b from-phantom/60 via-transparent to-transparent lg:hidden"
-          />
+          {/* The narrow-only scrim that used to sit here is GONE, which is what
+              STATE.md said should happen the moment the two-column layout
+              landed. It existed because the band was 2345 tall against a drawn
+              1320, so the same crop stretched over 1.8x the height and lifted
+              the gradient's bright core up behind the heading. The band is now
+              the drawn height and takes the drawn crop, so there is nothing
+              left for it to correct. Do not reinstate it without re-measuring. */}
 
           <div className="container-content">
             <h2 id="process" className="t-section text-silver">
               Our Process
             </h2>
-            <p className="t-body mt-4 max-w-xl text-silver">{LOREM}</p>
+            {/* 610 at 768, where the drawn intro is two lines; max-w-xl (576)
+                broke it to three. */}
+            <p className="t-body mt-4 max-w-[610px] text-cloud lg:max-w-xl lg:text-silver">{LOREM}</p>
 
             <ProcessFlow steps={process} />
           </div>

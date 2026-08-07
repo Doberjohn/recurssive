@@ -65,9 +65,9 @@ export type Step = {
 type ShapeSpec = {
   w: number
   h: number
-  /** Radius cases; the other two need a path and set `clip`. */
+  /** Radius cases; the other two need an outline and set `clipId`. */
   cls?: string
-  clip?: string
+  clipId?: string
   mesh: string
   gw: number
   gh: number
@@ -92,9 +92,7 @@ const SHAPES: Record<Step['shape'], ShapeSpec> = {
      translated into the box's coordinates. Fixed px in the path is fine here
      precisely because the shape does not resize. */
   io: {
-    w: 266, h: 96,
-    clip:
-      'path("M246.44 87.89C245.41 92.45 241.36 95.69 236.68 95.69H12.51C6.1 95.69 1.35 89.74 2.76 83.49L19.87 7.89C20.9 3.34 24.95 0.1 29.62 0.1H222.97C223 0.1 223.02 0.08 223.01 0.05C223 0.02 223.02 0 223.05 0H253.75C260.16 0 264.92 5.95 263.51 12.2L246.44 87.89Z")',
+    w: 266, h: 96, clipId: 'proc-io',
     mesh: 'var(--mesh-7)', gw: 560.25, gh: 350.16, gx: 431.27, gy: 10.39, rot: 150,
     grain: 0.175,
   },
@@ -102,17 +100,52 @@ const SHAPES: Record<Step['shape'], ShapeSpec> = {
   /* Decision. Also rounded at each vertex, which a polygon() diamond cannot
      do — the four points came to sharp spikes. */
   decision: {
-    w: 262, h: 161,
-    clip:
-      'path("M5.33 73.8L125.99 1.76C128.93 0 132.77 0 135.75 1.76L256.36 73.8C261.64 76.95 261.64 83.93 256.36 87.08L135.7 159.12C132.77 160.88 128.93 160.88 125.94 159.12L5.28 87.08C0 83.93 0 76.95 5.28 73.8L5.33 73.8Z")',
+    w: 262, h: 161, clipId: 'proc-decision',
     mesh: 'var(--mesh-3)', gw: 468, gh: 293, gx: -2.34, gy: -127.56, grain: 0.146,
   },
 
   /* Process. Rounded rectangle, r10. */
   process: {
-    w: 256, h: 111, cls: 'rounded-[10px]',
+    w: 256, h: 111, cls: 'rounded-[calc(var(--sw)*10/266)]',
     mesh: 'var(--mesh-12)', gw: 440.74, gh: 275.46, gx: -129.66, gy: -70, grain: 0.138,
   },
+}
+
+/**
+ * The two shapes that need a real outline, as SVG clipPaths in
+ * objectBoundingBox units so they SCALE.
+ *
+ * They were `clip-path: path(...)` with the file's own px coordinates, and
+ * `path()` has no relative units — which is the single reason the two-column
+ * narrow layout could not go below 640px. A fixed 266px graphic beside a text
+ * column leaves 61px for the text at 375. Normalising each coordinate by the
+ * shape's own drawn box turns the same outlines into something that fits any
+ * width, and at 266 they resolve back to the px values they replaced.
+ *
+ * Rendered once, off-canvas. Not `display: none` — a clipPath referenced from
+ * a hidden subtree is a well-known way to get an empty clip, and an empty clip
+ * renders NOTHING rather than falling back to unclipped (STATE.md records that
+ * exact trap from the Contact artwork).
+ */
+function ClipPaths() {
+  return (
+    <svg
+      aria-hidden="true"
+      width="0"
+      height="0"
+      className="absolute h-0 w-0 overflow-hidden"
+      focusable="false"
+    >
+      <defs>
+        <clipPath id="proc-io" clipPathUnits="objectBoundingBox">
+          <path d="M0.92647 0.91552C0.92259 0.96302 0.90737 0.99677 0.88977 0.99677H0.04703C0.02293 0.99677 0.00508 0.93479 0.01038 0.86969L0.0747 0.08219C0.07857 0.03479 0.0938 0.00104 0.11135 0.00104H0.83823C0.83835 0.00104 0.83842 0.00083 0.83838 0.00052C0.83835 0.00021 0.83842 0 0.83853 0H0.95395C0.97805 0 0.99594 0.06198 0.99064 0.12708L0.92647 0.91552Z" />
+        </clipPath>
+        <clipPath id="proc-decision" clipPathUnits="objectBoundingBox">
+          <path d="M0.02034 0.45839L0.48088 0.01093C0.4921 0 0.50676 0 0.51813 0.01093L0.97847 0.45839C0.99863 0.47795 0.99863 0.5213 0.97847 0.54087L0.51794 0.98832C0.50676 0.99925 0.4921 0.99925 0.48069 0.98832L0.02015 0.54087C0 0.5213 0 0.47795 0.02015 0.45839L0.02034 0.45839Z" />
+        </clipPath>
+      </defs>
+    </svg>
+  )
 }
 
 /**
@@ -120,11 +153,19 @@ const SHAPES: Record<Step['shape'], ShapeSpec> = {
  * to shape-top: uniform 128 on the narrow layout, tightening 123 -> 85 -> 75 on
  * the wide one. Ramped below 768 (128/768 = 16.67vw) so a phone does not carry a
  * tablet's vertical rhythm.
+ *
+ * A FLOOR, not a fixed height, and the connector grows into whatever is left.
+ * The drawn rhythm has no slack in it: at 768 the file's step body is 88
+ * characters in a 321 column and ours is 123, which is five lines instead of
+ * three, and with a fixed gap step 2's index landed 22px inside step 1's last
+ * line. Growing the gap is the honest response — the alternative is a hard
+ * collision the moment real copy is longer than the placeholder. At the drawn
+ * copy length nothing grows and every gap is exactly the drawn one.
  */
 const GAPS = [
-  'h-[clamp(72px,16.67vw,128px)] lg:h-[123px]',
-  'h-[clamp(72px,16.67vw,128px)] lg:h-[85px]',
-  'h-[clamp(72px,16.67vw,128px)] lg:h-[75px]',
+  'min-h-[clamp(72px,16.67vw,128px)] lg:min-h-[123px]',
+  'min-h-[clamp(72px,16.67vw,128px)] lg:min-h-[85px]',
+  'min-h-[clamp(72px,16.67vw,128px)] lg:min-h-[75px]',
 ]
 
 /**
@@ -136,16 +177,18 @@ const GAPS = [
  * would then depend on stylesheet order.
  */
 function ShapeFill({ s }: { s: ShapeSpec }) {
+  /** Every offset rides --sw so the crop stays the drawn one at any size. */
+  const u = (n: number) => `calc(var(--sw) * ${+(n / 266).toFixed(6)})`
   return (
     <span
       aria-hidden="true"
       className="mesh"
       style={{
         position: 'absolute',
-        left: s.gx,
-        top: s.gy,
-        width: s.gw,
-        height: s.gh,
+        left: u(s.gx),
+        top: u(s.gy),
+        width: u(s.gw),
+        height: u(s.gh),
         ...(s.rot ? { transformOrigin: '0 0', transform: `rotate(${s.rot}deg)` } : {}),
         ['--mesh' as string]: s.mesh,
         // The file's patterns map each image onto its rect 1:1 (every pattern
@@ -173,8 +216,13 @@ function ShapeFill({ s }: { s: ShapeSpec }) {
  */
 function Connector({ gap }: { gap: string }) {
   return (
-    <span aria-hidden="true" className={`relative flex flex-col items-center ${gap}`}>
-      <span className="h-full w-[2px] bg-cloud" />
+    <span aria-hidden="true" className={`relative flex w-full flex-1 flex-col items-center ${gap}`}>
+      {/* `flex-1`, not `h-full`. A percentage height resolves against the
+          parent's SPECIFIED height, and the connector's is now `min-height`
+          with `height: auto` — so `h-full` computed to auto, the line had no
+          content, and it collapsed to nothing. Growing along the flex main
+          axis is indifferent to how the parent got its height. */}
+      <span className="w-[2px] flex-1 bg-cloud" />
 
       {/* Ellipse 159/155/156 — 6px, on the shape's bottom edge. */}
       <span className="absolute top-0 size-[6px] -translate-y-1/2 rounded-full bg-accent" />
@@ -203,33 +251,118 @@ function Connector({ gap }: { gap: string }) {
 
 export function ProcessFlow({ steps }: { steps: Step[] }) {
   return (
-    <ol className="mt-24 space-y-0">
+    /* 131 at 768 is measured from the intro's box to the first SHAPE's top,
+       which from sm up is where the first row starts — the text beside it is
+       out of flow and hangs ~62 above that, landing 63 below the intro exactly
+       as drawn. Below sm the text is back in flow, so the drawn 131 would be
+       measuring the wrong thing and mt-24 stands. */
+    <ol className="mt-[131px] space-y-0 lg:mt-24">
+      <ClipPaths />
       {steps.map((step, i) => {
         const s = SHAPES[step.shape]
         return (
           <li
             key={step.name}
-            /* Column edges are the drawn ones, so the grid carries no gap of
-               its own — the 210px between the shape and the body IS a column.
-               163 | 42 | 355 | 266 | 210 | 721 | 1757. The fixed 266 is the
-               shape; the two fr tracks split what is left in the drawn ratio,
-               which is what keeps this sane between lg and 1920. */
-            className="grid items-center gap-y-6 lg:grid-cols-[42px_minmax(0,355fr)_266px_minmax(0,210fr)_minmax(0,721fr)]"
-          >
-            {/* NOT `.t-index`. That token is ServiceIndex's — 14px Open Sans,
-                measured off its own rows — and this borrowed it, which is why
-                the number rendered 14px Open Sans at 1920 against a drawn 20px
-                Inter Regular. Both frames draw this one at 20/24, so unlike the
-                rest of the page it does not step between breakpoints. */}
-            <span className="self-start font-heading text-[20px] leading-[1.2] text-accent">
-              ({step.index})
-            </span>
+            /* Two columns below lg, five at lg — and TWO all the way down to
+               320 now, not just to 640.
 
-            {/* Rule: 3px #A59BFF. w-fit so it measures the name, as drawn —
-                83/130/121/144 against name widths of 82/123/118/139. */}
-            <h3 className="t-step w-fit self-start border-b-[3px] border-accent pb-3 text-silver">
-              {step.name}
-            </h3>
+               At 1920 the column edges are the drawn ones, so the grid carries
+               no gap of its own — the 210px between the shape and the body IS a
+               column. 163 | 42 | 355 | 266 | 210 | 721 | 1757.
+               At 768 `our process mobile.svg` draws index/name/body down the
+               left and the shapes beside them, flush right at x429..689 in a
+               610 column: 266 of 610 is 43.61%.
+
+               `--sw` is that column, and it is the ONE number the whole shape
+               column derives from — every box, radius, padding, gradient offset
+               and the text's own vertical anchor is `calc(var(--sw) * n/266)`.
+               At 768 it resolves to exactly 266 and every one of them returns
+               the drawn pixel value. Capped at 266 so it stops growing once the
+               container passes 610, which is what keeps 768..1024 drawn.
+
+               `container-type: inline-size` is what makes 43.61cqw mean "of the
+               content column" rather than of the viewport, so the gutters do
+               not skew it.
+
+               BELOW sm it stacks, and --sw goes back to the full column so the
+               flowchart is drawn at its proper 266. Two columns were tried down
+               to 320 once the shapes could scale, and they do scale — but the
+               composition does not survive it. At 375 the shape column is 140
+               and the text column 163: "Decide what to do" no longer fits
+               inside its own diamond and gets clipped by it, and the body falls
+               to eight ~20-character lines. Stacking is the better reading of
+               the same design at that width, and it is the only place on this
+               page where the narrow frame is departed from. */
+            className="@container relative grid grid-cols-[minmax(0,1fr)_var(--sw)] items-center [--sw:clamp(60px,calc(50.18cqw_-_40.1px),266px)] lg:grid-cols-[42px_minmax(0,355fr)_var(--sw)_minmax(0,210fr)_minmax(0,721fr)] lg:[--sw:266px]"
+          >
+            {/* The narrow layout's left column. `lg:contents` dissolves it so
+                the three become the li's own grid items again at lg.
+
+                It stays in FLOW so the row can grow when the text needs more
+                room than the drawn gap leaves (see GAPS), except on the last
+                step, where there is no connector to be taller than it and an
+                in-flow half-height would leave ~125px of phantom space under
+                the band. Nothing follows that one, so out of flow is safe.
+
+                Vertically the text is centred against the SHAPE, then lifted
+                25. Measured on the export, the shape centre sits 29.3 / 19.1 /
+                18.9 / 31.6 below the text block's centre; one 25px lift fits
+                all four inside 7px, which is closer than any top- or
+                bottom-alignment rule gets — the decision diamond is 160 tall
+                against ~100 for the other three, so anything anchored to an
+                edge fails on step 3.
+
+                The 25 is a flat px, not scaled — it is a nudge against the
+                text's own metrics rather than part of the flowchart, and the
+                type does not shrink at the shape's rate. */}
+            {/* The offset rides a custom property rather than `top`/`margin`
+                directly, because an inline declaration cannot be scoped to a
+                breakpoint and this one must not apply to the five-column layout
+                at lg. */}
+            <div
+              className={`-translate-y-1/2 lg:contents ${
+                i === steps.length - 1
+                  ? 'absolute left-0 right-[var(--sw)] top-[var(--txt-top)]'
+                  : 'col-start-1 row-start-1 mt-[var(--txt-top)] self-start'
+              }`}
+              style={{
+                ['--txt-top' as string]: `max(20px, calc(var(--sw) * ${+(s.h / 2 / 266).toFixed(6)} - 25px))`,
+              }}
+            >
+              <div className="flex lg:contents">
+                {/* NOT `.t-index`. That token is ServiceIndex's — 14px Open Sans,
+                    measured off its own rows — and this borrowed it, which is why
+                    the number rendered 14px Open Sans at 1920 against a drawn 20px
+                    Inter Regular. Both frames draw this one at 20/24, so unlike the
+                    rest of the page it does not step between breakpoints.
+
+                    44 wide at 768 (index x79, name x123). */}
+                <span className="w-11 shrink-0 self-start font-heading text-[20px] leading-[1.2] text-accent lg:w-auto">
+                  ({step.index})
+                </span>
+
+                {/* Rule: 3px #A59BFF. w-fit so it measures the name, as drawn —
+                    83/130/121/144 against name widths of 82/123/118/139, and
+                    70/109/101/121 against 68/103/99/116 at 768. */}
+                <h3 className="t-step w-fit self-start border-b-[3px] border-accent pb-3 text-silver">
+                  {step.name}
+                </h3>
+              </div>
+
+              {/* 29 from the rule, and 330 wide — the 768 frame draws the body
+                  at x79 in a 321-box, i.e. at the gutter under the name rather
+                  than indented to it.
+
+                  18/27 at 1920, not `.t-body`'s 16/24. Measured off the export:
+                  the ink is 667.88x71.98 over three lines, which is a 26.94
+                  line-height, and the figspec agrees at 18px. At 16 the same
+                  copy fitted in two, so this was not only a size difference —
+                  the block was a line short of the drawn one. Same step up the
+                  Industry columns take, and the same 1.5 ratio. */}
+              <p className="t-body mt-[29px] text-cloud max-w-[330px] lg:max-w-none lg:col-start-5 lg:mt-0 lg:max-w-[696px] lg:self-start lg:pt-1 lg:text-[18px] lg:leading-[27px]">
+                {step.body}
+              </p>
+            </div>
 
             {/* A fixed 266 column — the widest shape — centred on its own
                 axis and pushed flush right below lg, which is where the frame
@@ -242,25 +375,27 @@ export function ProcessFlow({ steps }: { steps: Step[] }) {
                 right edge — so below lg it hung off the shapes' right shoulder
                 instead of running down their spine. The flowchart's spine is
                 the one thing in here that cannot drift. */}
-            <div className="relative ml-auto flex w-[266px] flex-col items-center lg:ml-0 lg:w-full">
+            {/* Stretched from sm up, not centred, so the shape sits on the row
+                top and the connector below it takes whatever height is left —
+                which is how a grown row still lands the next shape exactly at
+                the row's end. */}
+            <div className="relative col-start-2 row-start-1 ml-auto flex w-full flex-col items-center self-stretch lg:col-start-3 lg:ml-0 lg:self-center">
               <div
-                className={`relative flex items-center justify-center overflow-hidden px-4 text-center ${s.cls ?? ''}`}
+                className={`relative flex items-center justify-center overflow-hidden px-[calc(var(--sw)*16/266)] text-center ${s.cls ?? ''}`}
                 style={{
-                  width: s.w,
-                  height: s.h,
-                  ...(s.clip ? { clipPath: s.clip } : {}),
+                  width: `calc(var(--sw) * ${+(s.w / 266).toFixed(6)})`,
+                  height: `calc(var(--sw) * ${+(s.h / 266).toFixed(6)})`,
+                  ...(s.clipId ? { clipPath: `url(#${s.clipId})` } : {}),
                 }}
               >
                 <ShapeFill s={s} />
-                <span className="t-label relative font-semibold text-cloud">{step.label}</span>
+                <span className="relative text-[max(11px,calc(var(--sw)*20/266))] font-semibold leading-[1.4] text-cloud lg:text-[18px]">
+                  {step.label}
+                </span>
               </div>
 
               {i < steps.length - 1 && <Connector gap={GAPS[i]} />}
             </div>
-
-            <p className="t-body self-start text-cloud/85 lg:col-start-5 lg:max-w-[696px] lg:pt-1">
-              {step.body}
-            </p>
           </li>
         )
       })}
@@ -269,23 +404,107 @@ export function ProcessFlow({ steps }: { steps: Step[] }) {
 }
 
 /**
- * Industry marks — three overlapping copies of one shape, offset ~15px.
- * Nesting depth encodes organisational scale (deck p195): ellipses for
- * startups, rectangles for SMBs, triangles for enterprise.
+ * Industry marks — three overlapping copies of one flowchart shape. Nesting
+ * depth encodes organisational scale (deck p195).
+ *
+ * Rebuilt from `Industries we serve.svg`, which shows the previous version was
+ * wrong in every respect except the 75px height. The file builds each mark the
+ * way it builds the process shapes: a mask of 2px STROKED outlines with a
+ * meshnoise gradient rect behind it, so what you see is gradient in the shape
+ * of three outlines — not an accent border, and not a filled triangle.
+ *
+ *   startups     three 101x45 ellipses stacked VERTICALLY at y0/15/30 — the
+ *                previous build had them 45x101 and offset sideways, i.e. the
+ *                shape rotated 90 degrees and stacked on the wrong axis
+ *   SMBs         three TRAPEZOIDS, 100.5 across the top narrowing to 67.1 at
+ *                the bottom, offset 0/12/28 (the file's own spacing; the other
+ *                two marks use 15/30, see STATE.md)
+ *   enterprise   three OUTLINE triangles, base 96.7, height 72.2, offset
+ *                0/15/30
+ *
+ * The group boxes are 101 / 131 / 132 wide — they are not one size. Two of the
+ * three match the .fig exactly; the third does not, and the export wins. See
+ * STATE.md.
+ *
+ * The gradient is `meshnoise-gradient-4`, identified at RMSE 1.02 against a
+ * next-best of 41.35 across all ten tokens — the first use of --mesh-4 in the
+ * build. Drawn 440.74x275.46 and rotated 180 about its own corner, exactly as
+ * the four process shapes are. Grain follows the same ratio those use: 0.60 is
+ * calibrated for the footer's 2.08x draw of the 4000px source, this draws it at
+ * 9.07x, so 0.60 * 2.08/9.07.
  */
-export function IndustryMark({ shape }: { shape: 'ellipse' | 'rect' | 'triangle' }) {
-  const base = 'absolute top-0 h-[75px] w-[45px] border border-accent'
-  const geo = {
-    ellipse: 'rounded-full',
-    rect: '',
-    triangle: '[clip-path:polygon(50%_0,100%_100%,0_100%)] border-0 bg-accent/30',
-  }[shape]
+type MarkSpec = { w: number; h: number; mask: string; gx: number; gy: number }
 
+/** Mask geometry, in each group's own coordinates. White = the gradient shows. */
+const svgMask = (viewBox: string, body: string) =>
+  `url("data:image/svg+xml,${encodeURIComponent(
+    `<svg xmlns='http://www.w3.org/2000/svg' viewBox='${viewBox}'>` +
+      `<g fill='none' stroke='#fff' stroke-width='2'>${body}</g></svg>`,
+  )}")`
+
+const MARKS: Record<'ellipse' | 'trapezoid' | 'triangle', MarkSpec> = {
+  ellipse: {
+    w: 101, h: 75, gx: -112, gy: -83,
+    mask: svgMask(
+      '0 0 101 75',
+      [52.5, 37.5, 22.5]
+        .map((cy) => `<ellipse cx='50.5' cy='${cy}' rx='49.5' ry='21.5'/>`)
+        .join(''),
+    ),
+  },
+  trapezoid: {
+    w: 131, h: 75, gx: -89, gy: -82,
+    mask: svgMask(
+      '0 0 131 75',
+      [28, 12, 0]
+        .map((dx) => `<path d='M${101.745 + dx} 1L${85.036 + dx} 74H${17.964 + dx}L${1.255 + dx} 1Z'/>`)
+        .join(''),
+    ),
+  },
+  triangle: {
+    w: 132, h: 75, gx: -111, gy: -82,
+    mask: svgMask(
+      '0 0 132 75',
+      [30, 15, 0]
+        .map((dx) => `<path d='M${99.36 + dx} 74L${2.64 + dx} 74L${51 + dx} 1.797Z'/>`)
+        .join(''),
+    ),
+  },
+}
+
+export function IndustryMark({ shape }: { shape: keyof typeof MARKS }) {
+  const m = MARKS[shape]
   return (
-    <div aria-hidden="true" className="relative mb-8 h-[75px] w-[101px]">
-      {[0, 15, 30].map((x) => (
-        <span key={x} className={`${base} ${geo}`} style={{ left: x }} />
-      ))}
+    // The mask lives on the WRAPPER, not on the gradient layer: the layer is
+    // rotated 180 and a mask on it would rotate with it.
+    <div
+      aria-hidden="true"
+      className="relative mb-[15px]"
+      style={{
+        width: m.w,
+        height: m.h,
+        maskImage: m.mask,
+        WebkitMaskImage: m.mask,
+        maskSize: '100% 100%',
+        WebkitMaskSize: '100% 100%',
+        maskRepeat: 'no-repeat',
+        WebkitMaskRepeat: 'no-repeat',
+      }}
+    >
+      <span
+        className="mesh"
+        style={{
+          position: 'absolute',
+          left: m.gx,
+          top: m.gy,
+          width: 440.74,
+          height: 275.46,
+          transform: 'rotate(180deg)',
+          ['--mesh' as string]: 'var(--mesh-4)',
+          ['--mesh-size' as string]: '100% 100%',
+          ['--grain-opacity' as string]: 0.138,
+        }}
+      />
     </div>
   )
 }
