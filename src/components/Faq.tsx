@@ -37,7 +37,20 @@
  * Deliberately no FAQPage structured data: Google removed FAQ rich results
  * from Search on 7 May 2026, so the markup would earn nothing.
  */
-export function Faq({ items }: { items: { question: string; answer: string }[] }) {
+/**
+ * `answer` is a ReactNode rather than a string so one answer can carry a link
+ * (the cost answer points "Send us what you have" at /contact). Everything else
+ * stays a plain string.
+ *
+ * This is safe for the SEO note above: a Server Component renders the JSX into
+ * the served HTML exactly as a string would, so the answers are still in the
+ * markup whether the row is open or closed.
+ */
+export function Faq({
+  items,
+}: {
+  items: { question: string; answer: React.ReactNode }[]
+}) {
   return (
     <div className="space-y-4">
       {items.map((item) => (

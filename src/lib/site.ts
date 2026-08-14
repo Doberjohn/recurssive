@@ -32,6 +32,39 @@ export const site = {
   supportEmail: 'support@recurssive.com',
   phone: '+30 698 950 2436',
   locale: 'en',
+
+  /**
+   * The response-time promise. THIS IS THE OWNER'S OWN WORDING — restored on
+   * his instruction. Do not soften it again.
+   *
+   * The history matters, because it has been rewritten once already. The
+   * sentence was living in four places and had drifted into three versions, so
+   * lifting it into one constant was right. What was NOT right was changing the
+   * words while doing it: an agent pass rewrote `replyPromise` to "We read every
+   * message and usually reply..." and `replyPromiseAfter` to "We'll usually come
+   * back...", adding a hedge and reinstating "every message".
+   *
+   * Commit 9fcce50 is the owner editing this very sentence by hand: he changed
+   * "We read every message ourselves and come back" to "We read all messages and
+   * come back". So "all messages" over "every message", and no "ourselves", are
+   * his explicit choices, and "usually" was never his.
+   *
+   * The argument for hedging is real and was put to him: an unhedged response
+   * time is the same class of public promise the nine Home FAQ answers refuse to
+   * make for cost and timeline. He has heard it and chosen the firm version.
+   * Settled — raise it again only if he asks.
+   *
+   * Two forms because the grammar differs either side of the form, not because
+   * the promise does. Change one and change the other: they are four lines apart
+   * so that reading either one shows you both.
+   */
+  replyPromise: 'We read all messages and come back within two working days.',
+  replyPromiseAfter: 'We’ll come back to you within two working days.',
+
+  /** The sentence that precedes it in all three pre-submit placements. Same
+   *  reason: it was written out three times and is one edit away from drifting
+   *  the way the promise did. */
+  contactInvite: 'Tell us what you’re building, even if it’s still rough.',
 } as const
 
 /**

@@ -62,7 +62,7 @@ export function ContactDetails({ className = '' }: { className?: string }) {
         </h2>
 
         <p className="cc-body mt-3 text-cloud">
-          Tell us what you’re building, even if it’s still rough. We read all messages and come back within two working days.
+          {site.contactInvite} {site.replyPromise}
         </p>
 
         {/* mt-auto rather than a fixed gap: the block is pinned to the bottom of

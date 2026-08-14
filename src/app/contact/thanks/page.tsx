@@ -32,7 +32,7 @@ export default function Thanks() {
     // so an entity would render as the characters "&mdash;".
     <NoticePage
       heading="Thanks, we’ve got it."
-      description={`We’ll come back to you within two working days. If it’s urgent, ${site.supportEmail} reaches us directly.`}
+      description={`${site.replyPromiseAfter} If it’s urgent, ${site.supportEmail} reaches us directly.`}
     />
   )
 }

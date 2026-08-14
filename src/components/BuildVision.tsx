@@ -1,6 +1,7 @@
 import { Picture } from './ui/Picture'
 import { Button } from './ui/Button'
 import { VisionBackdrop } from './VisionBackdrop'
+import { site } from '@/lib/site'
 
 /**
  * "Let's build your vision" — the band above the footer on the legal pages.
@@ -58,9 +59,12 @@ export function BuildVision() {
           Let&rsquo;s build your vision
         </h2>
 
+        {/* Was "We read every message ourselves" — the one placement of this
+            sentence that made NO time commitment, so the site promised two
+            working days before the form and nothing here. Both halves now come
+            from site.ts. */}
         <p className="t-body mx-auto mt-4 max-w-[477px] text-cloud">
-          Tell us what you&rsquo;re building, even if it&rsquo;s still rough. We
-          read every message ourselves.
+          {site.contactInvite} {site.replyPromise}
         </p>
 
         <div className="mt-8 flex justify-center">
