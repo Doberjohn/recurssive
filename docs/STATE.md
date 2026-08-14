@@ -21,9 +21,71 @@ design's structure; a fidelity audit is running to find remaining differences.
 | 4 — Pages | 🔄 Home built and audited (187 findings, systemic + high fixed, responsive scale in). Our Process, What we do best and Industries we serve each rebuilt from their own standalone export — see below. Remaining: the **768/mobile** pass on all three (designs pending from the owner), then mid/low-tier polish. Then: Capability template → Capabilities → Cases/Case → About → Blog/Post → Contact → Legal → error states |
 | 5 — SEO polish, OG images | not started |
 
-**Measured state:** JS 125.0 KB against a 152 KB ceiling (27.0 KB headroom) —
+**Measured state:** JS 125.1 KB against a 152 KB ceiling (26.9 KB headroom) —
 down from 134.7 on 16.2, with no code change. Every route statically
 prerendered. CI green.
+
+### Copy — the sweep, and Home is done
+
+`docs/copy-deck.md` holds the first full copy sweep: 180 slots across ten page
+groups, each with a character budget measured off the figspec, plus two
+adversarial critic passes (claim safety, cross-page consistency). It is a
+PROPOSAL document — only Home has been applied.
+
+**Home carries no lorem.** Both placeholder constants are gone. What landed:
+
+- Six service descriptions, 130-138 characters, **2 lines at 1920 and 3 at 768**
+  — the drawn counts, verified on the built page. **The row ORDER is the
+  owner's, not the frames'**: Web / Mobile / UI-UX / **App Performance** /
+  **Replatforming** / Strategy. Image, href and description travel with the
+  NAME — which is why `case-hero`, the one photo the design pairs with a
+  preview card, followed Web Design to row 01.
+
+  **Desktop Apps and AI Workflows were REMOVED on the owner's decision**, and
+  each removal closed a defect: Desktop was offered here and silently dropped
+  by the Product Dev pillar one click away (Expo does not target Windows or
+  macOS), and Mobile Apps was pointing a new-build row at the performance
+  page. The replacements put Consulting and Enterprise on Home for the first
+  time, so the band spans all four pillars and finally serves the visitor who
+  already has a product. Budget is 120-**143**, measured: 143 holds three lines
+  at 768 and 145 breaks to four.
+- Four process step bodies, and see the frame conflict below.
+- Three DIFFERENT industry bodies. `industries` gained a per-item `body`; the
+  frame draws one paragraph three times, which is a drawing convention, not a
+  design decision. 6 lines at 768, 5 at 1920, both drawn.
+- The industries lead and the process intro, which places **Recurssive Language
+  Pt.4 ("We create in circles", deck p226)** verbatim as its opening sentence.
+
+**The response-time promise is now one constant.** It was in four files in
+three wordings — Home and ContactDetails promised two working days,
+`/contact/thanks` promised it differently, and `BuildVision.tsx` promised
+nothing at all. `site.replyPromise` / `replyPromiseAfter` / `contactInvite` in
+`lib/site.ts`, imported by all four.
+
+**It is NOT hedged, and an earlier note here claiming otherwise was wrong.** An
+agent pass rewrote it to "We read every message and usually reply...", adding a
+hedge and reinstating wording the owner had removed by hand. Commit `9fcce50`
+is him editing this very sentence: "every message ourselves" -> "all messages".
+Restored to his version. The case for hedging was put to him and overruled —
+settled, do not soften it again.
+
+**Two collisions were designed out, and both were with copy on the SAME page.**
+The FAQ answers are already written, so: row 02 does not open "React Native and
+Expo mean" (L94 does, five words in), and row 03 does not say the browser
+"reaches everyone" and is "cheapest to change" (L79 makes exactly that pair).
+Check the FAQ before writing anything else for this page.
+
+**OPEN — the process step bodies cannot satisfy both frames.** 1920 draws a
+696x75 box at 18px, three lines, holding the 231-character lorem, so it wants
+161-241. 768 draws 321x119 at 24px holding its own 89-character string, which
+caps at ~90. There is no overlap, and no middle value exists: measured on the
+built page, ≥2 lines at 1920 needs ≥91 characters, which is already 4+ lines at
+768. **RESOLVED as far as it can be without per-breakpoint strings.** The
+ceiling at 768 is 89 measured (91 breaks to four lines), and one line at 1920
+holds about 85 — so writing to the TOP of the window rather than the middle
+buys a line back for nothing. All four are now 85-89 and render 2 lines at 1920
+against a drawn 3, where they used to render 1. Closing the last line needs a
+second string per breakpoint; still the owner's call.
 
 ### What we do best / Industries we serve — rebuilt from their own exports
 
@@ -481,6 +543,66 @@ absent from the accessibility tree. Before this, the only error signal was an
 Testing trap: `minLength` sets `tooShort` **only for user-entered values**.
 Assigning `.value` in a script leaves the field valid, so a scripted check will
 report the message missing when it is working. Type with real key events.
+
+### Copy — the voice is settled, and Home + About carry no lorem
+
+`docs/verbal-identity.md` is the derivation and the authority. Read it before
+writing a single string. The short version, because four agent attempts were
+rejected before this landed:
+
+- **The owner's own Web Design sentence is the calibration sample**, and it
+  outranks anything inferred from the brand book. Warm, commercial, unhedged,
+  one continuous sentence, and the studio appears late as someone who CARES
+  rather than someone who does.
+- **Name the product, never the tooling.** No frameworks, operating systems or
+  languages outside the FAQ (and there only where the drawn question already
+  uses the term) and the capability pages. Deck p29 expresses the offer as a
+  stack list, which is an internal taxonomy, not a public message.
+- **No template across a band.** This failed four times in four disguises:
+  comma triplets, the aphorism-plus-twist, every row opening "Your", every row
+  ABOUT "your customers", and `most _ thing` lifted into three rows at once.
+  Check it mechanically — give each row a different SUBJECT and verify no
+  content word lands in more than two of six.
+- **No reverence.** Being precious about the object and then having the studio
+  bow to it was rejected outright. The cheese list is in the doc.
+
+**Nine FAQ answers rewritten**, 205-243 (768 binds at 243). The cost answer now
+links "Send us what you have" to /contact, which is why `Faq`'s `answer` is a
+ReactNode rather than a string.
+
+**About is fully written** — 15 slots, and every one of them is mine rather
+than the owner's, so it has not been through the loop Home went through.
+
+### About hero and values, rebuilt from Hero.svg / Qualities.svg / Values.svg
+
+The owner supplied four exports. Each one caught something the figspec had not:
+
+- **The hero band is 1201, not 1231.** Photo, mesh and scrim all end at 1201;
+  only the grid and the canvas run past it. Solving the mesh background-position
+  for each candidate settles it — 1201 gives exactly 100%, 1231 gives 148.39%.
+- **Three mesh-filled CIRCLES after Feel / Form / Function**, not one typed full
+  stop. `Hero.svg` only exposes the mask's bounding box, which reads as a
+  square; `dot.svg` gives the path and every anchor sits 12.50-13.06 from the
+  centre. The mesh crop is rotated 90deg and lands on source pixel (1921, 1313)
+  — `cover center` is the wrong 25px of a 4000x2500 image.
+- **Scrims are far lighter than they look.** The hero is 0 -> 25%, the values
+  card 0 -> 25% at 30% -> 50%. Both were 40/50/80 and 10/70, i.e. darker at the
+  top than the design ever gets at the bottom. The mesh does the contrast work.
+- **The meshes are inlined at 128x80, so their grain is destroyed.** Use `.mesh`
+  and `.grained`, never a hand-rolled background — the `::after` IS the grain.
+  The value names cannot use the tile at all (no box, only glyphs) and carry
+  the file's own `feTurbulence` filter instead.
+- **Qualities.svg is two equal 620 columns with a 66px label gutter**, and the
+  heading column is FIXED. It was flowing after the label, so its x tracked the
+  label's width and every heading fitted on one line where the file draws two.
+- **Values.svg: the card bleeds to x-40**, the index hangs in a 26.5px gutter,
+  and the vertical rhythm hangs off the image — heading ink 19.4 below its top,
+  last body ink past its bottom, name pitch 268.25. The gap was 59, giving 204,
+  which left the column ~230px short.
+
+**Ink offsets were measured with canvas TextMetrics, not estimated** — 10.2 for
+the 32px heading, 22.0 for the 48px name, -1.5 at the foot of a 14px body. Every
+budget in this project has been wrong when calculated and right when measured.
 
 ## Blockers — only the owner can clear these
 

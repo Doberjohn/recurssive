@@ -163,6 +163,115 @@
     --grain-opacity: 0.39;
   }
 
+  /* The full stops in the About hero's "Feel. Form. Function." lockup.
+   *
+   * They are NOT typography. `Hero.svg` draws three mesh-filled CIRCLES, one
+   * per word, bottom edge on the text baseline (y877.4) and sitting 9.4 / 9.7 /
+   * 9.3 px after the ink edge of each word.
+   *
+   * Circles, not squares. Hero.svg only gives the mask's bounding box —
+   * `x=411 y=852 width=26 height=26` — and a square is the wrong thing to read
+   * out of that. `dot.svg` supplies the mask path on its own and it is a ring:
+   * every anchor sits 12.50-13.06 from the centre (mean 12.79), diameter
+   * 25.17. Hence border-radius, and 25.17/140 = 0.1798em.
+   *
+   * --mesh-1 identified the same way --mesh-6 was: the embedded blob thumbnails
+   * against all ten sources at mean-abs-diff 0.000, next best 57.1. The
+   * full-bleed overlay behind them is a different one (--mesh-2, 0.000 against
+   * a next best of 14.0) — two different gradients, not one reused.
+   *
+   * Sized in em so it tracks the clamp on the lockup: 26/140 = 0.1857em, and
+   * the gap 9.47/140 = 0.0676em. The gap is measured ink-to-ink in the export
+   * while margin-left starts from the glyph's advance, so the rendered value is
+   * tuned slightly under the drawn one — see the note in about/page.tsx. */
+  .hero-stop {
+    display: inline-block;
+    width: 0.1798em;
+    height: 0.1798em;
+    border-radius: 50%;
+    /* NEGATIVE, and that is not a mistake. The 9.4px drawn gap is measured
+       from the word's INK edge, while margin-left starts from its advance —
+       and "Feel" carries an 11.4px right side bearing, so reproducing the
+       drawn gap means pulling back 2px. Measured per word after this landed:
+       411.0 / 970.1 / 1732.8 drawn against the rendered positions below. */
+    margin-left: -0.015em;
+    vertical-align: baseline;
+    position: relative;
+    overflow: hidden;
+    /* So ::after's overlay blend sees the dot's own mesh and not the
+       photograph behind the hero. Same reason .mesh sets it. */
+    isolation: isolate;
+  }
+
+  /* THE CROP, NOT JUST THE GRADIENT. `background: cover center` puts the
+     middle of the mesh in the dot, which is the wrong 25px of a 4000x2500
+     image. The file masks a rect that is 610.859x381.787 and carries
+     `rotate(90)` about its own origin, so:
+
+       (x,y) -> (X-(y-Y), Y+(x-X))
+       the box [X,X+W]x[Y,Y+H] lands on x in [X-H, X], y in [Y, Y+W]
+       => the image's WIDTH axis runs down the page, its HEIGHT axis runs left
+
+     Working the three dot centres back through that gives the same crop for
+     all three — fraction (0.4747, 0.4802) of the rotated box, which is source
+     pixel (u=1921, v=1313). CSS cannot rotate a background, so the child
+     carries the image at its drawn size and is rotated instead; the parent
+     clips it to the circle.
+
+     Geometry at the 140px design size, in em:
+       child   610.859 x 381.787  ->  4.36328 x 2.72705
+       left    D/2 + (1-0.4747)H  ->  213.127  ->  1.52234
+       top     D/2 - 0.4802W      -> -280.743  -> -2.00531
+     transform-origin is the same corner the file rotates about, so `left` and
+     `top` place the pre-rotation box and the rotation does the rest. */
+  .hero-stop::before {
+    content: "";
+    position: absolute;
+    left: 1.52234em;
+    top: -2.00531em;
+    width: 4.36328em;
+    height: 2.72705em;
+    background-image: var(--mesh-1);
+    background-size: 100% 100%;
+    transform-origin: 0 0;
+    transform: rotate(90deg);
+  }
+
+  /* Grain. The meshes are inlined at 128x80 (scripts/build-mesh.mjs), so every
+   * one of them arrives with its film grain destroyed by the downscale — which
+   * is exactly why generated/mesh.css re-adds it from a shared tile rather than
+   * trusting the source. The dot needs the same treatment as every other mesh
+   * surface, or it reads as a flat lilac disc.
+   *
+   * The tile is 128px in SCREEN space and does not scale with the element, and
+   * that is correct: grain is a property of the render, not of the artwork.
+   *
+   * OPACITY IS DERIVED, NOT PICKED. --grain-opacity is calibrated against how
+   * far the mesh is magnified, as N = 4000 / displayed width: the footer draws
+   * it at N 2.08 and takes the full 0.60, the contact card at N 3.27 and takes
+   * 0.39 (= 0.60 x 2.08/3.27). This dot draws the mesh 610.859 wide, so
+   * N = 6.548 and the same rule gives 0.60 x 2.08/6.548 = 0.19.
+   *
+   * Expressed as a fraction of the variable rather than as 0.19 flat, so it
+   * still halves under the <=768 rule in generated/mesh.css. */
+  .hero-stop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--grain);
+    background-repeat: repeat;
+    background-size: 128px 128px;
+    mix-blend-mode: overlay;
+    opacity: calc(var(--grain-opacity) * 0.318);
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .hero-stop::after {
+      display: none;
+    }
+  }
+
   /* The Feel/Form/Function artwork: the Reflow mark drawn as a binary field.
    *
    * The export is 3293 paths in five clusters, and the five clusters ARE the
