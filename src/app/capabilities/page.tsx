@@ -10,9 +10,16 @@ import { buildMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Capabilities',
-  description: 'What Recurssive builds, and how each capability is delivered.',
+  description:
+    'What Recurssive takes on, in four groups: an outside read on code you already have, new product work, on-device AI, and enterprise migration.',
   path: '/capabilities',
-  // Body copy is still lorem from the frame. See src/lib/site.ts.
+  // The placeholder reason for this flag is gone: every string on this page is
+  // now real (intro, four pillar descriptions, nineteen drawn rows, four drawn
+  // code samples), and the rows link to /contact rather than to the still
+  // unstyled /capabilities/[slug] template, so nothing thin is reachable from
+  // here. Kept only pending the owner's call on indexing. Drop it and uncomment
+  // '/capabilities' in src/lib/site.ts routes in the SAME commit — see the note
+  // there: a sitemapped route that serves noindex is the contradiction.
   noIndex: true,
 })
 
@@ -35,7 +42,7 @@ export default function Capabilities() {
       <main className="flex flex-1 flex-col">
         <PageHeader
           title="Capabilities"
-          intro="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          intro="Four groups, nineteen kinds of work. They run from a second opinion to the system your company depends on."
         >
           <hr className="mt-[33px] border-0 border-t-[1.5px] border-ink-muted lg:mt-[26px]" />
         </PageHeader>

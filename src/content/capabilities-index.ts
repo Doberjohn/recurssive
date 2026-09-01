@@ -17,6 +17,63 @@
  *
  * The code samples are drawn verbatim in the frame — they are real, chosen
  * copy rather than filler, so they are transcribed exactly.
+ *
+ * ── COPY BUDGETS, MEASURED. Do not derive these, and do not take the figure in
+ * docs/copy-deck.md:711 on trust — it is wrong, and wrong in the dangerous
+ * direction.
+ *
+ * That note argues the Open Sans advance is 0.43em and that the brief's 0.48em
+ * is "~10% tight". Parsing hmtx/cmap out of the project's own
+ * Fonts/Open Sans/static/OpenSans-Regular.ttf and greedy-wrapping these four
+ * strings gives a weighted mean of 0.4651em. The deck's constant is ~8%
+ * optimistic, and two of its five proposed strings overflowed because of it.
+ *
+ * The mistake is instructive: it was calibrated against the DRAWN frames, which
+ * set this paragraph at 24px, while the BUILD renders .t-body, which is
+ * clamp(16px, …, 22px) and resolves to 22px at 768 (globals.css:88). Measure
+ * the built box, never the drawn one.
+ *
+ *   description  1920  746px @16px     → 2 lines
+ *                 768  595px @21.78px  → 4 lines
+ *
+ * Both counts are the drawn intent. At 768 only Consulting's 610x138 box is
+ * auto-height and therefore trustworthy; the other three are hand-dragged
+ * 610x70 boxes that overflow their own content, so they say nothing about line
+ * count.
+ *
+ * The two box widths are BROWSER-MEASURED, and neither is what the source
+ * looks like it says. At 1920 the p carries max-w-[754px], but its parent is
+ * w-[746px] (page.tsx:52), so the parent binds and the 754 never applies. At
+ * 768 the container is 610px less the scrollbar, and .t-body clamps to 21.78px
+ * rather than a round 22. Both discrepancies run in the generous direction,
+ * which is how a string that measures fine on paper renders one line too tall.
+ *
+ * The window is roughly 180-195 characters, but character count is NOT the
+ * real constraint and must not be used as one: 184 characters lands 3 lines at
+ * 768 while 191 lands 4, and two strings of equal length can differ by 30px of
+ * slack depending on where the words break. Verify by rendering.
+ *
+ * All four below are browser-verified at 2 lines / 4 lines with 16-37px of
+ * headroom on the tightest line. An earlier pass had Enterprise at 1px, which
+ * renders correctly today and would tip to a fifth line on any edit.
+ *
+ * ── VOICE. docs/verbal-identity.md governs. Two rules bit hardest here, and
+ * both are recorded because an earlier draft of these four broke them.
+ *
+ *   NEVER OPEN WITH "We" IS NOT THE SAME AS NEVER SAYING "we". The copy deck's
+ *   draft had zero we/our/us across all five index strings. §5 of the verbal
+ *   identity measures the TOLERATED copy at 1.3 per 100 words and the REJECTED
+ *   copy at 0.3, diagnosing the latter as "the studio has vanished". Zero is
+ *   past the rejected end. These four carry two, each in the last clause of its
+ *   paragraph, which is the PUT "we" LAST pattern from page.tsx:107.
+ *
+ *   NO TEMPLATE ACROSS THE BAND. The deck's four descriptions all opened on a
+ *   gerund (Reading / Designing / Putting / Moving). An owner rejection is on
+ *   record at page.tsx:114-121 for a band where five of six rows shared one
+ *   rhythm; four of four is tighter than that. These open on four different
+ *   shapes — noun phrase, adverbial, quantified claim, negative declarative —
+ *   and their sentence means ramp 13.0 / 15.5 / 16.0 / 18.5 rather than
+ *   converging. Check this mechanically after any edit, not by ear.
  */
 
 export type Pillar = {
@@ -26,14 +83,11 @@ export type Pillar = {
   card: { title: string; code: string; muted: boolean }
 }
 
-/** The lorem block the frame repeats under every pillar heading. */
-const LOREM =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.'
-
 export const pillars: Pillar[] = [
   {
     name: 'Consulting',
-    description: LOREM,
+    description:
+      'An outside read on code that already exists, and a plain account of what it is costing you to keep running. That comes back as a report, or as the pull requests that fix it. Rarely as a rewrite.',
     rows: [
       'React Native Performance Optimization',
       'New Architecture Migration',
@@ -67,7 +121,8 @@ async function consulting() {
   },
   {
     name: 'Product Dev',
-    description: LOREM,
+    description:
+      'Prototype first, then the version people actually pay for. One React Native codebase covers phone and web, so adding a second platform costs a decision rather than a whole second budget.',
     rows: [
       'Desktop App Development',
       'Web App Development',
@@ -97,7 +152,8 @@ console.log("Shipping products worldwide");`,
   },
   {
     name: 'AI Engineering',
-    description: LOREM,
+    description:
+      'Most models belong on the device rather than in someone’s data centre. That one decision settles what works offline and what never leaves the phone, and we would rather make it early.',
     rows: [
       'On-device AI',
       'Generative AI App Development',
@@ -127,7 +183,8 @@ createExperience("Build something amazing");`,
   },
   {
     name: 'Enterprise Solutions',
-    description: LOREM,
+    description:
+      'Nothing has to stop shipping. A large app moves to React Native one screen at a time, and most of the risk lives in the release process and the monitoring, which is where we spend the time.',
     rows: ['Migration to React Native', 'Monitoring & Observability', 'Release Process Optimization'],
     card: {
       title: 'Enterprise Solutions Project',
