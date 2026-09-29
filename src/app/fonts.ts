@@ -20,6 +20,7 @@ export const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  preload: false,
   // adjustFontFallback defaults to true — this is the metric-matched
   // size-adjust fallback that stops `swap` causing layout shift. Leave it on.
 })
@@ -28,6 +29,7 @@ export const openSans = Open_Sans({
   subsets: ['latin'],
   variable: '--font-open-sans',
   display: 'swap',
+  preload: false,
 })
 
 export const fontVariables = `${inter.variable} ${openSans.variable}`
