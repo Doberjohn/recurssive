@@ -97,14 +97,29 @@ jobs:
     # polls a 401 for ten minutes and Lighthouse never runs. The secret is given
     # only to the steps that use it.
     if: github.event_name == 'pull_request'
+    # Least privilege, stated rather than inherited: the repo default is
+    # already read-only, but this job hands a secret to a third-party action,
+    # so it should not depend on that default staying put. The action's only
+    # API calls are pulls.get, repos.listDeployments and
+    # repos.listDeploymentStatuses; checkout needs contents.
+    permissions:
+      contents: read
+      pull-requests: read
+      deployments: read
     steps:
       - uses: actions/checkout@v4
 
       # v1.3.3 is the first release that can send the bypass header; v1.3.2
       # could only send a Vercel password, a different protection feature.
+      #
+      # PINNED TO A COMMIT, NOT THE TAG. This third-party action receives the
+      # bypass secret, and a tag can be moved to different code at any time.
+      # d7982701 is the commit the v1.3.3 tag pointed to when it was adopted
+      # (the maintainer's own release, 2026-01-21). To upgrade, resolve the
+      # new tag to its SHA and read the diff first.
       - name: Await Vercel preview
         id: preview
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.3
+        uses: patrickedqvist/wait-for-vercel-preview@d7982701e6fcd3ae073bff929e408e004404d38d # v1.3.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 600
@@ -129,7 +144,10 @@ jobs:
         env:
           VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: |
-          npm install -g @lhci/cli@0.15.x
+          # Exact version, not 0.15.x: this step holds the bypass secret, so a new
+          # patch release must not run here unreviewed. 0.15.1 is the version the
+          # secret-scrubbing was tested against (it pulls lighthouse 12.6.1).
+          npm install -g @lhci/cli@0.15.1
           lhci autorun \
             --collect.url="${{ steps.preview.outputs.url }}" \
             --collect.numberOfRuns=3 \
