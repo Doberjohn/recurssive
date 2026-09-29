@@ -90,26 +90,87 @@ jobs:
     needs: verify
     # Runs against the real Vercel preview URL so the CDN, compression and
     # edge caching are exercised. Localhost would measure none of that.
+    #
+    # Previews sit behind Vercel Authentication, so every request needs the
+    # project's "Protection Bypass for Automation" secret, held here as the
+    # VERCEL_AUTOMATION_BYPASS_SECRET Actions secret. Without it the wait step
+    # polls a 401 for ten minutes and Lighthouse never runs. The secret is given
+    # only to the steps that use it.
     if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
 
+      # v1.3.3 is the first release that can send the bypass header; v1.3.2
+      # could only send a Vercel password, a different protection feature.
       - name: Await Vercel preview
         id: preview
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 600
+          vercel_protection_bypass_header: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
 
       - uses: actions/setup-node@v4
         with:
           node-version: 22
 
+      # THE SECRET MUST NOT REACH A PUBLISHED REPORT. Lighthouse copies its
+      # settings into every report verbatim (lighthouse core/runner.js:
+      # `configSettings: settings`), extraHeaders included. This job used to
+      # upload reports to temporary-public-storage, which with the header in
+      # extraHeaders would have published the bypass secret on every run. So
+      # reports now go to disk, are scrubbed below, and are kept as an artifact.
+      #
+      # extraHeaders are sent on EVERY request the page makes, not just the
+      # document. That is safe only while the audited page fetches nothing from
+      # a third party: checked 2026-09-29, zero external fetches. Re-check
+      # before adding any third-party script, font, image or analytics host.
       - name: Lighthouse CI
+        env:
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: |
           npm install -g @lhci/cli@0.15.x
           lhci autorun \
             --collect.url="${{ steps.preview.outputs.url }}" \
             --collect.numberOfRuns=3 \
+            --collect.settings.extraHeaders="{\"x-vercel-protection-bypass\":\"$VERCEL_AUTOMATION_BYPASS_SECRET\"}" \
             --assert.budgetsFile=lighthouse-budget.json \
-            --upload.target=temporary-public-storage
+            --upload.target=filesystem \
+            --upload.outputDir=./lhci-report
+
+      # Runs even when the assertions fail, because a failing run is exactly
+      # the one someone will download. Fails closed: if any copy of the secret
+      # survives, this step fails and the upload below does not run.
+      - name: Scrub the bypass secret from the reports
+        id: scrub
+        if: always()
+        env:
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          cat > scrub.cjs <<'JS'
+          const fs = require('fs')
+          const path = require('path')
+          const secret = process.env.VERCEL_AUTOMATION_BYPASS_SECRET
+          if (!secret) { console.log('no secret set; nothing to scrub'); process.exit(0) }
+          const files = []
+          const walk = (d) => { if (!fs.existsSync(d)) return; for (const e of fs.readdirSync(d)) { const p = path.join(d, e); fs.statSync(p).isDirectory() ? walk(p) : files.push(p) } }
+          walk('lhci-report'); walk('.lighthouseci')
+          let scrubbed = 0
+          for (const f of files) {
+            const t = fs.readFileSync(f, 'utf8')
+            if (t.includes(secret)) { fs.writeFileSync(f, t.split(secret).join('[redacted]')); scrubbed++ }
+          }
+          const left = files.filter((f) => fs.readFileSync(f, 'utf8').includes(secret))
+          console.log(`scrubbed ${scrubbed} of ${files.length} file(s)`)
+          if (left.length) { console.error('secret still present in: ' + left.join(', ')); process.exit(1) }
+          JS
+          node scrub.cjs
+
+      - name: Keep the reports
+        if: always() && steps.scrub.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: lhci-report
+          retention-days: 14
+          if-no-files-found: ignore
