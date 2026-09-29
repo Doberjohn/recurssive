@@ -76,8 +76,11 @@ export const metadata: Metadata = buildMetadata({
  *  Full derivation in docs/verbal-identity.md. Read this before editing a row.
  *
  *  0. ROW 01 IS THE OWNER'S OWN SENTENCE. It is the calibration sample for the
- *     whole band and the only string here written by him. Do not edit it, and
- *     do not "fix" `matters the world` to `means the world` without asking.
+ *     whole band. Do not edit it without asking. On 2026-09-29 he asked for a
+ *     grammar-only fix, and got exactly three changes: a comma before "and",
+ *     `matters the world` -> `means the world`, and `both to you and us` ->
+ *     `to both you and us`. Every other word is his. Rows 05 and 06 are his
+ *     sentences too.
  *
  *  1. NAME THE PRODUCT, NEVER THE TOOLING. No frameworks, no operating
  *     systems, no languages, and none of `codebase` / `stack` / `native` /
@@ -140,9 +143,9 @@ const services: Service[] = [
     index: '01',
     name: 'Web Design',
     image: 'case-hero',
-    // The owner's own sentence. See rule 0 above — do not edit.
+    // The owner's own sentence, with his approved grammar fix. See rule 0.
     description:
-      'Your web presence is your most valuable asset and the first impression you give to your customers matters the world both to you and us.',
+      'Your web presence is your most valuable asset, and the first impression you give to your customers means the world to both you and us.',
     href: '/capabilities/product-development',
   },
   {
@@ -150,7 +153,7 @@ const services: Service[] = [
     name: 'Mobile Apps',
     image: 'home-collab',
     description:
-      'A mobile app is the only channel you own rather than rent, and getting people to keep it installed takes more craft than most companies expect.',
+      'A mobile app is a channel you own rather than rent. Getting people to keep it installed takes more craft than most companies expect.',
     href: '/capabilities/product-development',
   },
   {
@@ -158,7 +161,7 @@ const services: Service[] = [
     name: 'UI/UX Design',
     image: 'home-portrait',
     description:
-      'When a product is designed well you never stop to work out where to go next, and that quiet confidence is what we aim at.',
+      'When a product is designed well, you never have to stop and work out where to go next, and that quiet confidence is what we’re after.',
     href: '/capabilities/product-development',
   },
   {
@@ -166,7 +169,7 @@ const services: Service[] = [
     name: 'App Performance',
     image: 'home-desk',
     description:
-      'Making a product feel fast is how you show people you value their time, and it is where we tend to start when we look at yours.',
+      'Making a product feel fast is how you show people you value their time. It’s usually where we start when we look at yours.',
     href: '/capabilities/react-native-performance',
   },
   {
@@ -209,27 +212,27 @@ const faqs = [
   {
     question: 'What is app development?',
     answer:
-      'Designing and building software that people actually use, on a phone or in a browser. Less of it is code than you would expect. Most of the effort goes into deciding what the software is for and what happens to it after launch.',
+      'Designing and building software that people actually use, on a phone or in a browser. Less of it is code than you’d expect. Most of the effort goes into deciding what the software is for and what happens to it after launch.',
   },
   {
     question: 'What is enterprise app development?',
     answer:
-      'For a company large enough that new software has to fit the systems already there rather than starting from nothing. Integration and sign-off usually end up being as much of the job as the product itself, and both are worth planning early.',
+      'For a company large enough that new software has to fit the systems already there. Integration and sign-off usually end up being as much of the job as the product itself, and both are worth planning early.',
   },
   {
     question: 'What types of apps does Recurssive build?',
     answer:
-      'Mobile apps and web apps, from big multi-user consumer products to small internal tools only a few hundred people will use. What they have in common is that somebody relies on them daily, which is exactly the work we take on.',
+      'Mobile apps and web apps, from big multi-user consumer products to small internal tools only a few hundred people will use. What they have in common is that somebody relies on them every day, and that’s the work we take on.',
   },
   {
     question: 'Should I build a web app or mobile app?',
     answer:
-      'Usually the honest answer is to start with one. The web is quicker to change and asks nothing of the person visiting, while an app suits an audience that comes back often enough to justify installing it. We will tell you which yours needs.',
+      'Usually it’s best to start with one. The web is quicker to change and asks nothing of the person visiting, while an app suits an audience that comes back often enough to justify installing it. We’ll tell you which yours needs.',
   },
   {
     question: 'How long does it take to build an app?',
     answer:
-      'It varies with scope, but the shape is the same every time. You see something working months before there is a launch date, and what comes back from that sets the pace for the rest. That is also what keeps the estimate honest.',
+      'It depends on scope, but the shape is the same every time. You see something working months before there’s a launch date, and what comes back from that sets the pace for the rest. That’s also what keeps the estimate honest.',
   },
   {
     // The only answer carrying markup: "Send us what you have" links to /contact.
@@ -238,30 +241,30 @@ const faqs = [
     question: 'How much does app development cost?',
     answer: (
       <>
-        Cost is driven by what is in scope, not by the hours it takes, so the
-        honest answer depends on how much of it is genuinely new and what it has
-        to connect to.{' '}
+        Cost is driven by what’s in scope, not by the hours it takes, so the
+        price depends on how much has to be built from scratch and what it has to
+        connect to.{' '}
         <Link href="/contact" className="underline underline-offset-4 hover:text-ink">
           Send us what you have
         </Link>{' '}
-        and we will come back with a price tied to it.
+        and we’ll come back with a price tied to it.
       </>
     ),
   },
   {
     question: 'Do you build iOS and Android apps?',
     answer:
-      'Both, and by either route. Some products are best served by one shared build covering both platforms and others by building separately for each. Which suits you is decided by the product and your specific needs.',
+      'Both, and by either route. Some products are best served by one shared build covering both platforms, others by building separately for each. Which suits you depends on the product and what you need from it.',
   },
   {
     question: 'What is MVP app development?',
     answer:
-      'The smallest version that still answers the real question: whether users are interested in your product. It is not a half-baked version of the finished app. It is the fastest way to find out whether your idea is worth investing in.',
+      'The smallest version of your product that can tell you whether people want it. An MVP isn’t a half-baked version of the finished app. It’s the fastest way to find out whether your idea is worth investing in.',
   },
   {
     question: 'Do you offer app redesign and rescue services?',
     answer:
-      'Often, and it is some of the work we are best at. We start by reading what is already there and working out what each problem is actually costing you, then deal with the expensive ones before anything else.',
+      'Often, and it’s some of the work we’re best at. We start by reading what’s already there and working out what each problem is costing you, then deal with the expensive ones before anything else.',
   },
 ]
 
@@ -364,19 +367,19 @@ const industries = [
     name: 'Startups',
     shape: 'ellipse' as const,
     body:
-      'Early on, most of what you spend is really buying an answer to one question: does anyone actually want this? The quickest way to get that answer is a small working version someone will find value in, and what happens then decides the rest.',
+      'Early on, most of what you spend is buying an answer to one question: does anyone actually want this? The quickest way to get that answer is a small working version someone will find value in, and what happens next decides the rest.',
   },
   {
     name: 'SMBs',
     shape: 'trapezoid' as const,
     body:
-      'An established business is a harder brief than a blank page, because everything you change still has to keep running while you change it. The difficult part is knowing which change will pay for itself, and that is the question we are most useful on.',
+      'An established business is a harder brief than a blank page, because everything you change still has to keep running while you change it. The difficult part is knowing which change will pay for itself, and that’s where we’re most useful.',
   },
   {
     name: 'Enterprise',
     shape: 'triangle' as const,
     body:
-      'At this size the constraint is rarely the engineering. What sets the pace is the agreement that has to happen before anything ships, and a plan that ignores that will slip. We would sooner put it in the schedule than find it late.',
+      'At this size the constraint is rarely the engineering. What sets the pace is the agreement that has to happen before anything ships, and a plan that ignores that will slip. We’d rather put it in the schedule than find it late.',
   },
 ]
 
@@ -673,7 +676,7 @@ export default function Home() {
                   characters a line, which is why this is short rather than a
                   paragraph. */}
               <p className="t-body mx-auto mt-6 max-w-[380px] text-center text-ink-muted">
-                Short answers to what people ask us most. If yours is not here,
+                Short answers to what people ask us most. If yours isn’t here,
                 just ask.
               </p>
               <div className="mt-6">

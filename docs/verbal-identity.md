@@ -169,12 +169,32 @@ a campaign line, a section eyebrow, and a utility state. It is permitted nowhere
 1,069-word body corpus contains no joke at all. That is the resolution, and it is a rule you can
 hand to anybody.
 
-Register B also contracts freely ("you've", "it's", "doesn't") where Register C never does.
+Register B also contracts freely ("you've", "it's", "doesn't"). Register C now does too — see the
+2026-09-29 note below.
 
 ### Register C — Explanatory body
 
 Service rows, FAQ answers, process and industry bodies, capability and blog MDX. **This is 90% of
 the words on the site and it is where the voice is really decided.**
+
+> #### 2026-09-29 — contractions are allowed here, and the "never contracts" rule is withdrawn
+>
+> That rule was never the owner's. An agent session inferred it from AI-drafted copy and wrote it
+> down (§8 item 3), and every later draft obeyed it. A multi-reviewer voice review of Home and
+> About then named the complete absence of contractions as one of the main reasons the copy read
+> stiff and machine-made: three independent reviewers raised it unprompted, and the only body line
+> that contracted was the owner's own contact line. Home was edited on that basis. Use contractions
+> where a person would say them aloud; do not force them in, and do not strip them out.
+>
+> The same review found the machine feel came from a handful of repeated moves rather than from any
+> one bad line: corrective contrasts ("rather than", ", not X") in 14 of 42 passages, sincerity
+> words ("honest" in three consecutive FAQ answers, "the real question" on both pages, "actually"),
+> every item in a band sharing one sentence shape and length, and the About page built as a run of
+> quotable maxims. Check a band for those before shipping it.
+>
+> Owner-written lines on Home, per the comments in `src/app/page.tsx`: service rows 01 (Web
+> Design), 05 (Replatforming) and 06 (Product Strategy), plus the contact line in `lib/site.ts`.
+> Do not edit them without asking.
 
 > #### The calibration sample — the owner's own sentence
 >
@@ -192,7 +212,9 @@ the words on the site and it is where the voice is really decided.**
 >    is banned is a superlative about the studio.
 > 3. **Value vocabulary, not mechanism** — asset, first impression, customers. It never says what
 >    gets built or how. It sells why the category matters.
-> 4. **An emotional intensifier** — "matters the world". This is the half-enthusiasm p40 measures
+> 4. **An emotional intensifier** — "matters the world". *(2026-09-29: at the owner's request the live
+>    line now reads "means the world", with a comma before "and" and "to both you and us". The
+>    sentence above is kept as he first wrote it, because it is the calibration sample.)* This is the half-enthusiasm p40 measures
 >    at dead centre, and it is the thing dry drafts leave out.
 > 5. **It ends by joining you and us.** The studio appears late, as someone who *cares*, not
 >    someone who *does*. That is the Empathy value, and it is why `we` earns its place.
@@ -461,9 +483,9 @@ Each is small, and each is a decision only you can make.
    line in the deck and appears in no frame and no file. It is a positioning line, not a utility
    line. Natural homes: the About hero, the footer above the lockup, or the OG/social card.
 
-3. **Contractions were never written down as a rule.** The split is real and consistent — Registers
-   B and D contract, Register C never does — but nothing records it, so the next writer will break
-   it by accident. §4 above is now that record.
+3. **Contractions.** *(Superseded 2026-09-29 — see the note under Register C in §4.)* An earlier
+   session recorded that Register C never contracts. That was inferred from AI-drafted copy, never
+   decided by the owner, and a voice review found it made the copy stiff. It is withdrawn.
 
 4. **Place.** p25's Onliness statement says *"mainly in Greece"*; the market is settled as global
    (knowledge base §2), and `app/about/page.tsx:11` ships *"a web and app studio in Thessaloniki,
@@ -486,7 +508,7 @@ Before any string ships:
 - [ ] **Is the studio anywhere in it?** Roughly one "we/our/Recurssive" per 75 words is the
       tolerated rate; the rejected copy ran at one per 370.
 - [ ] Zero em dashes, zero exclamation marks, zero invented numbers?
-- [ ] Contractions only if this is a campaign line or direct address?
+- [ ] Contractions wherever a person would say them aloud (withdrawn rule: see §4, 2026-09-29)?
 - [ ] Fewer than two commas? Is any three-item list doing rhythmic work rather than real work?
 - [ ] Is the claim falsifiable by the reader in one sentence?
 - [ ] Does it hedge where it is genuinely uncertain, and not hedge where it is not?
