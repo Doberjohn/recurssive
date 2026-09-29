@@ -16,7 +16,7 @@
       { "resourceType": "third-party", "budget": 2 }
     ],
     "timings": [
-      { "metric": "largest-contentful-paint", "budget": 2000 },
+      { "metric": "first-contentful-paint", "budget": 1800 },
       { "metric": "cumulative-layout-shift", "budget": 0.03 },
       { "metric": "total-blocking-time", "budget": 150 },
       { "metric": "speed-index", "budget": 2500 }
