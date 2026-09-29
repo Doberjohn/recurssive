@@ -205,3 +205,42 @@ jobs:
           path: lhci-report
           retention-days: 14
           if-no-files-found: ignore
+
+      # LCP IS TRACKED HERE, NOT GATED. lighthouse-budget.json gates on first
+      # contentful paint instead (1.8 s), and this step only reports.
+      #
+      # Why: Lighthouse's simulated LCP (Lantern, trace_engine
+      # models/trace/lantern/metrics/LargestContentfulPaint.js) treats EVERY
+      # request that finished before the observed LCP as blocking it
+      # (`treatNodeAsRenderBlocking: _ => true`), while simulated FCP counts only
+      # render-blocking ones. Home's LCP element is the hero <h1> text, which
+      # paints in the very first frame: a devtools-throttled run with all JS
+      # blocked paints it just as fast. But on the fast CI runner every
+      # Next.js chunk finishes before that first paint, so the simulation
+      # charges ~170 KB of JavaScript (most of it the framework runtime) to the
+      # headline. Measured 2026-09-29: simulated FCP ~1.2 s, simulated LCP
+      # 2.8-3.4 s on the same page, with ~0.6 s of run-to-run noise.
+      #
+      # So a hard LCP gate here would fail on the framework, not on the page.
+      # The warning fires above Google's 2.5 s "good" threshold, and every run's
+      # numbers go into the job summary so the trend stays visible.
+      - name: Report LCP (tracked, not a gate)
+        if: always()
+        run: |
+          cat > lcp.cjs <<'JS'
+          const fs = require('fs')
+          const dir = 'lhci-report'
+          const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.report.json')) : []
+          if (!files.length) { console.log('no reports to read'); process.exit(0) }
+          const lhrs = files.map((f) => JSON.parse(fs.readFileSync(`${dir}/${f}`, 'utf8')))
+          const v = (id) => lhrs.map((r) => Math.round(r.audits[id].numericValue)).sort((a, b) => a - b)
+          const fcp = v('first-contentful-paint')
+          const lcp = v('largest-contentful-paint')
+          const best = lcp[0]
+          const median = lcp[Math.floor(lcp.length / 2)]
+          const line = `FCP ${fcp.join(' / ')} ms | LCP ${lcp.join(' / ')} ms (best ${best}, median ${median})`
+          console.log(line)
+          if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `### Lighthouse, simulated mobile\n${line}\n`)
+          if (best > 2500) console.log(`::warning title=LCP above 2.5 s (tracked, not gated)::Best of ${lcp.length} runs was ${best} ms. See the comment on this step in ci.yml for why LCP is reported rather than gated.`)
+          JS
+          node lcp.cjs
