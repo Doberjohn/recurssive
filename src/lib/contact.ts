@@ -46,7 +46,7 @@ export const MESSAGES = {
   },
   email: {
     missing: 'Please give your email address.',
-    invalid: 'That email address does not look right.',
+    invalid: 'That email address doesn’t look right.',
   },
   tel: {
     missing: 'Please give a phone number.',
