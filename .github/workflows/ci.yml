@@ -241,6 +241,10 @@ jobs:
           const line = `FCP ${fcp.join(' / ')} ms | LCP ${lcp.join(' / ')} ms (best ${best}, median ${median})`
           console.log(line)
           if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `### Lighthouse, simulated mobile\n${line}\n`)
-          if (best > 2500) console.log(`::warning title=LCP above 2.5 s (tracked, not gated)::Best of ${lcp.length} runs was ${best} ms. See the comment on this step in ci.yml for why LCP is reported rather than gated.`)
+          // Workflow-command PROPERTIES (title=, file=, ...) are comma-separated,
+          // so a literal comma in the title must be written %2C (and a colon %3A),
+          // or GitHub cuts the title at the comma. The message after :: is not
+          // split this way.
+          if (best > 2500) console.log(`::warning title=LCP above 2.5 s (tracked%2C not gated)::Best of ${lcp.length} runs was ${best} ms. See the comment on this step in ci.yml for why LCP is reported rather than gated.`)
           JS
           node lcp.cjs
