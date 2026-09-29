@@ -90,26 +90,157 @@ jobs:
     needs: verify
     # Runs against the real Vercel preview URL so the CDN, compression and
     # edge caching are exercised. Localhost would measure none of that.
+    #
+    # Previews sit behind Vercel Authentication, so every request needs the
+    # project's "Protection Bypass for Automation" secret, held here as the
+    # VERCEL_AUTOMATION_BYPASS_SECRET Actions secret. Without it the wait step
+    # polls a 401 for ten minutes and Lighthouse never runs. The secret is given
+    # only to the steps that use it.
     if: github.event_name == 'pull_request'
+    # Least privilege, stated rather than inherited: the repo default is
+    # already read-only, but this job hands a secret to a third-party action,
+    # so it should not depend on that default staying put. The action's only
+    # API calls are pulls.get, repos.listDeployments and
+    # repos.listDeploymentStatuses; checkout needs contents.
+    permissions:
+      contents: read
+      pull-requests: read
+      deployments: read
     steps:
       - uses: actions/checkout@v4
 
+      # v1.3.3 is the first release that can send the bypass header; v1.3.2
+      # could only send a Vercel password, a different protection feature.
+      #
+      # PINNED TO A COMMIT, NOT THE TAG. This third-party action receives the
+      # bypass secret, and a tag can be moved to different code at any time.
+      # d7982701 is the commit the v1.3.3 tag pointed to when it was adopted
+      # (the maintainer's own release, 2026-01-21). To upgrade, resolve the
+      # new tag to its SHA and read the diff first.
       - name: Await Vercel preview
         id: preview
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
+        uses: patrickedqvist/wait-for-vercel-preview@d7982701e6fcd3ae073bff929e408e004404d38d # v1.3.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 600
+          vercel_protection_bypass_header: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
 
       - uses: actions/setup-node@v4
         with:
           node-version: 22
 
+      # THE SECRET MUST NOT REACH A PUBLISHED REPORT. Lighthouse copies its
+      # settings into every report verbatim (lighthouse core/runner.js:
+      # `configSettings: settings`), extraHeaders included. This job used to
+      # upload reports to temporary-public-storage, which with the header in
+      # extraHeaders would have published the bypass secret on every run. So
+      # reports now go to disk, are scrubbed below, and are kept as an artifact.
+      #
+      # extraHeaders are sent on EVERY request the page makes, not just the
+      # document, so every origin the page contacts receives the secret. The
+      # site itself fetches nothing off-origin (checked 2026-09-29 on Home,
+      # About, Capabilities and Contact), BUT a preview is not the site: Vercel
+      # injects its toolbar from https://vercel.live into every preview, and
+      # the first live run sent the header there. blockedUrlPatterns stops that
+      # request before it is sent (Chrome reports it as status -1), which also
+      # keeps the preview-only toolbar out of the measurement. Re-check the
+      # origins in a report before adding any third-party host.
+      #
+      # Note Lighthouse still COUNTS a blocked request in resource-summary
+      # (core/computed/resource-summary.js only skips favicon and non-network
+      # records), so on a preview the script count is the site's plus one.
+      # lighthouse-budget.json allows 13 scripts for exactly that reason (owner's
+      # decision, 2026-09-29): the site itself loads 12. If the site ever needs
+      # a 13th of its own, that is a budget conversation, not a free slot.
       - name: Lighthouse CI
+        env:
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: |
-          npm install -g @lhci/cli@0.15.x
+          # Exact version, not 0.15.x: this step holds the bypass secret, so a new
+          # patch release must not run here unreviewed. 0.15.1 is the version the
+          # secret-scrubbing was tested against (it pulls lighthouse 12.6.1).
+          npm install -g @lhci/cli@0.15.1
           lhci autorun \
             --collect.url="${{ steps.preview.outputs.url }}" \
             --collect.numberOfRuns=3 \
+            --collect.settings.blockedUrlPatterns='*vercel.live*' \
+            --collect.settings.extraHeaders="{\"x-vercel-protection-bypass\":\"$VERCEL_AUTOMATION_BYPASS_SECRET\"}" \
             --assert.budgetsFile=lighthouse-budget.json \
-            --upload.target=temporary-public-storage
+            --upload.target=filesystem \
+            --upload.outputDir=./lhci-report
+
+      # Runs even when the assertions fail, because a failing run is exactly
+      # the one someone will download. Fails closed: if any copy of the secret
+      # survives, this step fails and the upload below does not run.
+      - name: Scrub the bypass secret from the reports
+        id: scrub
+        if: always()
+        env:
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          cat > scrub.cjs <<'JS'
+          const fs = require('fs')
+          const path = require('path')
+          const secret = process.env.VERCEL_AUTOMATION_BYPASS_SECRET
+          if (!secret) { console.log('no secret set; nothing to scrub'); process.exit(0) }
+          const files = []
+          const walk = (d) => { if (!fs.existsSync(d)) return; for (const e of fs.readdirSync(d)) { const p = path.join(d, e); fs.statSync(p).isDirectory() ? walk(p) : files.push(p) } }
+          walk('lhci-report'); walk('.lighthouseci')
+          let scrubbed = 0
+          for (const f of files) {
+            const t = fs.readFileSync(f, 'utf8')
+            if (t.includes(secret)) { fs.writeFileSync(f, t.split(secret).join('[redacted]')); scrubbed++ }
+          }
+          const left = files.filter((f) => fs.readFileSync(f, 'utf8').includes(secret))
+          console.log(`scrubbed ${scrubbed} of ${files.length} file(s)`)
+          if (left.length) { console.error('secret still present in: ' + left.join(', ')); process.exit(1) }
+          JS
+          node scrub.cjs
+
+      - name: Keep the reports
+        if: always() && steps.scrub.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: lhci-report
+          retention-days: 14
+          if-no-files-found: ignore
+
+      # LCP IS TRACKED HERE, NOT GATED. lighthouse-budget.json gates on first
+      # contentful paint instead (1.8 s), and this step only reports.
+      #
+      # Why: Lighthouse's simulated LCP (Lantern, trace_engine
+      # models/trace/lantern/metrics/LargestContentfulPaint.js) treats EVERY
+      # request that finished before the observed LCP as blocking it
+      # (`treatNodeAsRenderBlocking: _ => true`), while simulated FCP counts only
+      # render-blocking ones. Home's LCP element is the hero <h1> text, which
+      # paints in the very first frame: a devtools-throttled run with all JS
+      # blocked paints it just as fast. But on the fast CI runner every
+      # Next.js chunk finishes before that first paint, so the simulation
+      # charges ~170 KB of JavaScript (most of it the framework runtime) to the
+      # headline. Measured 2026-09-29: simulated FCP ~1.2 s, simulated LCP
+      # 2.8-3.4 s on the same page, with ~0.6 s of run-to-run noise.
+      #
+      # So a hard LCP gate here would fail on the framework, not on the page.
+      # The warning fires above Google's 2.5 s "good" threshold, and every run's
+      # numbers go into the job summary so the trend stays visible.
+      - name: Report LCP (tracked, not a gate)
+        if: always()
+        run: |
+          cat > lcp.cjs <<'JS'
+          const fs = require('fs')
+          const dir = 'lhci-report'
+          const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.report.json')) : []
+          if (!files.length) { console.log('no reports to read'); process.exit(0) }
+          const lhrs = files.map((f) => JSON.parse(fs.readFileSync(`${dir}/${f}`, 'utf8')))
+          const v = (id) => lhrs.map((r) => Math.round(r.audits[id].numericValue)).sort((a, b) => a - b)
+          const fcp = v('first-contentful-paint')
+          const lcp = v('largest-contentful-paint')
+          const best = lcp[0]
+          const median = lcp[Math.floor(lcp.length / 2)]
+          const line = `FCP ${fcp.join(' / ')} ms | LCP ${lcp.join(' / ')} ms (best ${best}, median ${median})`
+          console.log(line)
+          if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `### Lighthouse, simulated mobile\n${line}\n`)
+          if (best > 2500) console.log(`::warning title=LCP above 2.5 s (tracked, not gated)::Best of ${lcp.length} runs was ${best} ms. See the comment on this step in ci.yml for why LCP is reported rather than gated.`)
+          JS
+          node lcp.cjs
