@@ -149,6 +149,9 @@ jobs:
       # Note Lighthouse still COUNTS a blocked request in resource-summary
       # (core/computed/resource-summary.js only skips favicon and non-network
       # records), so on a preview the script count is the site's plus one.
+      # lighthouse-budget.json allows 13 scripts for exactly that reason (owner's
+      # decision, 2026-09-29): the site itself loads 12. If the site ever needs
+      # a 13th of its own, that is a budget conversation, not a free slot.
       - name: Lighthouse CI
         env:
           VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
