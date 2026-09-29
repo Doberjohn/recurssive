@@ -358,18 +358,38 @@ export default function About() {
                       <span className="text-xl text-ink-muted lg:w-[26.5px] lg:shrink-0 lg:pt-[2px] lg:text-sm">
                         ({String(i + 1).padStart(2, '0')})
                       </span>
-                      <div className="min-w-0">
+                      <div className="min-w-0 lg:flex-1 lg:[container-type:inline-size]">
                         {/* Drawn a flat 48 at BOTH 1920 and 768, and left flat
                             was wrong: "Performance" is one unbreakable word ~275px
                             wide at 48px, against a 272px content column at 320.
                             That put the document 63px past the viewport at 320,
                             23 at 360, 8 at 375 — the same 383px every time,
                             which is the tell for a rigid element rather than a
-                            layout that scales badly.
+                            layout that scales badly. Below 768 it ramps, because
+                            320 is not a drawn width and something has to give.
 
-                            48 still holds from 768 up, where it is drawn. Below
-                            that it ramps, because 320 is not a drawn width and
-                            something has to give. */}
+                            THE SAME WORD BROKE AGAIN AT THE OTHER END. "48 holds
+                            from 768 up" was only true while this section stacks.
+                            At lg it goes side by side and this column drops to
+                            21% of the container: 157px at 1024, 211 at 1280, and
+                            311 only at 1920. The 275px word overran it at every
+                            width up to roughly 1700, and below ~1250 the spill
+                            reached past the viewport (CI measured the document
+                            28px too wide at 1024, 23 at 1044, 12 at 1100).
+
+                            So at lg the name is capped by its OWN column, the one
+                            measure that is right at every width: min(48px,
+                            16.5cqi). "Performance" is 5.74x its font size, so
+                            16.5% of the column leaves ~5% spare by construction,
+                            whatever width the column is. Both drawn frames keep
+                            a full 48 (at 1920, 16.5cqi is 51px), and between them
+                            the names scale: ~26px at 1024, 35 at 1280, 40 at 1440.
+
+                            The container must be THIS div, and lg:flex-1 is
+                            load-bearing. Inline-size containment sizes an element
+                            as if it were empty, and this div has no flex-grow of
+                            its own, so without flex-1 it collapses to zero width
+                            and takes the body text with it. */}
                         {/* w-fit is load-bearing. Values.svg paints a separate
                             gradient per name, spanning exactly that word:
                             x1=1446 with x2 at the word's own right edge, so the
@@ -378,7 +398,7 @@ export default function About() {
                             505.6 wide, which stretched one gradient across the
                             column and meant no word ever reached #A59BFF —
                             every name rendered as flat dark purple. */}
-                        <h3 className="text-brand-gradient w-fit font-heading font-semibold [filter:url(#value-grain)] [font-size:clamp(30px,6.25vw,48px)]">
+                        <h3 className="text-brand-gradient w-fit font-heading font-semibold [filter:url(#value-grain)] [font-size:clamp(30px,6.25vw,48px)] lg:[font-size:min(48px,16.5cqi)]">
                           {v.name}
                         </h3>
                         <p className="mt-[10px] text-2xl text-ink lg:text-sm">{v.body}</p>
