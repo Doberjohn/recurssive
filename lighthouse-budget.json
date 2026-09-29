@@ -11,7 +11,7 @@
       { "resourceType": "total", "budget": 1100 }
     ],
     "resourceCounts": [
-      { "resourceType": "script", "budget": 12 },
+      { "resourceType": "script", "budget": 13 },
       { "resourceType": "font", "budget": 4 },
       { "resourceType": "third-party", "budget": 2 }
     ],
