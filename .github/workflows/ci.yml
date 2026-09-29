@@ -137,9 +137,18 @@ jobs:
       # reports now go to disk, are scrubbed below, and are kept as an artifact.
       #
       # extraHeaders are sent on EVERY request the page makes, not just the
-      # document. That is safe only while the audited page fetches nothing from
-      # a third party: checked 2026-09-29, zero external fetches. Re-check
-      # before adding any third-party script, font, image or analytics host.
+      # document, so every origin the page contacts receives the secret. The
+      # site itself fetches nothing off-origin (checked 2026-09-29 on Home,
+      # About, Capabilities and Contact), BUT a preview is not the site: Vercel
+      # injects its toolbar from https://vercel.live into every preview, and
+      # the first live run sent the header there. blockedUrlPatterns stops that
+      # request before it is sent (Chrome reports it as status -1), which also
+      # keeps the preview-only toolbar out of the measurement. Re-check the
+      # origins in a report before adding any third-party host.
+      #
+      # Note Lighthouse still COUNTS a blocked request in resource-summary
+      # (core/computed/resource-summary.js only skips favicon and non-network
+      # records), so on a preview the script count is the site's plus one.
       - name: Lighthouse CI
         env:
           VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
@@ -151,6 +160,7 @@ jobs:
           lhci autorun \
             --collect.url="${{ steps.preview.outputs.url }}" \
             --collect.numberOfRuns=3 \
+            --collect.settings.blockedUrlPatterns='*vercel.live*' \
             --collect.settings.extraHeaders="{\"x-vercel-protection-bypass\":\"$VERCEL_AUTOMATION_BYPASS_SECRET\"}" \
             --assert.budgetsFile=lighthouse-budget.json \
             --upload.target=filesystem \
