@@ -10,7 +10,9 @@ export const metadata: Metadata = buildMetadata({
   title: 'About',
   description: 'Recurssive is a web and app studio in Thessaloniki, Greece.',
   path: '/about',
-  // Body copy is still lorem from the frame. See src/lib/site.ts.
+  // The copy is final and owner-approved (2026-09-30); going into the index
+  // is the owner's call. When it does, uncomment '/about' in src/lib/site.ts
+  // and drop this line in the same commit.
   noIndex: true,
 })
 
@@ -178,15 +180,17 @@ export default function About() {
               (Our Story)
             </p>
             {/* 846px @16px, drawn 3 lines. MEASURED ceiling 323 — 360 breaks
-                to four. It glosses the Feel / Form / Function lockup directly
-                above it (deck pp44-50), so it takes the tagline in its own
-                order and says why that order is the point. */}
+                to four. The founder's story, as the (Our Story) label says:
+                it names the owner and keeps the studio's "we", which is the
+                owner's call, and nothing here claims a team. An earlier draft
+                glossed Feel / Form / Function instead; the lockup now stands
+                on its own as the tagline. Owner-approved, see content/about.ts. */}
             <p className="t-body mt-[14px] max-w-[846px] text-cloud lg:ml-[82px] lg:-mt-1">
-              Feel comes first, in the second before anyone has decided
-              anything. Form arrives next, and function only after that. Most
-              software gets built in the reverse order, and the people using it
-              can always tell. We would rather build in the order that people
-              actually meet things.
+              John Fanidis started Recurssive after more than ten years of
+              building software, in-house and for clients, to be the one
+              choosing the work. We design and build websites and apps, and on
+              mobile we specialise in making slow apps fast and putting AI
+              inside them.
             </p>
           </div>
         </section>
@@ -423,19 +427,20 @@ export default function About() {
 
               THE ONE PLACE THE RECURSION METAPHOR IS THE SUBJECT. Deck p90
               gives the definition verbatim ("when a process becomes the input
-              to itself") and p112 the river image. The copy deck's own critic
-              counted NINE loop tokens on a draft About page and called it a
-              tic, so the metaphor is allowed twice on this page: here, where
-              it is what the heading is about, and nowhere else. The five
-              process steps below deliberately do not reach for it. */}
+              to itself"). The deck's river image (p112) was dropped at the
+              owner's request: after the definition, the paragraph says plainly
+              how the work runs. The copy deck's own critic counted NINE loop
+              tokens on a draft About page and called it a tic, so the metaphor
+              is allowed twice on this page: here, where it is what the heading
+              is about, and nowhere else. The five process steps below
+              deliberately do not reach for it. */}
           <p className="t-body mt-[58px] max-w-[1128px] text-ink-muted lg:mt-[73px]">
             Recursion is what happens when a process becomes the input to
-            itself. A river cuts a deeper channel each season because of the
-            channel it cut the season before. Products behave the same way.
-            What you learn from the version in front of users now is the only
-            reliable material for the version after it, and the teams who do
-            this well are not cleverer than anyone else. They simply close the
-            loop more often.
+            itself, and it’s how we work. An early version goes out to the
+            people it’s for, and how they use it tells us what to change in
+            the next one. Then the next one goes out, and the same thing
+            happens again. You get something working early, and every version
+            after that is shaped by the people using it.
           </p>
         </section>
 
