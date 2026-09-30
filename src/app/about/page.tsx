@@ -8,7 +8,10 @@ import { buildMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = buildMetadata({
   title: 'About',
-  description: 'Recurssive is a web and app studio in Thessaloniki, Greece.',
+  // Picked by the owner (2026-09-30) from four options built only from the
+  // approved copy below. Also the link-preview text on social shares.
+  description:
+    'Recurssive is John Fanidis’s web and app studio in Thessaloniki, Greece. On mobile we specialise in making slow apps fast and putting AI inside them.',
   path: '/about',
 })
 
