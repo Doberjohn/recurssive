@@ -46,18 +46,27 @@
  *
  * Checked mechanically: no content word appears in more than three of the
  * fifteen About strings, and no five-word run repeats anything on Home.
+ *
+ * ── PROVENANCE. The body copy was written 2026-09-30 from the owner's answers
+ * to a multiple-choice interview, and the owner approved every line as
+ * written. Four lines survive from the earlier draft because the owner chose
+ * to keep them: Mission, Reliability, Empathy and Start. Treat all of it as
+ * owner-approved and change it only with the owner's go-ahead, the same rule
+ * as the owner's rows on Home (rule 0 in app/page.tsx).
  */
 
 export const purposeRows = [
   {
     label: '(Purpose)',
     heading: 'We create to inspire others to create.',
-    body: 'The work is meant to be copied. What we figure out gets written down and published, because a method nobody can see helps nobody. The studios we learned from published theirs.',
+    // Stated as an ambition because it is one: the owner's answer was that
+    // this isn't a track record yet, so the body claims none.
+    body: 'This one is still an ambition, and we’re growing into it. We’d like our apps and websites to be good enough that whoever uses them feels like going off to make something of their own.',
   },
   {
     label: '(Vision)',
     heading: 'Creativity driven by people, efficiency driven by tech.',
-    body: 'Machines are better than us at the parts that repeat. People are better at deciding what is worth repeating. We spend our judgement on the second and let the tooling take the first.',
+    body: 'AI tools and automation do the repetitive parts of the job, so projects move faster. The time that frees up goes into the decisions that need a person, like what to build and how it should feel.',
   },
   {
     label: '(Mission)',
@@ -79,15 +88,15 @@ export const values = [
   },
   {
     name: 'Performance',
-    body: 'Fast is something users feel long before they can name it, and it is the cheapest quality to keep.',
+    body: 'Speed is designed in from the start. People leave an app that feels slow, whatever its benchmarks say.',
   },
   {
     name: 'Foresight',
-    body: "Most of a product's life comes after launch, so the real question is what it will cost to keep alive.",
+    body: 'We plan ahead for the next system update and for growth, so neither one means rewriting everything.',
   },
   {
     name: 'Creativity',
-    body: 'Familiar is the easy answer and rarely the right one. Elegance is what a solved problem looks like.',
+    body: 'The unusual idea gets tried before the familiar one, and the small details are where the craft shows.',
   },
 ]
 
@@ -101,6 +110,12 @@ export const values = [
  * knowledge base records that the two process models are intentionally different
  * things, so they must not converge on the same wording. Step 01 in particular
  * must avoid Home's "the opening questions are about your business".
+ *
+ * The steps describe how the work actually runs, per the owner: regular demos,
+ * options laid out with a recommendation, the client makes the call, and
+ * finished means live and running without problems. The earlier draft's
+ * "stopping condition agreed in advance" and "second pass only if something
+ * changed" were dropped because the work doesn't run that way.
  */
 export const processSteps = [
   {
@@ -109,18 +124,18 @@ export const processSteps = [
   },
   {
     name: 'Process',
-    body: 'Work happens, and it stays visible while it happens rather than being revealed at the end.',
+    body: 'You see the work as it happens, in regular demos that show what has changed since the last one.',
   },
   {
     name: 'Decide',
-    body: 'A real decision has a stopping condition agreed in advance, rather than a mood on the day.',
+    body: 'We lay out the options and what each would cost, and say which we’d pick. The call is yours.',
   },
   {
     name: 'Process',
-    body: 'The second pass is only worth running if something changed. Otherwise it is the same pass again.',
+    body: 'The option you chose goes ahead from there, and you see the result running at the next demo.',
   },
   {
     name: 'End',
-    body: 'Finished means the agreed condition was met, and both of us knew what it was beforehand.',
+    body: 'Finished means it’s live and the people it was made for have been using it without problems.',
   },
 ]
