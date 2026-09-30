@@ -10,10 +10,6 @@ export const metadata: Metadata = buildMetadata({
   title: 'About',
   description: 'Recurssive is a web and app studio in Thessaloniki, Greece.',
   path: '/about',
-  // The copy is final and owner-approved (2026-09-30); going into the index
-  // is the owner's call. When it does, uncomment '/about' in src/lib/site.ts
-  // and drop this line in the same commit.
-  noIndex: true,
 })
 
 /**
