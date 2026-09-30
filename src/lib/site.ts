@@ -70,7 +70,9 @@ export const site = {
 /**
  * Every indexable route. Drives sitemap.ts; extend as pages land.
  *
- * /about, /cases, /capabilities and /blog are NOT here yet. They now exist and
+ * /about went in on 2026-09-30, once its copy was final and the owner said so.
+ *
+ * /cases, /capabilities and /blog are NOT here yet. They now exist and
  * return 200 instead of 404, but they are empty, and an empty page in a sitemap
  * is a soft 404 — a worse signal than the hard 404 it replaced, because it asks
  * to be indexed and then offers nothing. They carry `noIndex: true` to match.
@@ -104,7 +106,7 @@ export const site = {
  */
 export const routes = [
   '/',
-  // '/about',
+  '/about',
   // '/cases',      // unlinked too — see the 5-point checklist in the note above
   // '/capabilities',
   // '/blog',
