@@ -41,17 +41,24 @@ export default function Contact() {
       <Nav tone="dark" />
 
       <main className="flex flex-1 flex-col">
-        {/* 176 is the drawn 768 value and was applied flat, so a 375 phone got
-            the same 176px of dead space above the h1. Ramped to ~86 at 375,
-            which still clears the absolutely-positioned nav. */}
-        <section className="pt-[clamp(88px,22.9vw,176px)] lg:pt-[170px]">
+        {/* 176 is the drawn 768 value and ramps down from there. The floor was
+            88, which on a phone left the h1 22px under the nav's logo and 38
+            above the card, so it read as part of the nav rather than as the
+            card's heading. 135 follows the owner's mobile reference: logo to
+            cap top is 2.98 cap heights there, 68.5px at 390 (and baseline to
+            card 1.22, the mt below). Only below ~590 does the floor apply. */}
+        <section className="pt-[clamp(135px,22.9vw,176px)] lg:pt-[170px]">
           <div className="container-content">
             <h1 className="t-section text-ink">Let&rsquo;s Talk</h1>
 
             {/* 33/34, not the 26 the frames read off ink. The h1's ink is
                 taller than its line box (58 against 50.4 at 1920), and margin
-                applies to the box — so 26 lands the card 8px high. */}
-            <div className="mt-[33px] grid gap-y-20 lg:mt-[34px] lg:grid-cols-[minmax(0,650fr)_minmax(0,753fr)] lg:gap-x-[12.04%] lg:gap-y-0">
+                applies to the box — so 26 lands the card 8px high.
+
+                23 below md, from the same mobile reference as the padding
+                above: the card sits 1.22 cap heights under the baseline, 28px
+                at 390, where 33 left it 38. */}
+            <div className="mt-[23px] grid gap-y-20 md:mt-[33px] lg:mt-[34px] lg:grid-cols-[minmax(0,650fr)_minmax(0,753fr)] lg:gap-x-[12.04%] lg:gap-y-0">
               <ContactDetails />
               <ContactForm />
             </div>
