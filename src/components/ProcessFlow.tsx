@@ -169,6 +169,43 @@ const GAPS = [
 ]
 
 /**
+ * At lg each step's text sits on its shape's centre line, which is how the
+ * 1920 frame draws it: shape centre minus body centre is +1.5 / +0.5 / +0.5 /
+ * +6 down the four rows (design-home-1920.json). It was built top-aligned,
+ * every text box on its shape's top edge, which left each label 15-48px below
+ * its name — worst on the 161-tall diamond.
+ *
+ * The anchor is the name block rather than the body: 48px `.t-step` at lh
+ * 1.05, pb-3 and the 3px rule make a fixed 65.4 at lg, where the body's
+ * height depends on how many lines the copy takes. At the two lines the copy
+ * renders at 1920, the body's centre lands 1.7 above the name block's.
+ */
+const NAME_LG = 48 * 1.05 + 12 + 3
+const lgDrop = (s: ShapeSpec) => s.h / 2 - NAME_LG / 2
+
+/**
+ * Below lg the body sits under the name rather than beside it, so the verb is
+ * the only thing level with the shape, and the anchor is the verb's own line
+ * box: half of `.t-step`'s, lh 1.05 at its fluid size. That clamp is copied
+ * verbatim from globals.css and has to move with it.
+ */
+const NAME_HALF = 'clamp(1.75rem, 1.088rem + 2.941vw, 2.5rem) * 0.525'
+
+/** Below lg, the top of a step's text: its verb's line box centred on the shape. */
+const txtTop = (s: ShapeSpec) =>
+  `max(0px, calc(var(--sw) * ${+(s.h / 2 / 266).toFixed(6)} - ${NAME_HALF}))`
+
+/**
+ * At phone widths a step's text is taller than its shape and connector, so the
+ * text sets the row's height, and all that separates one body from the next
+ * step's index is that step's own txtTop — 2.7px at 320. This floors it at the
+ * smallest the 768 frame draws, body bottom to the next "(0n)": 53, against 63
+ * and 67 for the other two. Only what is missing gets added, so a row the shape
+ * already makes tall enough is untouched.
+ */
+const STEP_GAP = 53
+
+/**
  * The gradient rectangle inside a shape's mask. Absolutely positioned so it
  * takes no part in centring the label, and clipped by the shape on the parent.
  *
@@ -251,15 +288,27 @@ function Connector({ gap }: { gap: string }) {
 
 export function ProcessFlow({ steps }: { steps: Step[] }) {
   return (
-    /* 131 at 768 is measured from the intro's box to the first SHAPE's top,
-       which from sm up is where the first row starts — the text beside it is
-       out of flow and hangs ~62 above that, landing 63 below the intro exactly
-       as drawn. Below sm the text is back in flow, so the drawn 131 would be
-       measuring the wrong thing and mt-24 stands. */
-    <ol className="mt-[131px] space-y-0 lg:mt-24">
+    /* Below lg the first row's top edge is the first SHAPE: with each verb on
+       its shape's centre line (see the wrapper below) the text starts lower
+       than the ellipse. 63 is the drawn 768 distance from the intro to the
+       first row's top edge, which was the text's while the text block was
+       centred above the shape (the ellipse sat at 131). Holding the row's edge
+       rather than the ellipse lifts the shape column 68 to meet the verbs, the
+       same call as at lg.
+
+       At lg the 96 is to the first row's TEXT, which is where it always
+       landed. The text now drops onto its shape's centre line (see NAME_LG),
+       so the list rises by step 1's drop to hold the text still and lift the
+       shape column instead: 20.3 for the ellipse. Lifting the shapes rather
+       than dropping the text was the owner's call. */
+    <ol
+      className="@container mt-[63px] space-y-0 lg:mt-[var(--flow-top)]"
+      style={{ ['--flow-top' as string]: `${+(96 - lgDrop(SHAPES[steps[0].shape])).toFixed(2)}px` }}
+    >
       <ClipPaths />
       {steps.map((step, i) => {
         const s = SHAPES[step.shape]
+        const next = steps[i + 1] && SHAPES[steps[i + 1].shape]
         return (
           <li
             key={step.name}
@@ -282,7 +331,11 @@ export function ProcessFlow({ steps }: { steps: Step[] }) {
 
                `container-type: inline-size` is what makes 43.61cqw mean "of the
                content column" rather than of the viewport, so the gutters do
-               not skew it.
+               not skew it. It sits on the ol as well as here: the li's OWN
+               grid-template-columns resolves cqw against the nearest ancestor
+               container, not the li, and with none it fell back to the
+               viewport — a 193.7 column for 169.6 shapes at 466, which left
+               them 12-15 short of the edge they are drawn flush to.
 
                BELOW sm it stacks, and --sw goes back to the full column so the
                flowchart is drawn at its proper 266. Two columns were tried down
@@ -299,34 +352,30 @@ export function ProcessFlow({ steps }: { steps: Step[] }) {
                 the three become the li's own grid items again at lg.
 
                 It stays in FLOW so the row can grow when the text needs more
-                room than the drawn gap leaves (see GAPS), except on the last
-                step, where there is no connector to be taller than it and an
-                in-flow half-height would leave ~125px of phantom space under
-                the band. Nothing follows that one, so out of flow is safe.
+                room than the drawn gap leaves (see GAPS) — the last step too.
+                That one used to be out of flow, because centring the block
+                with a translate left an in-flow half-height of phantom space
+                under the band; with no translate there is none.
 
-                Vertically the text is centred against the SHAPE, then lifted
-                25. Measured on the export, the shape centre sits 29.3 / 19.1 /
-                18.9 / 31.6 below the text block's centre; one 25px lift fits
-                all four inside 7px, which is closer than any top- or
-                bottom-alignment rule gets — the decision diamond is 160 tall
-                against ~100 for the other three, so anything anchored to an
-                edge fails on step 3.
-
-                The 25 is a flat px, not scaled — it is a nudge against the
-                text's own metrics rather than part of the flowchart, and the
-                type does not shrink at the shape's rate. */}
+                Vertically the verb sits on the shape's centre line: the top
+                is the shape's centre less half the name's line box
+                (NAME_HALF), and the body hangs 29 below the name. The owner
+                asked for this on 2026-10-21, to match lg. It departs from the
+                768 frame, which centres the whole text block 25 above the
+                shape (29.3 / 19.1 / 18.9 / 31.6 on the export) and so leaves
+                each shape level with the body rather than the verb. */}
             {/* The offset rides a custom property rather than `top`/`margin`
                 directly, because an inline declaration cannot be scoped to a
                 breakpoint and this one must not apply to the five-column layout
-                at lg. */}
+                at lg. `--txt-drop` is the lg counterpart; the wrapper is
+                `contents` there, so its three children each take it as a
+                margin. */}
             <div
-              className={`-translate-y-1/2 lg:contents ${
-                i === steps.length - 1
-                  ? 'absolute left-0 right-[var(--sw)] top-[var(--txt-top)]'
-                  : 'col-start-1 row-start-1 mt-[var(--txt-top)] self-start'
-              }`}
+              className="col-start-1 row-start-1 mt-[var(--txt-top)] mb-[var(--txt-gap)] self-start lg:contents"
               style={{
-                ['--txt-top' as string]: `max(20px, calc(var(--sw) * ${+(s.h / 2 / 266).toFixed(6)} - 25px))`,
+                ['--txt-top' as string]: txtTop(s),
+                ['--txt-gap' as string]: next ? `max(0px, calc(${STEP_GAP}px - ${txtTop(next)}))` : '0px',
+                ['--txt-drop' as string]: `${+lgDrop(s).toFixed(2)}px`,
               }}
             >
               <div className="flex lg:contents">
@@ -337,14 +386,14 @@ export function ProcessFlow({ steps }: { steps: Step[] }) {
                     rest of the page it does not step between breakpoints.
 
                     44 wide at 768 (index x79, name x123). */}
-                <span className="w-11 shrink-0 self-start font-heading text-[20px] leading-[1.2] text-accent lg:w-auto">
+                <span className="w-11 shrink-0 self-start font-heading text-[20px] leading-[1.2] text-accent lg:mt-[var(--txt-drop)] lg:w-auto">
                   ({step.index})
                 </span>
 
                 {/* Rule: 3px #A59BFF. w-fit so it measures the name, as drawn —
                     83/130/121/144 against name widths of 82/123/118/139, and
                     70/109/101/121 against 68/103/99/116 at 768. */}
-                <h3 className="t-step w-fit self-start border-b-[3px] border-accent pb-3 text-silver">
+                <h3 className="t-step w-fit self-start border-b-[3px] border-accent pb-3 text-silver lg:mt-[var(--txt-drop)]">
                   {step.name}
                 </h3>
               </div>
@@ -359,7 +408,7 @@ export function ProcessFlow({ steps }: { steps: Step[] }) {
                   copy fitted in two, so this was not only a size difference —
                   the block was a line short of the drawn one. Same step up the
                   Industry columns take, and the same 1.5 ratio. */}
-              <p className="t-body mt-[29px] text-cloud max-w-[330px] lg:max-w-none lg:col-start-5 lg:mt-0 lg:max-w-[696px] lg:self-start lg:pt-1 lg:text-[18px] lg:leading-[27px]">
+              <p className="t-body mt-[29px] text-cloud max-w-[330px] lg:max-w-none lg:col-start-5 lg:mt-[var(--txt-drop)] lg:max-w-[696px] lg:self-start lg:pt-1 lg:text-[18px] lg:leading-[27px]">
                 {step.body}
               </p>
             </div>
