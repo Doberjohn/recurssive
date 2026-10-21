@@ -26,6 +26,11 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
+  // The "N" badge `next dev` draws bottom-left. Dev-only either way — it never
+  // ships — but it sat over the page during review. Compile and runtime errors
+  // still surface without it.
+  devIndicators: false,
+
   // Every route in this site is prerenderable, so Cache Components stays off.
   // It inverts the default to dynamic and would force opting everything back
   // in via `use cache` for no gain here. Revisit at Next 17.
