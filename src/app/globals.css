@@ -181,20 +181,24 @@
    * a next best of 14.0) — two different gradients, not one reused.
    *
    * Sized in em so it tracks the clamp on the lockup: 26/140 = 0.1857em, and
-   * the gap 9.47/140 = 0.0676em. The gap is measured ink-to-ink in the export
-   * while margin-left starts from the glyph's advance, so the rendered value is
-   * tuned slightly under the drawn one — see the note in about/page.tsx. */
+   * the gap 9.47/140 = 0.0676em, measured ink to ink in the export. */
   .hero-stop {
     display: inline-block;
     width: 0.1798em;
     height: 0.1798em;
     border-radius: 50%;
-    /* NEGATIVE, and that is not a mistake. The 9.4px drawn gap is measured
-       from the word's INK edge, while margin-left starts from its advance —
-       and "Feel" carries an 11.4px right side bearing, so reproducing the
-       drawn gap means pulling back 2px. Measured per word after this landed:
-       411.0 / 970.1 / 1732.8 drawn against the rendered positions below. */
-    margin-left: -0.015em;
+    /* The drawn gap is ink to ink, while margin-left starts from the word's
+       advance, and the lockup's -0.05em tracking is applied after the final
+       letter too. That uses up most of each word's right side bearing: at
+       1920 the advance ends just 1.4 / 2.1 / 2.0px past the ink of the l, m
+       and n. This was -0.015em, written as if the bearing were whole (11.4px
+       on "Feel"), and it put every stop on its letter: -0.7 / 0.0 / 0.0px.
+
+       Not a pure em, because the remainder does not scale: by 30px the ink
+       runs past the advance (-0.64px on the l), and a flat 0.054em measured
+       0.064em of gap at 139px but 0.032em at 30, where 1px reads as touching.
+       The 1px holds the ratio near the drawn 0.067em from phone to desktop. */
+    margin-left: calc(0.05em + 1px);
     vertical-align: baseline;
     position: relative;
     overflow: hidden;

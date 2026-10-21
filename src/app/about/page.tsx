@@ -2,9 +2,70 @@ import type { Metadata } from 'next'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import { BuildVision } from '@/components/BuildVision'
+import { Logo } from '@/components/ui/Logo'
 import { Picture } from '@/components/ui/Picture'
 import { purposeRows, values, processSteps } from '@/content/about'
 import { buildMetadata } from '@/lib/metadata'
+
+/**
+ * The binary column over the desk photo. In the file it is not text but 621
+ * outlined glyphs (figspec "Group" @163,2089), #FAFAFA at fill-opacity 0.2:
+ * 33 rows, strictly alternating, each starting on the digit the row above did
+ * not. So it is drawn from those outlines rather than set in Inter. As live
+ * text at 20% the strokes rendered heavier and softer than the file's, which
+ * the owner saw as blur (2026-10-21).
+ *
+ * Coordinates are Group 2378.svg's, and every glyph is one of two outlines
+ * moved into place: rows 2-30 all repeat row 2's or row 3's x positions, so a
+ * row is one of two patterns moved down. The file snaps its outlines to a
+ * ~0.43 grid, so a copy sits within 0.34px of the glyph it stands in for, at
+ * 1920 and less below it.
+ *
+ * Rows 0, 31 and 32 lie wholly off the photo and are not drawn. The file has
+ * row 1 5.4px right of the column; it stays in the column here, as it did when
+ * this was text.
+ */
+const VALUES_BINARY = {
+  /** The 0 and the 1 that open row 3, at their own coordinates. */
+  glyphs: [
+    'M172.495 159.717C172.495 159.717 169.042 159.285 167.316 157.99C165.589 156.695 164.726 155.4 164.295 153.242C163.863 151.084 163 148.925 163 145.904C163 142.882 163 140.724 164.295 138.565C165.158 136.407 166.021 135.112 167.316 133.817C168.611 132.954 170.337 132.09 172.495 132.09C174.653 132.09 175.947 132.522 177.674 133.817C179.4 135.112 180.263 136.407 180.695 138.565C181.558 140.724 181.99 142.882 181.99 145.904C181.99 148.925 181.99 151.084 180.695 153.242C179.832 155.4 178.969 156.695 177.674 157.99C176.379 159.285 174.653 159.717 172.495 159.717ZM172.495 156.695C172.495 156.695 175.948 155.832 177.242 154.105C178.105 152.379 178.969 149.357 178.969 145.904C178.969 143.745 178.969 141.587 178.105 139.86C177.674 138.134 176.811 136.839 175.947 135.975C175.084 135.112 173.79 134.68 172.495 134.68C170.768 134.68 169.042 135.544 168.179 137.702C167.316 139.86 166.453 142.45 166.453 145.904C166.453 148.062 166.453 150.22 167.316 151.947C167.747 153.674 168.611 154.969 169.474 155.832C170.337 156.695 171.632 157.127 172.926 157.127L172.495 156.695Z',
+    'M196.228 132.521V159.284H193.206V135.974L186.733 140.29V136.837L193.638 132.521H196.659H196.228Z',
+  ],
+  /** Each glyph's x shift from its outline, in a row led by 0 (row 3) and in one led by 1 (row 2). */
+  rowX: [
+    [0, 0, 40.14, 39.71, 79.84, 79.85, 119.98, 119.99, 159.69, 159.69, 199.82, 199.83, 239.96, 239.53, 279.67, 279.68, 319.8, 319.37, 359.51],
+    [-22.87, 17.27, 16.84, 56.97, 56.97, 97.11, 96.68, 136.81, 136.82, 176.95, 176.95, 216.65, 216.66, 256.8, 256.8, 296.93, 296.51, 336.63, 336.64],
+  ],
+  /** Rows 1-30, each one's y shift from the outlines. Row 1 is led by 0 and the leads alternate. */
+  rowY: [
+    -88.06, -44.03, 0, 44.12, 88.37, 132.41, 176.43, 220.47, 264.49, 308.53, 352.67, 396.7, 440.73, 484.76, 528.79,
+    572.82, 616.85, 660.88, 704.91, 748.94, 792.97, 837, 881.03, 925.16, 969.2, 1013.45, 1057.46, 1101.51, 1145.52, 1189.57,
+  ],
+} as const
+
+/**
+ * The process strip's flowchart shapes, verbatim from Group 2374.svg: #0F0F0F,
+ * all 84 tall. Each viewBox is the shape's own box in the export's coordinates,
+ * so the paths need no translation. The diamond's rounded points sit exactly on
+ * y0 and y84; its side tips are at 811.0 and 863.0, inside the box.
+ */
+const STRIP_SHAPES = {
+  terminator: {
+    w: 41,
+    viewBox: '163 0 41 84',
+    d: 'M183.5 84C194.822 84 204 65.196 204 42C204 18.804 194.822 0 183.5 0C172.178 0 163 18.804 163 42C163 65.196 172.178 84 183.5 84Z',
+  },
+  process: {
+    w: 28,
+    viewBox: '493 0 28 84',
+    d: 'M496.203 84H517.797C519.566 84 521 82.5075 521 80.6665V3.33353C521 1.49247 519.566 0 517.797 0H496.203C494.434 0 493 1.49247 493 3.33353V80.6665C493 82.5075 494.434 84 496.203 84Z',
+  },
+  decision: {
+    w: 52.286,
+    viewBox: '810.857 0 52.286 84',
+    d: 'M834.842 82.6982L811.429 43.5656C810.857 42.6142 810.857 41.3686 811.429 40.3998L834.842 1.28452C835.865 -0.428174 838.135 -0.428174 839.158 1.28452L862.571 40.4171C863.143 41.3686 863.143 42.6142 862.571 43.583L839.158 82.7155C838.135 84.4282 835.865 84.4282 834.842 82.7155V82.6982Z',
+  },
+} as const
 
 export const metadata: Metadata = buildMetadata({
   title: 'About',
@@ -132,9 +193,13 @@ export default function About() {
                 6.77vw), so this is one ramp per breakpoint rather than a step.
                 A single 13.5vw rule gave 101px at 768, twice the drawn size.
 
-                The word gap is drawn 225 at 1920 and 77 at 768, i.e. ~11vw at
-                both. NOT cqi — there is no container-type on any ancestor here,
-                so container units would silently resolve against the viewport. */}
+                The word gap is drawn 225 at 1920 and 77 at 768. Only the 768
+                one governs — lg spreads the words with justify-between — and 77
+                is 10.03vw, so 10vw. It was 11vw, a split between the two, which
+                held one line at 768 by 3px until the stops moved off their
+                words and the band ran 4.5px over a 610 column. NOT cqi — there
+                is no container-type on any ancestor here, so container units
+                would silently resolve against the viewport. */}
             {/* THREE STOPS, NOT ONE, AND NONE OF THEM IS A FULL STOP.
                 Hero.svg draws a 26x26 mesh-filled square after every word —
                 at x411, x970 and x1732.8, all with their bottom on the y877.4
@@ -161,8 +226,8 @@ export default function About() {
                 column by ~45px and wraps once the three stops are added, which
                 is exactly what happened on the first pass. justify-between
                 absorbs the metric difference and keeps both ends on the drawn
-                marks. Below lg the words stack, so the 11vw gap still governs. */}
-            <p className="flex flex-wrap gap-x-[11vw] font-heading font-semibold leading-none tracking-[-0.05em] text-cloud [font-size:clamp(30px,6.77vw,52px)] lg:justify-between lg:gap-x-8 lg:[font-size:min(140px,7.29vw)]">
+                marks. Below lg the words stack, so the 10vw gap still governs. */}
+            <p className="flex flex-wrap gap-x-[10vw] font-heading font-semibold leading-none tracking-[-0.05em] text-cloud [font-size:clamp(30px,6.77vw,52px)] lg:justify-between lg:gap-x-8 lg:[font-size:min(140px,7.29vw)]">
               <span>
                 Feel<span aria-hidden="true" className="hero-stop" />
               </span>
@@ -218,7 +283,7 @@ export default function About() {
           {purposeRows.map((row) => (
             <div key={row.label} className="lg:flex lg:items-start lg:justify-between lg:gap-16">
               <div className="lg:flex lg:w-[686px] lg:gap-0">
-                <p className="text-xl text-ink-muted lg:w-[66px] lg:shrink-0 lg:text-sm">{row.label}</p>
+                <p className="text-xl font-semibold text-ink-muted lg:w-[66px] lg:shrink-0 lg:text-sm">{row.label}</p>
                 <h2 className="t-step mt-[17px] font-heading font-semibold text-ink lg:mt-[24px]">
                   {row.heading}
                 </h2>
@@ -307,48 +372,126 @@ export default function About() {
               the scrollable area — confirmed by scripts/check-overflow.mjs
               across 13 widths rather than assumed. */}
           <div className="lg:flex lg:items-start lg:gap-[10.01%]">
-            <div className="relative aspect-[610/608] w-full shrink-0 overflow-hidden rounded-[20px] lg:-ml-[12.7353%] lg:aspect-[1300/1300] lg:w-[81.5558%]">
+            {/* lg is 1300x910 (10:7), not the drawn square: at 1300 tall the
+                photo outgrew a desktop viewport, and the owner asked for it
+                shorter (2026-10-21). Width and bleed are untouched; only the
+                crop tightens — see the object-position note below. */}
+            <div className="relative aspect-[610/608] w-full shrink-0 overflow-hidden rounded-[20px] lg:-ml-[12.7353%] lg:aspect-[1300/910] lg:w-[81.5558%]">
+              {/* 65.9%, not centre. Group 2378.svg draws the 3277x4096 source
+                  at the card's width and 16.47% of the card above its top,
+                  which is 65.9% of the overflow; centred, the crop sat 52px
+                  higher in the photo at 1920.
+
+                  grayscale: the export embeds the photo with R = G = B on every
+                  pixel. Same CSS treatment as Home's desaturated photographs.
+
+                  lg centres it instead. The 10:7 frame shows 56% of the
+                  photo's height, and centred that is 22-78%: the monitor (its
+                  top bezel just trimmed) down to the lower hand, which is the
+                  whole subject; above it is bare wall, below it desk edge.
+
+                  HALF the site's photo grain. --grain-photo-opacity was
+                  calibrated against a different photograph, and at full
+                  strength this one came out nearly twice as grainy as the
+                  frame, which fuzzed the binary digits on top of it (eased at
+                  the owner's call, 2026-10-21). Measured on one patch of bare
+                  wall left of the digits, the same source pixels in each, as
+                  the residual after a sigma-2 blur (scripts/probe-mesh.mjs):
+
+                           frame        full grain   half
+                    1920   1.16-1.33    2.24         1.22
+                    768    0.97         1.41         1.00
+
+                  The frame's 1920 range is Group 2378.svg rendered by Chrome
+                  and its photo resized by lanczos; 768 has only the latter. A
+                  fraction of the variable, not a flat value, so it still drops
+                  under the <=768 rule in generated/mesh.css, as
+                  .hero-stop::after does. */}
               <Picture
                 name="about-desk"
                 alt=""
                 fill
                 sizes="(min-width: 1024px) 68vw, 100vw"
                 grain
-                className="h-full w-full"
+                className="h-full w-full after:opacity-[calc(var(--grain-photo-opacity)*0.5)]"
+                imgClassName="grayscale object-[50%_65.9%] lg:object-center"
               />
-              {/* Drawn as #0F0F0F with stops 0 at 0, 0.5 at 30% and 1 at the
-                  bottom, on a rect whose own fill-opacity is 0.5 — so the real
-                  ramp is 0 / 25% / 50%, never darker. It was 10% -> 70% here,
-                  which is darker at the top than the design ever gets at the
-                  bottom. Same opacity-halving construction as the hero scrim. */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-phantom/50 via-30% to-phantom opacity-50" />
+              {/* NO SCRIM. Values.svg and the .fig layer order put a #0F0F0F
+                  0 / 25% / 50% ramp over this photo, but Group 2378.svg, the
+                  newer export, paints that rect UNDER the photo, and the photo
+                  is fully opaque (alpha 255 throughout), so it never shows.
+                  Removed to match, at the owner's call (2026-10-21). */}
+
+              {/* The binary column (VALUES_BINARY), painted over the photo as
+                  the export paints it. The viewBox is the photo's own rect in
+                  Group 2378.svg, -40,49 and 1300 square, so the field scales
+                  with the photo: the 768 frame draws the same group at 179
+                  wide and 95 in on a 610 photo, the same 29.3% and 15.6%. The
+                  square runs past the 10:7 crop at lg and the photo clips it.
+
+                  fill-opacity, as the file has it, not opacity: each glyph is
+                  painted at 20% where it lands, with no layer composited over
+                  the photo. */}
+              <svg
+                aria-hidden="true"
+                viewBox="-40 49 1300 1300"
+                fill="#FAFAFA"
+                fillOpacity="0.2"
+                className="pointer-events-none absolute left-0 top-0 h-auto w-full"
+              >
+                <defs>
+                  {VALUES_BINARY.glyphs.map((d, digit) => (
+                    <path key={digit} id={`values-binary-${digit}`} d={d} />
+                  ))}
+                  {VALUES_BINARY.rowX.map((xs, lead) => (
+                    <g key={lead} id={`values-binary-row-${lead}`}>
+                      {xs.map((x, i) => (
+                        <use key={i} href={`#values-binary-${(i + lead) % 2}`} x={x} />
+                      ))}
+                    </g>
+                  ))}
+                </defs>
+                {VALUES_BINARY.rowY.map((y, i) => (
+                  <use key={i} href={`#values-binary-row-${i % 2}`} y={y} />
+                ))}
+              </svg>
             </div>
 
-            {/* VERTICAL RHYTHM, solved against Values.svg rather than eyeballed.
+            {/* VERTICAL RHYTHM, solved against the export rather than eyeballed
+                (Values.svg, then Group 2378.svg, which agree on this geometry).
                 The file hangs the whole column off the image: "Our Values" ink
                 sits 19.4 below the image top and the last body ink ends 7.9
                 PAST its bottom, so the column spans 1288.5 against a 1300 image
                 and reads as one block beside it.
 
-                Ink offsets were measured, not assumed — canvas TextMetrics on
-                the real fonts gives 10.2 for the 32px heading, 22.0 for the
-                48px name and -1.5 at the foot of a 14px body. Solving the three
-                unknowns against the drawn ink positions:
+                The names are 48px/100% in the frame, so their line box is 48.
+                It was inheriting 72 (1.5), which put every body 16px too far
+                under its name (70.5 against ~54.5) and ran the last one 18.4
+                past the image. Re-solved with the 48 box, measured at 1920:
 
-                  column mt   19.4 - 10.2            =  9.2   (was 64)
-                  ol mt       (124.4 - 22) - 9.2 - 38.4 = 54.8 (was 98)
-                  ol gap      268.25 - (72 + 10 + 63)  = 123.2 (was 59)
+                  column mt   "Our Values" ink 19.4 under the image   = 12.7
+                  ol mt       first name ink 124.4 under it            = 68.8
+                  body mt     name ink to body ink, drawn ~54.5        =  6.4
 
-                268.25 is the mean of the drawn name-to-name pitches (266.9 /
-                264.6 / 273.0 / 268.5). The old 59 gap gave 204, which is why
-                the column finished ~230px short of the image and the spacing
-                above and below did not match. */}
-              <div className="mt-[64px] lg:mt-[9px] lg:min-w-0 lg:flex-1">
+                THEN THE OWNER MOVED THE HEADING OUT (2026-10-21). With the
+                image cut to 910 the values had too little room, so "Our
+                Values" now sits ABOVE the image's top line — its baseline 40
+                over it — and the five values alone span the image height: the
+                first index's ink starts on the top line, the last body's ink
+                ends on the bottom one. Measured offsets: the heading's baseline
+                is 30.7 into its 38.39 box, the first index's ink 11.59 above the
+                list's top, its name's 16.09 below that index, and 111.89 from
+                the last name's ink to the last body's. Hence:
+
+                  column mt   -(40 + 30.7)                             = -70.7
+                  ol mt       11.59 - (-70.7 + 38.39)                   = 43.9
+                  ol gap      (910 - 16.09 - 111.89) / 4 - (48 + 6.4 + 63) = 78.1 */}
+              <div className="mt-[64px] lg:-mt-[70.7px] lg:min-w-0 lg:flex-1">
               <h2 id="values" className="font-heading text-4xl font-semibold text-ink-muted">
                 Our Values
               </h2>
 
-              <ol className="mt-[67px] flex flex-col gap-[41px] lg:mt-[55px] lg:gap-[123px]">
+              <ol className="mt-[67px] flex flex-col gap-[41px] lg:mt-[43.9px] lg:gap-[78.1px]">
                 {values.map((v, i) => (
                   <li key={v.name}>
                     {/* The index HANGS in a gutter; it does not flow. Values.svg
@@ -356,9 +499,18 @@ export default function About() {
                         1446, so the gutter is 26.5px and the two right-hand
                         elements share one left edge. Flowing it with a 28px gap
                         pushed the whole column to 1471.8. Same construction as
-                        the (Purpose) labels above. */}
+                        the (Purpose) labels above.
+
+                        Inter, as the frame sets it; it was rendering in Open
+                        Sans. Semibold is the owner's call (the frame draws
+                        Regular). Vertically it sits above the name's ink, by
+                        8.9 / 16.1 / 15.0 / 14.4 / 10.9 in Group 2378.svg —
+                        placed by hand — and all five take 16.1, the top of that
+                        range: the semibold digits are ~3px wider, and at the
+                        mean, 13.1, they met the names corner to corner, 0.5px
+                        apart on "(05)". */}
                     <div className="flex items-start gap-[clamp(16px,6vw,46px)] lg:gap-0">
-                      <span className="text-xl text-ink-muted lg:w-[26.5px] lg:shrink-0 lg:pt-[2px] lg:text-sm">
+                      <span className="font-heading text-xl font-semibold text-ink-muted lg:-mt-[15.6px] lg:w-[26.5px] lg:shrink-0 lg:text-sm">
                         ({String(i + 1).padStart(2, '0')})
                       </span>
                       <div className="min-w-0 lg:flex-1 lg:[container-type:inline-size]">
@@ -401,10 +553,17 @@ export default function About() {
                             505.6 wide, which stretched one gradient across the
                             column and meant no word ever reached #A59BFF —
                             every name rendered as flat dark purple. */}
-                        <h3 className="text-brand-gradient w-fit font-heading font-semibold [filter:url(#value-grain)] [font-size:clamp(30px,6.25vw,48px)] lg:[font-size:min(48px,16.5cqi)]">
+                        {/* Padding cancelled by margin: layout is untouched,
+                            but the box the gradient (background-clip: text) and
+                            the grain filter paint into now reaches the ink.
+                            With the 48px line box, y, p and g ran 3.5-4.5px
+                            below it and were cut off; and the -0.05em tracking
+                            follows the last letter too, so every word's final
+                            glyph ran 1-2.4px past the box's right edge. */}
+                        <h3 className="text-brand-gradient -mb-[0.2em] -mr-[0.1em] w-fit pb-[0.2em] pr-[0.1em] font-heading font-semibold [filter:url(#value-grain)] [font-size:clamp(30px,6.25vw,48px)] lg:leading-none lg:[font-size:min(48px,16.5cqi)]">
                           {v.name}
                         </h3>
-                        <p className="mt-[10px] text-2xl text-ink lg:text-sm">{v.body}</p>
+                        <p className="mt-[10px] text-2xl text-ink lg:mt-[6.4px] lg:text-sm">{v.body}</p>
                       </div>
                     </div>
                   </li>
@@ -415,8 +574,14 @@ export default function About() {
         </section>
 
         {/* ── We live & breathe recursion ──────────────────────────────────
-            48px at BOTH breakpoints — no ramp, as drawn. */}
-        <section className="container-content mt-[39px] lg:mt-[39px]">
+            48px at BOTH breakpoints — no ramp, as drawn.
+
+            Placed from Group 2377.svg against the frame (its card sits at
+            y3798, so the heading ink is at 3621.4). The last value body's ink
+            ends at 3445.9, a 175.5 gap; this was 39 and the heading sat 131px
+            high. 170 = 175.5 less the 1px the values section runs past that
+            ink and the 4.5 the heading's ink sits inside its box. */}
+        <section className="container-content mt-[39px] lg:mt-[170px]">
           <h2 className="font-heading text-7xl font-semibold leading-none text-ink">
             We live &amp; breathe recursion
           </h2>
@@ -433,7 +598,9 @@ export default function About() {
               is allowed twice on this page: here, where it is what the heading
               is about, and nowhere else. The five process steps below
               deliberately do not reach for it. */}
-          <p className="t-body mt-[58px] max-w-[1128px] text-ink-muted lg:mt-[73px]">
+          {/* lg 20.5: Group 2377.svg puts the paragraph ink 69.4 under the
+              heading ink. 73 put it at 121.5. */}
+          <p className="t-body mt-[58px] max-w-[1128px] text-ink-muted lg:mt-[20.5px]">
             Recursion is what happens when a process becomes the input to
             itself, and it’s how we work. An early version goes out to the
             people it’s for, and how they use it tells us what to change in
@@ -441,29 +608,96 @@ export default function About() {
             happens again. You get something working early, and every version
             after that is shaped by the people using it.
           </p>
+
+          {/* The card, from Group 2377.svg: 1594x900 r20, the full content
+              width, its top 43.2 under the paragraph's ink (41 from its box).
+              The 768 frame draws it 610x347, so each breakpoint keeps its own
+              aspect.
+
+              The fill is the "gradient-2" image — the same file the hero's
+              stops use, which is --mesh-1 (globals.css, .hero-stop). The export
+              draws it at 140.73% x 155.79% of the card, offset -355 / -30.7,
+              i.e. 54.67% / 6.11% of the overflow, and rotates the card 180deg.
+              Only the mesh layer turns, so the mark stays upright.
+
+              The mark is 428.3 wide, 26.87% of the card at both breakpoints
+              (164 on the 768 card's 610). LOGO_PATHS rather than the export's
+              own copy: the two are 1.8% apart in aspect, and this is the mark.
+
+              lg:w-[70%]: the drawn full width read too big, and the owner asked
+              for it 30% smaller and centred in the column (2026-10-21) —
+              1116x630 at 1920. The mark and the mesh crop are both
+              proportional, so they shrink with it. */}
+          <div className="relative mt-[41px] aspect-[610/347] overflow-hidden rounded-[20px] lg:mx-auto lg:aspect-[1594/900] lg:w-[70%]">
+            <div
+              aria-hidden="true"
+              className="mesh absolute inset-0 rotate-180 [--mesh-pos:54.67%_6.11%] [--mesh-size:140.73%_155.79%] [--mesh:var(--mesh-1)]"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute left-1/2 top-1/2 w-[26.87%] -translate-x-1/2 -translate-y-1/2 text-cloud"
+            >
+              <Logo className="h-auto w-full" />
+            </div>
+          </div>
         </section>
 
         {/* ── Process strip ───────────────────────────────────────────────
             Five steps across at 1920. The 768 frame draws only the first two,
             which is an unfinished mock rather than a mobile design, so all five
-            render and simply stack. */}
-        <section className="mt-[356px] lg:mt-[356px]" aria-label="How we work">
+            render and simply stack, one per row with the 768 frame's 337 text.
+
+            From Group 2374.svg. Each step is its shape (STRIP_SHAPES), 16px,
+            then a 231 text column, and the five spread edge to edge: the drawn
+            shapes sit at 0 / 330 / 647.9 / 989 / 1307 across the 1594 column,
+            which is exactly what justify-between makes of those widths.
+
+            The 1.5px rule runs through the shapes' middle: their top is 43.25
+            above its centre, hence -44 after the rule's own 1.5. Below the
+            shape top the export puts the name's ink at 29.4 and the body's at
+            71.8; this had the bodies 24px low. The rule runs through the names
+            too, as drawn — lifting them clear of it was tried and rejected by
+            the owner (2026-10-21).
+
+            The section starts 136 under the card at 1920 and 104 at 768, both
+            measured to the rule's centre. */}
+        <section className="mt-[103px] lg:mt-[135px]" aria-label="How we work">
           <hr className="border-0 border-t-[1.5px] border-surface" />
-          <div className="container-content mt-[-15px]">
-            <ol className="grid grid-cols-1 gap-x-[86px] gap-y-[48px] sm:grid-cols-2 lg:grid-cols-5">
-              {processSteps.map((step, i) => (
-                <li key={i}>
-                  <h3 className="font-heading text-4xl font-semibold leading-[0.76] text-ink">
-                    {step.name}
-                  </h3>
-                  <p className="t-body mt-[37px] max-w-[231px] text-ink-muted">{step.body}</p>
-                </li>
-              ))}
+          <div className="container-content mt-[-44px]">
+            {/* Five across from xl, not lg. At 1024 the five text columns get
+                90-102px, the bodies run to ten lines and "Process" (115px)
+                overruns its column into the next shape — so lg..xl takes two
+                columns, the 768 frame's 337 text capped by the half width. */}
+            <ol className="grid grid-cols-1 gap-y-[48px] lg:grid-cols-2 lg:gap-x-12 xl:flex xl:justify-between xl:gap-x-6">
+              {processSteps.map((step, i) => {
+                const s = STRIP_SHAPES[step.shape]
+                return (
+                  <li key={i} className="flex items-start gap-4 xl:min-w-0">
+                    <svg
+                      aria-hidden="true"
+                      viewBox={s.viewBox}
+                      width={s.w}
+                      height={84}
+                      className="shrink-0 overflow-visible fill-ink"
+                    >
+                      <path d={s.d} />
+                    </svg>
+                    <div className="min-w-0 max-w-[337px] flex-1 pt-[30px] xl:max-w-none xl:flex-none xl:shrink xl:basis-[231px]">
+                      <h3 className="font-heading text-4xl font-semibold leading-[0.76] text-ink">
+                        {step.name}
+                      </h3>
+                      <p className="t-body mt-[13px] text-ink-muted">{step.body}</p>
+                    </div>
+                  </li>
+                )
+              })}
             </ol>
           </div>
         </section>
 
-        <div className="mt-[124px] lg:mt-[124px]" />
+        {/* lg 159.5: the frame has the strip's body ink ending at 4950.5 and
+            the build-vision band starting at 5111, 160.5 apart. */}
+        <div className="mt-[124px] lg:mt-[159.5px]" />
       </main>
 
       <BuildVision />

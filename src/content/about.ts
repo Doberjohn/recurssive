@@ -120,22 +120,27 @@ export const values = [
 export const processSteps = [
   {
     name: 'Start',
+    shape: 'terminator',
     body: 'Somewhere in the business there is a problem worth paying to solve. That is the entry point.',
   },
   {
     name: 'Process',
+    shape: 'process',
     body: 'You see the work as it happens, in regular demos that show what has changed since the last one.',
   },
   {
     name: 'Decide',
+    shape: 'decision',
     body: 'We lay out the options and what each would cost, and say which we’d pick. The call is yours.',
   },
   {
     name: 'Process',
+    shape: 'process',
     body: 'The option you chose goes ahead from there, and you see the result running at the next demo.',
   },
   {
     name: 'End',
+    shape: 'terminator',
     body: 'Finished means it’s live and the people it was made for have been using it without problems.',
   },
-]
+] as const
