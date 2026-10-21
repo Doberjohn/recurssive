@@ -138,7 +138,13 @@ export function ServiceIndex({ services }: { services: Service[] }) {
             </span>
 
             <span className="mt-[6px] flex items-start lg:contents">
-              <span className="t-body max-w-[516px] text-ink transition-colors duration-200 group-focus-within:text-cloud group-hover:text-cloud lg:max-w-[878px]">
+              {/* mr is the drawn 768 gap between the description (ending x595)
+                  and its arrow (x630). As a margin it is a floor at every width
+                  and in both layouts — the description wraps short of it —
+                  where before the text ran to within 2.6px of the arrow
+                  wherever it filled the line: on phones, and at the narrow end
+                  of lg. */}
+              <span className="t-body mr-[35px] max-w-[516px] text-ink transition-colors duration-200 group-focus-within:text-cloud group-hover:text-cloud lg:max-w-[878px]">
                 {s.description}
               </span>
 
@@ -146,12 +152,14 @@ export function ServiceIndex({ services }: { services: Service[] }) {
                   5.06px stroke there against 4px here, and the head's arms grow
                   more than the shaft, so the box goes 37.2x29.85 -> 42.78x37.75
                   — a different aspect, not a bigger copy. Both are the file's
-                  own outlines. It is drawn at x630 (the description stops at
-                  595) and 12 below the description's box top. */}
+                  own outlines. It is drawn 12 below the description's box top,
+                  at x630, which is 16 in from the content edge. It sits flush
+                  right instead, as the 1920 arrow does — the owner's call on
+                  2026-10-21. */}
               <svg
                 aria-hidden="true"
                 viewBox="630 166.123 42.78 37.754"
-                className="ml-auto mr-4 mt-3 h-[38px] w-[43px] shrink-0 fill-ink transition-colors duration-200 group-focus-within:fill-accent group-hover:fill-accent lg:hidden"
+                className="ml-auto mt-3 h-[38px] w-[43px] shrink-0 fill-ink transition-colors duration-200 group-focus-within:fill-accent group-hover:fill-accent lg:hidden"
               >
                 <path d="M671.789 186.789C672.777 185.801 672.777 184.199 671.789 183.211L655.689 167.111C654.701 166.123 653.099 166.123 652.111 167.111C651.123 168.099 651.123 169.701 652.111 170.689L666.422 185L652.111 199.311C651.124 200.299 651.124 201.901 652.111 202.889C653.099 203.876 654.701 203.876 655.689 202.889L671.789 186.789ZM630 185L630 187.53L670 187.53L670 185L670 182.47L630 182.47L630 185Z" />
               </svg>
