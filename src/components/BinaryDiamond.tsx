@@ -12,9 +12,18 @@
  * were flat #999 at 45%, where the file masks a gradient at 10%.
  *
  * The mask is `background-clip: text` — the glyphs cut the mesh out of a
- * background rather than being coloured. Same compositing as the file, in one
- * declaration and no JavaScript. Styles live in globals.css as `.binary-diamond`
- * because background-clip needs a -webkit- pair.
+ * background rather than being coloured. Same compositing as the file, and no
+ * JavaScript. Styles live in globals.css (`.binary-diamond`, `.binary-row`,
+ * `.binary-strip`) because background-clip needs a -webkit- pair.
+ *
+ * MOTION, the owner's ask (2026-10-21): the digits drift toward the form as the
+ * section scrolls past. Scroll-linked rather than looping, so they only move
+ * while the page does, and sit still while someone reads the copy or fills in
+ * the form. Each row is a window exactly as wide as the drawn row, and a strip
+ * of digits a little longer than it slides through, so the outline never moves.
+ * A row travels in proportion to its width, so the centre runs fastest and the
+ * tips barely stir. With the diamond centred on screen every digit is exactly
+ * where the file draws it. CSS only, a view timeline; see .binary-strip.
  *
  * The gradient is mesh-5: matched by decoding the export's embedded raster and
  * scoring it against every shipped token — RMSE 0.87 against a next-best of
@@ -35,6 +44,11 @@
 const HALF = [1, 5, 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 32, 35, 38, 40, 43, 45, 48, 50, 53, 55, 58, 60]
 const ROWS = HALF.length * 2 - 1 // 47; centre row is HALF's last entry, 60 wide
 
+/** Cells a row travels over the section's whole pass through the viewport, per
+ *  cell of its width: the 60-wide centre row moves 15 cells, a 1-wide tip 0.25.
+ *  Approved as is by the owner (2026-10-21). */
+const DRIFT = 0.25
+
 /** Deterministic PRNG — no Math.random, so builds stay reproducible. */
 function mulberry32(seed: number) {
   return () => {
@@ -48,32 +62,41 @@ function mulberry32(seed: number) {
 
 function build() {
   const rand = mulberry32(0x0110_0110)
-  const lines: string[] = []
+  const rows: { n: number; d: number; k: number; text: string }[] = []
   for (let r = 0; r < ROWS; r++) {
     // Mirror the measured half. Row 0 is a single glyph, never an empty string:
     // an empty div generates no line box and collapses to 0px, which silently
     // dropped the end rows and left the field short of its drawn 707.
-    const width = HALF[r < HALF.length ? r : ROWS - 1 - r]
+    const n = HALF[r < HALF.length ? r : ROWS - 1 - r]
     // Strictly alternating, never random. The export has ZERO adjacent equal
     // characters across 1399 pairs. Only the digit each row STARTS on varies,
     // and that follows no rule that survives checking — column parity predicts
     // it on 23 of 47 rows, which is chance — so one deterministic bit per row.
     const start = rand() > 0.5 ? 1 : 0
-    let row = ''
-    for (let c = 0; c < width; c++) row += (c + start) % 2 === 0 ? '0' : '1'
-    lines.push(row)
+    // d cells of travel either way from the drawn position, and k spare digits
+    // past each end of the row, so the window never runs dry at either extreme.
+    // The pattern simply continues outward; cell 0 is still the drawn first digit.
+    const d = (n * DRIFT) / 2
+    const k = Math.ceil(d)
+    let text = ''
+    for (let c = -k; c < n + k; c++) text += (c + start + 2 * k) % 2 === 0 ? '0' : '1'
+    rows.push({ n, d, k, text })
   }
-  return lines
+  return rows
 }
 
-const LINES = build()
+const ROW_DATA = build()
 
 export function BinaryDiamond({ className = '' }: { className?: string }) {
   return (
     <div aria-hidden="true" className={`binary-diamond select-none ${className}`}>
-      {LINES.map((line, i) => (
-        <div key={i} className="whitespace-pre text-center">
-          {line}
+      {ROW_DATA.map((row, i) => (
+        <div
+          key={i}
+          className="binary-row"
+          style={{ ['--n' as string]: row.n, ['--d' as string]: row.d, ['--k' as string]: row.k, ['--i' as string]: i }}
+        >
+          <div className="binary-strip">{row.text}</div>
         </div>
       ))}
     </div>

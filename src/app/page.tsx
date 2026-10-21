@@ -815,8 +815,14 @@ export default function Home() {
 
         {/* ── Ready for success? ──────────────────────────────────────────
             Copy left, form right (x975). A photograph bleeds off the left edge
-            (1165x728 at x-208). */}
-        <section className="relative overflow-hidden py-32" aria-labelledby="contact">
+            (1165x728 at x-208).
+
+            overflow-clip, NOT overflow-hidden. Hidden makes the section a
+            scroll container, and the diamond's view timeline (.binary-diamond
+            in globals.css) would track its place inside the section, which
+            never changes, rather than in the viewport, so it would never move.
+            Clip trims the same edges without that. */}
+        <section className="relative overflow-clip py-32" aria-labelledby="contact">
           <div className="container-content">
             <div className="grid gap-16 lg:grid-cols-2">
               <div className="relative">

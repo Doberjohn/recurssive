@@ -125,7 +125,12 @@
    * whatever that font does and 0.5254em sets the result — 0.5254 x 13.07px =
    * 6.867px, and the 60-character centre row then spans 412px as drawn. A fixed
    * -0.084em assumed a 0.6em default and came out 41px narrow on the first font
-   * tried. */
+   * tried.
+   *
+   * view-timeline-name hands the strips below this element's pass through the
+   * viewport. That only works while nothing between here and the page is a
+   * scroll container, which is why the contact section is overflow-clip, not
+   * overflow-hidden (app/page.tsx). */
   .binary-diamond {
     font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
     font-size: 3.18cqi;
@@ -135,13 +140,81 @@
        instruction — a departure from the file rather than a correction to it,
        and settled after trying 0.20. Same kind of call as .reflow-binary. */
     opacity: 0.15;
+    view-timeline-name: --binary-diamond;
+  }
+
+  /* One drawn row as a window: exactly its --n cells wide (the letter-spacing
+   * above makes every cell 0.5254em), centred as the text used to be, and
+   * clipping the strip that slides through it. The diamond's outline never
+   * moves; only the digits do. hidden, not clip: without it a browser that
+   * cannot animate would still show the spare digits past each end. */
+  .binary-row {
+    display: flex;
+    width: calc(var(--n) * 0.5254em);
+    margin-inline: auto;
+    overflow: hidden;
+  }
+
+  /* The row's digits plus --k spare each side, pulled left so the drawn first
+   * digit lands on the window's edge.
+   *
+   * The gradient is painted per strip, positioned so the strips together paint
+   * what one background on the whole diamond did (282.8% wide, the file's 1165
+   * in a 412 box, centred both ways):
+   *   x  the background's left, -91.4cqi, less the strip's own left,
+   *      50cqi - (n/2 + k) cells
+   *   y  its top, (172 - 176.75) / 2 = -2.375cqi, less the row's top, i rows
+   * It cannot stay on .binary-diamond: tried, and the parent's text clip ignores
+   * the rows' overflow, so the spare digits past each end showed and the bottom
+   * tip read 101 instead of 0. The gradient therefore travels with its digits,
+   * by at most 52px of a 1162px gradient at 15% opacity. */
+  .binary-strip {
+    flex: none;
+    margin-left: calc(var(--k) * -0.5254em);
+    white-space: pre;
     background-image: var(--mesh-5);
-    background-size: 282.8% auto;   /* the file draws it 1165 wide in a 412 box */
-    background-position: center;
+    background-size: 282.8cqi auto;
+    background-position:
+      calc((var(--n) / 2 + var(--k)) * 0.5254em - 141.4cqi)
+      calc(-2.375cqi - var(--i) * 1.15em);
     background-repeat: no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  /* Scroll-linked, not looping: progress is the diamond's pass through the
+   * viewport, from its top entering at the bottom to its bottom leaving at the
+   * top, so the digits move only while the page does. Scrolling down carries
+   * them right, toward the form. Halfway through, the diamond centred on
+   * screen, every strip is at 0, exactly the drawn field.
+   *
+   * Without view timelines (Firefox, for now) or under reduced motion this never
+   * applies and the field is the static one. The blanket reduced-motion rule
+   * further down cannot stop it: it shortens durations, and a scroll-linked
+   * animation's progress comes from the scroll position, not from time. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .binary-strip {
+        animation-name: binary-drift;
+        animation-duration: auto;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --binary-diamond;
+        animation-range: cover 0% cover 100%;
+      }
+    }
+  }
+
+  /* margin-left, NOT transform. A transform animation gets its own compositor
+   * layer, and the heading and paragraph painted over it are then promoted too
+   * and lose subpixel antialiasing: measured on "Ready for success?", colour
+   * fringes 174 deep with the field static and 29 with it composited, i.e. the
+   * copy went from ClearType to greyscale. The margin repaints the field's rows
+   * on the main thread while scrolling, and leaves the copy as it was. */
+  @keyframes binary-drift {
+    from { margin-left: calc((var(--k) + var(--d)) * -0.5254em); }
+    to { margin-left: calc((var(--k) - var(--d)) * -0.5254em); }
   }
 
   /* The contact details card's backdrop. Derivation in ContactDetails.tsx.
