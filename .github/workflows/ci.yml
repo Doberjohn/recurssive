@@ -20,9 +20,18 @@ jobs:
     name: Build, typecheck, budget
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # Every actions/* step is at v7: checkout and setup-node here and in the
+      # Lighthouse job, upload-artifact there. v4 ran on Node 20, which GitHub
+      # has deprecated (flagged on the run for eb2a009, 2026-10-21), and v7
+      # runs on Node 24. Nothing between v4 and v7 changes these steps: there
+      # is no pull_request_target or workflow_run trigger, nothing pushes with
+      # the persisted credentials, package.json has no packageManager field so
+      # setup-node's automatic caching stays off wherever `cache:` is not set,
+      # and upload-artifact's one addition, unzipped single-file uploads, is
+      # opt-in, so the report still goes up as a zip.
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
@@ -107,7 +116,7 @@ jobs:
       pull-requests: read
       deployments: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # v1.3.3 is the first release that can send the bypass header; v1.3.2
       # could only send a Vercel password, a different protection feature.
@@ -125,7 +134,7 @@ jobs:
           max_timeout: 600
           vercel_protection_bypass_header: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
 
@@ -199,7 +208,7 @@ jobs:
 
       - name: Keep the reports
         if: always() && steps.scrub.outcome == 'success'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: lighthouse-report
           path: lhci-report
