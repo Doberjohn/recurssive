@@ -28,6 +28,11 @@ export async function generateMetadata({
     type: 'article',
     publishedTime: post.meta.publishedAt,
     modifiedTime: post.meta.updatedAt ?? post.meta.publishedAt,
+    // The blog is held back: the owner is not launching it yet (2026-10-21), so
+    // the section is unlinked and out of the sitemap. Drop this in the same
+    // commit that restores the nav link and the sitemap entry — the index at
+    // /blog carries the matching flag. See src/lib/site.ts.
+    noIndex: true,
   })
 }
 

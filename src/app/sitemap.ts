@@ -33,7 +33,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // placeholder study was the single most crawlable thing about a section
     // that is not ready — asked for by the sitemap, reachable, and lorem. It
     // goes back in the same commit as the /cases nav link. See src/lib/site.ts.
-    ...(['blog', 'capabilities'] as const).flatMap((collection) =>
+    //
+    // `blog` is omitted for the same reason: the owner is not launching it yet
+    // (2026-10-21), and while the index at /blog was noIndex, the post was
+    // listed here and indexable. It goes back with the /blog nav link.
+    ...(['capabilities'] as const).flatMap((collection) =>
       getAll(collection).map((entry) => ({
         url: `${siteUrl}/${collection}/${entry.slug}`,
         lastModified: stamp(entry.meta.updatedAt ?? entry.meta.publishedAt),

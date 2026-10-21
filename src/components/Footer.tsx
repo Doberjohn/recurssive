@@ -35,12 +35,12 @@ import { site } from '@/lib/site'
  *
  *  - The "Contents" column lists Home / Services / About / Contact. "Services"
  *    is not a page; Cases, Capabilities and Blog are missing. Corrected to the
- *    real navigation, minus Cases while that route is held back (Nav.tsx).
- *    This is why the band does not match the drawn 685: the Contents column is
- *    the tallest thing in that row, so every link past the four drawn adds one
- *    line of it — measured at exactly one line-height, 24px at 1920 and 32.5px
- *    at 768. Five links measure 709.7 at a 1905 content width; adding a sixth
- *    puts it at 733.7. The difference is absorbed at the top of the gradient,
+ *    real navigation, minus Cases and Blog while those are held back (Nav.tsx).
+ *    That leaves four links, the drawn count, and the band measures 685.7 at a
+ *    1905 content width against the drawn 685. The Contents column is the
+ *    tallest thing in that row, so every link past four adds one line of it —
+ *    exactly one line-height, 24px at 1920 and 32.5px at 768 (five measured
+ *    709.7, six 733.7). The difference is absorbed at the top of the gradient,
  *    where it is darkest and least visible, which is why the count can move
  *    without redrawing anything.
  *  - The clock reads a hardcoded 22:52:19 on all 31 frames. Shipping a frozen
@@ -53,10 +53,9 @@ const contents = [
   { href: '/', label: 'Home' },
   { href: '/capabilities', label: 'Capabilities' },
   { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
-  // Cases is deliberately absent — see the note in Nav.tsx. Restore it here in
-  // the same commit that restores the nav entry.
+  // Cases and Blog are deliberately absent — see the notes in Nav.tsx. Restore
+  // each here in the same commit that restores its nav entry.
 ]
 
 const socials = [

@@ -24,7 +24,6 @@ export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/capabilities', label: 'Capabilities' },
   { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
   // No Contact link: "Start a project" already points at /contact, and the two
   // sat next to each other going to the same place. The footer keeps its own
   // Contact link, which is a separate list.
@@ -33,6 +32,9 @@ export const navLinks = [
   // work to show yet, so the route is unlinked and unindexed until there is.
   // Restore this entry, the Footer's, and the "Related work" section in
   // capabilities/[slug] in the same commit that unhides it — see src/lib/site.ts.
+  //
+  // No Blog link: the owner is not launching it yet (2026-10-21). Held back
+  // like Cases, and restored the same way — see src/lib/site.ts.
 ] as const
 
 export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {

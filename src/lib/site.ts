@@ -101,6 +101,11 @@ export const site = {
  * its most discoverable page. robots.ts explains why none of this is a
  * `Disallow`.
  *
+ * /blog is held back the same way as of 2026-10-21 — the owner is not launching
+ * it yet. Same checklist with `blog` for `cases`, minus (3): nothing
+ * cross-links into it. Both blog/page.tsx and blog/[slug]/page.tsx carry
+ * `noIndex`, and `'blog'` is out of app/sitemap.ts.
+ *
  * The routes still return 200 on a direct URL. That is intentional — the pages
  * are live design work and scripts/check-overflow.mjs still measures them.
  */
@@ -109,7 +114,7 @@ export const routes = [
   '/about',
   // '/cases',      // unlinked too — see the 5-point checklist in the note above
   // '/capabilities',
-  // '/blog',
+  // '/blog',       // unlinked too — same checklist, see the note above
   '/contact',
   '/privacy-policy',
   '/terms-of-service',
