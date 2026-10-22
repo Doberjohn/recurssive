@@ -674,8 +674,10 @@ export default function Home() {
               </h2>
               {/* Drawn 338.7 wide, so it breaks to two lines — roughly 41
                   characters a line, which is why this is short rather than a
-                  paragraph. */}
-              <p className="t-body mx-auto mt-6 max-w-[380px] text-center text-ink-muted">
+                  paragraph. The 768 frame draws it 462 wide (x153, centred),
+                  so md takes that; below md the 380 cap only binds above
+                  ~430, and phones get the full column either way. */}
+              <p className="t-body mx-auto mt-6 max-w-[380px] text-center text-ink-muted md:max-w-[462px] lg:max-w-[380px]">
                 Short answers to what people ask us most. If yours isn’t here,
                 just ask.
               </p>

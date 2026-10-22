@@ -11,16 +11,22 @@ import { BuildVision } from './BuildVision'
  *              1920                       768
  *   title      48px SemiBold @165,193     42px Bold @79,174
  *   heading    32px SemiBold ls-5%        36px SemiBold ls-5%
- *   body       18px Open Sans Regular     24px Open Sans SemiBold ls-3%
+ *   body       18px Regular, lh 1.5       24px Regular, lh 1.25, ls-3%
  *   column     861                        610
  *   head->body 49                         44
  *
- * The body is heavier AND larger on the narrow layout, which is the same
- * inversion the rest of the site uses: the 768 frame is not a scaled 1920, it is
- * a re-set of the same content.
+ * The body is larger AND more tightly leaded on the narrow layout, which is the
+ * same inversion the rest of the site uses: the 768 frame is not a scaled 1920,
+ * it is a re-set of the same content.
  *
- * Below 768 both ramp down and floor, because a 24px semibold legal document on
- * a phone is a wall. The floors are legibility values, not drawn ones.
+ * Regular at both, on the owner's call of 2026-10-22. It was SemiBold below lg
+ * and leading-relaxed (1.625) everywhere: the Privacy frame does draw 4 of its
+ * 13 paragraphs SemiBold at 768, but Terms draws all 12 Regular and both 1920
+ * frames are Regular throughout.
+ *
+ * Below 768 the size ramps down and floors, because a 24px legal document on a
+ * phone is a wall. The floor is a legibility value, not a drawn one; the
+ * leading keeps the 768 frame's 1.25.
  *
  * `nav tone="dark"`: these open on the pale ground, not a photograph.
  */
@@ -105,7 +111,7 @@ export function LegalPage({
                         // break opportunity, which pushed the document 57px past
                         // a 375 viewport. Legal text is where long URLs live, so
                         // this belongs on the component, not on one paragraph.
-                        className="break-words font-semibold leading-relaxed tracking-[-0.03em] [font-size:clamp(16px,3.125vw,24px)] lg:font-normal lg:tracking-normal lg:[font-size:18px]"
+                        className="break-words leading-[1.25] tracking-[-0.03em] [font-size:clamp(16px,3.125vw,24px)] lg:leading-[1.5] lg:tracking-normal lg:[font-size:18px]"
                       >
                         {p}
                       </p>

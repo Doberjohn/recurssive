@@ -47,6 +47,12 @@ import { BinaryMark } from './ui/BinaryMark'
 /** 534 at 768 and 764 at 1920, ramped; never wider than its container. */
 const ARTWORK = 'min(764px, calc(380.7px + 19.97vw), 100%)'
 
+/** The body's measure, 303 at 768 to 59% of the artwork at 1920. See the <p>. */
+const MEASURE = 'max(min(204.5px + 12.83vw, 59%), 22ch)'
+
+/** -5% (-1.2px at 24) at 768, untracked at 1920, ramped like the size. */
+const TRACKING = 'clamp(-1.2px, -2px + 0.1042vw, 0px)'
+
 export function NoticeBlock({
   heading,
   description,
@@ -88,18 +94,21 @@ export function NoticeBlock({
           {heading}
         </Heading>
 
-        {/* 441 of 764 at 1920 and 303 of 534 at 768 — 57.7% and 56.7%, so a
-            percentage of the artwork reproduces both, including the wrap to two
-            lines at 768 that a `ch` cap cannot (one value cannot be 40ch at 20px
-            and 23ch at 24px). The 22ch floor stops it collapsing to a column on
-            phones, where the artwork is capped by the container instead.
+        {/* 441 of 764 at 1920 and 303 of 534 at 768 — 57.7% and 56.7%. A `ch`
+            cap cannot reproduce both (one value cannot be 40ch at 20px and 23ch
+            at 24px), and one percentage nearly can, but the 59% that 1920 needs
+            (below) drew 317 at 768, 14 wider than the frame. So the measure
+            ramps from the drawn 303 at 768 to 59% of the artwork at 1920, and
+            holds 59% past it. The 22ch floor stops it collapsing to a column
+            on phones, where the artwork is capped by the container instead.
             59, not 58: this line measures 441.45px against a drawn box of 441,
             so the frame fits it by half a pixel and any rounding — a scrollbar
             taking 15px off the viewport, say — tips it onto a second line. The
-            extra ~1% is invisible on centred text and buys the slack. */}
+            extra ~1% is invisible on centred text and buys the slack.
+            The 768 frames also track it -5%, which the 1920 ones do not. */}
         <p
-          className="mt-2.5 max-w-[max(59%,22ch)] leading-normal text-ink-muted"
-          style={{ fontSize: 'clamp(20px, 26.67px - 0.347vw, 24px)' }}
+          className="mt-2.5 leading-normal text-ink-muted"
+          style={{ fontSize: 'clamp(20px, 26.67px - 0.347vw, 24px)', letterSpacing: TRACKING, maxWidth: MEASURE }}
         >
           {description}
         </p>

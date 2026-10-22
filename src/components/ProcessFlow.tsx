@@ -398,9 +398,14 @@ export function ProcessFlow({ steps }: { steps: Step[] }) {
                 </h3>
               </div>
 
-              {/* 29 from the rule, and 330 wide — the 768 frame draws the body
-                  at x79 in a 321-box, i.e. at the gutter under the name rather
-                  than indented to it.
+              {/* 29 from the rule, and 324 wide at -4% — the 768 frame draws the
+                  body at x79 in boxes of 321/321/316/318, i.e. at the gutter
+                  under the name rather than indented to it, and tracks it -4%
+                  rather than `.t-body`'s -3%. Not the drawn 321: at -4% step
+                  1's copy needs 321.5 and takes a fourth line at 321, where the
+                  frame draws three. 324 holds all four at three lines with
+                  2.5px to spare on the tightest. lg drops the tracking with
+                  the size.
 
                   18/27 at 1920, not `.t-body`'s 16/24. Measured off the export:
                   the ink is 667.88x71.98 over three lines, which is a 26.94
@@ -408,7 +413,7 @@ export function ProcessFlow({ steps }: { steps: Step[] }) {
                   copy fitted in two, so this was not only a size difference —
                   the block was a line short of the drawn one. Same step up the
                   Industry columns take, and the same 1.5 ratio. */}
-              <p className="t-body mt-[29px] text-cloud max-w-[330px] lg:max-w-none lg:col-start-5 lg:mt-[var(--txt-drop)] lg:max-w-[696px] lg:self-start lg:pt-1 lg:text-[18px] lg:leading-[27px]">
+              <p className="t-body mt-[29px] text-cloud max-w-[324px] tracking-[-0.04em] lg:max-w-none lg:col-start-5 lg:mt-[var(--txt-drop)] lg:max-w-[696px] lg:self-start lg:pt-1 lg:text-[18px] lg:leading-[27px] lg:tracking-normal">
                 {step.body}
               </p>
             </div>

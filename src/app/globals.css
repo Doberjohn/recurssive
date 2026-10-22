@@ -410,6 +410,10 @@
    * body at 12.9px and the labels at 10.7px on a 375 phone — correctly scaled
    * and too small to read. The floors bite only below ~430px, where the drawn
    * ratio has already stopped being the point.
+   *
+   * The body is set like .t-body below lg, 1.5 at -3%, which is how the 768
+   * frame draws it; it was 1.4 untracked at every width. lg keeps the 1.4, and
+   * no tracking, as the 1920 frame has it.
    */
   .cc-heading {
     font-size: min(2.25rem, max(1.375rem, 7.531cqi));
@@ -417,7 +421,8 @@
   }
   .cc-body {
     font-size: min(1.5rem, max(0.875rem, 5.021cqi));
-    line-height: 1.4;
+    line-height: 1.5;
+    letter-spacing: -0.03em;
   }
   .cc-label {
     font-size: min(1.25rem, max(0.75rem, 4.184cqi));
@@ -429,7 +434,7 @@
 
   @media (min-width: 1024px) {
     .cc-heading { font-size: 2rem; }
-    .cc-body { font-size: 1rem; }
+    .cc-body { font-size: 1rem; line-height: 1.4; letter-spacing: normal; }
     .cc-label { font-size: 0.875rem; }
   }
 

@@ -12,7 +12,7 @@ import { site } from '@/lib/site'
  *              1920                  768
  *   band       1920x330              768x389
  *   heading    48px @y61, centred    (t-section's 42px)
- *   body       16px @y161, 477 wide  (t-body's 24px)
+ *   body       16px @y161, 477 wide  24px (t-body), 489 wide
  *   CTA        143x39 @y231          200x49 @y271
  *
  * The scrim is a VERTICAL gradient, transparent at the top to solid #0F0F0F at
@@ -32,7 +32,7 @@ import { site } from '@/lib/site'
  * THE 768 BAND, re-measured against the page frames (About.svg; About,
  * Capabilities, Case, Cases, Privacy and Terms all draw it identically): 388
  * tall, heading Inter Semi Bold 48 at -5% (not .t-section's 42), body Open
- * Sans 24 at -3% (.t-body), CTA 200x49. Ink from the band's top:
+ * Sans 24 at -3% (.t-body) in a 489 box, CTA 200x49. Ink from the band's top:
  * heading 77.4-123.8, body 147.8-243.8, CTA 271-320, so 68 under the CTA.
  * 1920 is unchanged.
  */
@@ -108,7 +108,7 @@ export function BuildVision() {
             sentence that made NO time commitment, so the site promised two
             working days before the form and nothing here. Both halves now come
             from site.ts. */}
-        <p className="t-body mx-auto mt-[17.1px] max-w-[477px] text-cloud lg:mt-4">
+        <p className="t-body mx-auto mt-[17.1px] max-w-[477px] text-cloud md:max-w-[489px] lg:mt-4 lg:max-w-[477px]">
           {site.contactInvite} {site.replyPromise}
         </p>
 
