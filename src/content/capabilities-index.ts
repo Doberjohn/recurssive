@@ -59,10 +59,18 @@
  * Dev string has 17px less headroom than the 194-character Consulting one,
  * because headroom depends on where the words break. Verify by rendering.
  *
- * All four below are browser-verified at 2 lines / 4 lines, re-run at 24px on
- * 2026-10-22: each takes 18-37px less width at 1920, and 74-91px less at 768,
- * before it gains a line. An earlier pass had Enterprise at 1px, which rendered
- * correctly and would have tipped to a fifth line on any edit.
+ * All four below are browser-verified at 2 lines / 4 lines on 2026-10-22, with
+ * 123 / 94 / 214 / 21px to spare on the last line at 1920 and 477 / 411 / 557 /
+ * 295px at 768. Enterprise is the tight one: re-render it after any edit.
+ *
+ * ── COPY. Written on 2026-10-22 from the owner's multiple-choice interview,
+ * each sentence from a picked answer, and approved line by line: Consulting
+ * gives findings first and lets the client choose who fixes, and sometimes
+ * says "rewrite"; Product Dev starts from an idea, plan and designs before the
+ * build, for whatever platforms it needs; AI is mostly features inside apps,
+ * phone or cloud decided per feature; Enterprise moves an app piece by piece
+ * so it keeps shipping, monitoring and releases in every move and sold alone.
+ * Change a fact only by asking the owner.
  *
  * ── VOICE. docs/verbal-identity.md governs. Two rules bit hardest here, and
  * both are recorded because an earlier draft of these four broke them.
@@ -71,16 +79,15 @@
  *   draft had zero we/our/us across all five index strings. §5 of the verbal
  *   identity measures the TOLERATED copy at 1.3 per 100 words and the REJECTED
  *   copy at 0.3, diagnosing the latter as "the studio has vanished". Zero is
- *   past the rejected end. These four carry two, each in the last clause of its
- *   paragraph, which is the PUT "we" LAST pattern from page.tsx:107.
+ *   past the rejected end. All four carry the studio, and none opens on it.
  *
  *   NO TEMPLATE ACROSS THE BAND. The deck's four descriptions all opened on a
  *   gerund (Reading / Designing / Putting / Moving). An owner rejection is on
  *   record at page.tsx:114-121 for a band where five of six rows shared one
  *   rhythm; four of four is tighter than that. These open on four different
- *   shapes — noun phrase, adverbial, quantified claim, negative declarative —
- *   and their sentence means ramp 13.0 / 15.5 / 16.0 / 18.5 rather than
- *   converging. Check this mechanically after any edit, not by ear.
+ *   shapes: an inversion ("First comes"), a quantity ("Most of this work"), a
+ *   definite noun phrase ("The usual request") and a negative ("Nothing that
+ *   works"). Check this mechanically after any edit, not by ear.
  */
 
 export type Pillar = {
@@ -95,7 +102,7 @@ export const pillars: Pillar[] = [
   {
     name: 'Consulting',
     description:
-      'An outside read on code that already exists, and a plain account of what it is costing you to keep running. That comes back as a report, or as the pull requests that fix it. Rarely as a rewrite.',
+      'First comes a plain account of what’s holding the app back. Then you choose who fixes it: your own team, or us. Now and then the honest answer is a rewrite, and when it is, we say so.',
     rows: [
       'React Native Performance Optimization',
       'New Architecture Migration',
@@ -131,7 +138,7 @@ export const pillars: Pillar[] = [
   {
     name: 'Product Dev',
     description:
-      'Prototype first, then the version people actually pay for. One React Native codebase covers phone and web, so adding a second platform costs a decision rather than a whole second budget.',
+      'Most of this work begins as an idea and nothing more. The plan and the designs come first, and the build is its own step. We build for phone, web or desktop, whichever the product needs.',
     rows: [
       'Desktop App Development',
       'Web App Development',
@@ -161,7 +168,7 @@ export const pillars: Pillar[] = [
   {
     name: 'AI Engineering',
     description:
-      'Most models belong on the device rather than in someone’s data centre. That one decision settles what works offline and what never leaves the phone, and we would rather make it early.',
+      'The usual request is an AI feature inside an app, new or already in use. Some features belong on the phone and some in the cloud, and we decide that one feature at a time.',
     rows: [
       'On-device AI',
       'Generative AI App Development',
@@ -191,7 +198,7 @@ export const pillars: Pillar[] = [
   {
     name: 'Enterprise Solutions',
     description:
-      'Nothing has to stop shipping. A large app moves to React Native one screen at a time, and most of the risk lives in the release process and the monitoring, which is where we spend the time.',
+      'Nothing that works today should break on the way. A large app moves screen by screen and keeps shipping, with monitoring and a release process in every move. We set those up on their own too.',
     rows: ['Migration to React Native', 'Monitoring & Observability', 'Release Process Optimization'],
     card: {
       title: 'Enterprise Solutions Project',

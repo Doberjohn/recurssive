@@ -12,7 +12,7 @@ import { buildMetadata } from '@/lib/metadata'
 export const metadata: Metadata = buildMetadata({
   title: 'Capabilities',
   description:
-    'What Recurssive takes on, in four groups: an outside read on code you already have, new product work, on-device AI, and enterprise migration.',
+    'Recurssive reviews and fixes existing apps, builds new products from an idea, adds AI features, and moves large apps to React Native screen by screen.',
   path: '/capabilities',
   // The placeholder reason for this flag is gone: every string on this page is
   // now real (intro, four pillar descriptions, nineteen drawn rows, four drawn
@@ -67,7 +67,7 @@ export default function Capabilities() {
       <main className="flex flex-1 flex-col">
         <PageHeader
           title="Capabilities"
-          intro="Four groups, nineteen kinds of work. They run from a second opinion to the system your company depends on."
+          intro="Work with us usually starts small and grows from there. Each of the four groups below can be the starting point."
         >
           <hr className="mt-[23px] border-0 border-t-[1.5px] border-ink-muted lg:mt-[26px]" />
         </PageHeader>
