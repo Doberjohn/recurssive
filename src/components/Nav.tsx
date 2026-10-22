@@ -49,19 +49,26 @@ export function Nav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
         // `ml-auto` that used to do that lives on the desktop link list, which
         // is `hidden` below lg — so on mobile the hamburger had nothing pushing
         // it and sat one gap away from the logo.
-        className="container-content flex items-center justify-between gap-8 pt-8 md:pt-10"
+        className="container-content flex items-center justify-between gap-8 pt-8 md:pt-[53.5px] lg:pt-10"
         aria-label="Main"
       >
         {/* The drawn lockup: mark 60.6x37.4 at x163, a 7.2px gap, then the
             wordmark 146.2x17.9. Same outlines as the footer — set as text it
-            was in Inter, and the brand face is At Hauss. */}
+            was in Inter, and the brand face is At Hauss.
+
+            The 768 frames draw it LARGER and lower (Group 71x43 at 79,54 on
+            every one, the Menu sheet included): mark ink 43.7 tall, a 9.3 gap,
+            the wordmark 170x20, the row centred on y75.5 where ours sat at 62.
+            Hence md:pt 53.5 around the 44px row. Both frames stretch the mark
+            ~8% wider than the brand outline (60.6 and 70.7 wide), so it is
+            matched on height, as at 1920. */}
         <Link
           href="/"
-          className={`${text} flex shrink-0 items-center gap-[7px]`}
+          className={`${text} flex shrink-0 items-center gap-[7px] md:gap-[9.3px] lg:gap-[7px]`}
           aria-label="Recurssive, home"
         >
-          <Logo className="h-9 w-auto md:h-[37px]" />
-          <Wordmark className="h-auto w-[118px] md:w-[146px]" />
+          <Logo className="h-9 w-auto md:h-[43.7px] lg:h-[37px]" />
+          <Wordmark className="h-auto w-[118px] md:w-[170px] lg:w-[146px]" />
         </Link>
 
         {/* Desktop links.
@@ -148,14 +155,15 @@ function MobileMenu() {
       id="mobile-menu"
     >
       {/* Deliberately the SAME container and padding as the nav above —
-          `container-content` plus `pt-8 md:pt-10`, and the same Logo/Wordmark
-          sizes. The menu used a 10.3vw gutter, which agrees with the container
-          at 768 but is 38.6 against 24 at 375, so the lockup and the icon both
-          jumped as the sheet opened. Nothing here may drift from the nav. */}
-      <div className="container-content flex shrink-0 items-center justify-between gap-8 pt-8 md:pt-10">
-        <span className="flex shrink-0 items-center gap-[7px] text-ink">
-          <Logo className="h-9 w-auto md:h-[37px]" />
-          <Wordmark className="h-auto w-[118px] md:w-[146px]" />
+          `container-content` plus `pt-8 md:pt-[53.5px]`, and the same
+          Logo/Wordmark sizes. The menu used a 10.3vw gutter, which agrees with
+          the container at 768 but is 38.6 against 24 at 375, so the lockup and
+          the icon both jumped as the sheet opened. Nothing here may drift from
+          the nav. */}
+      <div className="container-content flex shrink-0 items-center justify-between gap-8 pt-8 md:pt-[53.5px]">
+        <span className="flex shrink-0 items-center gap-[7px] text-ink md:gap-[9.3px]">
+          <Logo className="h-9 w-auto md:h-[43.7px]" />
+          <Wordmark className="h-auto w-[118px] md:w-[170px]" />
         </span>
         <label
           htmlFor="nav-toggle"

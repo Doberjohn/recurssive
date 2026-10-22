@@ -14,7 +14,7 @@ import Link from 'next/link'
  * div — keyboard and screen-reader behaviour comes free from the right element.
  */
 
-type Variant = 'light' | 'dark' | 'accent'
+type Variant = 'light' | 'dark' | 'accent' | 'band'
 
 // Size lives on the variants, not here: the drawn buttons are not one size, and
 // putting `text-base`/`h-10` in the shared string would make every override a
@@ -53,6 +53,12 @@ const variants: Record<Variant, string> = {
   // CTA, which has no container to measure against.
   accent:
     'h-11 px-4 text-base md:h-[53px] md:text-2xl lg:h-[39px] lg:px-[15px] lg:text-base ' +
+    'rounded-md bg-primary text-cloud hover:bg-primary-deep',
+  // The build-vision band's CTA: accent, but every band frame draws it 200x49
+  // at 768 (15 + 170 + 15, "Frame 124" / "Frame 130" at x284) where the
+  // Contact and Home forms draw theirs 202x53. Same 143x39 at 1920.
+  band:
+    'h-11 px-4 text-base md:h-[49px] md:px-[15px] md:text-2xl lg:h-[39px] lg:text-base ' +
     'rounded-md bg-primary text-cloud hover:bg-primary-deep',
 }
 
