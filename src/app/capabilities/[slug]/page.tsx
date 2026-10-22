@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { Nav } from '@/components/Nav'
+import { Footer } from '@/components/Footer'
 import { getAll, getBySlug } from '@/lib/content'
 import { Mdx } from '@/lib/content/mdx'
 import { buildMetadata } from '@/lib/metadata'
@@ -23,6 +25,13 @@ export async function generateMetadata({
     title: capability.meta.title,
     description: capability.meta.description,
     path: `/capabilities/${slug}`,
+    // Interim, on the owner's call of 2026-10-22: until the template drawn in
+    // the Capability frames ships, these pages are the unstyled scaffold below,
+    // so they stay out of search and out of the sitemap. They had been served
+    // index,follow and sitemapped, and Home's service rows link here. Drop this
+    // and restore the collection in sitemap.ts in the commit that ships the
+    // template.
+    noIndex: true,
   })
 }
 
@@ -38,40 +47,52 @@ export default async function CapabilityPage({
   // A "Related work" section used to live here: the cases naming this
   // capability, the reverse of the reference validated at build time in
   // lib/content/validateReferences. It was the last in-app path to /cases, and
-  // this route IS indexed, so it was also a crawl path — removed with the nav
-  // and footer links. Restore it in the commit that unhides /cases; the
-  // reverse-reference lookup is `getAll('cases').filter((c) =>
+  // this route is meant to be indexed, so it was also a crawl path — removed
+  // with the nav and footer links. Restore it in the commit that unhides
+  // /cases; the reverse-reference lookup is `getAll('cases').filter((c) =>
   // c.meta.capabilities.includes(slug))`, and validateReferences still keeps
   // both sides honest in the meantime.
 
+  // The site's own nav and footer, which the scaffold never had: a visitor
+  // arriving from Home's service rows had no way back but the browser. The top
+  // padding is /contact's, which clears the absolute nav and holds the owner's
+  // phone spacing under the logo.
   return (
-    <article className="container-content py-24">
-      <header className="max-w-3xl">
-        <p className="text-sm uppercase tracking-wide text-ink-muted">
-          {capability.meta.pillar.replace('-', ' ')}
-        </p>
-        <h1 className="mt-4 text-6xl text-ink">{capability.meta.title}</h1>
-        <p className="mt-6 text-lg text-ink-muted">
-          {capability.meta.description}
-        </p>
-      </header>
+    <>
+      <Nav tone="dark" />
 
-      {capability.meta.services.length > 0 && (
-        <ul className="mt-12 flex flex-wrap gap-2">
-          {capability.meta.services.map((s) => (
-            <li
-              key={s}
-              className="rounded-3xl bg-surface px-4 py-2 text-sm text-ink"
-            >
-              {s}
-            </li>
-          ))}
-        </ul>
-      )}
+      <main className="flex flex-1 flex-col">
+        <article className="container-content pb-24 pt-[clamp(135px,22.9vw,176px)] lg:pt-[172px]">
+          <header className="max-w-3xl">
+            <p className="text-sm uppercase tracking-wide text-ink-muted">
+              {capability.meta.pillar.replace('-', ' ')}
+            </p>
+            <h1 className="mt-4 text-6xl text-ink">{capability.meta.title}</h1>
+            <p className="mt-6 text-lg text-ink-muted">
+              {capability.meta.description}
+            </p>
+          </header>
 
-      <div className="mt-16 max-w-3xl">
-        <Mdx source={capability.body} />
-      </div>
-    </article>
+          {capability.meta.services.length > 0 && (
+            <ul className="mt-12 flex flex-wrap gap-2">
+              {capability.meta.services.map((s) => (
+                <li
+                  key={s}
+                  className="rounded-3xl bg-surface px-4 py-2 text-sm text-ink"
+                >
+                  {s}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className="mt-16 max-w-3xl">
+            <Mdx source={capability.body} />
+          </div>
+        </article>
+      </main>
+
+      <Footer />
+    </>
   )
 }
