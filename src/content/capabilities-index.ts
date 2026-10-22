@@ -16,7 +16,10 @@
  * shape the content layer will eventually supply, which is the honest interim.
  *
  * The code samples are drawn verbatim in the frame — they are real, chosen
- * copy rather than filler, so they are transcribed exactly.
+ * copy rather than filler, so they are transcribed exactly. So are their
+ * colours: the frame colours each run by hand, read here from the .fig's
+ * per-character fills and marked [[r:…]] red, [[p:…]] purple, [[g:…]] green,
+ * [[o:…]] orange or [[m:…]] grey. CodeCard reads the marks.
  *
  * ── COPY BUDGETS, MEASURED. Do not derive these, and do not take the figure in
  * docs/copy-deck.md:711 on trust — it is wrong, and wrong in the dangerous
@@ -84,7 +87,8 @@ export type Pillar = {
   name: string
   description: string
   rows: string[]
-  card: { title: string; code: string; muted: boolean }
+  /** `minHeight` only where the frames draw the card taller than its 484. */
+  card: { title: string; code: string; minHeight?: number }
 }
 
 export const pillars: Pillar[] = [
@@ -103,21 +107,22 @@ export const pillars: Pillar[] = [
     ],
     card: {
       title: 'Consulting Project',
-      // The only card the frame draws in muted grey rather than near-white.
-      muted: true,
-      code: `import { optimizeApp } from "@company/performance";
-const config = {
-  framework: "React Native",
-  architecture: "New Architecture",
-  platform: "Expo + Next.js",
+      // Drawn 520 at both widths where the others are 484: at 1920 its foot
+      // lands on the seventh row's rule, the only pillar long enough to reach.
+      minHeight: 520,
+      code: `[[o:import]] [[m:{]] [[p:optimizeApp]] [[m:}]] [[r:from]] [[g:"@company/performance"]];
+[[r:const]] [[p:config]] = {
+  framework: [[g:"React Native"]],
+  architecture: [[g:"New Architecture"]],
+  platform: [[g:"Expo + Next.js"]],
 };
-async function consulting() {
-  const metrics = await optimizeApp(config);
+[[r:async function]] [[p:consulting]]() {
+  [[r:const]] [[p:metrics]] = [[r:await]] [[p:optimizeApp]]([[p:config]]);
 
-  return {
-    fps: metrics.fps,
-    startupTime: metrics.startupTime,
-    status: "Optimized",
+  [[r:return]] {
+    fps: [[p:metrics]].fps,
+    startupTime: [[p:metrics]].startupTime,
+    status: [[g:"Optimized"]],
   };
 
 }`,
@@ -136,22 +141,21 @@ async function consulting() {
     ],
     card: {
       title: 'Product Development Project',
-      muted: false,
-      code: `const products = [
-  { type: "Web", color: "#3B82F6" },
-  { type: "Mobile", color: "#10B981" },
-  { type: "Desktop", color: "#F97316" },
+      code: `[[r:const]] [[p:products]] = [
+  { type: [[g:"Web"]], color: [[g:"#3B82F6"]] },
+  { type: [[g:"Mobile"]], color: [[g:"#10B981"]] },
+  { type: [[g:"Desktop"]], color: [[g:"#F97316"]] },
 ];
 
-export const buildProduct = () =>
-  products.map(product => ({
-    ...product,
-    scalable: true,
-    tested: true,
-    deployed: true,
+[[r:export const]] [[p:buildProduct]] [[r:=]] () =>
+  [[p:products]].map([[p:product]] => ({
+    ...[[p:product]],
+    scalable: [[r:true]],
+    tested: [[r:true]],
+    deployed: [[r:true]],
   }));
 
-console.log("Shipping products worldwide");`,
+[[p:console]].log([[g:"Shipping products worldwide"]]);`,
     },
   },
   {
@@ -166,23 +170,22 @@ console.log("Shipping products worldwide");`,
     ],
     card: {
       title: 'AI Engineering Project',
-      muted: false,
-      code: `const ai = {
-  model: "On-device AI",
-  knowledge: "Integrated",
-  generation: "Enabled",
+      code: `[[r:const]] [[p:ai]] = {
+  model: [[g:"On-device AI"]],
+  knowledge: [[g:"Integrated"]],
+  generation: [[g:"Enabled"]],
 };
 
-async function createExperience(prompt: string) {
-  return {
-    output: await generate(prompt),
-    latency: "12ms",
-    color: "#8B5CF6",
-    privacy: "Local First",
+[[r:async function]] [[p:createExperience]]([[p:prompt]]: [[p:string]]) {
+  [[r:return]] {
+    output: [[r:await]] [[p:generate]]([[p:prompt]]),
+    latency: [[g:"12ms"]],
+    color: [[g:"#8B5CF6"]],
+    privacy: [[g:"Local First"]],
   };
 }
 
-createExperience("Build something amazing");`,
+[[p:createExperience]]([[g:"Build something amazing"]]);`,
     },
   },
   {
@@ -192,22 +195,21 @@ createExperience("Build something amazing");`,
     rows: ['Migration to React Native', 'Monitoring & Observability', 'Release Process Optimization'],
     card: {
       title: 'Enterprise Solutions Project',
-      muted: false,
-      code: `const observability = {
-  monitoring: "active",
-  releases: "automated",
-  migration: "React Native",
+      code: `[[o:const]] [[p:observability]] [[r:=]] {
+  monitoring: [[g:"active"]],
+  releases: [[g:"automated"]],
+  migration: [[g:"React Native"]],
 };
 
-function enterpriseHealth() {
+[[r:function]] [[p:enterpriseHealth]]() {
   return {
-    uptime: "99.99%",
-    alerts: "#EF4444",
-    dashboards: "#6366F1",
-    deployments: "#22C55E",
+    uptime: [[g:"99.99%"]],
+    alerts: [[g:"#EF4444"]],
+    dashboards: [[g:"#6366F1"]],
+    deployments: [[g:"#22C55E"]],
   };
 }
-export default enterpriseHealth;`,
+[[r:export default]] [[p:enterpriseHealth]];`,
     },
   },
 ]

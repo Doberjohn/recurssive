@@ -33,6 +33,28 @@ export const metadata: Metadata = buildMetadata({
  * The header rule here is full-width (1593 @x165 at 1920, 610 @x79 at 768),
  * unlike Blog and Cases where the rule only fills the space left over by the
  * filter chips. So this page does not use FilterTabs — it has no filter row.
+ *
+ * VERTICAL RHYTHM, re-measured against both frames on 2026-10-22. Two gaps had
+ * the frames' TOP-TO-TOP distances applied as margins after a box: heading to
+ * description (61 at 768, 70 at 1920) and description to rows (74 at 1920),
+ * which opened each pillar ~100px wider than drawn. Headings and descriptions
+ * are now placed by baseline, because Figma sets the headings in taller auto
+ * line boxes (51 and 58) than .t-section (44 and 50.4):
+ *
+ *                              768      1920
+ *   rule after the intro       23       26    (its top edge on the drawn line's)
+ *   rule to first heading      47.7     134
+ *   heading to description     13.5     15.8  (drawn 61 / 70 top to top)
+ *   description to rows        22       25    (drawn 20-28 at 768, by hand)
+ *   rows to card               64       —     (beside the rows, 6 down, at 1470+)
+ *   between pillars            87       218
+ *   last pillar to the band    127      231
+ *
+ * The 768 frame places several of these by hand and not consistently (rows to
+ * card is 54/67/62/71 down the page), so each takes the frame's median, which
+ * keeps every pillar within a few px of drawn instead of drifting ~40 by the
+ * band. Our 1920 rule sits 24 higher than the frame's only because the real
+ * intro is two lines where the frame's Lorem is three.
  */
 export default function Capabilities() {
   return (
@@ -44,10 +66,10 @@ export default function Capabilities() {
           title="Capabilities"
           intro="Four groups, nineteen kinds of work. They run from a second opinion to the system your company depends on."
         >
-          <hr className="mt-[33px] border-0 border-t-[1.5px] border-ink-muted lg:mt-[26px]" />
+          <hr className="mt-[23px] border-0 border-t-[1.5px] border-ink-muted lg:mt-[26px]" />
         </PageHeader>
 
-        <div className="container-content mt-[45px] flex flex-col gap-[86px] lg:mt-[131px] lg:gap-[214px]">
+        <div className="container-content mt-[47.7px] flex flex-col gap-[87px] lg:mt-[134px] lg:gap-[218px]">
           {pillars.map((pillar) => (
             <section key={pillar.name} aria-labelledby={`pillar-${pillar.name}`}>
               {/* Not `lg:` — the two columns are a fixed 746 and a fixed 502
@@ -63,10 +85,10 @@ export default function Capabilities() {
                   >
                     {pillar.name}
                   </h2>
-                  <p className="t-body mt-[61px] max-w-[754px] text-ink-muted lg:mt-[66px]">
+                  <p className="t-body mt-[13.5px] max-w-[754px] text-ink-muted lg:mt-[15.8px]">
                     {pillar.description}
                   </p>
-                  <div className="mt-[84px] lg:mt-[73px]">
+                  <div className="mt-[22px] lg:mt-[25px]">
                     <PillarRows rows={pillar.rows} />
                   </div>
                 </div>
@@ -77,15 +99,15 @@ export default function Capabilities() {
                 <CodeCard
                   title={pillar.card.title}
                   code={pillar.card.code}
-                  muted={pillar.card.muted}
-                  className="mx-auto mt-[54px] min-[1470px]:mx-0 min-[1470px]:mt-0"
+                  minHeight={pillar.card.minHeight}
+                  className="mx-auto mt-[64px] min-[1470px]:mx-0 min-[1470px]:mt-[6px]"
                 />
               </div>
             </section>
           ))}
         </div>
 
-        <div className="mt-[233px] lg:mt-[233px]" />
+        <div className="mt-[127px] lg:mt-[231px]" />
       </main>
 
       <BuildVision />
