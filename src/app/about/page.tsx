@@ -102,12 +102,32 @@ export default function About() {
             The photo, its scrim and the diagonal grid are all drawn at the SAME
             pixel size at both breakpoints — only their x-offset pans. So this
             band is one of the few places where a flat value is correct. */}
-        <section className="relative isolate flex min-h-[min(1201px,100svh)] flex-col justify-end overflow-hidden pb-14 lg:pb-[132px]">
+        <section className="relative isolate flex min-h-[min(1201px,100svh)] flex-col justify-end overflow-hidden pb-[70px] lg:pb-[132px]">
           {/* FOUR LAYERS, in the export's own paint order. Reading Hero.svg
               top to bottom: photo, mesh, scrim, grid — then the text. An
               earlier build had only the photo and a scrim, and compensated for
-              the two missing layers by making the scrim 40/50/80% black. */}
-          <div className="absolute inset-0 -z-10">
+              the two missing layers by making the scrim 40/50/80% black.
+
+              THE STAGE. All four are drawn at their 1920 pixel sizes at BOTH
+              breakpoints, and only their x pans: the photo sits at x -21 in
+              the 1920 frame and -463 in the 768 one, the mesh at -74 and -516,
+              the grid at -18.4 and -460.4. That is one shared shift, -442 over
+              1152px of frame width (0.38368 per px), so the layers live in one
+              1920x1201 box that slides: left = 38.368% - 736.67px, which is 0
+              at 1920 and -442 at 768. Inside it every layer keeps its 1920
+              geometry, and nothing scales with the viewport.
+
+              It used to be the hero box itself, which is right at 1920 only.
+              At 768 the mesh (107.75% of the WIDTH) came out 827x517 and
+              stopped in a hard line halfway down the band, the grid's 1920
+              viewBox was squeezed into 768 under preserveAspectRatio none,
+              which steepened every diagonal, and the photo was a centred cover
+              crop whose centre sat 137px left of the drawn one and 48 lower.
+
+              Above 1920 the stage widens with the band instead (max(1920px,
+              100%), held at 1920:1201) so it still covers, and left clamps
+              at 0. */}
+          <div className="absolute left-[min(0px,calc(38.368%_-_736.67px))] top-0 -z-10 aspect-[1920/1201] w-[max(1920px,100%)]">
             {/* `grain` matches Home's Industries and Our Process bands. AVIF strips
                 film grain at any web size — structure survives, fine texture
                 does not — and Grain is a stated brand principle (deck
@@ -115,16 +135,22 @@ export default function About() {
                 the source's own grain measures sigma 1.76 at 1920 display
                 width, and the tile at 10% measures 2.02, the closest match.
                 It sits UNDER the mesh, scrim and grid, which are siblings
-                painted after it — the same order Home uses. */}
-            <Picture
-              name="about-hero"
-              alt=""
-              fill
-              sizes="100vw"
-              priority
-              grain
-              className="h-full w-full"
-            />
+                painted after it — the same order Home uses.
+
+                Drawn 1969x1298 at -21,-97 in the 1920 frame, as percentages of
+                the stage so it widens with it past 1920. The box is the
+                source's own 1820:1200 shape, so the cover fit crops nothing. */}
+            <div className="absolute left-[-1.0938%] top-[-8.0766%] h-[108.077%] w-[102.552%]">
+              <Picture
+                name="about-hero"
+                alt=""
+                fill
+                sizes="1969px"
+                priority
+                grain
+                className="h-full w-full"
+              />
+            </div>
 
             {/* Mesh over the photo — and THE BAND IS 1201, NOT 1231.
                 Drawn as a 2068.8x1293 rect at 1994.8,1201 under rotate(-180),
@@ -187,19 +213,19 @@ export default function About() {
           {/* Feel Form Function. The frame draws 140/130/130 at 1920, but both
               hero alternates draw all three at a uniform 147.7 — and three
               near-identical sizes read as a slip, not a rhythm. Uniform here. */}
-          <div className="container-content">
+          <div className="@container container-content">
             {/* Drawn 140 at 1920 and 52 at 768 — which sound far apart but are
                 nearly the same proportion of the viewport (7.29vw against
                 6.77vw), so this is one ramp per breakpoint rather than a step.
                 A single 13.5vw rule gave 101px at 768, twice the drawn size.
 
                 The word gap is drawn 225 at 1920 and 77 at 768. Only the 768
-                one governs — lg spreads the words with justify-between — and 77
-                is 10.03vw, so 10vw. It was 11vw, a split between the two, which
-                held one line at 768 by 3px until the stops moved off their
-                words and the band ran 4.5px over a 610 column. NOT cqi — there
-                is no container-type on any ancestor here, so container units
-                would silently resolve against the viewport. */}
+                one governs — lg spreads the words with justify-between — and
+                below lg both the gap and the size are a share of the COLUMN,
+                not the viewport: 77/610 = 12.62cqi and 52/610 = 8.525cqi, via
+                the @container on this div. They were 10vw and 6.77vw, and vw
+                counts a classic scrollbar, so in a 768 desktop window the 595
+                column could not hold the three words and "Function." wrapped. */}
             {/* THREE STOPS, NOT ONE, AND NONE OF THEM IS A FULL STOP.
                 Hero.svg draws a 26x26 mesh-filled square after every word —
                 at x411, x970 and x1732.8, all with their bottom on the y877.4
@@ -226,8 +252,10 @@ export default function About() {
                 column by ~45px and wraps once the three stops are added, which
                 is exactly what happened on the first pass. justify-between
                 absorbs the metric difference and keeps both ends on the drawn
-                marks. Below lg the words stack, so the 10vw gap still governs. */}
-            <p className="flex flex-wrap gap-x-[10vw] font-heading font-semibold leading-none tracking-[-0.05em] text-cloud [font-size:clamp(30px,6.77vw,52px)] lg:justify-between lg:gap-x-8 lg:[font-size:min(140px,7.29vw)]">
+                marks. The 768 frame pins them the same way ("Function."'s
+                stop ends on the column's right edge at 689), so this starts at
+                md. Below md the words wrap and the 12.62cqi gap governs. */}
+            <p className="flex flex-wrap gap-x-[12.62cqi] font-heading font-semibold leading-none tracking-[-0.05em] text-cloud [font-size:clamp(30px,8.525cqi,52px)] md:justify-between lg:gap-x-8 lg:[font-size:min(140px,7.29vw)]">
               <span>
                 Feel<span aria-hidden="true" className="hero-stop" />
               </span>
@@ -240,7 +268,10 @@ export default function About() {
               </span>
             </p>
 
-            <p className="mt-[52px] text-xl font-semibold text-accent lg:mt-[84px] lg:text-sm">
+            {/* Inter, as both frames set every parenthesised label; it was
+                rendering in Open Sans. 22px on a 22px line below lg, the
+                frame's own box, so the story can hang from its baseline. */}
+            <p className="mt-[57px] font-heading text-xl font-semibold leading-none text-accent lg:mt-[84px] lg:text-sm lg:leading-[1.5]">
               (Our Story)
             </p>
             {/* 846px @16px, drawn 3 lines. MEASURED ceiling 323 — 360 breaks
@@ -248,8 +279,13 @@ export default function About() {
                 it names the owner and keeps the studio's "we", which is the
                 owner's call, and nothing here claims a team. An earlier draft
                 glossed Feel / Form / Function instead; the lockup now stands
-                on its own as the tagline. Owner-approved, see content/about.ts. */}
-            <p className="t-body mt-[14px] max-w-[846px] text-cloud lg:ml-[82px] lg:-mt-1">
+                on its own as the tagline. Owner-approved, see content/about.ts.
+
+                From md the label HANGS: the 768 frame sets the story in a
+                column from x205 to 690 (20.66% in from the 610 column), its
+                first line starting where the label's ink ends, at 24px / 36.
+                Below md it stacks under the label, as the purpose rows do. */}
+            <p className="t-body mt-[20px] max-w-[846px] text-cloud md:ml-[20.66%] md:-mt-[9px] lg:ml-[82px] lg:-mt-1">
               John Fanidis started Recurssive after more than ten years of
               building software, in-house and for clients, to be the one
               choosing the work. We design and build websites and apps, and on
@@ -278,17 +314,28 @@ export default function About() {
 
             Vertically the LABEL sits highest and the heading drops below it —
             drawn ink deltas 26.8 / 18.8 / 24.8, mean 23.5. The earlier build
-            had that inverted, pushing the label down 22px instead. */}
-        <section className="container-content mt-[105px] flex flex-col gap-[57px] lg:mt-[108px] lg:gap-[70px]">
+            had that inverted, pushing the label down 22px instead.
+
+            From md the 768 frame HANGS the heading instead: it starts 94px in
+            (15.41% of the 610 column) with its first line's caps on the
+            label's baseline, 44px leading, and breaks "We create to inspire /
+            others to create." — text-wrap: balance gives those breaks for all
+            three. The label is Inter, as both frames set it. The body runs the
+            full column at 24px.
+
+            Below md (phones) they stack again. The 22px label is ~93px wide
+            and the indent shrinks with the column (53px at 390), so a hanging
+            heading's first line ran into the label's descenders. */}
+        <section className="container-content mt-[105px] flex flex-col gap-[47px] lg:mt-[108px] lg:gap-[70px]">
           {purposeRows.map((row) => (
             <div key={row.label} className="lg:flex lg:items-start lg:justify-between lg:gap-16">
               <div className="lg:flex lg:w-[686px] lg:gap-0">
-                <p className="text-xl font-semibold text-ink-muted lg:w-[66px] lg:shrink-0 lg:text-sm">{row.label}</p>
-                <h2 className="t-step mt-[17px] font-heading font-semibold text-ink lg:mt-[24px]">
+                <p className="font-heading text-xl font-semibold leading-none text-ink-muted lg:w-[66px] lg:shrink-0 lg:text-sm lg:leading-[1.5]">{row.label}</p>
+                <h2 className="t-step mt-[21px] text-balance font-heading font-semibold leading-[1.1] text-ink md:ml-[15.41%] md:-mt-[6px] lg:ml-0 lg:mt-[24px] lg:text-wrap lg:leading-[1.05]">
                   {row.heading}
                 </h2>
               </div>
-              <p className="t-body mt-[23px] text-ink-muted lg:mt-[39px] lg:max-w-[620px]">
+              <p className="t-body mt-[17px] text-ink-muted lg:mt-[39px] lg:max-w-[620px]">
                 {row.body}
               </p>
             </div>
@@ -390,6 +437,11 @@ export default function About() {
                   top bezel just trimmed) down to the lower hand, which is the
                   whole subject; above it is bare wall, below it desk edge.
 
+                  Below lg the 768 export draws it 2.26% PAST cover, its left
+                  edge 4px out and its top 109.7 above the card. Scaling the
+                  65.9% crop by 1.0226 about 29% / 40.9% of the card lands on
+                  both exactly.
+
                   HALF the site's photo grain. --grain-photo-opacity was
                   calibrated against a different photograph, and at full
                   strength this one came out nearly twice as grainy as the
@@ -414,7 +466,7 @@ export default function About() {
                 sizes="(min-width: 1024px) 68vw, 100vw"
                 grain
                 className="h-full w-full after:opacity-[calc(var(--grain-photo-opacity)*0.5)]"
-                imgClassName="grayscale object-[50%_65.9%] lg:object-center"
+                imgClassName="grayscale object-[50%_65.9%] origin-[29%_40.9%] scale-[1.0226] lg:object-center lg:scale-100"
               />
               {/* NO SCRIM. Values.svg and the .fig layer order put a #0F0F0F
                   0 / 25% / 50% ramp over this photo, but Group 2378.svg, the
@@ -486,12 +538,14 @@ export default function About() {
                   column mt   -(40 + 30.7)                             = -70.7
                   ol mt       11.59 - (-70.7 + 38.39)                   = 43.9
                   ol gap      (910 - 16.09 - 111.89) / 4 - (48 + 6.4 + 63) = 78.1 */}
-              <div className="mt-[64px] lg:-mt-[70.7px] lg:min-w-0 lg:flex-1">
-              <h2 id="values" className="font-heading text-4xl font-semibold text-ink-muted">
+              <div className="mt-[76.7px] lg:-mt-[70.7px] lg:min-w-0 lg:flex-1">
+              {/* tracking-normal: both frames set "Our Values" at Inter 32
+                  with no tracking (169 wide), where text-4xl brings -5%. */}
+              <h2 id="values" className="text-center font-heading text-4xl font-semibold tracking-normal text-ink-muted lg:text-left">
                 Our Values
               </h2>
 
-              <ol className="mt-[67px] flex flex-col gap-[41px] lg:mt-[43.9px] lg:gap-[78.1px]">
+              <ol className="mt-[37.8px] flex flex-col gap-[20.25px] lg:mt-[43.9px] lg:gap-[78.1px]">
                 {values.map((v, i) => (
                   <li key={v.name}>
                     {/* The index HANGS in a gutter; it does not flow. Values.svg
@@ -509,8 +563,8 @@ export default function About() {
                         range: the semibold digits are ~3px wider, and at the
                         mean, 13.1, they met the names corner to corner, 0.5px
                         apart on "(05)". */}
-                    <div className="flex items-start gap-[clamp(16px,6vw,46px)] lg:gap-0">
-                      <span className="font-heading text-xl font-semibold text-ink-muted lg:-mt-[15.6px] lg:w-[26.5px] lg:shrink-0 lg:text-sm">
+                    <div className="flex items-start">
+                      <span className="-mt-[9.4px] w-[46px] shrink-0 font-heading text-xl font-semibold text-ink-muted lg:-mt-[15.6px] lg:w-[26.5px] lg:text-sm">
                         ({String(i + 1).padStart(2, '0')})
                       </span>
                       <div className="min-w-0 lg:flex-1 lg:[container-type:inline-size]">
@@ -560,10 +614,10 @@ export default function About() {
                             below it and were cut off; and the -0.05em tracking
                             follows the last letter too, so every word's final
                             glyph ran 1-2.4px past the box's right edge. */}
-                        <h3 className="text-brand-gradient -mb-[0.2em] -mr-[0.1em] w-fit pb-[0.2em] pr-[0.1em] font-heading font-semibold [filter:url(#value-grain)] [font-size:clamp(30px,6.25vw,48px)] lg:leading-none lg:[font-size:min(48px,16.5cqi)]">
+                        <h3 className="text-brand-gradient -mb-[0.2em] -mr-[0.1em] w-fit pb-[0.2em] pr-[0.1em] font-heading font-semibold [filter:url(#value-grain)] [font-size:clamp(30px,6.25vw,48px)] leading-none lg:[font-size:min(48px,16.5cqi)]">
                           {v.name}
                         </h3>
-                        <p className="mt-[10px] text-2xl text-ink lg:mt-[6.4px] lg:text-sm">{v.body}</p>
+                        <p className="t-body mt-[16px] text-ink lg:mt-[6.4px] lg:text-sm">{v.body}</p>
                       </div>
                     </div>
                   </li>
@@ -580,8 +634,11 @@ export default function About() {
             y3798, so the heading ink is at 3621.4). The last value body's ink
             ends at 3445.9, a 175.5 gap; this was 39 and the heading sat 131px
             high. 170 = 175.5 less the 1px the values section runs past that
-            ink and the 4.5 the heading's ink sits inside its box. */}
-        <section className="container-content mt-[39px] lg:mt-[170px]">
+            ink and the 4.5 the heading's ink sits inside its box.
+
+            Below lg the 768 export (About.svg) puts the heading ink 97.7 under
+            the last value body's ink; this was 39, half that. */}
+        <section className="container-content mt-[85.7px] lg:mt-[170px]">
           <h2 className="font-heading text-7xl font-semibold leading-none text-ink">
             We live &amp; breathe recursion
           </h2>
@@ -599,8 +656,9 @@ export default function About() {
               is about, and nowhere else. The five process steps below
               deliberately do not reach for it. */}
           {/* lg 20.5: Group 2377.svg puts the paragraph ink 69.4 under the
-              heading ink. 73 put it at 121.5. */}
-          <p className="t-body mt-[58px] max-w-[1128px] text-ink-muted lg:mt-[20.5px]">
+              heading ink. 73 put it at 121.5. Below lg the 768 export puts it
+              20.3 under, at 24px / 36; 58 put it 72 under. */}
+          <p className="t-body mt-[5px] max-w-[1128px] text-ink-muted lg:mt-[20.5px]">
             Recursion is what happens when a process becomes the input to
             itself, and it’s how we work. An early version goes out to the
             people it’s for, and how they use it tells us what to change in
@@ -628,7 +686,7 @@ export default function About() {
               for it 30% smaller and centred in the column (2026-10-21) —
               1116x630 at 1920. The mark and the mesh crop are both
               proportional, so they shrink with it. */}
-          <div className="relative mt-[41px] aspect-[610/347] overflow-hidden rounded-[20px] lg:mx-auto lg:aspect-[1594/900] lg:w-[70%]">
+          <div className="relative mt-[31px] aspect-[610/347] overflow-hidden rounded-[20px] lg:mx-auto lg:mt-[41px] lg:aspect-[1594/900] lg:w-[70%]">
             <div
               aria-hidden="true"
               className="mesh absolute inset-0 rotate-180 [--mesh-pos:54.67%_6.11%] [--mesh-size:140.73%_155.79%] [--mesh:var(--mesh-1)]"
@@ -643,9 +701,14 @@ export default function About() {
         </section>
 
         {/* ── Process strip ───────────────────────────────────────────────
-            Five steps across at 1920. The 768 frame draws only the first two,
-            which is an unfinished mock rather than a mobile design, so all five
-            render and simply stack, one per row with the 768 frame's 337 text.
+            Five steps across at 1920. Below lg the 768 export runs them as ONE
+            SIDEWAYS STRIP: "Start" at x79, "Process" at x502 with its text
+            running off the frame's edge, so the rest are a swipe away. Built
+            that way at the owner's call (2026-10-21); they used to stack, which
+            took ~1100px where the strip takes 230. Each step keeps the 337
+            text (14.04em of its 24px body, so it narrows on a phone), 29px
+            apart, snapping step by step, the scroller bled to both screen
+            edges so the steps run off them as drawn.
 
             From Group 2374.svg. Each step is its shape (STRIP_SHAPES), 16px,
             then a 231 text column, and the five spread edge to edge: the drawn
@@ -667,12 +730,21 @@ export default function About() {
             {/* Five across from xl, not lg. At 1024 the five text columns get
                 90-102px, the bodies run to ten lines and "Process" (115px)
                 overruns its column into the next shape — so lg..xl takes two
-                columns, the 768 frame's 337 text capped by the half width. */}
-            <ol className="grid grid-cols-1 gap-y-[48px] lg:grid-cols-2 lg:gap-x-12 xl:flex xl:justify-between xl:gap-x-6">
+                columns, the 768 frame's 337 text capped by the half width.
+
+                The strip is focusable because it scrolls: keyboard users reach
+                the steps past the edge with the arrow keys. Its scrollbar is
+                hidden, as drawn; the second step running off the edge is what
+                says there is more. */}
+            <ol
+              tabIndex={0}
+              aria-label="Process steps"
+              className="-mx-6 flex snap-x snap-mandatory scroll-px-6 gap-x-[29px] overflow-x-auto px-6 [scrollbar-width:none] md:-mx-[79px] md:scroll-px-[79px] md:px-[79px] lg:mx-0 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-[48px] lg:overflow-visible lg:px-0 xl:flex xl:justify-between xl:gap-x-6 [&::-webkit-scrollbar]:hidden"
+            >
               {processSteps.map((step, i) => {
                 const s = STRIP_SHAPES[step.shape]
                 return (
-                  <li key={i} className="flex items-start gap-4 xl:min-w-0">
+                  <li key={i} className="flex shrink-0 snap-start items-start gap-4 lg:shrink xl:min-w-0">
                     <svg
                       aria-hidden="true"
                       viewBox={s.viewBox}
@@ -682,11 +754,11 @@ export default function About() {
                     >
                       <path d={s.d} />
                     </svg>
-                    <div className="min-w-0 max-w-[337px] flex-1 pt-[30px] xl:max-w-none xl:flex-none xl:shrink xl:basis-[231px]">
+                    <div className="shrink-0 pt-[30px] lg:min-w-0 lg:max-w-[337px] lg:flex-1 xl:max-w-none xl:flex-none xl:shrink xl:basis-[231px]">
                       <h3 className="font-heading text-4xl font-semibold leading-[0.76] text-ink">
                         {step.name}
                       </h3>
-                      <p className="t-body mt-[13px] text-ink-muted">{step.body}</p>
+                      <p className="t-body mt-[12.4px] w-[14.04em] text-ink-muted lg:mt-[13px] lg:w-auto">{step.body}</p>
                     </div>
                   </li>
                 )
@@ -696,8 +768,10 @@ export default function About() {
         </section>
 
         {/* lg 159.5: the frame has the strip's body ink ending at 4950.5 and
-            the build-vision band starting at 5111, 160.5 apart. */}
-        <div className="mt-[124px] lg:mt-[159.5px]" />
+            the build-vision band starting at 5111, 160.5 apart. The 768
+            export has them 54.2 apart, measured from the strip's tallest
+            (four-line) body. */}
+        <div className="mt-[45.3px] lg:mt-[159.5px]" />
       </main>
 
       <BuildVision />

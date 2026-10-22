@@ -103,7 +103,9 @@ export const values = [
 /**
  * The 1920 frame draws five steps; the 768 frame draws only the first two. A
  * mobile layout that stops after "Process" is an incomplete mock, not a design
- * decision — so all five render at both widths.
+ * decision — so all five render at both widths. Below lg they run as one
+ * sideways strip, two in view and the rest a swipe away, which is how the 768
+ * export draws the first two (owner's call, 2026-10-21).
  *
  * This is NOT the Home flowchart. Home runs Ask / Listen / Think / Create (deck
  * p88); this is the abstract Start / Process / Decide / Process / End shape. The
