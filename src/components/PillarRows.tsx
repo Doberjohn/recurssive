@@ -103,7 +103,12 @@ export function PillarRows({
           >
             <a
               href={links[name] ?? '/contact'}
-              className="bg-brand-gradient relative flex flex-1 items-center bg-[length:0_100%] bg-no-repeat py-[7px] transition-[background-size] duration-200 hover:bg-[length:100%_100%] focus-visible:bg-[length:100%_100%] focus-visible:outline-none lg:py-0"
+              // The fill follows ANY focus, as the name's white does
+              // (group-focus-within). On focus-visible alone, a mouse click
+              // focused the row without filling it: white text on the page's
+              // white, until focus moved. Home's ServiceIndex keys both on
+              // focus-within for the same reason.
+              className="bg-brand-gradient relative flex flex-1 items-center bg-[length:0_100%] bg-no-repeat py-[7px] transition-[background-size] duration-200 hover:bg-[length:100%_100%] focus:bg-[length:100%_100%] focus-visible:outline-none lg:py-0"
             >
               {/* Right-aligned to a fixed edge (x209 at 1920, x133 at 768), so the
                   index column is a fixed width rather than a gap. */}
