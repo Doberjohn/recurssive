@@ -101,8 +101,16 @@ export default function About() {
         {/* ── Hero ─────────────────────────────────────────────────────────
             The photo, its scrim and the diagonal grid are all drawn at the SAME
             pixel size at both breakpoints — only their x-offset pans. So this
-            band is one of the few places where a flat value is correct. */}
-        <section className="relative isolate flex min-h-[min(1201px,100svh)] flex-col justify-end overflow-hidden pb-[70px] lg:pb-[132px]">
+            band is one of the few places where a flat value is correct.
+
+            From md the band fills the screen, up to the drawn 1201, with the
+            text at its foot. Below md it is only as tall as its content, and
+            the lockup sits 180 under the logo: pt 252 is the nav's logo, which
+            ends at 72 at every phone width, plus 180. Filling the screen there
+            put 513px of bare photo between logo and words on a 440x956 phone,
+            and 355 on a 390x844 — a gap that grew with the screen and carried
+            nothing. 180 is the owner's pick from rendered options, 2026-10-22. */}
+        <section className="relative isolate flex flex-col justify-end overflow-hidden pb-[70px] pt-[252px] md:min-h-[min(1201px,100svh)] md:pt-0 lg:pb-[132px]">
           {/* FOUR LAYERS, in the export's own paint order. Reading Hero.svg
               top to bottom: photo, mesh, scrim, grid — then the text. An
               earlier build had only the photo and a scrim, and compensated for
