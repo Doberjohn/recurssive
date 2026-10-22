@@ -414,10 +414,15 @@
    * The body is set like .t-body below lg, 1.5 at -3%, which is how the 768
    * frame draws it; it was 1.4 untracked at every width. lg keeps the 1.4, and
    * no tracking, as the 1920 frame has it.
+   *
+   * The heading's line box is Figma's auto for Inter, whose natural height is
+   * 1.21: the frames' boxes are 44 at 36px and 39 at 32px. It was 1.1, a box
+   * 4.4 short that sat the glyphs 2px high, so no margin could put the body
+   * where it is drawn against both the heading's box and its baseline.
    */
   .cc-heading {
     font-size: min(2.25rem, max(1.375rem, 7.531cqi));
-    line-height: 1.1;
+    line-height: 1.22;
   }
   .cc-body {
     font-size: min(1.5rem, max(0.875rem, 5.021cqi));

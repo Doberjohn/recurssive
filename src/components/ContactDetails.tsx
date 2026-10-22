@@ -10,6 +10,7 @@ import { site } from '@/lib/site'
  *   padding    85              66          -> content 478 at BOTH, the invariant
  *   heading    32px            36px        Inter Bold, #FAFAFA
  *   body       16px            24px        Open Sans, 2 lines / 3 lines
+ *   head->body 41              44          top to top: 2 / 0 below the heading box
  *   label      14px            20px        Open Sans, above its value
  *   value      32px            32px        Inter Bold, #FAFAFA
  *   row pitch  109             92
@@ -61,7 +62,10 @@ export function ContactDetails({ className = '' }: { className?: string }) {
           We want to hear from you
         </h2>
 
-        <p className="cc-body mt-3 text-cloud">
+        {/* Right under the heading's line box at 768 and 2 below it at 1920,
+            as drawn. It was mt-3 under a 1.1 line box, which put the body 7.6
+            low at 768 and 6.2 at 1920; .cc-heading now has Figma's auto box. */}
+        <p className="cc-body text-cloud lg:mt-0.5">
           {site.contactInvite} {site.replyPromise}
         </p>
 

@@ -13,7 +13,13 @@ import { BuildVision } from './BuildVision'
  *   heading    32px SemiBold ls-5%        36px SemiBold ls-5%
  *   body       18px Regular, lh 1.5       24px Regular, lh 1.25, ls-3%
  *   column     861                        610
- *   head->body 49                         44
+ *   head->body 49 top to top (gap 10)     44 top to top (gap 0)
+ *   section    20, body to next heading   20
+ *
+ * The head->body figures are TOP TO TOP, heading box to body box. They were
+ * applied as a margin after the heading's own line box, which put the body 89
+ * under the heading's top at 768 and 88 at 1920, with sections 40 apart. Both
+ * closed to the frames on the owner's call of 2026-10-22.
  *
  * The body is larger AND more tightly leaded on the narrow layout, which is the
  * same inversion the rest of the site uses: the 768 frame is not a scaled 1920,
@@ -95,14 +101,19 @@ export function LegalPage({
                 367 left and 366 right, so it is centred rather than hung off the
                 title. At 768 the column is 610, which is the container itself,
                 so mx-auto does nothing there and the two layouts agree.
-                Gap after the rule is the drawn 68 at 768 and 96 at 1920. */}
-            <div className="mx-auto mt-[68px] max-w-[861px] space-y-10 lg:mt-24">
+                Gap after the rule is the drawn 68 at 768 and 96 at 1920, and
+                sections are 20 apart, body bottom to next heading, in both. */}
+            <div className="mx-auto mt-[68px] max-w-[861px] space-y-5 lg:mt-24">
               {sections.map((s) => (
                 <section key={s.heading}>
                   <h2 className="font-heading font-semibold leading-tight tracking-[-0.05em] text-ink [font-size:clamp(24px,4.6875vw,36px)] lg:[font-size:32px]">
                     {s.heading}
                   </h2>
-                  <div className="mt-11 space-y-4 text-ink lg:mt-12">
+                  {/* Right under the heading's line box at 768 and 10 below it
+                      at 1920. leading-tight makes that box 45/40 against
+                      Figma's auto 44/39, so the body lands within 1px of the
+                      drawn 44/49. */}
+                  <div className="space-y-4 text-ink lg:mt-2.5">
                     {s.body.map((p) => (
                       <p
                         key={p.slice(0, 40)}
