@@ -21,6 +21,11 @@
  * was 22 until the owner moved `.t-body` to the frames' 24 at -3% site-wide
  * (2026-10-22); one shared token still beats four pages forked a couple of
  * pixels apart, it just carries the drawn value now.
+ *
+ * Below lg the intro sits 13.5 under the title's box. The frames' y174 -> y235
+ * is 61 TOP TO TOP, and it was applied as the gap after the title's box, which
+ * put the intro 46px low. 13.5 lands its first baseline 47.5 under the title's,
+ * as drawn (Figma sets the title in a taller auto line box, 51 against .t-section's 44).
  */
 export function PageHeader({
   title,
@@ -37,7 +42,7 @@ export function PageHeader({
       <div className="container-content">
         <div className="lg:flex lg:items-start lg:justify-between lg:gap-16">
           <h1 className="t-section font-heading font-semibold text-ink">{title}</h1>
-          <p className="t-body mt-[61px] text-ink-muted lg:mt-[7px] lg:max-w-[467px]">{intro}</p>
+          <p className="t-body mt-[13.5px] text-ink-muted lg:mt-[7px] lg:max-w-[467px]">{intro}</p>
         </div>
         {children}
       </div>
