@@ -570,9 +570,15 @@ export default function About() {
                         placed by hand — and all five take 16.1, the top of that
                         range: the semibold digits are ~3px wider, and at the
                         mean, 13.1, they met the names corner to corner, 0.5px
-                        apart on "(05)". */}
+                        apart on "(05)".
+
+                        Below lg the gutter starts 10px OUTSIDE the column, so
+                        the index sits 10px left of the drawn x and the names
+                        keep theirs. Those wider digits left 0.4-1.6px between
+                        "(02)"-"(05)" and their names, which read as touching on
+                        a phone; the owner had them pulled left (2026-10-22). */}
                     <div className="flex items-start">
-                      <span className="-mt-[9.4px] w-[46px] shrink-0 font-heading text-xl font-semibold text-ink-muted lg:-mt-[15.6px] lg:w-[26.5px] lg:text-sm">
+                      <span className="-ml-[10px] -mt-[9.4px] w-[56px] shrink-0 font-heading text-xl font-semibold text-ink-muted lg:ml-0 lg:-mt-[15.6px] lg:w-[26.5px] lg:text-sm">
                         ({String(i + 1).padStart(2, '0')})
                       </span>
                       <div className="min-w-0 lg:flex-1 lg:[container-type:inline-size]">
