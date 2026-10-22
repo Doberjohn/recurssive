@@ -17,11 +17,10 @@
  * pattern, the drawn 52 is a four-pixel outlier on one frame, and `.t-section`
  * is the 42/48 pair the rest of the site already uses — so all four get 48.
  *
- * The intro is `.t-body` (22 at 768). Every one of these frames draws 24 there.
- * That is a real two-pixel gap, and it is deliberate: `.t-body` was measured off
- * Home and Contact, both verified in a browser against their own frames, and one
- * shared token beats four pages each a couple of pixels closer to their own
- * drawing. Flagged rather than silently forked.
+ * The intro is `.t-body`, 24 at 768 as every one of these frames draws it. It
+ * was 22 until the owner moved `.t-body` to the frames' 24 at -3% site-wide
+ * (2026-10-22); one shared token still beats four pages forked a couple of
+ * pixels apart, it just carries the drawn value now.
  */
 export function PageHeader({
   title,

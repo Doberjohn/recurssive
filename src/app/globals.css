@@ -51,7 +51,7 @@
  * The two design frames disagree deliberately, and in opposite directions:
  * headings are SMALLER at 768, everything else is BIGGER. Measured pairs
  * (1920 -> 768): hero 72->48, section heads 48->42, step names 48->40,
- * item names 32->36, FAQ questions 18->26, body 16->22, form 16->24,
+ * item names 32->36, FAQ questions 18->26, body 16->24, form 16->24,
  * row indices 14->20.
  *
  * Tailwind is mobile-first and its tokens are fixed, so the pairs live here as
@@ -73,11 +73,17 @@
  * inside the ramp rather than on its floor.
  *
  *   360 -> 768:  hero 36->48, section 30->42, step 28->40, item 26->36,
- *                question 19->26, body 16->22, form 16->24, index 15->20
+ *                question 19->26, body 17.45->24, form 16->24, index 15->20
  *
  * `.t-label` is NOT here. The process shape labels have to shrink with their
  * SHAPE rather than with the viewport — a 20px label in a 140px diamond gets
  * clipped by its own outline — so ProcessFlow sizes them from --sw instead.
+ *
+ * BODY IS 24 AT -3%, site-wide since the owner's call of 2026-10-22. It was
+ * 22, measured off Home and Contact, while body copy on most 768 frames is
+ * Open Sans 24 at -3% tracking (13 paragraphs on About, 10 on Home, 14 on
+ * Terms, 11 on Privacy, 23 on the capability page). The 1920 frames set body
+ * at 16 with no tracking, so lg drops the tracking with the size.
  * -------------------------------------------------------------------------- */
 @layer components {
   .t-hero     { font-size: clamp(2.25rem,  1.588rem + 2.941vw, 3rem);     line-height: 0.9;  letter-spacing: -0.05em; }
@@ -85,7 +91,7 @@
   .t-step     { font-size: clamp(1.75rem,  1.088rem + 2.941vw, 2.5rem);   line-height: 1.05; letter-spacing: -0.05em; }
   .t-item     { font-size: clamp(1.625rem, 1.074rem + 2.451vw, 2.25rem);  line-height: 1.1;  letter-spacing: -0.05em; }
   .t-question { font-size: clamp(1.1875rem, 0.802rem + 1.716vw, 1.625rem); line-height: 1.3; }
-  .t-body     { font-size: clamp(1rem,     0.669rem + 1.471vw, 1.375rem); line-height: 1.5; }
+  .t-body     { font-size: clamp(1.0906rem, 0.7296rem + 1.6054vw, 1.5rem); line-height: 1.5; letter-spacing: -0.03em; }
   .t-form     { font-size: clamp(1rem,     0.559rem + 1.961vw, 1.5rem);   line-height: 1.4; }
   .t-index    { font-size: clamp(0.9375rem, 0.662rem + 1.226vw, 1.25rem); line-height: 1.2; }
 
@@ -599,7 +605,7 @@
     .t-step     { font-size: 3rem;     }
     .t-item     { font-size: 2rem;     }
     .t-question { font-size: 1.125rem; }
-    .t-body     { font-size: 1rem;     }
+    .t-body     { font-size: 1rem;     letter-spacing: normal; }
     .t-form     { font-size: 1rem;     }
     .t-index    { font-size: 0.875rem; }
   }

@@ -29,33 +29,37 @@
  * optimistic, and two of its five proposed strings overflowed because of it.
  *
  * The mistake is instructive: it was calibrated against the DRAWN frames, which
- * set this paragraph at 24px, while the BUILD renders .t-body, which is
- * clamp(16px, …, 22px) and resolves to 22px at 768 (globals.css:88). Measure
- * the built box, never the drawn one.
+ * set this paragraph at 24px, while the BUILD rendered .t-body, which was
+ * clamp(16px, …, 22px) and resolved to 22px at 768. Measure the built box,
+ * never the drawn one. (Since 2026-10-22 .t-body IS the drawn 24 at -3%, so the
+ * 768 figures below are re-measured against that.)
  *
- *   description  1920  746px @16px     → 2 lines
- *                 768  595px @21.78px  → 4 lines
+ *   description  1920  746px @16px  → 2 lines
+ *                 768  595px @24px  → 4 lines
  *
  * Both counts are the drawn intent. At 768 only Consulting's 610x138 box is
  * auto-height and therefore trustworthy; the other three are hand-dragged
  * 610x70 boxes that overflow their own content, so they say nothing about line
- * count.
+ * count. (The frame's own Lorem, laid out at 610 and 24px -3%, takes 4 lines in
+ * all four.)
  *
  * The two box widths are BROWSER-MEASURED, and neither is what the source
  * looks like it says. At 1920 the p carries max-w-[754px], but its parent is
  * w-[746px] (page.tsx:52), so the parent binds and the 754 never applies. At
- * 768 the container is 610px less the scrollbar, and .t-body clamps to 21.78px
- * rather than a round 22. Both discrepancies run in the generous direction,
- * which is how a string that measures fine on paper renders one line too tall.
+ * 768 the container is 610px less the 15px scrollbar gutter. Both run narrower
+ * than the source suggests, which is how a string that measures fine on paper
+ * renders one line too tall. (The size no longer drifts: .t-body reaches the
+ * drawn 24 at a 767.8px viewport, where it used to resolve to 21.78, not 22.)
  *
  * The window is roughly 180-195 characters, but character count is NOT the
- * real constraint and must not be used as one: 184 characters lands 3 lines at
- * 768 while 191 lands 4, and two strings of equal length can differ by 30px of
- * slack depending on where the words break. Verify by rendering.
+ * real constraint and must not be used as one: at 768 the 186-character Product
+ * Dev string has 17px less headroom than the 194-character Consulting one,
+ * because headroom depends on where the words break. Verify by rendering.
  *
- * All four below are browser-verified at 2 lines / 4 lines with 16-37px of
- * headroom on the tightest line. An earlier pass had Enterprise at 1px, which
- * renders correctly today and would tip to a fifth line on any edit.
+ * All four below are browser-verified at 2 lines / 4 lines, re-run at 24px on
+ * 2026-10-22: each takes 18-37px less width at 1920, and 74-91px less at 768,
+ * before it gains a line. An earlier pass had Enterprise at 1px, which rendered
+ * correctly and would have tipped to a fifth line on any edit.
  *
  * ── VOICE. docs/verbal-identity.md governs. Two rules bit hardest here, and
  * both are recorded because an earlier draft of these four broke them.
