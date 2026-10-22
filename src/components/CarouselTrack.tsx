@@ -1,7 +1,8 @@
 'use client'
 
 /**
- * The Industries carousel's scroll track.
+ * The scroll track of a carousel whose slides link to each other: Home's
+ * industries, and the capability page's tech groups.
  *
  * The track itself is plain CSS — a scroll-snap row — so a swipe works with no
  * JavaScript at all, which is the interaction that matters on the frame this is
@@ -19,9 +20,9 @@
  * viewport never is, so it still aligns an edge and still moves the page.
  * Scrolling the track itself is the only version that cannot touch the page.
  *
- * One delegated listener, no state, no effect. It also keeps `#industry-N` out
- * of the address bar, which fragment navigation would otherwise push onto the
- * history stack once per press.
+ * One delegated listener, no state, no effect. It also keeps the slide
+ * fragments (`#industry-N`, `#tech-N`) out of the address bar, which fragment
+ * navigation would otherwise push onto the history stack once per press.
  *
  * Progressive enhancement on purpose: if this never hydrates, the anchors still
  * navigate — with the jump, but not broken.
@@ -37,12 +38,14 @@ export function CarouselTrack({
     <ul
       className={className}
       onClick={(e) => {
-        const a = (e.target as HTMLElement).closest?.('a[href^="#industry-"]')
+        const a = (e.target as HTMLElement).closest?.('a[href^="#"]')
         if (!a) return
         const el = document.getElementById(a.getAttribute('href')!.slice(1))
         const track = e.currentTarget
         const first = track.firstElementChild
-        if (!(el instanceof HTMLElement) || !(first instanceof HTMLElement)) return
+        // Only a link to one of this track's own slides; any other fragment
+        // link inside a slide navigates as usual.
+        if (!(el instanceof HTMLElement) || el.parentElement !== track || !(first instanceof HTMLElement)) return
         e.preventDefault()
         // offsetLeft is measured from the section, not the track, so the first
         // slide's own offset is the zero point.
