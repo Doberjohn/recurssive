@@ -60,8 +60,10 @@ function readCollection<C extends Collection>(
         readingTime: Math.max(1, Math.round(words / 200)),
       }
     })
-    // Drafts never ship — not to routes, index pages or the sitemap.
-    .filter((e) => !(e.meta as { draft?: boolean }).draft)
+    // Drafts never ship — not to routes, index pages or the sitemap. `next dev`
+    // does show them, so a page can be built and measured against its frames
+    // before its copy is approved; `next build` is always production.
+    .filter((e) => process.env.NODE_ENV !== 'production' || !(e.meta as { draft?: boolean }).draft)
 
   return entries.sort(
     (a, b) =>
@@ -86,6 +88,22 @@ export function getBySlug<C extends Collection>(collection: C, slug: string) {
 
 export function getSlugs(collection: Collection): string[] {
   return getAll(collection).map((e) => e.slug)
+}
+
+/**
+ * Where a capability row goes, keyed by the row's label: the entry's own page
+ * once it carries the template drawn in the Capability frames (a `page` block),
+ * matched on its title. A row with no such entry keeps /contact (PillarRows'
+ * default), so no row ever leads to the unstyled scaffold. Drafts are only read
+ * under `next dev`, so a draft's row links in dev and goes to /contact in a
+ * production build.
+ */
+export function capabilityLinks(): Record<string, string> {
+  return Object.fromEntries(
+    getAll('capabilities')
+      .filter((e) => e.meta.page)
+      .map((e) => [e.meta.title, `/capabilities/${e.slug}`])
+  )
 }
 
 /**

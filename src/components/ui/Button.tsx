@@ -14,7 +14,7 @@ import Link from 'next/link'
  * div — keyboard and screen-reader behaviour comes free from the right element.
  */
 
-type Variant = 'light' | 'dark' | 'accent' | 'band'
+type Variant = 'light' | 'dark' | 'accent' | 'band' | 'band-light'
 
 // Size lives on the variants, not here: the drawn buttons are not one size, and
 // putting `text-base`/`h-10` in the shared string would make every override a
@@ -60,6 +60,12 @@ const variants: Record<Variant, string> = {
   band:
     'h-11 px-4 text-base md:h-[49px] md:px-[15px] md:text-2xl lg:h-[39px] lg:text-base ' +
     'rounded-md bg-primary text-cloud hover:bg-primary-deep',
+  // The same box in #FAFAFA with an ink label: the capability page's "Book a
+  // call" on its purple hero ("Frame 1", 113x39 at 1920, 154x49 at 768, r6)
+  // and "Inquire" on its photo card.
+  'band-light':
+    'h-11 px-4 text-base md:h-[49px] md:px-[15px] md:text-2xl lg:h-[39px] lg:text-base ' +
+    'rounded-md bg-cloud text-ink hover:bg-silver',
 }
 
 type Props = {

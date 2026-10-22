@@ -1,4 +1,8 @@
 import { z } from 'zod'
+import { images, type ImageName } from '@/lib/images.generated'
+
+/** Keys of the generated image manifest, so a typo fails the build. */
+const imageName = z.enum(Object.keys(images) as [ImageName, ...ImageName[]])
 
 /**
  * Frontmatter schemas.
@@ -69,6 +73,26 @@ export const capabilitySchema = z.object({
   order: z.number().int().default(100),
   /** Named services rolled up under this capability. */
   services: z.array(z.string()).default([]),
+  /**
+   * The page drawn in the Capability frames, per service. Optional while each
+   * page's copy is written: an entry without it renders the interim scaffold.
+   * Everything the frames repeat on every service (process, why us, tech,
+   * platforms, the idea card) is shared, in src/content/capability-page.ts.
+   */
+  page: z
+    .object({
+      /** The paragraph under the title in the hero. */
+      intro: z.string().min(1),
+      /** "Why build a Mobile App?" */
+      whyHeading: z.string().min(1),
+      /** The six benefits under it, three across at 1920. */
+      benefits: z
+        .array(z.object({ title: z.string().min(1), body: z.string().min(1) }))
+        .length(6, 'the design draws six'),
+      /** Image manifest key for the hero photograph; the frames draw this one. */
+      photo: imageName.default('capability-b'),
+    })
+    .optional(),
 })
 
 export type PostMeta = z.infer<typeof postSchema>

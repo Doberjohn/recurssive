@@ -49,41 +49,78 @@ function RowArrow() {
     </svg>
   )
 }
-export function PillarRows({ rows }: { rows: string[] }) {
+/** Full width of its container: the Capabilities index sets its own 746.
+ *  `columns={2}` stands the list in two columns from lg, numbered down the
+ *  first and on down the second, as the capability page's (01)-(04) /
+ *  (05)-(08) is drawn. Below lg it stays one list, so where the columns would
+ *  meet there is one rule, lit for the rows on both sides of it.
+ *
+ *  `links` sends a row to its capability's page (lib/content capabilityLinks);
+ *  a row it does not name goes to /contact. */
+export function PillarRows({
+  rows,
+  columns = 1,
+  links = {},
+}: {
+  rows: string[]
+  columns?: 1 | 2
+  links?: Record<string, string>
+}) {
+  const split = columns === 2 ? Math.ceil(rows.length / 2) : rows.length
   return (
-    <ul className="w-full lg:w-[746px]">
-      {rows.map((name, i) => (
-        <li
-          key={name}
-          className="group relative border-b-[1.5px] border-ink-muted transition-colors first:border-t-[1.5px] hover:border-accent focus-within:border-accent has-[+li:hover]:border-b-accent has-[+li:focus-within]:border-b-accent"
-        >
-          <a
-            href="/contact"
-            // 68.5 / 54.5 plus the 1.5 rule: the frames' 70 / 56 is the pitch
-            // RULE TO RULE, and a 70 / 56 link under a rule ran each row 1.5
-            // long, 28px down the page.
-            //
-            // A FLOOR below lg, not a height: on a phone a name can still wrap,
-            // and a fixed row let it spill over the next one (it did at 390,
-            // three lines of "React Native Performance Optimization" across two
-            // rows). The padding keeps a grown row off its rules.
-            className="bg-brand-gradient relative flex min-h-[68.5px] items-center bg-[length:0_100%] bg-no-repeat py-[7px] transition-[background-size] duration-200 hover:bg-[length:100%_100%] focus-visible:bg-[length:100%_100%] focus-visible:outline-none lg:h-[54.5px] lg:min-h-0 lg:py-0"
+    <ul
+      className={`w-full ${columns === 2 ? 'lg:grid lg:grid-flow-col lg:grid-cols-2 lg:gap-x-[6.4%]' : ''}`}
+      // Read only once lg makes the list a grid.
+      style={columns === 2 ? { gridTemplateRows: `repeat(${split}, auto)` } : undefined}
+    >
+      {rows.map((name, i) => {
+        // The ROW holds the pitch, its rules inside it (border-box): the
+        // frames' 70 / 56 rule to rule, plus 1.5 on a row that also draws the
+        // rule above it. A pitch built from the link's height plus the rule ran
+        // short wherever the browser thins the rule, as Chrome does to 1px at
+        // 1x: 0.5 a row, 4.5 down a list of eight.
+        //
+        // A FLOOR below lg, not a height: on a phone a name can still wrap,
+        // and a fixed row let it spill over the next one (it did at 390,
+        // three lines of "React Native Performance Optimization" across two
+        // rows). The link's padding keeps a grown row off its rules.
+        const pitch =
+          i === 0
+            ? 'min-h-[71.5px] border-t-[1.5px] lg:min-h-[57.5px]'
+            : i === split
+              ? 'min-h-[70px] lg:min-h-[57.5px] lg:border-t-[1.5px]'
+              : 'min-h-[70px] lg:min-h-[56px]'
+        // A hovered row lights the rule above it through the row before it,
+        // except, from lg, across the top of the second column.
+        const above =
+          columns === 2 && i === split - 1
+            ? 'max-lg:has-[+li:hover]:border-b-accent max-lg:has-[+li:focus-within]:border-b-accent'
+            : 'has-[+li:hover]:border-b-accent has-[+li:focus-within]:border-b-accent'
+        return (
+          <li
+            key={name}
+            className={`group relative flex flex-col border-b-[1.5px] border-ink-muted transition-colors hover:border-accent focus-within:border-accent ${pitch} ${above}`}
           >
-            {/* Right-aligned to a fixed edge (x209 at 1920, x133 at 768), so the
-                index column is a fixed width rather than a gap. */}
-            <span className="w-[54px] shrink-0 text-right font-heading text-lg text-ink-muted transition-colors group-hover:text-accent group-focus-within:text-accent lg:w-[41px] lg:text-xs">
-              ({String(i + 1).padStart(2, '0')})
-            </span>
-            {/* Leading 1.2 as both frames set it; it inherited 1.5. Below 768
-                the name ramps like the type scale (globals.css): the drawn 28
-                at 768 to 0.727 of it, 20.4, at 360. */}
-            <span className="ml-[3px] font-heading font-medium leading-[1.2] tracking-[-0.05em] text-ink transition-colors [font-size:clamp(1.2725rem,0.851rem_+_1.8725vw,1.75rem)] group-hover:text-cloud group-focus-within:text-cloud lg:text-lg">
-              {name}
-            </span>
-            <RowArrow />
-          </a>
-        </li>
-      ))}
+            <a
+              href={links[name] ?? '/contact'}
+              className="bg-brand-gradient relative flex flex-1 items-center bg-[length:0_100%] bg-no-repeat py-[7px] transition-[background-size] duration-200 hover:bg-[length:100%_100%] focus-visible:bg-[length:100%_100%] focus-visible:outline-none lg:py-0"
+            >
+              {/* Right-aligned to a fixed edge (x209 at 1920, x133 at 768), so the
+                  index column is a fixed width rather than a gap. */}
+              <span className="w-[54px] shrink-0 text-right font-heading text-lg text-ink-muted transition-colors group-hover:text-accent group-focus-within:text-accent lg:w-[41px] lg:text-xs">
+                ({String(i + 1).padStart(2, '0')})
+              </span>
+              {/* Leading 1.2 as both frames set it; it inherited 1.5. Below 768
+                  the name ramps like the type scale (globals.css): the drawn 28
+                  at 768 to 0.727 of it, 20.4, at 360. */}
+              <span className="ml-[3px] font-heading font-medium leading-[1.2] tracking-[-0.05em] text-ink transition-colors [font-size:clamp(1.2725rem,0.851rem_+_1.8725vw,1.75rem)] group-hover:text-cloud group-focus-within:text-cloud lg:text-lg">
+                {name}
+              </span>
+              <RowArrow />
+            </a>
+          </li>
+        )
+      })}
     </ul>
   )
 }

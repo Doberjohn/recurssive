@@ -6,6 +6,7 @@ import { PageHeader } from '@/components/PageHeader'
 import { PillarRows } from '@/components/PillarRows'
 import { CodeCard } from '@/components/CodeCard'
 import { pillars } from '@/content/capabilities-index'
+import { capabilityLinks } from '@/lib/content'
 import { buildMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = buildMetadata({
@@ -15,9 +16,10 @@ export const metadata: Metadata = buildMetadata({
   path: '/capabilities',
   // The placeholder reason for this flag is gone: every string on this page is
   // now real (intro, four pillar descriptions, nineteen drawn rows, four drawn
-  // code samples), and the rows link to /contact rather than to the still
-  // unstyled /capabilities/[slug] template, so nothing thin is reachable from
-  // here. Kept only pending the owner's call on indexing. Drop it and uncomment
+  // code samples), and a row links to its capability's page only once that
+  // page is the drawn template (see capabilityLinks), the rest to /contact, so
+  // nothing thin is reachable from here. Kept only pending the owner's call on
+  // indexing. Drop it and uncomment
   // '/capabilities' in src/lib/site.ts routes in the SAME commit — see the note
   // there: a sitemapped route that serves noindex is the contradiction.
   noIndex: true,
@@ -57,6 +59,7 @@ export const metadata: Metadata = buildMetadata({
  * intro is two lines where the frame's Lorem is three.
  */
 export default function Capabilities() {
+  const links = capabilityLinks()
   return (
     <>
       <Nav tone="dark" />
@@ -88,8 +91,8 @@ export default function Capabilities() {
                   <p className="t-body mt-[13.5px] max-w-[754px] text-ink-muted lg:mt-[15.8px]">
                     {pillar.description}
                   </p>
-                  <div className="mt-[22px] lg:mt-[25px]">
-                    <PillarRows rows={pillar.rows} />
+                  <div className="mt-[22px] lg:mt-[25px] lg:w-[746px]">
+                    <PillarRows rows={pillar.rows} links={links} />
                   </div>
                 </div>
 
