@@ -17,6 +17,9 @@ import type { LegalSection } from '@/components/LegalPage'
  *              share your data with (Vercel and Resend, not Facebook/Google/
  *              Mailchimp)
  *   Terms      third-party services no longer claims advertising platforms
+ *   merged     How long we retain your data, a second retention section left
+ *              from the template, folded into Data Retention with its dispute
+ *              and agreement grounds kept (owner, 2026-10-23)
  *
  * The cookie line matters most: the case for having no consent banner is that
  * nothing is stored on the device, and a policy saying otherwise would undermine
@@ -77,7 +80,7 @@ export const privacySections: LegalSection[] = [
   {
     heading: "Analytics",
     body: [
-      "We use Vercel Web Analytics to count page views and see which pages are read. It is cookieless and records no cross-site identifier, so a visit cannot be linked to you or followed onto other websites. You can read Vercel privacy policy here: https://vercel.com/legal/privacy-policy.",
+      "We use Vercel Web Analytics to count page views and see which pages are read. It is cookieless and records no cross-site identifier, so a visit cannot be linked to you or followed onto other websites. You can read Vercel’s privacy policy here: https://vercel.com/legal/privacy-policy.",
     ],
   },
   {
@@ -89,7 +92,7 @@ export const privacySections: LegalSection[] = [
   {
     heading: "Data Retention",
     body: [
-      "We keep enquiries for as long as we need them to answer you and to keep a record of work we have discussed, and for as long as the law requires. This site has no user accounts, so there is nothing held about you beyond the messages you choose to send.",
+      "We keep enquiries for as long as we need them to answer you and to keep a record of work we have discussed, for as long as the law requires, and for as long as we need them to resolve a dispute or enforce our agreements. This site has no user accounts, so there is nothing held about you beyond the messages you choose to send.",
     ],
   },
   {
@@ -99,12 +102,6 @@ export const privacySections: LegalSection[] = [
       "Specifically, we share your data with the following third-party service providers:",
       "Vercel, who host the site and provide its cookieless analytics. You can read their privacy policy here: https://vercel.com/legal/privacy-policy.",
       "Resend, who deliver the email that your contact form generates. You can read their privacy policy here: https://resend.com/legal/privacy-policy.",
-    ],
-  },
-  {
-    heading: "How long we retain your data",
-    body: [
-      "We retain your personal data only for as long as necessary to provide you with our services and as described in this policy. We may also retain this information to comply with legal obligations, resolve disputes, and enforce our agreements.",
     ],
   },
   {
