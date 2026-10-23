@@ -9,6 +9,29 @@ services:
   - Local inference integration
   - Privacy-preserving architecture
   - Offline-first product design
+# >>> designed page (draft)
+# Dev-only until the launch step: production keeps this entry's scaffold.
+# Copy written WITHOUT the owner's interview, on his instruction (2026-10-22),
+# and awaiting his review. Assumed, not from his answers:
+#   - Privacy, offline use and no per-request cost come from the page’s older text and general fact; the per-feature decision is yours.
+page:
+  draft: true
+  intro: 'AI that runs on the phone itself rather than on someone’s server. It suits features that must work offline or keep data private, and we decide feature by feature whether the device or the cloud fits better.'
+  whyHeading: 'Why run AI on the device?'
+  benefits:
+    - title: 'Data stays put'
+      body: 'What people type, say or photograph can be processed without ever leaving their phone, which keeps privacy simple to explain.'
+    - title: 'Works anywhere'
+      body: 'The feature keeps working on a plane or wherever the signal drops, because nothing it does has to reach a server first and wait for a reply.'
+    - title: 'No cost per use'
+      body: 'Once it ships there’s no bill for each request, so a feature that becomes popular never turns into an expensive one as more people use it.'
+    - title: 'Quick responses'
+      body: 'With no round trip to a server, results come back fast, even for the features people reach for many times a day without thinking about it.'
+    - title: 'Nothing to scale'
+      body: 'There’s no AI service to keep running and paying for on your side as usage grows, because every phone does its own share of the work.'
+    - title: 'Cloud when it fits'
+      body: 'Not every task belongs on a phone. Larger ones can still go to a cloud model, and we decide which way each feature goes, one at a time.'
+# <<< designed page
 ---
 
 ## Why local

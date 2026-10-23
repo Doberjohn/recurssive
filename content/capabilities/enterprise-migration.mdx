@@ -9,6 +9,29 @@ services:
   - Release process alignment
   - Monitoring and observability
   - Team enablement
+# >>> designed page (draft)
+# Dev-only until the launch step: production keeps this entry's scaffold.
+# Copy written WITHOUT the owner's interview, on his instruction (2026-10-22),
+# and awaiting his review. Assumed, not from his answers:
+#   - Moving the most-changed screens first comes from the page’s older text, not from your answers.
+page:
+  draft: true
+  intro: 'For large native iOS and Android apps moving to React Native. The move happens screen by screen inside the apps you already ship, so releases carry on and nothing that works today breaks on the way.'
+  whyHeading: 'Why move to React Native?'
+  benefits:
+    - title: 'Built once'
+      body: 'New features are built once for iPhone and Android instead of twice, so both apps get them at the same time and stay in step afterwards.'
+    - title: 'Shipping throughout'
+      body: 'Releases continue for the whole migration, so users keep getting new features while the work happens underneath them.'
+    - title: 'Small steps'
+      body: 'Moving one screen at a time keeps any problem small and quick to roll back, so a bad day never touches the whole app.'
+    - title: 'Busiest screens first'
+      body: 'The screens that change most often move first, because that’s where having one shared codebase starts to pay for itself soonest and most visibly.'
+    - title: 'Watched as it goes'
+      body: 'Monitoring and a proper release process are part of every move, so problems show up early, usually before your users notice.'
+    - title: 'Your team included'
+      body: 'Your developers work alongside ours throughout, so the new code is already theirs and familiar to them by the time we step back.'
+# <<< designed page
 ---
 
 ## Not a rewrite
