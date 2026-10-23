@@ -205,37 +205,39 @@ const services: Service[] = [
  * so ~250-340 characters. Much longer and the open row pushes the rows below it
  * off the composition.
  *
- * Three of these encode business commitments rather than facts about software,
- * and were settled by the owner rather than guessed: cost describes what drives
- * it and quotes no numbers, timeline describes the phases rather than weeks, and
- * rescue work is something we actively want. Do not add figures to the first two
- * without asking — they become a public promise.
+ * Every answer was rewritten on 2026-10-23 from the owner's multiple-choice
+ * interview: each fact is one he picked, and he approved the nine as a set.
+ * Three encode business commitments he settled himself. Cost names what drives
+ * the price and quotes no figure. Timing makes exactly one promise, a working
+ * version within the first month, which is his figure. Rescue work is something
+ * we actively want. Add no other figure without asking: each one is a public
+ * promise.
  */
 const faqs = [
   {
     question: 'What is app development?',
     answer:
-      'Designing and building software that people actually use, on a phone or in a browser. Less of it is code than you’d expect. Most of the effort goes into deciding what the software is for and what happens to it after launch.',
+      'Designing and building software for phones and browsers. Most of our effort goes into deciding what the app is for and what to build. Designing how it looks and how people find their way around it takes a large share too.',
   },
   {
     question: 'What is enterprise app development?',
     answer:
-      'For a company large enough that new software has to fit the systems already there. Integration and sign-off usually end up being as much of the job as the product itself, and both are worth planning early.',
+      'Software for a large company, built to connect to the systems it already runs, such as company sign-in or internal databases. It has to pass security and data-protection reviews before going live and handle thousands of users from day one.',
   },
   {
     question: 'What types of apps does Recurssive build?',
     answer:
-      'Mobile apps and web apps, from big multi-user consumer products to small internal tools only a few hundred people will use. What they have in common is that somebody relies on them every day, and that’s the work we take on.',
+      'Mobile apps, web apps and desktop apps for Windows and Mac. Some are public products used by large numbers of people. Others are internal tools for a company’s own staff, sometimes only a few hundred of them.',
   },
   {
     question: 'Should I build a web app or mobile app?',
     answer:
-      'Usually it’s best to start with one. The web is quicker to change and asks nothing of the person visiting, while an app suits an audience that comes back often enough to justify installing it. We’ll tell you which yours needs.',
+      'Most projects start with one and add the other later. We’ll recommend which in the first conversation, based on who will use it and where, and on your budget and how soon it needs to be live.',
   },
   {
     question: 'How long does it take to build an app?',
     answer:
-      'It depends on scope, but the shape is the same every time. You see something working months before there’s a launch date, and what comes back from that sets the pace for the rest. That’s also what keeps the estimate honest.',
+      'It depends on the scope, but you see something working within the first month. From then on, regular demos show you what has changed since the last one.',
   },
   {
     // The only answer carrying markup: "Send us what you have" links to /contact.
@@ -244,9 +246,8 @@ const faqs = [
     question: 'How much does app development cost?',
     answer: (
       <>
-        Cost is driven by what’s in scope, not by the hours it takes, so the
-        price depends on how much has to be built from scratch and what it has to
-        connect to.{' '}
+        The price follows the scope: how much is built from scratch, what it
+        connects to, how many platforms it runs on and how much design it needs.{' '}
         <Link href="/contact" className="underline underline-offset-4 hover:text-ink">
           Send us what you have
         </Link>{' '}
@@ -257,17 +258,17 @@ const faqs = [
   {
     question: 'Do you build iOS and Android apps?',
     answer:
-      'Both, and by either route. Some products are best served by one shared build covering both platforms, others by building separately for each. Which suits you depends on the product and what you need from it.',
+      'Yes. Most are built once and run on both, with native parts for iPhone or Android where a feature needs them. Some products are built as two separate native apps. Either way, we publish to the App Store and Google Play ourselves.',
   },
   {
     question: 'What is MVP app development?',
     answer:
-      'The smallest version of your product that can tell you whether people want it. An MVP isn’t a half-baked version of the finished app. It’s the fastest way to find out whether your idea is worth investing in.',
+      'The smallest version of your product that can tell you whether people want it. It has only the one or two features that test the idea, and its code becomes the base of the full product.',
   },
   {
     question: 'Do you offer app redesign and rescue services?',
     answer:
-      'Often, and it’s some of the work we’re best at. We start by reading what’s already there and working out what each problem is costing you, then deal with the expensive ones before anything else.',
+      'Yes, and it’s work we actively want. We read the code and use the app before changing anything, and you get the findings in writing. The problems costing you most are fixed first, and most of the app is kept.',
   },
 ]
 
