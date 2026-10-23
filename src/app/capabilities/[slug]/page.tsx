@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import { CapabilityTemplate } from '@/components/CapabilityTemplate'
-import { capabilityLinks, getAll, getBySlug } from '@/lib/content'
+import { capabilityLinks, designedPage, getAll, getBySlug } from '@/lib/content'
 import { Mdx } from '@/lib/content/mdx'
 import { buildMetadata } from '@/lib/metadata'
 
@@ -45,8 +45,9 @@ export default async function CapabilityPage({
   const capability = getBySlug('capabilities', slug)
   if (!capability) notFound()
 
-  // The page drawn in the Capability frames, once the entry carries its copy.
-  const { page } = capability.meta
+  // The page drawn in the Capability frames, once the entry carries its copy
+  // (and, for a live entry whose page is still a draft, only under `next dev`).
+  const page = designedPage(capability.meta)
   if (page) return <CapabilityTemplate meta={{ ...capability.meta, page }} links={capabilityLinks()} />
 
   // A "Related work" section used to live here: the cases naming this

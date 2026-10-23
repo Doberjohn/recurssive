@@ -91,6 +91,13 @@ export const capabilitySchema = z.object({
         .length(6, 'the design draws six'),
       /** Image manifest key for the hero photograph; the frames draw this one. */
       photo: imageName.default('capability-b'),
+      /**
+       * The designed page is dev-only: production keeps rendering the entry's
+       * interim scaffold and its row keeps /contact. For an entry that is live
+       * already (Home links to it), where the entry-level `draft` would take the
+       * route down. See lib/content designedPage.
+       */
+      draft: z.boolean().default(false),
     })
     .optional(),
 })

@@ -74,7 +74,8 @@ export const moreServices = {
   intro: 'Other kinds of work we take on, across the four groups.',
   /** The frames' eight, in their order: four AI rows, then four from
    *  Consulting and Enterprise. Which services a page offers next is a
-   *  content decision per page; until then every page carries these. */
+   *  content decision per page; until then every page carries these, except
+   *  that a page never lists itself: its own row gives way to `standIn`. */
   rows: [
     'On-device AI',
     'Generative AI App Development',
@@ -85,6 +86,9 @@ export const moreServices = {
     'Monitoring & Observability',
     'React Native Upgrades',
   ],
+  /** Fills the slot on the eight pages whose own row is above, so the list
+   *  keeps its drawn eight: the flagship page drawn in the frames. */
+  standIn: 'Mobile App Development',
 }
 
 /** A chip: the tool's name as drawn, and its mark in public/icons/tech.svg. */

@@ -2,7 +2,7 @@ import 'server-only'
 import { readdirSync, readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import matter from 'gray-matter'
-import { schemas, type Collection } from './schema'
+import { schemas, type CapabilityMeta, type Collection } from './schema'
 
 /**
  * File-system content loader.
@@ -74,11 +74,12 @@ function readCollection<C extends Collection>(
 
 // Read once per build rather than per route — generateStaticParams plus every
 // page of a 50-route collection would otherwise re-read and re-validate the
-// whole directory on each call.
+// whole directory on each call. Not under `next dev`, where the cache outlived
+// edits: a changed .mdx kept rendering its old copy until the server restarted.
 const cache: Partial<Record<Collection, unknown[]>> = {}
 
 export function getAll<C extends Collection>(collection: C) {
-  if (!cache[collection]) cache[collection] = readCollection(collection)
+  if (!cache[collection] || process.env.NODE_ENV !== 'production') cache[collection] = readCollection(collection)
   return cache[collection] as ReturnType<typeof readCollection<C>>
 }
 
@@ -91,17 +92,27 @@ export function getSlugs(collection: Collection): string[] {
 }
 
 /**
+ * The template drawn in the Capability frames, if this entry renders it here:
+ * its `page` block, unless that block is a draft and this is a production
+ * build. A draft entry is never read in production at all; a draft PAGE on a
+ * live entry leaves production on the entry's interim scaffold.
+ */
+export function designedPage(meta: CapabilityMeta) {
+  const { page } = meta
+  return page && (process.env.NODE_ENV !== 'production' || !page.draft) ? page : undefined
+}
+
+/**
  * Where a capability row goes, keyed by the row's label: the entry's own page
- * once it carries the template drawn in the Capability frames (a `page` block),
- * matched on its title. A row with no such entry keeps /contact (PillarRows'
- * default), so no row ever leads to the unstyled scaffold. Drafts are only read
- * under `next dev`, so a draft's row links in dev and goes to /contact in a
- * production build.
+ * once it renders the designed template (designedPage), matched on its title.
+ * A row with no such entry keeps /contact (PillarRows' default), so no row ever
+ * leads to the unstyled scaffold. Drafts are dev-only, so a draft's row links
+ * in dev and goes to /contact in a production build.
  */
 export function capabilityLinks(): Record<string, string> {
   return Object.fromEntries(
     getAll('capabilities')
-      .filter((e) => e.meta.page)
+      .filter((e) => designedPage(e.meta))
       .map((e) => [e.meta.title, `/capabilities/${e.slug}`])
   )
 }

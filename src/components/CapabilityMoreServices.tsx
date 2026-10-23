@@ -21,7 +21,15 @@ import { moreServices } from '@/content/capability-page'
  * From lg each column takes 46.8% (746 / 1594, a 103 gutter), which is the
  * drawn split at 1920 and still fits at 1024.
  */
-export function CapabilityMoreServices({ links }: { links: Record<string, string> }) {
+export function CapabilityMoreServices({
+  current,
+  links,
+}: {
+  /** The page's own title: its row is swapped for the stand-in, in place. */
+  current: string
+  links: Record<string, string>
+}) {
+  const rows = moreServices.rows.map((row) => (row === current ? moreServices.standIn : row))
   return (
     <section aria-labelledby="more-services" className="container-content mt-[62.45px] lg:mt-[130.8px]">
       <h2 id="more-services" className="t-section font-heading font-semibold text-ink">
@@ -30,7 +38,7 @@ export function CapabilityMoreServices({ links }: { links: Record<string, string
       <p className="t-body mt-[13.45px] text-ink-muted lg:mt-[14.8px] lg:max-w-[477px]">{moreServices.intro}</p>
 
       <div className="mt-[27.25px] lg:mt-[37.25px]">
-        <PillarRows rows={moreServices.rows} columns={2} links={links} />
+        <PillarRows rows={rows} columns={2} links={links} />
       </div>
     </section>
   )

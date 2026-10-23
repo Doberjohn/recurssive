@@ -42,7 +42,7 @@ export function CapabilityTemplate({
         </div>
         <CapabilityWhyUs />
         <CapabilityIdeaCard />
-        <CapabilityMoreServices links={links} />
+        <CapabilityMoreServices current={meta.title} links={links} />
         <CapabilityTech />
         <CapabilityPlatforms />
       </main>
