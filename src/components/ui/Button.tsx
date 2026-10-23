@@ -62,7 +62,7 @@ const variants: Record<Variant, string> = {
     'rounded-md bg-primary text-cloud hover:bg-primary-deep',
   // The same box in #FAFAFA with an ink label: the capability page's "Book a
   // call" on its purple hero ("Frame 1", 113x39 at 1920, 154x49 at 768, r6)
-  // and "Inquire" on its photo card.
+  // and "Enquire" on its photo card.
   'band-light':
     'h-11 px-4 text-base md:h-[49px] md:px-[15px] md:text-2xl lg:h-[39px] lg:text-base ' +
     'rounded-md bg-cloud text-ink hover:bg-silver',

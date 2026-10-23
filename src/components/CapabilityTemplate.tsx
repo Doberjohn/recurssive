@@ -36,7 +36,7 @@ export function CapabilityTemplate({
         <CapabilityHero title={meta.title} intro={meta.page.intro} photo={meta.page.photo} />
         <CapabilityBenefits heading={meta.page.whyHeading} benefits={meta.page.benefits} />
 
-        {/* Home's band, shared: 79 under the Inquire button at 768, 89 at 1920. */}
+        {/* Home's band, shared: 79 under the Enquire button at 768, 89 at 1920. */}
         <div className="mt-[79px] lg:mt-[89px]">
           <ProcessSection />
         </div>

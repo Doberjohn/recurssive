@@ -1,7 +1,7 @@
 import { Button } from './ui/Button'
 
 /**
- * "Why build a Mobile App?" — six benefits and an Inquire button, from the
+ * "Why build a mobile app?" — six benefits and an Enquire button, from the
  * Capability frames.
  *
  *              1920                            768
@@ -65,7 +65,7 @@ export function CapabilityBenefits({
 
       <div className="mt-[39px] flex justify-center lg:mt-[69px]">
         <Button href="/contact" variant="band">
-          Inquire
+          Enquire
         </Button>
       </div>
     </section>

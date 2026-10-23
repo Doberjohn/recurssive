@@ -100,7 +100,7 @@ export const pillars: Pillar[] = [
     description:
       'First comes a plain account of what’s holding the app back. Then you choose who fixes it: your own team, or us. Now and then the honest answer is a rewrite, and when it is, we say so.',
     rows: [
-      'React Native Performance Optimization',
+      'React Native Performance Optimisation',
       'New Architecture Migration',
       'React Development',
       'React Native Trainings',
@@ -195,7 +195,7 @@ export const pillars: Pillar[] = [
     name: 'Enterprise Solutions',
     description:
       'Nothing that works today should break on the way. A large app moves screen by screen and keeps shipping, with monitoring and a release process in every move. We set those up on their own too.',
-    rows: ['Migration to React Native', 'Monitoring & Observability', 'Release Process Optimization'],
+    rows: ['Migration to React Native', 'Monitoring & Observability', 'Release Process Optimisation'],
     card: {
       title: 'Enterprise Solutions Project',
       code: `[[o:const]] [[p:observability]] [[r:=]] {

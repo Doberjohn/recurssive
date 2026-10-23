@@ -82,7 +82,7 @@ export function PillarRows({
         //
         // A FLOOR below lg, not a height: on a phone a name can still wrap,
         // and a fixed row let it spill over the next one (it did at 390,
-        // three lines of "React Native Performance Optimization" across two
+        // three lines of "React Native Performance Optimisation" across two
         // rows). The link's padding keeps a grown row off its rules.
         const pitch =
           i === 0

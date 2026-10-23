@@ -83,7 +83,7 @@ export const capabilitySchema = z.object({
     .object({
       /** The paragraph under the title in the hero. */
       intro: z.string().min(1),
-      /** "Why build a Mobile App?" */
+      /** "Why build a mobile app?" */
       whyHeading: z.string().min(1),
       /** The six benefits under it, three across at 1920. */
       benefits: z

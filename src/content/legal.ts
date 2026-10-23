@@ -83,7 +83,7 @@ export const privacySections: LegalSection[] = [
   {
     heading: "SSL Security",
     body: [
-      "We use SSL (Secure Sockets Layer) to encrypt and secure your personal data when you transmit it to our site. SSL is a standard security technology that ensures that all data exchanged between your web browser and our server is encrypted and protected from unauthorized access.",
+      "We use SSL (Secure Sockets Layer) to encrypt and secure your personal data when you transmit it to our site. SSL is a standard security technology that ensures that all data exchanged between your web browser and our server is encrypted and protected from unauthorised access.",
     ],
   },
   {
@@ -152,8 +152,8 @@ export const termsSections: LegalSection[] = [
     body: [
       "When using our Site or Services, you agree not to:",
       "- Use the Site for any unlawful purpose or in violation of these Terms;",
-      "- Submit false, misleading, or fraudulent information through any contact or inquiry form;",
-      "- Attempt to gain unauthorized access to our systems, servers, or data;",
+      "- Submit false, misleading, or fraudulent information through any contact or enquiry form;",
+      "- Attempt to gain unauthorised access to our systems, servers, or data;",
       "- Interfere with or disrupt the operation of the Site;",
       "- Use automated tools to access or extract content from the Site without permission.",
     ],

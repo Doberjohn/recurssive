@@ -1,6 +1,7 @@
 import { Nav } from './Nav'
 import { Footer } from './Footer'
 import { BuildVision } from './BuildVision'
+import { slugify } from '@/lib/slugify'
 
 /**
  * The layout both legal documents share.
@@ -104,8 +105,10 @@ export function LegalPage({
                 Gap after the rule is the drawn 68 at 768 and 96 at 1920, and
                 sections are 20 apart, body bottom to next heading, in both. */}
             <div className="mx-auto mt-[68px] max-w-[861px] space-y-5 lg:mt-24">
+              {/* Each section answers to its heading's slug, so the footer's
+                  Cookies link can open the policy at #cookies. */}
               {sections.map((s) => (
-                <section key={s.heading}>
+                <section key={s.heading} id={slugify(s.heading)}>
                   <h2 className="font-heading font-semibold leading-tight tracking-[-0.05em] text-ink [font-size:clamp(24px,4.6875vw,36px)] lg:[font-size:32px]">
                     {s.heading}
                   </h2>

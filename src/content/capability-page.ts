@@ -69,7 +69,7 @@ export const ideaCard = {
   // already carries site.replyPromise, and two copies on one page read as
   // repetition (owner's call, 2026-10-23).
   body: 'Tell us about it.',
-  action: 'Inquire',
+  action: 'Enquire',
 }
 
 export const moreServices = {

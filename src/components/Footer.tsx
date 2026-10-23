@@ -131,8 +131,8 @@ export function Footer() {
         {/* Drawn as one justify-between row on both frames: at 768 the four
             items land on x78/296/411/519 across 79..689, which is exactly what
             justify-between computes. The minimum gap has to be small enough
-            that five items (the frames omit Cookies; it is a real page, so it
-            stays) still fit on one line at 610. */}
+            that five items (the frames omit Cookies at 768; it opens the Privacy
+            Policy's Cookies section, so it stays) still fit on one line at 610. */}
         {/* The legal row does not use body metrics: both frames set it on a
             20px line-height (22/20 at 768, 16/20 at 1920), and 768 adds -0.04em
             tracking. Without those it runs ~8% wide, which is the difference
@@ -156,7 +156,9 @@ export function Footer() {
               row at 768 and five at 1920. Not a style choice: at 440 the five
               measure 398px of text against a 392px column, so they cannot share
               a line at any gap. Four fit at 384px. */}
-          <Link href="/cookies" className="hidden hover:underline lg:inline">
+          {/* There is no /cookies page: the site sets no cookies, and the policy
+              says so in its own section (2026-10-23, the old link was a 404). */}
+          <Link href="/privacy-policy#cookies" className="hidden hover:underline lg:inline">
             Cookies
           </Link>
           {/* Only the studio name is the link, not the whole credit. No dimming:
