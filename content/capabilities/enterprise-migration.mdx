@@ -14,6 +14,11 @@ services:
 # and approved by him as written on 2026-10-23. Facts assumed at drafting,
 # which he accepted:
 #   - Moving the most-changed screens first comes from the page’s older text, not from your answers.
+# Facts interview, 2026-10-23: the owner confirmed every item below as true.
+# Those marked (on page) are the benefits that replaced repeated cards.
+#   - Native code kept (on page): existing native parts (payments, SDKs, custom features) keep working and are called from the new React Native screens; they are rebuilt only if they need to be.
+#   - One team afterwards: once the move is done, the iOS and Android developers work in one codebase.
+#   - A written map first: before the first screen moves, a plan of which screens move in which order and what each depends on.
 page:
   intro: 'For large native iOS and Android apps moving to React Native. The move happens screen by screen inside the apps you already ship, so releases carry on.'
   whyHeading: 'Why move to React Native?'
@@ -28,8 +33,8 @@ page:
       body: 'The screens that change most often move first, because that’s where having one shared codebase starts to pay for itself soonest and most visibly.'
     - title: 'Watched as it goes'
       body: 'Monitoring and a proper release process are part of every move, so problems show up early, usually before your users notice.'
-    - title: 'Your team included'
-      body: 'Your developers work alongside ours throughout, so the new code is already theirs and familiar to them by the time we step back.'
+    - title: 'Native code kept'
+      body: 'Payments, SDKs and other native parts that already work stay where they are. The new React Native screens call them directly.'
 ---
 
 ## Not a rewrite

@@ -2,7 +2,13 @@
 # Copy written without the owner's interview, on his instruction (2026-10-22),
 # and approved by him as written on 2026-10-23. Facts assumed at drafting,
 # which he accepted:
-#   - Which monitoring tools you use isn’t named; you haven’t said.
+#   - Which monitoring tools you use: answered on 2026-10-23, see below.
+# Facts interview, 2026-10-23: the owner confirmed every item below as true.
+# Those marked (on page) are the benefits that replaced repeated cards.
+#   - Server errors too (on page): back-end problems are tracked alongside the app, so one fault can be followed end to end.
+#   - Trends over time: crashes and speed can be compared from one release to the next.
+#   - Personal data left out: set up so passwords and personal details aren’t collected.
+#   - Tools: set up in tools like Sentry, or in the ones the team already uses.
 title: 'Monitoring & Observability'
 description: 'Seeing crashes and slow screens in your app as they happen, with alerts tuned to the problems that matter.'
 publishedAt: 2026-10-22
@@ -18,8 +24,8 @@ page:
       body: 'Problems arrive ranked by how many people they affect, so the team’s effort goes where it helps the most people first, not where it’s loudest.'
     - title: 'Real-world speed'
       body: 'Speed is measured on your users’ own phones and connections, which often tells a different story from the team’s.'
-    - title: 'Safer releases'
-      body: 'Every new version is watched closely once it ships, so a bad one is caught early and rolled back before most people ever download it.'
+    - title: 'End to end'
+      body: 'Errors on your servers are tracked alongside the app’s own. One fault can be followed from the screen all the way to the server.'
     - title: 'The full picture'
       body: 'Each error arrives with a record of what the person was doing at the time, which makes it far quicker to reproduce and to fix properly.'
     - title: 'Alerts worth reading'
