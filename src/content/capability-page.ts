@@ -5,7 +5,9 @@
  *
  * OWNER-APPROVED COPY, every string, from the copy interview of 2026-10-22:
  * each sentence written from a multiple-choice answer and approved line by
- * line. Change a fact only by asking the owner. Line counts were checked in
+ * line. Change a fact only by asking the owner. On 2026-10-23 he approved a
+ * round of deletion-only cuts (padding and sincerity words, no new wording).
+ * Line counts were checked in
  * the page at 1920, 768 and 390; the platform cards hold the drawn 6 lines at
  * 1920 and keep equal heights below it, so re-render after any edit.
  *
@@ -26,12 +28,12 @@ import type { TechLogo } from './tech-logos'
  *  the marks are abstract and were never tied to their old words. */
 export const whyUs = {
   heading: 'Why us',
-  intro: 'How we work on every project, whichever of the four groups it belongs to.',
+  intro: 'How we work on every project.',
   items: [
     {
       name: 'Direct line',
       icon: 'human-touch',
-      body: 'The developer writing your code is the one answering your messages. Nobody relays them in between, so questions go straight to the person who actually knows.',
+      body: 'The developer writing your code is the one answering your messages. Nobody relays them, so questions go straight to the person who knows.',
     },
     {
       name: 'Plain answers',
@@ -41,7 +43,7 @@ export const whyUs = {
     {
       name: 'Side by side',
       icon: 'future-ready',
-      body: 'Your own developers work alongside ours before we step back. By the time we leave, the code is already theirs and they know their way around it.',
+      body: 'Your own developers work alongside ours before we step back. By the time we leave, the code is theirs and they know their way around it.',
     },
     {
       name: 'Plan first',
@@ -51,12 +53,12 @@ export const whyUs = {
     {
       name: 'Tools per job',
       icon: 'efficient-systems',
-      body: 'No stack is presumed on our side. Each project starts from what the product needs, and the tools follow from that, even when they differ from the last project’s.',
+      body: 'No stack is presumed on our side. Each project starts from what the product needs, and the tools follow from that.',
     },
     {
       name: 'After launch',
       icon: 'reliable-partner',
-      body: 'Once it’s live, staying on is your call. Ongoing fixes and monitoring are there if you want them, and if you’d rather take it from there, the exit is a clean one.',
+      body: 'Once it’s live, staying on is your call. Ongoing fixes and monitoring are there if you want them, and if you’d rather take it from there, the exit is clean.',
     },
   ],
 }
@@ -97,7 +99,7 @@ type Tool = { name: string; logo: TechLogo }
 
 export const techStack: { heading: string; intro: string; groups: { name: string; tools: Tool[] }[] } = {
   heading: 'Tech we use on repeat',
-  intro: 'These come up on project after project, but none of them is a given. Each project picks the ones its product needs.',
+  intro: 'These come up on project after project. Each project picks the ones its product needs.',
   groups: [
     {
       name: 'Front End',
