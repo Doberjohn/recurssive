@@ -39,6 +39,19 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }]
   },
+
+  // Product Development was one interim page until 2026-10-23, when it split
+  // into the pages drawn in the Capability frames. Its URL was live and Home
+  // linked to it, so it lands permanently on the page those frames drew.
+  async redirects() {
+    return [
+      {
+        source: '/capabilities/product-development',
+        destination: '/capabilities/mobile-app-development',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

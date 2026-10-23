@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { routes, siteUrl } from '@/lib/site'
-import { validateReferences } from '@/lib/content'
+import { designedPage, getAll, validateReferences } from '@/lib/content'
 
 /**
  * Hand-rolled rather than pulling in next-sitemap: this site will sit well under
@@ -23,15 +23,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     })),
 
-    // No content routes for now. When they return, date them from frontmatter
-    // rather than build time — a real signal, and stable across rebuilds that
-    // did not change the content:
-    //
-    //   ...getAll(collection).map((entry) => ({
-    //     url: `${siteUrl}/${collection}/${entry.slug}`,
-    //     lastModified: new Date(entry.meta.updatedAt ?? entry.meta.publishedAt),
-    //   }))
-    //
+    // Capability pages, back since the launch of 2026-10-23: every entry that
+    // renders the page drawn in the Capability frames. One still on the interim
+    // scaffold serves noindex and stays out, as the whole collection did before.
+    // Dated from frontmatter rather than build time, which is a real signal and
+    // stable across rebuilds that did not change the content.
+    ...getAll('capabilities')
+      .filter((entry) => designedPage(entry.meta))
+      .map((entry) => ({
+        url: `${siteUrl}/capabilities/${entry.slug}`,
+        lastModified: new Date(entry.meta.updatedAt ?? entry.meta.publishedAt),
+      })),
+
     // `cases` is omitted. The index at /cases has always been noIndex, but the
     // detail pages were listed here and carried no robots directive, so the one
     // placeholder study was the single most crawlable thing about a section
@@ -40,10 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     //
     // `blog` is omitted for the same reason: the owner is not launching it yet
     // (2026-10-21), and while the index at /blog was noIndex, the post was
-    // listed here and indexable. It goes back with the /blog nav link.
-    //
-    // `capabilities` is omitted while its detail pages are the unstyled
-    // scaffold and serve noindex (owner's call, 2026-10-22). It goes back in
-    // the commit that ships the template drawn in the Capability frames.
+    // listed here and indexable. It goes back with the /blog nav link, dated
+    // from frontmatter the same way as the capabilities above.
   ]
 }

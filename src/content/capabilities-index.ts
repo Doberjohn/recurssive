@@ -4,16 +4,12 @@
  * Hardcoded on purpose, and it is worth being clear why rather than leaving it
  * to look like an oversight.
  *
- * The `capabilities` MDX collection has FOUR entries, one per pillar. This page
- * draws NINETEEN rows. The drawn rows are also not those capabilities' `services`
- * lists — Consulting draws "React Development", "Expo Development",
- * "Next.js Development" and so on, none of which appear in
- * react-native-performance.mdx's services. So the rows are nineteen would-be
- * capability entries, fifteen of which do not exist as content yet.
- *
- * Wiring this to `getAll('capabilities')` today would render four rows against a
- * design that draws nineteen. Hardcoding renders what was designed and keeps the
- * shape the content layer will eventually supply, which is the honest interim.
+ * The rows were written here before their pages existed: the `capabilities`
+ * collection had four entries, one per pillar, against nineteen drawn rows.
+ * Since 2026-10-23 every row has its own entry, matched by title (lib/content
+ * capabilityLinks), so the rows could now come from the collection. They stay
+ * here because the pillar order, the row order and the code cards are the
+ * frame's, and an entry's `order` was never set to reproduce them.
  *
  * The code samples are drawn verbatim in the frame — they are real, chosen
  * copy rather than filler, so they are transcribed exactly. So are their

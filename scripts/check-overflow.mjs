@@ -24,10 +24,17 @@
  */
 
 import { spawn } from 'node:child_process'
-import { existsSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 
 const BASE = process.env.BASE ?? 'http://localhost:3001'
 const PORT = 9223
+
+/** Every published capability page, read from content/ so a new one is checked
+ *  the moment it exists. A draft is not built, so it is not listed. */
+const capabilityRoutes = readdirSync(new URL('../content/capabilities/', import.meta.url))
+  .filter((f) => f.endsWith('.mdx'))
+  .filter((f) => !/^draft: true$/m.test(readFileSync(new URL(`../content/capabilities/${f}`, import.meta.url), 'utf8')))
+  .map((f) => `/capabilities/${f.slice(0, -4)}`)
 
 const ROUTES = [
   '/',
@@ -41,10 +48,7 @@ const ROUTES = [
   '/cases',
   '/capabilities',
   '/blog/why-recursion',
-  '/capabilities/enterprise-migration',
-  '/capabilities/on-device-ai',
-  '/capabilities/product-development',
-  '/capabilities/react-native-performance',
+  ...capabilityRoutes,
   '/cases/placeholder-fintech-app',
   '/this-route-does-not-exist', // renders the 404
   // The outcome pages share the error states' full-bleed layout, so they are

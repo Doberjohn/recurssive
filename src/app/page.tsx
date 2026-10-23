@@ -58,9 +58,10 @@ export const metadata: Metadata = buildMetadata({
  *  Product Dev, and it finally serves the visitor who ALREADY HAS a product.
  *  Both land on capability pages that exist.
  *
- *  Mobile Apps re-points to /capabilities/product-development. It used to send
- *  a new-build row to the performance page; Performance now owns that
- *  destination properly.
+ *  Every row lands on its own capability page (2026-10-23). Four of them had
+ *  shared the interim /capabilities/product-development, which now redirects
+ *  to Mobile App Development; Web Design takes Web App Development, the web
+ *  member of that old Product Development family (the owner's pick).
  *
  *  Image note: the design draws the preview card exactly once, on **Web
  *  Design**, using `case-hero`. A hover state drawn once says nothing about
@@ -148,7 +149,7 @@ const services: Service[] = [
     // The owner's own sentence, with his approved grammar fix. See rule 0.
     description:
       'Your web presence is your most valuable asset, and the first impression you give to your customers means the world to both you and us.',
-    href: '/capabilities/product-development',
+    href: '/capabilities/web-app-development',
   },
   {
     index: '02',
@@ -156,7 +157,7 @@ const services: Service[] = [
     image: 'home-collab',
     description:
       'A mobile app is a channel you own rather than rent. Getting people to keep it installed takes more craft than most companies expect.',
-    href: '/capabilities/product-development',
+    href: '/capabilities/mobile-app-development',
   },
   {
     index: '03',
@@ -164,7 +165,7 @@ const services: Service[] = [
     image: 'home-portrait',
     description:
       'When a product is designed well, you never have to stop and work out where to go next, and that quiet confidence is what we’re after.',
-    href: '/capabilities/product-development',
+    href: '/capabilities/ui-ux-design',
   },
   {
     index: '04',
@@ -192,7 +193,7 @@ const services: Service[] = [
     // The owner's sentence.
     description:
       'What you choose to build first quietly shapes everything after it, and that is the conversation we always want to have with you.',
-    href: '/capabilities/product-development',
+    href: '/capabilities/product-strategy',
   },
 ]
 

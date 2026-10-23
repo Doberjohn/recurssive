@@ -14,15 +14,10 @@ export const metadata: Metadata = buildMetadata({
   description:
     'Recurssive reviews and fixes existing apps, builds new products from an idea, adds AI features, and moves large apps to React Native screen by screen.',
   path: '/capabilities',
-  // The placeholder reason for this flag is gone: every string on this page is
-  // now real (intro, four pillar descriptions, nineteen drawn rows, four drawn
-  // code samples), and a row links to its capability's page only once that
-  // page is the drawn template (see capabilityLinks), the rest to /contact, so
-  // nothing thin is reachable from here. Kept only pending the owner's call on
-  // indexing. Drop it and uncomment
-  // '/capabilities' in src/lib/site.ts routes in the SAME commit — see the note
-  // there: a sitemapped route that serves noindex is the contradiction.
-  noIndex: true,
+  // Indexed since the launch of 2026-10-23, and listed in src/lib/site.ts
+  // routes: every string is the owner's, and each row links to its own page
+  // (capabilityLinks). A row whose page is not out would go to /contact, so
+  // nothing thin is reachable from here.
 })
 
 /**

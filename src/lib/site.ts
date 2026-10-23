@@ -113,7 +113,7 @@ export const routes = [
   '/',
   '/about',
   // '/cases',      // unlinked too — see the 5-point checklist in the note above
-  // '/capabilities',
+  '/capabilities', // indexed with its pages since the launch of 2026-10-23
   // '/blog',       // unlinked too — same checklist, see the note above
   '/contact',
   '/privacy-policy',

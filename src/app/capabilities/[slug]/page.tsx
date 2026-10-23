@@ -26,13 +26,11 @@ export async function generateMetadata({
     title: capability.meta.title,
     description: capability.meta.description,
     path: `/capabilities/${slug}`,
-    // Interim, on the owner's call of 2026-10-22: until the template drawn in
-    // the Capability frames ships, these pages are the unstyled scaffold below,
-    // so they stay out of search and out of the sitemap. They had been served
-    // index,follow and sitemapped, and Home's service rows link here. Drop this
-    // and restore the collection in sitemap.ts in the commit that ships the
-    // template.
-    noIndex: true,
+    // A page drawn in the Capability frames is indexed and sitemapped (since
+    // the launch of 2026-10-23). An entry still on the unstyled scaffold below
+    // stays out of search, as every one did on the owner's call of 2026-10-22,
+    // and sitemap.ts leaves it out on the same test.
+    noIndex: !designedPage(capability.meta),
   })
 }
 
