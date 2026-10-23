@@ -321,8 +321,13 @@ const industries = [
   {
     name: 'Enterprise',
     shape: 'triangle' as const,
+    // Rewritten 2026-10-23 from the owner's answer. Agreement matters, but it
+    // isn't what sets the pace: connecting to the systems in place takes the
+    // longest, security reviews decide go-live, and it has to be proven at scale
+    // first. 230 chars, one comma. "company", "business" and "already" are each
+    // already in two of the fourteen strings, so the card avoids them.
     body:
-      'At this size the constraint is rarely the engineering. What sets the pace is the agreement that has to happen before anything ships, and a plan that ignores that will slip. We’d rather put it in the schedule than find it late.',
+      'At this size the longest part is connecting to the systems the organisation runs today. Security and data-protection reviews then decide when it can go live, and before launch it has to be proven to hold up for thousands of users.',
   },
 ]
 
