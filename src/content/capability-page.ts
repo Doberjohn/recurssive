@@ -17,7 +17,6 @@
  * and all: the frames draw the same band, steps and shapes on both pages.
  */
 
-import { site } from '@/lib/site'
 import type { TechLogo } from './tech-logos'
 
 /** Owner-approved 2026-10-22 from the copy interview. The six replace the
@@ -64,8 +63,10 @@ export const whyUs = {
 
 export const ideaCard = {
   heading: 'Got an idea that keeps coming back?',
-  // The owner's reply promise, from its one source so it cannot drift.
-  body: `Tell us about it. ${site.replyPromise}`,
+  // No reply promise here: the closing band further down the same page
+  // already carries site.replyPromise, and two copies on one page read as
+  // repetition (owner's call, 2026-10-23).
+  body: 'Tell us about it.',
   action: 'Inquire',
 }
 
